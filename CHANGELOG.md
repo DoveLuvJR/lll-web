@@ -66,9 +66,9 @@ Colors, spacing, components — left alone. Premature sharing creates fake reuse
 - [x] Empty `shared/header.js` and `shared/footer.js` created
 - [x] CHANGELOG.md created
 - [x] DECISIONS.md created
-- [ ] Local verification (next)
-- [ ] Push to `main`, Vercel deploy succeeds (next)
-- [ ] Live URL verification (next)
+- [x] Local verification — static server probe, all 6 paths returned 200 with matching byte counts
+- [x] Push to `main` (commit `89b639a`), Vercel auto-deploy succeeded
+- [x] Live URL verification — `https://table-of-nations.vercel.app/` serves placeholder, `/collections/table-of-nations/` serves TON, all asset paths resolve
 
 ### Carry-forward to Batch 2
 
