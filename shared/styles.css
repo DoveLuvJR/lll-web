@@ -1,0 +1,20 @@
+/* LLL Library — shared design tokens
+ *
+ * Conservative extraction (Batch 1). Only fonts, reset, and font-family
+ * tokens live here. TON-specific colors and layout stay in
+ * collections/table-of-nations/styles.css.
+ *
+ * Cellular Engineering (Batch 3) and Drenchy Breakdown (Batch 5) will
+ * reveal what's actually shared. Resist the urge to promote tokens up
+ * here until two collections genuinely use the same value.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --font-display: 'Cinzel', serif;
+  --font-body: 'EB Garamond', serif;
+  --font-ui: 'Inter', sans-serif;
+}
