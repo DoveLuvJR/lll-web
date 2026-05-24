@@ -21,6 +21,18 @@
 
 body { font-family: var(--font-body); background: var(--paper); color: var(--text); min-height: 100vh; }
 
+.crumbs { background: var(--paper); border-bottom: 1px solid #e8e4d8; padding: 10px 20px; }
+.crumbs ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; max-width: 1200px; margin: 0 auto; font-family: var(--font-ui); font-size: 12px; font-weight: 600; letter-spacing: .5px; }
+.crumbs li { display: inline-flex; align-items: center; min-height: 32px; }
+.crumbs li + li::before { content: "\203A"; color: var(--muted); margin-right: 8px; font-weight: 400; }
+.crumbs a { color: var(--gold); text-decoration: none; padding: 6px 2px; transition: color .2s; }
+.crumbs a:hover, .crumbs a:focus-visible { color: var(--gold-light); }
+.crumbs [aria-current="page"] { color: var(--text2); }
+
+.foot-back { text-align: center; padding: 18px 20px 8px; background: var(--paper-2); border-top: 1px solid #e8e4d8; }
+.foot-back a { font-family: var(--font-ui); font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); text-decoration: none; padding: 6px 10px; transition: color .2s; }
+.foot-back a:hover, .foot-back a:focus-visible { color: var(--gold-light); }
+
 header { text-align: center; padding: 56px 24px 20px; border-bottom: 1px solid #e8e4d8; background: var(--paper); }
 header h1 { font-family: var(--font-display); font-size: clamp(24px, 5vw, 44px); font-weight: 900; color: var(--ink); letter-spacing: 3px; text-transform: uppercase; }
 header .sub { font-size: 18px; color: var(--text2); margin-top: 8px; font-style: italic; }
@@ -181,7 +193,7 @@ footer p { font-family: var(--font-ui); font-size: 13px; color: var(--muted); li
 }
 
 @media print {
-  .share-row, .chips, .echips, .walk-ctrls { display: none !important; }
+  .share-row, .chips, .echips, .walk-ctrls, .crumbs, .foot-back { display: none !important; }
   body { background: #fff; }
   .lenses, .col, .stats-bar, footer, .spectroscope, .walk-panel { background: #fff !important; border-color: #ccc !important; }
   .col { break-inside: avoid; }

@@ -1,5 +1,56 @@
 # Changelog — LLL Library
 
+## Batch 6 — Study-Page Navigation (2026-05-24)
+
+Added consistent upward navigation to both study pages. Before this batch the study pages were islands — built before the Library hub and `/collections/` landing existed, so a reader had no in-page path back up. This adds the same nav to both, harmonized to each page's palette.
+
+### Breadcrumb at the top
+
+A `<nav class="crumbs" aria-label="Breadcrumb">` is now the first element inside `<body>` on both study pages, sitting above the existing `<header>`. Markup is a semantic `<ol>` with three crumbs:
+
+```
+Growing Stone Library  ›  Collections  ›  [current page]
+```
+
+- Root-relative links (`/` and `/collections/`) so they work from the nested path
+- The current crumb is plain text with `aria-current="page"`
+- Separator chevron rendered via CSS `li + li::before { content: "›" }` — no separator before the first crumb or after the last
+- Per page:
+  - **TON** → `The Table of 70 Nations`
+  - **Stars** → `What Are the Stars?`
+
+### "‹ Back to all collections" above the footer
+
+A small centered `<div class="foot-back">` link to `/collections/` sits just above each `<footer>`. The study pages are long; this saves scrolling back to the top.
+
+### Palette harmonization (no shared-CSS edits)
+
+Both nav elements use each page's own existing tokens — nothing new was introduced and `shared/styles.css` / `shared/site.css` were not touched:
+
+- **TON** — crumbs sit on `--bg` (white) with a 1px `#eee` hairline; back-link sits on `#fafafa` (the existing footer surface). Links use `--gold`, hover/focus `--gold-light`, separators and current crumb `--muted`/`--text2`.
+- **Stars** — crumbs sit on `--paper` (warm ivory) with a `#e8e4d8` hairline; back-link sits on `--paper-2`. Same gold-link / muted-separator treatment.
+
+Inter for the chrome text, 12px, uppercase only for the back-link (matches each page's existing UI-label convention). Comfortable tap targets (`min-height: 32px` on crumb items, `padding: 6px` on links); `flex-wrap: wrap` handles narrow screens.
+
+### Print
+
+`.crumbs` and `.foot-back` are both `display: none !important` in each page's print stylesheet — navigation chrome doesn't belong on paper.
+
+### Scope of edits
+
+This is the first intentional edit to the **Table of Nations** collection since the Batch 1 restructure. The change is scoped to navigation only: nothing in TON's header, search/filter logic, card data, or footer text changed. Same for the Stars page — all four interactives (Two Lenses, Spectroscope, Canon Walk, Perspectives accordion, tappable Scripture index) remain untouched. `app.js` was not modified on either page.
+
+### Acceptance verification
+
+- [x] Breadcrumb added atop both study pages; Home (`/`) and Collections (`/collections/`) links work; current page marked `aria-current="page"`
+- [x] "‹ Back to all collections" link added above both footers, linking to `/collections/`
+- [x] Nav harmonizes with each page's palette; no shared stylesheet or other-collection edits; no `app.js` changes
+- [x] Existing content, headers, footers, and all interactives untouched and working
+- [x] Print hides the breadcrumb and back-link
+- [x] CHANGELOG updated; pushed to `main` (no force-push); both live URLs verified
+
+---
+
 ## Batch 5 — Stars Page: Tappable Scripture Index (2026-05-24)
 
 Small enhancement to the existing what-are-the-stars Scripture index at the bottom of the page. Each of the 17 references is now interactive.
