@@ -1,5 +1,76 @@
 # Changelog — LLL Library
 
+## Batch 2 — "What Are the Stars?" Collection, Phase 1 (2026-05-24)
+
+New collection `what-are-the-stars/` added under the multi-collection structure laid down in Batch 1. This is Phase 1 of the page: the signature interactive ("Two Lenses") plus the full written study. Two additional interactives ("The Spectroscope" and "The Canon Walk") are scoped for Batch 2 of this page (a future commit) and are marked in place with `<!-- Batch 2: ... -->` placeholder comments.
+
+### New collection
+
+```
+collections/what-are-the-stars/
+├── index.html   ← semantic markup
+├── styles.css   ← collection-local ivory/ink/gold palette
+└── app.js       ← Two Lenses data + chip handlers, share/toast
+```
+
+### Visual identity
+
+Distinct from Table of Nations' parchment + tri-color lineage. Identity is "observatory study desk":
+
+- `--paper` `#fbfaf6` (warm ivory) — page background
+- `--ink` `#1e2a3a` (deep slate) — page headings, telescope / science voice
+- `--gold` `#8B6914` (library gold) — Scripture / scroll voice, ties this collection to TON's gold without copying it
+- `--tel-bg` `#eef3f9` (cool blue) — telescope column
+- `--scr-bg` `#faf6ed` (parchment) — scroll column
+
+Headings remain `var(--font-display)` (Cinzel); science-voice column body in `var(--font-ui)` (Inter); Scripture-voice column body and all prose in `var(--font-body)` (EB Garamond). All palette tokens live in this collection's own `styles.css` — none promoted to `shared/styles.css` (per D-003).
+
+### Signature interactive — "Two Lenses"
+
+Reader picks a star the Bible names from four chips (The Pleiades, Orion, The Bear, The Morning Star) and sees two columns update simultaneously:
+
+- **Through the telescope** — sans-serif, ink-soft, blue background. What spectroscopy can read from the light.
+- **Through the scroll** — serif, gold accent with uppercase reference line, parchment background. What Scripture says.
+
+Default selection on load: The Pleiades. Mobile (≤560px): columns stack vertically. Chips are real `<button>` elements with `role="tab"` and `aria-selected` toggled.
+
+### Written study
+
+Seven prose sections in the order: intro lede, How do they know? — Reading the light, What the Scriptures say the stars are for, Named and numbered by God, The host of heaven, The star that fell — Revelation 9:1, Holding it together — both/and. Followed by a 15-entry Scripture index list (reference + short gloss). All Scripture quotations are short, single-verse, ESV-consistent.
+
+### Stats bar (thematic)
+
+- 15 — Passages
+- 4 — Named in Job
+- 1 — Maker
+
+### Header / footer
+
+Same shape as TON: H1 + italic subtitle + verse + share row (Copy Link / Share / Print). Footer credits Growing Stone Fellowship and Jumpshots from The Bleachers Inc., plus the source note on ESV + spectroscopy / 1868 helium discovery.
+
+### Print + mobile
+
+Print styles hide chips and share row, force white backgrounds, and prevent break-inside on columns and study sections. Mobile breakpoint at 560px stacks the Two Lenses columns and reflows the Scripture index.
+
+### Deferred to Batch 2 of this page (not in this commit)
+
+- "The Spectroscope" interactive — placeholder comment at end of `<h2>How do they know? — Reading the light</h2>` section
+- "The Canon Walk" interactive — placeholder comment above the Scripture index list
+
+### Acceptance verification
+
+- [x] `collections/what-are-the-stars/` created with `index.html`, `styles.css`, `app.js`
+- [x] Header (title, subtitle, Psalm 147:4 verse, share row), stats bar, footer present and styled
+- [x] Page has its own ivory/ink/gold identity; headings in Cinzel; no `shared/styles.css` changes
+- [x] Two Lenses works: 4 chips, two columns (sans telescope / serif scroll), reference line, default Pleiades, mobile stacks
+- [x] Full written study present verbatim in correct order; Scripture index list present
+- [x] Batch 2 placeholder comments left for The Spectroscope and The Canon Walk
+- [x] Print + mobile styles working
+- [x] README, CHANGELOG, DECISIONS updated
+- [x] Pushed to `main` (no force-push); live URL verified
+
+---
+
 ## Batch 1 — Foundation Restructure (2026-05-02)
 
 Reorganized the existing Table of Nations repo into the LLL Library multi-collection structure. No new content. The Table of Nations interactive itself is unchanged in behavior — same data, same filters, same visual design — but it now lives at a new path and pulls fonts/reset from a shared stylesheet.

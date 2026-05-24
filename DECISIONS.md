@@ -85,3 +85,23 @@ Everything else — colors, spacing, components, layout — stays in each collec
 - TON readers who had `/` bookmarked get a one-click path to the same content
 
 **Trade-off accepted:** Anyone with a deep link to specific TON behavior (filters, search states) at `/` will see the placeholder. TON's URL has no fragment-state for filters, so this loss is minimal in practice.
+
+---
+
+## D-007 (2026-05-24) "What Are the Stars?" — local palette + Two Lenses, phased build
+
+**Decision:** The second collection, `what-are-the-stars/`, gets its own ivory/ink/gold palette (paper `#fbfaf6`, ink `#1e2a3a`, gold `#8B6914`, plus telescope-blue and scroll-parchment column backgrounds) defined entirely inside its own `styles.css`. None of these tokens are promoted to `shared/styles.css`. The signature interactive is "Two Lenses" — a side-by-side telescope/scroll reader for stars named in Scripture.
+
+**Why:**
+- Honors D-003: even though this is the second collection (the threshold where shared-CSS extraction was originally going to be revisited), there is still no token used the same way across TON and this page. TON's gold is the title color and brand chrome; this page's gold is the Scripture-voice accent. Same hex, different semantic role — extracting it now would falsely conflate the two.
+- Each collection earning its own visual identity is the whole point of D-002. The "observatory study desk" identity (warm ivory + deep slate + library gold) is deliberately different from TON's parchment + tri-color lineage.
+- The Two Lenses interactive embodies this page's thesis ("both/and") in its structure — science voice and Scripture voice presented as equals, side by side. It can't be generalized to other collections without losing the meaning.
+
+**Decision (phasing):** The page ships in two batches. Batch 1 (this commit) is Two Lenses + the full written study + Scripture index. Batch 2 (a future commit) will add two more interactives — "The Spectroscope" (slot reserved at the end of the "Reading the light" section) and "The Canon Walk" (will replace or augment the Scripture index). Placeholder `<!-- Batch 2: ... -->` comments mark the exact insertion points.
+
+**Why phase:**
+- One signature interactive + tight prose is a complete, shippable study on its own. The reader is not blocked on the other two.
+- Building all three interactives in one batch risks scope creep and would make the diff harder to review.
+- Placeholder comments are explicit anchors for the next session — no ambiguity about where the new components land.
+
+**When to revisit shared-CSS extraction:** After a third collection lands. With three palettes side by side, real overlap will be visible. Until then, copy-paste between collections remains the right move.

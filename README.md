@@ -27,6 +27,7 @@ LLL-Web/
 | Collection | Status | Path |
 |---|---|---|
 | Table of Nations | Live | `/collections/table-of-nations/` |
+| What Are the Stars? | Live | `/collections/what-are-the-stars/` |
 | Cellular Engineering | Planned (Batch 3) | `/collections/cellular-engineering/` |
 | Drenchy Breakdown | Planned (Batch 5) | `/collections/drenchy-breakdown/` |
 
