@@ -185,3 +185,79 @@ buildSky();
 document.getElementById("walk-prev").addEventListener("click", () => { if (walkStep > 0) { walkStep--; renderWalk(); } });
 document.getElementById("walk-next").addEventListener("click", () => { if (walkStep < WALK.length - 1) { walkStep++; renderWalk(); } });
 renderWalk();
+
+/* ---------- Scripture index verse popovers ---------- */
+const VERSES = {
+  "Genesis 1:14–18": "And God said, “Let there be lights in the expanse of the heavens to separate the day from the night. And let them be for signs and for seasons, and for days and years.” (v. 14)",
+  "Deuteronomy 4:19": "And beware lest you raise your eyes to heaven, and when you see... all the host of heaven, you be drawn away and bow down to them and serve them.",
+  "Judges 5:20": "From heaven the stars fought, from their courses they fought against Sisera.",
+  "Job 38:7": "...when the morning stars sang together and all the sons of God shouted for joy?",
+  "Job 38:31–32": "Can you bind the chains of the Pleiades or loose the cords of Orion?... Can you guide the Bear with its children?",
+  "Psalm 19:1": "The heavens declare the glory of God, and the sky above proclaims his handiwork.",
+  "Psalm 147:4": "He determines the number of the stars; he gives to all of them their names.",
+  "Isaiah 14:12": "How you are fallen from heaven, O Day Star, son of Dawn! How you are cut down to the ground, you who laid the nations low!",
+  "Isaiah 40:26": "Lift up your eyes on high and see: who created these? He who brings out their host by number, calling them all by name...",
+  "Ezekiel 1:16": "...their appearance and construction being as it were a wheel within a wheel.",
+  "Daniel 8:10": "It grew great, even to the host of heaven. And some of the host and some of the stars it threw down to the ground and trampled on them.",
+  "Luke 10:18": "And he said to them, “I saw Satan fall like lightning from heaven.”",
+  "Jude 1:13": "...wandering stars, for whom the gloom of utter darkness has been reserved forever.",
+  "Revelation 1:20": "...the seven stars are the angels of the seven churches, and the seven lampstands are the seven churches.",
+  "Revelation 9:1": "...I saw a star fallen from heaven to earth, and he was given the key to the shaft of the bottomless pit.",
+  "Revelation 12:4": "His tail swept down a third of the stars of heaven and cast them to the earth...",
+  "Revelation 22:16": "I am the root and the descendant of David, the bright morning star."
+};
+
+let openPop = null;
+
+function closePopover() {
+  if (!openPop) return;
+  openPop.btn.setAttribute("aria-expanded", "false");
+  openPop.pop.hidden = true;
+  openPop.pop.innerHTML = "";
+  openPop = null;
+}
+
+function openPopover(btn) {
+  const ref = btn.dataset.ref;
+  const text = VERSES[ref];
+  const pop = btn.parentElement.querySelector(".ref-popover");
+  if (!text || !pop) return;
+  closePopover();
+  pop.innerHTML = "";
+  const r = document.createElement("p");
+  r.className = "pop-ref";
+  r.textContent = ref;
+  const t = document.createElement("p");
+  t.className = "pop-text";
+  t.textContent = "“" + text + "”";
+  pop.appendChild(r);
+  pop.appendChild(t);
+  pop.hidden = false;
+  btn.setAttribute("aria-expanded", "true");
+  openPop = { btn, pop };
+}
+
+document.querySelectorAll(".ref-pop").forEach(btn => {
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    if (openPop && openPop.btn === btn) {
+      closePopover();
+    } else {
+      openPopover(btn);
+    }
+  });
+});
+
+document.addEventListener("click", (e) => {
+  if (!openPop) return;
+  if (openPop.pop.contains(e.target) || openPop.btn.contains(e.target)) return;
+  closePopover();
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && openPop) {
+    const btn = openPop.btn;
+    closePopover();
+    btn.focus();
+  }
+});

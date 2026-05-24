@@ -142,11 +142,21 @@ header .verse { font-size: 14px; color: var(--muted); margin-top: 12px; font-fam
 .persp-body-inner p + p { margin-top: 12px; }
 .persp-more { font-family: var(--font-body); font-style: italic; font-size: 15px; color: var(--muted); text-align: center; margin-top: 18px; line-height: 1.55; }
 
+.scripture-index .idx-intro { font-family: var(--font-body); font-style: italic; font-size: 15px; color: var(--text2); margin-bottom: 6px; }
 .scripture-index .idx { list-style: none; padding: 0; margin-top: 6px; }
-.scripture-index .idx li { display: flex; gap: 12px; padding: 8px 0; border-bottom: 1px dotted #e0dccd; font-family: var(--font-body); font-size: 16px; line-height: 1.5; }
+.scripture-index .idx li { position: relative; display: flex; gap: 12px; padding: 8px 0; border-bottom: 1px dotted #e0dccd; font-family: var(--font-body); font-size: 16px; line-height: 1.5; }
 .scripture-index .idx li:last-child { border-bottom: none; }
 .scripture-index .ref { font-family: var(--font-ui); font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); flex-shrink: 0; min-width: 140px; padding-top: 3px; }
 .scripture-index .gloss { color: var(--text); }
+
+.scripture-index .ref-pop { font-family: var(--font-ui); font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); flex-shrink: 0; min-width: 140px; padding: 3px 0 1px; background: transparent; border: 0; border-bottom: 1px dotted var(--gold-light); cursor: pointer; text-align: left; transition: color .2s, border-bottom-color .2s; }
+.scripture-index .ref-pop:hover, .scripture-index .ref-pop:focus-visible { color: var(--ink); border-bottom-color: var(--gold); }
+.scripture-index .ref-pop:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 2px; }
+.scripture-index .ref-pop[aria-expanded="true"] { color: var(--ink); border-bottom-color: var(--gold); }
+
+.scripture-index .ref-popover { position: absolute; top: 100%; left: 0; margin-top: 6px; max-width: min(320px, calc(100vw - 48px)); background: #fff; border: 1px solid #ece2c8; border-radius: 8px; box-shadow: 0 8px 20px rgba(30, 42, 58, .12); padding: 12px 14px; z-index: 20; }
+.scripture-index .ref-popover .pop-ref { font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); }
+.scripture-index .ref-popover .pop-text { font-family: var(--font-body); font-style: italic; font-size: 15px; line-height: 1.6; color: var(--text); margin-top: 6px; }
 
 footer { text-align: center; padding: 32px 20px; border-top: 1px solid #e8e4d8; background: var(--paper-2); }
 footer p { font-family: var(--font-ui); font-size: 13px; color: var(--muted); line-height: 1.6; }
@@ -157,6 +167,8 @@ footer p { font-family: var(--font-ui); font-size: 13px; color: var(--muted); li
   .stat-num { font-size: 22px; }
   .scripture-index .idx li { flex-direction: column; gap: 2px; }
   .scripture-index .ref { min-width: 0; }
+  .scripture-index .ref-pop { min-width: 0; align-self: flex-start; }
+  .scripture-index .ref-popover { left: 0; right: 0; max-width: none; }
   .echips { gap: 6px; }
   .echip { font-size: 12px; padding: 6px 12px; }
   .spec-band { height: 52px; }
@@ -179,4 +191,7 @@ footer p { font-family: var(--font-ui); font-size: 13px; color: var(--muted); li
   .persp { break-inside: avoid; border-left-color: #ccc !important; }
   .spec-band, .walk-sky { display: none !important; }
   .canon-walk .walk-closing { display: none; }
+  .scripture-index .ref-popover { display: none !important; }
+  .scripture-index .idx-intro { display: none; }
+  .scripture-index .ref-pop { border-bottom: 0; cursor: default; }
 }

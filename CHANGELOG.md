@@ -1,5 +1,40 @@
 # Changelog — LLL Library
 
+## Batch 5 — Stars Page: Tappable Scripture Index (2026-05-24)
+
+Small enhancement to the existing what-are-the-stars Scripture index at the bottom of the page. Each of the 17 references is now interactive.
+
+### What changed
+
+- Every `<span class="ref">` in the Scripture index list is now a real `<button class="ref-pop">` with `data-ref` carrying the exact reference label and `aria-expanded` toggling on open/close
+- A small intro line under the section heading: *Tap a reference to read the verse.*
+- Tapping/clicking a reference opens a small popover positioned just below it, showing the verse text (ESV, kept concise) in the page's serif/italic with curly quotes, and the reference repeated above in small uppercase gold
+- One popover open at a time — opening a second closes the first. Outside-click, `Escape`, and re-tapping the same reference all dismiss the open popover. Esc also returns focus to the trigger
+- All 17 verse keys verified to resolve (the two en-dashed labels `Genesis 1:14–18` and `Job 38:31–32` use the same en-dash character in both the HTML `data-ref` attribute and the JS `VERSES` keys)
+- Affordance: the trigger gets a subtle dotted gold-light underline + pointer cursor; on hover/focus and while open it shifts toward the ink color with a deeper gold underline
+
+### Constraints honored
+
+- Vanilla HTML/CSS/JS. No libraries, no build step, no localStorage/sessionStorage
+- Verse object lives in the page's existing `app.js` — single source of truth, lookup by `data-ref`
+- Two Lenses, the Spectroscope, the Canon Walk, and the Perspectives accordion are untouched and still work
+- No edits to `shared/styles.css`, `shared/site.css`, or any other collection
+- Mobile (≤560px): popover spans the list-item width (no horizontal overflow) and the trigger drops below the gloss in the existing stacked layout
+- Print: popovers are hidden (`display: none`), the intro line is hidden, and triggers print as plain text (no underline, no pointer) — the static reference + gloss list carries print fidelity exactly as before
+
+### Acceptance verification
+
+- [x] All 17 index references are `<button class="ref-pop">` with matching `data-ref`; each opens the correct verse
+- [x] Only one popover open at a time; outside-click, Esc, and re-tap all close it
+- [x] `aria-expanded` toggles; keyboard-operable; intro line "Tap a reference to read the verse." added
+- [x] Popover matches the page palette (gold ref label, serif italic verse); stays within width on mobile
+- [x] Two Lenses, Spectroscope, Canon Walk, Perspectives accordion all still work
+- [x] No edits to other collections, `shared/styles.css`, or `shared/site.css`
+- [x] Print hides popovers; static index still reads cleanly
+- [x] CHANGELOG updated; pushed to `main` (no force-push); live URL verified
+
+---
+
 ## Batch 4 — Stars Page Batch 2: Spectroscope + Canon Walk (2026-05-24)
 
 Closes out the "What Are the Stars?" collection by filling in the two interactives that were scoped and placeholder-commented in the original Batch 1 plan. Both elements live in the page's own files; no other collection or shared stylesheet is touched. Both `<!-- Batch 2: ... -->` placeholder comments have been removed.
