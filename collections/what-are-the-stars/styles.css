@@ -76,6 +76,26 @@ header .verse { font-size: 14px; color: var(--muted); margin-top: 12px; font-fam
 .study p { font-family: var(--font-body); font-size: 18px; line-height: 1.75; color: var(--text); }
 .study p + p { margin-top: 14px; }
 
+/* ---------- Perspectives from the Fellowship ---------- */
+.perspectives .persp-intro { font-family: var(--font-body); font-style: italic; color: var(--text2); font-size: 17px; line-height: 1.6; margin-bottom: 18px; }
+.persp-list { display: flex; flex-direction: column; gap: 12px; }
+.persp { border: 1px solid #e8e4d8; border-left: 4px solid var(--gold-light); border-radius: 10px; background: #fff; overflow: hidden; transition: box-shadow .25s, border-left-color .25s; }
+.persp:hover { box-shadow: 0 6px 18px rgba(30, 42, 58, .05); }
+.persp.open { border-left-color: var(--gold); }
+.persp-hdr { display: flex; align-items: flex-start; gap: 14px; width: 100%; background: transparent; border: 0; padding: 16px 18px; text-align: left; cursor: pointer; font-family: var(--font-body); color: inherit; }
+.persp-hdr:focus-visible { outline: 2px solid var(--gold-light); outline-offset: -2px; }
+.persp-title { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+.persp-h { font-family: var(--font-display); font-size: 16px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink); line-height: 1.35; }
+.persp-teaser { font-family: var(--font-body); font-style: italic; font-size: 15px; color: var(--muted); line-height: 1.5; }
+.persp-chev { font-size: 18px; color: var(--gold); transition: transform .3s; flex-shrink: 0; margin-top: 2px; }
+.persp.open .persp-chev { transform: rotate(180deg); }
+.persp-body { max-height: 0; overflow: hidden; transition: max-height .4s ease; }
+.persp.open .persp-body { max-height: 1400px; }
+.persp-body-inner { padding: 0 20px 20px; border-top: 1px solid #f1ede0; padding-top: 14px; }
+.persp-body-inner p { font-family: var(--font-body); font-size: 17px; line-height: 1.75; color: var(--text); }
+.persp-body-inner p + p { margin-top: 12px; }
+.persp-more { font-family: var(--font-body); font-style: italic; font-size: 15px; color: var(--muted); text-align: center; margin-top: 18px; line-height: 1.55; }
+
 .scripture-index .idx { list-style: none; padding: 0; margin-top: 6px; }
 .scripture-index .idx li { display: flex; gap: 12px; padding: 8px 0; border-bottom: 1px dotted #e0dccd; font-family: var(--font-body); font-size: 16px; line-height: 1.5; }
 .scripture-index .idx li:last-child { border-bottom: none; }
@@ -99,4 +119,7 @@ footer p { font-family: var(--font-ui); font-size: 13px; color: var(--muted); li
   .lenses, .col, .stats-bar, footer { background: #fff !important; border-color: #ccc !important; }
   .col { break-inside: avoid; }
   .study { break-inside: avoid; }
+  .persp-body { max-height: none !important; }
+  .persp-chev { display: none; }
+  .persp { break-inside: avoid; border-left-color: #ccc !important; }
 }

@@ -1,5 +1,59 @@
 # Changelog — LLL Library
 
+## Batch 3 — Library Hub + Fellowship Perspectives (2026-05-24)
+
+Three things in one commit: the homepage stops being a placeholder, a real `/collections/` landing page joins it, and the Stars page gains a "Perspectives from the Fellowship" accordion (plus two new Scripture index entries).
+
+### Rebrand — "Growing Stone Library"
+
+The public-facing name is now **Growing Stone Library**. The previous placeholder homepage framed this site as "a covenant community before it is a clothing brand" and named the apparel project; all apparel/clothing/brand language is removed from the homepage and from the README's top description. The GitHub repo (`DoveLuvJR/lll-web`) and the Vercel project name are unchanged — only on-page text and docs were updated. The footer line `Compiled for the Growing Stone Fellowship · Jumpshots from The Bleachers Inc.` is preserved everywhere it appears.
+
+### Homepage (`/`)
+
+- Replaced the placeholder `index.html` entirely with a real hub: hero (eyebrow + Cinzel title + italic tagline + lede) and two doorway cards
+- **Collections** (live, full `<a>` to `/collections/`) — Tabler-style books icon, description, gold meta line `Table of Nations · What Are the Stars?`, CTA `Enter the collections →`
+- **The Vault** (coming-soon, non-clickable, dashed border, muted text) — headphones-style icon, `Recorded teachings from the Fellowship's Sabbath classes.`, small `Coming soon` pill
+- Cards stack vertically at ≤560px
+
+### Collections landing (`/collections/`)
+
+- New `collections/index.html` — Vercel's default static routing serves it at `/collections/` without a `vercel.json` (per D-005)
+- Header: back-link `← Growing Stone Library` to `/`, Cinzel H1 `Collections`, italic lede `Interactive studies and reference guides. Tap one to begin.`
+- Responsive grid `repeat(auto-fit, minmax(260px, 1fr))` with two live cards (TON, What Are the Stars?) — each a full `<a>` with hover lift
+
+### Shared site chrome (`shared/site.css`)
+
+- New site-level stylesheet, used by the homepage and the collections landing only
+- Holds the "ivory study" tokens (`--ink`, `--gold`, `--paper`, `--paper-2`, `--line`, etc.) and components (`.hero`, `.doors`, `.door`, `.coll-hdr`, `.coll-grid`, `.coll-card`, `.site-footer`)
+- `shared/styles.css` is **untouched** — still fonts + reset + three font-family vars only (D-003 stands; per-collection palettes are still local)
+
+### Stars page additions (`collections/what-are-the-stars/`)
+
+- New section **Perspectives from the Fellowship** inserted after "Holding it together — both/and" and before the Scripture index
+- Accordion of two expandable cards, each with a `<button>` header (title + italic teaser + chevron), `aria-expanded` toggled on click, max-height transition for body
+  - Card 1: *Stars as lights, signs, and spiritual markers* — reads first through Scripture, with a fair question for the science
+  - Card 2: *Stars as the faithful host; planets as wandering stars* — `planētēs` / `planaō` / Jude 1:13 / Ezekiel 1:16
+- Closing line under the cards: *More perspectives may be added as the Fellowship continues to search the Scriptures together.*
+- Stats bar passages stat updated **15 → 17**
+- Scripture index gains two entries in canonical order:
+  - `Ezekiel 1:16` — a wheel within a wheel (between Isaiah 40:26 and Daniel 8:10)
+  - `Jude 1:13` — wandering stars, reserved for the gloom of darkness (between Luke 10:18 and Revelation 1:20)
+- Accordion JS appended to existing `app.js`; Two Lenses still works untouched
+- Print styles updated: perspectives expand for print, chevrons hidden
+
+### Acceptance verification
+
+- [x] Root `index.html` is the Growing Stone Library hub; zero apparel/clothing/brand references; two doorways (Collections live → `/collections/`, Vault coming-soon non-link)
+- [x] `collections/index.html` created; serves at `/collections/`; exactly two live collection cards, each linking correctly
+- [x] `shared/site.css` created; `shared/styles.css` untouched; no per-collection styles changed
+- [x] Stars page: Perspectives accordion added between both/and and the index; two cards expand/collapse with `aria-expanded`; Two Lenses still works
+- [x] Scripture index includes Ezekiel 1:16 and Jude 1:13 in canonical order; stats bar reads 17 Passages
+- [x] README, CHANGELOG, DECISIONS updated
+- [x] All four routes (`/`, `/collections/`, `/collections/table-of-nations/`, `/collections/what-are-the-stars/`) return 200; mobile stacking verified
+- [x] Pushed to `main` (no force-push); live URLs verified
+
+---
+
 ## Batch 2 — "What Are the Stars?" Collection, Phase 1 (2026-05-24)
 
 New collection `what-are-the-stars/` added under the multi-collection structure laid down in Batch 1. This is Phase 1 of the page: the signature interactive ("Two Lenses") plus the full written study. Two additional interactives ("The Spectroscope" and "The Canon Walk") are scoped for Batch 2 of this page (a future commit) and are marked in place with `<!-- Batch 2: ... -->` placeholder comments.

@@ -1,19 +1,22 @@
-# LLL Library (`lll-web`)
+# Growing Stone Library (`lll-web`)
 
-The theological and intellectual foundation of the LLL apparel brand. A multi-collection interactive study site, built in vanilla HTML/CSS/JS, deployed to Vercel.
+A study library for the Growing Stone Fellowship — interactive Scripture studies and reference guides, built in vanilla HTML/CSS/JS and deployed to Vercel. The repo is named `lll-web` for historical reasons; the public-facing library is the **Growing Stone Library**.
 
-> *"LLL is a covenant community before it is a clothing brand. The garments are the most visible expression of something deeper."* — LLL Manifesto
+> *"Search the Scriptures, and see what is written."*
 
 ## Structure
 
 ```
 LLL-Web/
-├── index.html              ← library hub (placeholder, real homepage in Batch 2)
-├── about.html              ← LLL identity (placeholder)
+├── index.html              ← Growing Stone Library hub (real homepage)
+├── about.html              ← placeholder (out of scope for current batch)
 ├── collections/
-│   └── table-of-nations/   ← interactive Genesis 10–11 study tool
+│   ├── index.html          ← /collections/ landing page (live)
+│   ├── table-of-nations/   ← interactive Genesis 10–11 study tool
+│   └── what-are-the-stars/ ← lights, signs, and the host of heaven
 ├── shared/
 │   ├── styles.css          ← fonts + reset + font-family tokens (kept minimal)
+│   ├── site.css            ← site-level chrome for the hub + collections landing
 │   ├── header.js           ← shared nav (placeholder)
 │   ├── footer.js           ← shared footer (placeholder)
 │   └── assets/
@@ -28,8 +31,8 @@ LLL-Web/
 |---|---|---|
 | Table of Nations | Live | `/collections/table-of-nations/` |
 | What Are the Stars? | Live | `/collections/what-are-the-stars/` |
-| Cellular Engineering | Planned (Batch 3) | `/collections/cellular-engineering/` |
-| Drenchy Breakdown | Planned (Batch 5) | `/collections/drenchy-breakdown/` |
+| Cellular Engineering | Planned | `/collections/cellular-engineering/` |
+| Drenchy Breakdown | Planned | `/collections/drenchy-breakdown/` |
 
 ## Develop locally
 

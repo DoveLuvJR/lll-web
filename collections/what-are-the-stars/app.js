@@ -68,3 +68,11 @@ function showToast(m) {
 }
 
 selectStar("pleiades");
+
+document.querySelectorAll(".persp-hdr").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const card = btn.closest(".persp");
+    const open = card.classList.toggle("open");
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+});

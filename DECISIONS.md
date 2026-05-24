@@ -105,3 +105,53 @@ Everything else — colors, spacing, components, layout — stays in each collec
 - Placeholder comments are explicit anchors for the next session — no ambiguity about where the new components land.
 
 **When to revisit shared-CSS extraction:** After a third collection lands. With three palettes side by side, real overlap will be visible. Until then, copy-paste between collections remains the right move.
+
+---
+
+## D-008 (2026-05-24) Public library name is "Growing Stone Library"
+
+**Decision:** The public-facing name of this site, on every page a visitor can see, is **Growing Stone Library**. The previous placeholder homepage framed the site as the theological foundation beneath an apparel brand. That framing is gone — the homepage, page titles, meta tags, and the README's top description now present the site purely as a Scripture study library for the Growing Stone Fellowship. No mention of apparel, clothing, garments, or a brand on any visitor-facing page.
+
+**Why:**
+- The site stands on its own as a study library. The original "library underneath the brand" framing made the studies feel like marketing for a clothing project they aren't part of.
+- "Growing Stone" is already how the Fellowship refers to itself in the existing footer line — the name extends what is already there.
+- The footer line `Compiled for the Growing Stone Fellowship · Jumpshots from The Bleachers Inc.` stays untouched on every page; the parent organization credit is preserved, only the framing changed.
+
+**Scope (what is NOT changing):**
+- GitHub repo name remains `DoveLuvJR/lll-web` (cosmetic-only renames of repos break inbound links and deploy hooks; the owner handles repo/Vercel renames manually if/when desired)
+- The Vercel project name and current production URL (`table-of-nations.vercel.app`) are unchanged
+- `about.html` is intentionally left untouched in this batch — it remains a placeholder out of scope
+
+**Supersedes:** D-006 ("Root URL serves placeholder, TON moves to a sub-path"). The root URL now serves the real Library hub, not a placeholder. The sub-path for TON is unchanged.
+
+---
+
+## D-009 (2026-05-24) Site-level chrome lives in `shared/site.css`, distinct from `shared/styles.css`
+
+**Decision:** Pages that are *not* study collections — currently the homepage (`/`) and the collections landing (`/collections/`) — get their site-level chrome (hero, doorways, landing cards, site footer, the "ivory study" palette) from a new shared stylesheet `shared/site.css`. Per-collection pages (TON, Stars, future studies) do *not* link this stylesheet and are unaffected. `shared/styles.css` remains fonts + reset + three font-family CSS variables only.
+
+**Why:**
+- D-003 forbids promoting collection tokens to `shared/styles.css` because each study earns its own visual identity. That rule is about *study* pages. Hub/landing pages are site chrome, not studies — their job is to look consistent with each other, not to invent a new identity per page.
+- Splitting site chrome from the reset prevents accidental contamination: a future engineer can't change the homepage's gold and accidentally change every collection's gold, because no collection links `site.css`.
+- Two pages already share a palette and a card pattern — that's two real uses, the threshold for actual extraction (vs. premature DRY).
+
+**Trade-off accepted:** A new collection that wants to look like the library hub would have to either link `site.css` (and accept the chrome conventions) or duplicate what it needs. That's fine — no study has asked to look like a landing page.
+
+---
+
+## D-010 (2026-05-24) "Perspectives from the Fellowship" pattern for community voices on a study page
+
+**Decision:** On any study page where the Fellowship has multiple in-progress takes on a question, present them as an accordion of expandable cards under the heading **Perspectives from the Fellowship**, with each card holding one brother's leaning. Cards start collapsed (`aria-expanded="false"`), expand on header click, and rotate a chevron. The pattern includes a closing line: *More perspectives may be added as the Fellowship continues to search the Scriptures together.*
+
+**Why:**
+- Studies aren't sermons. The Fellowship is genuinely searching things out together, and the page shouldn't pretend one brother's reading is settled doctrine.
+- Collapsing the perspectives keeps the page's main argument primary; expand-on-demand puts the community voices one tap away without crowding the prose.
+- "Perspectives" (plural) signals an open posture: more readings can be added later without restructuring.
+
+**Implementation conventions:**
+- Card header is a real `<button type="button">` with `aria-expanded` toggled on click — not a `<div>` with a click handler
+- Each card has a short italic teaser line under the title (visible while collapsed) so the reader can decide what to open
+- Card style on this page is "ivory" — white background, gold-light left border that deepens to gold when open. Other study pages may restyle the cards to fit their palette; the structure stays the same.
+- Print styles expand all perspectives and hide chevrons so the printed copy carries every voice
+
+**Reusable on:** any future study where the Fellowship has more than one earnest take on a question.

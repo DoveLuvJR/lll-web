@@ -3,29 +3,54 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LLL Library — Coming Soon</title>
-<meta name="description" content="The LLL Library — interactive theological study, the foundation beneath the LLL apparel brand.">
-<meta property="og:title" content="LLL Library — Coming Soon">
-<meta property="og:description" content="A covenant community before it is a clothing brand. Library opening collection by collection.">
+<title>Growing Stone Library</title>
+<meta name="description" content="Interactive Scripture studies and reference guides for the Growing Stone Fellowship.">
+<meta property="og:title" content="Growing Stone Library">
+<meta property="og:description" content="Interactive Scripture studies and reference guides for the Growing Stone Fellowship.">
 <link rel="stylesheet" href="./shared/styles.css">
-<style>
-  body { background: #FAF6ED; color: #1a1a1a; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 32px 24px; text-align: center; }
-  .mark { font-family: var(--font-display); font-size: clamp(28px, 6vw, 56px); font-weight: 900; letter-spacing: 6px; color: #8B6914; text-transform: uppercase; }
-  .tag { font-family: var(--font-body); font-size: clamp(16px, 2.4vw, 22px); font-style: italic; color: #5a5a5a; margin-top: 12px; max-width: 640px; line-height: 1.5; }
-  .status { font-family: var(--font-ui); font-size: 12px; font-weight: 600; letter-spacing: 2px; color: #888; text-transform: uppercase; margin-top: 28px; }
-  .collections { margin-top: 36px; display: flex; flex-direction: column; gap: 12px; align-items: center; }
-  .collection-link { font-family: var(--font-ui); font-size: 14px; font-weight: 600; padding: 12px 28px; border: 1.5px solid #C9A84C; border-radius: 24px; color: #8B6914; text-decoration: none; transition: all .2s; background: #fff; }
-  .collection-link:hover { background: #8B6914; color: #fff; border-color: #8B6914; }
-  .footnote { font-family: var(--font-ui); font-size: 12px; color: #888; margin-top: 56px; max-width: 520px; line-height: 1.6; }
-</style>
+<link rel="stylesheet" href="./shared/site.css">
 </head>
 <body>
-  <h1 class="mark">LLL Library</h1>
-  <p class="tag">A covenant community before it is a clothing brand. The library is the substance underneath — opening collection by collection.</p>
-  <p class="status">Now Open</p>
-  <div class="collections">
-    <a class="collection-link" href="./collections/table-of-nations/">Table of Nations →</a>
-  </div>
-  <p class="footnote">Growing Stone Fellowship · Jumpshots from The Bleachers Inc.</p>
+<main class="site-main">
+  <section class="hero">
+    <p class="eyebrow">A study library</p>
+    <h1>Growing Stone Library</h1>
+    <p class="tagline">Search the Scriptures, and see what is written</p>
+    <p class="lede">Interactive studies and reference guides for the Growing Stone Fellowship &mdash; built to be explored, searched, and shared. A place to dig into the Word.</p>
+  </section>
+
+  <section class="doors" aria-label="Library doorways">
+    <a class="door" href="./collections/">
+      <div class="door-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 4h6a2 2 0 012 2v14a2 2 0 00-2-2H3z"/>
+          <path d="M21 4h-6a2 2 0 00-2 2v14a2 2 0 012-2h6z"/>
+          <line x1="3" y1="4" x2="3" y2="20"/>
+          <line x1="21" y1="4" x2="21" y2="20"/>
+        </svg>
+      </div>
+      <h2>Collections</h2>
+      <p class="desc">Interactive Scripture studies and reference guides.</p>
+      <p class="meta">Table of Nations &middot; What Are the Stars?</p>
+      <span class="cta">Enter the collections &rarr;</span>
+    </a>
+
+    <div class="door disabled" aria-disabled="true">
+      <div class="door-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 13a8 8 0 0116 0v4a2 2 0 01-2 2h-1a1 1 0 01-1-1v-5a1 1 0 011-1h3"/>
+          <path d="M4 13v4a2 2 0 002 2h1a1 1 0 001-1v-5a1 1 0 00-1-1H4"/>
+        </svg>
+      </div>
+      <h2>The Vault</h2>
+      <p class="desc">Recorded teachings from the Fellowship's Sabbath classes.</p>
+      <span class="pill">Coming soon</span>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>Compiled for the Growing Stone Fellowship &middot; Jumpshots from The Bleachers Inc.</p>
+</footer>
 </body>
 </html>
