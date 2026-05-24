@@ -76,6 +76,52 @@ header .verse { font-size: 14px; color: var(--muted); margin-top: 12px; font-fam
 .study p { font-family: var(--font-body); font-size: 18px; line-height: 1.75; color: var(--text); }
 .study p + p { margin-top: 14px; }
 
+/* ---------- The Spectroscope ----------
+ * Gradient is intentional here: the band is a literal visible-light spectrum.
+ * This is the one place a gradient is allowed on this page; the rest stays flat.
+ */
+.spectroscope { margin-top: 28px; padding: 22px 22px 24px; background: #fff; border: 1px solid #e8e4d8; border-radius: 10px; }
+.spec-h { font-family: var(--font-display); font-size: 16px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--ink); margin-bottom: 8px; }
+.spec-intro { font-family: var(--font-body); font-style: italic; font-size: 16px; line-height: 1.6; color: var(--text2); margin-bottom: 16px; }
+.echips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.echip { font-family: var(--font-ui); font-size: 13px; font-weight: 600; padding: 7px 16px; border: 1.5px solid #d8d2c4; border-radius: 24px; cursor: pointer; background: #fff; color: var(--text2); transition: all .2s; }
+.echip:hover { border-color: var(--gold-light); color: var(--gold); }
+.echip.active { background: var(--gold); border-color: var(--gold); color: #fff; }
+.echip:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 2px; }
+
+.spec-band { position: relative; height: 64px; border-radius: 6px; overflow: hidden; border: 1px solid #1a1a1a; background: linear-gradient(to right, #6a00a0 0%, #3a00ff 12%, #0080ff 25%, #00d4a8 42%, #b8e000 56%, #ffe000 66%, #ff8a00 80%, #ff2a1a 100%); }
+.spec-line { position: absolute; top: 0; bottom: 0; width: 2px; background: #050505; transform: translateX(-1px); pointer-events: none; }
+.spec-line.gold-tint { background: var(--gold); box-shadow: 0 0 4px rgba(139, 105, 20, .8); }
+.spec-axis { display: flex; justify-content: space-between; margin-top: 8px; font-family: var(--font-ui); font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
+.spec-note { font-family: var(--font-body); font-size: 16px; line-height: 1.65; color: var(--text); margin-top: 16px; padding-top: 14px; border-top: 1px solid #f1ede0; }
+
+/* ---------- The Canon Walk ---------- */
+.canon-walk { margin-bottom: 36px; }
+.walk-intro { font-family: var(--font-body); font-style: italic; font-size: 17px; line-height: 1.6; color: var(--text2); margin-bottom: 20px; }
+.walk-sky { position: relative; height: 56px; background: #0a1026; border-radius: 8px; padding: 0 18px; display: flex; align-items: center; }
+.walk-sky::before { content: ""; position: absolute; left: 18px; right: 18px; top: 50%; height: 1px; background: rgba(201, 168, 76, .25); }
+.walk-sky-inner { position: relative; width: 100%; display: flex; justify-content: space-between; align-items: center; }
+.walk-dot { position: relative; width: 10px; height: 10px; border-radius: 50%; background: rgba(255, 255, 255, .18); border: 0; padding: 0; cursor: pointer; transition: all .25s; flex-shrink: 0; }
+.walk-dot:hover { background: rgba(255, 255, 255, .55); transform: scale(1.25); }
+.walk-dot.lit { background: rgba(255, 255, 255, .7); }
+.walk-dot.current { background: #fff; box-shadow: 0 0 8px rgba(255, 255, 255, .9); transform: scale(1.35); }
+.walk-dot.finale { width: 14px; height: 14px; }
+.walk-dot.finale.lit, .walk-dot.finale.current { background: var(--gold-light); box-shadow: 0 0 10px rgba(201, 168, 76, .9); }
+.walk-dot:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+
+.walk-panel { margin-top: 18px; padding: 20px 22px; background: var(--scr-bg); border: 1px solid #ece2c8; border-radius: 10px; min-height: 140px; }
+.walk-ref { font-family: var(--font-ui); font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); }
+.walk-text { font-family: var(--font-body); font-size: 19px; line-height: 1.65; color: var(--text); margin-top: 8px; font-style: italic; }
+.walk-gloss { font-family: var(--font-body); font-size: 15px; line-height: 1.55; color: var(--text2); margin-top: 10px; }
+.walk-closing { font-family: var(--font-body); font-size: 16px; line-height: 1.6; color: var(--ink); margin-top: 14px; padding-top: 12px; border-top: 1px solid #ece2c8; font-style: italic; }
+
+.walk-ctrls { display: flex; justify-content: space-between; align-items: center; margin-top: 14px; gap: 12px; flex-wrap: wrap; }
+.walk-btn { font-family: var(--font-ui); font-size: 13px; font-weight: 600; padding: 8px 18px; border: 1.5px solid #d8d2c4; border-radius: 24px; cursor: pointer; background: #fff; color: var(--ink); transition: all .2s; }
+.walk-btn:hover:not(:disabled) { border-color: var(--gold-light); color: var(--gold); }
+.walk-btn:disabled { opacity: .4; cursor: not-allowed; }
+.walk-btn:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 2px; }
+.walk-pos { font-family: var(--font-ui); font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+
 /* ---------- Perspectives from the Fellowship ---------- */
 .perspectives .persp-intro { font-family: var(--font-body); font-style: italic; color: var(--text2); font-size: 17px; line-height: 1.6; margin-bottom: 18px; }
 .persp-list { display: flex; flex-direction: column; gap: 12px; }
@@ -111,15 +157,26 @@ footer p { font-family: var(--font-ui); font-size: 13px; color: var(--muted); li
   .stat-num { font-size: 22px; }
   .scripture-index .idx li { flex-direction: column; gap: 2px; }
   .scripture-index .ref { min-width: 0; }
+  .echips { gap: 6px; }
+  .echip { font-size: 12px; padding: 6px 12px; }
+  .spec-band { height: 52px; }
+  .walk-sky { height: 44px; padding: 0 10px; }
+  .walk-dot { width: 7px; height: 7px; }
+  .walk-dot.finale { width: 10px; height: 10px; }
+  .walk-text { font-size: 17px; }
+  .walk-ctrls { justify-content: center; }
+  .walk-pos { order: -1; flex-basis: 100%; text-align: center; }
 }
 
 @media print {
-  .share-row, .chips { display: none !important; }
+  .share-row, .chips, .echips, .walk-ctrls { display: none !important; }
   body { background: #fff; }
-  .lenses, .col, .stats-bar, footer { background: #fff !important; border-color: #ccc !important; }
+  .lenses, .col, .stats-bar, footer, .spectroscope, .walk-panel { background: #fff !important; border-color: #ccc !important; }
   .col { break-inside: avoid; }
   .study { break-inside: avoid; }
   .persp-body { max-height: none !important; }
   .persp-chev { display: none; }
   .persp { break-inside: avoid; border-left-color: #ccc !important; }
+  .spec-band, .walk-sky { display: none !important; }
+  .canon-walk .walk-closing { display: none; }
 }

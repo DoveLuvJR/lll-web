@@ -1,5 +1,46 @@
 # Changelog — LLL Library
 
+## Batch 4 — Stars Page Batch 2: Spectroscope + Canon Walk (2026-05-24)
+
+Closes out the "What Are the Stars?" collection by filling in the two interactives that were scoped and placeholder-commented in the original Batch 1 plan. Both elements live in the page's own files; no other collection or shared stylesheet is touched. Both `<!-- Batch 2: ... -->` placeholder comments have been removed.
+
+### The Spectroscope
+
+- Inserted at the end of the "How do they know? — Reading the light" section, replacing the placeholder comment
+- A 64px spectrum band rendered as a left-to-right visible-light CSS `linear-gradient` (~380nm violet → ~700nm red), with thin dark vertical absorption lines positioned by the formula `left = (nm - 380) / 320 * 100` (percent across the band)
+- Five element chips: **Hydrogen** (default), **Helium**, **Sodium**, **Iron**, **The Sun**. Real `<button>`s with `role="tab"` and `aria-selected`
+- ~588nm line gets a subtle gold tint when **Helium** or **The Sun** is selected — the "1868" line that put helium in the periodic table from the sun's light first
+- Readout `<p>` below the band, wired as the band's `aria-describedby`
+- The page's gradient ban is intentionally broken **only here** — the band is literally a rainbow, every other surface stays flat
+- Mobile: chips wrap, band shortens to 52px
+
+### The Canon Walk
+
+- Inserted above the Scripture index, replacing the placeholder comment. The plain Scripture index list stays in place beneath it as the static quick-reference (also important for print and accessibility)
+- A thin deep-navy (`#0a1026`) sky strip spans the section, with one dot per passage joined by a faint connecting line — a constellation forming as the reader steps through
+- Dots up to and including the current step are "lit"; the current dot is brightest; later dots are dim. Dots are clickable `<button>`s for jumping. The final dot (Revelation 22:16) renders larger and in `--gold-light` — Christ as the bright morning star
+- Verse panel below the sky: gold reference label, italicized verse text (curly quotes), one-line gloss. Panel is wrapped in `aria-live="polite"` so screen readers announce the current verse on step
+- Controls: `← Previous`, position label (`n of 17`), `Next →`. Previous is disabled at step 1; Next is disabled at step 17 and the closing note appears: *From the fourth day of creation to the last page of Revelation, the testimony lands on a Person: Christ, the bright morning star.*
+- Linear walk — does **not** auto-advance
+- All 17 passages, in canonical order: Gen 1:14 · Deut 4:19 · Judg 5:20 · Job 38:7 · Job 38:31–32 · Ps 19:1 · Ps 147:4 · Isa 14:12 · Isa 40:26 · Ezek 1:16 · Dan 8:10 · Luke 10:18 · Jude 1:13 · Rev 1:20 · Rev 9:1 · Rev 12:4 · Rev 22:16
+
+### Page now carries four interactive elements by design
+
+This is the library's deliberately most-interactive collection: **Two Lenses** (frame the tension), **The Spectroscope** (answer the science), **The Canon Walk** (gather the whole testimony), plus the **Perspectives from the Fellowship** accordion (community voices). See DECISIONS.md D-011 for the rationale on why this page is an intentional exception to the usual one-signature-per-collection pattern.
+
+### Acceptance verification
+
+- [x] Spectroscope added in the "Reading the light" section; five elements; default Hydrogen; 588nm line gold-tinted for Helium/Sun; gradient band only here
+- [x] Canon Walk added above the index; all 17 passages in canonical order; Prev/Next + clickable dots + position label; progressive dot lighting; Revelation 22:16 finale with closing note; Prev disabled at start, Next disabled at end
+- [x] Plain Scripture index list still present below the Canon Walk; stats bar still reads 17
+- [x] Both `<!-- Batch 2: ... -->` placeholder comments removed; Two Lenses + Perspectives accordion still working
+- [x] No edits to other collections, `shared/styles.css`, or `shared/site.css`
+- [x] CHANGELOG + DECISIONS updated
+- [x] Page works on mobile (chips wrap, dots stay in a row, controls stack); print styles hide live controls and keep the static index clean
+- [x] Pushed to `main` (no force-push); live URL verified
+
+---
+
 ## Batch 3 — Library Hub + Fellowship Perspectives (2026-05-24)
 
 Three things in one commit: the homepage stops being a placeholder, a real `/collections/` landing page joins it, and the Stars page gains a "Perspectives from the Fellowship" accordion (plus two new Scripture index entries).

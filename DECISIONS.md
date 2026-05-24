@@ -155,3 +155,23 @@ Everything else — colors, spacing, components, layout — stays in each collec
 - Print styles expand all perspectives and hide chevrons so the printed copy carries every voice
 
 **Reusable on:** any future study where the Fellowship has more than one earnest take on a question.
+
+---
+
+## D-011 (2026-05-24) "What Are the Stars?" is the library's deliberately most-interactive collection
+
+**Decision:** The stars page carries three interactives — **Two Lenses**, **The Spectroscope**, and **The Canon Walk** — plus the **Perspectives from the Fellowship** accordion. This is an intentional exception to the otherwise-strong pattern of "one signature interactive per collection" implied by D-002.
+
+**Why:**
+- The subject carries three distinct jobs, and no single interactive can do all three:
+  - **Frame the tension** between the science voice and the Scripture voice — Two Lenses does this by putting them side by side on one star
+  - **Answer the science question on its own terms** — Spectroscope makes the "how does anyone know without traveling there?" question concrete by letting the reader read the light themselves
+  - **Gather the whole testimony in one place** — Canon Walk steps through every star passage in canonical order, ending on Christ, so the reader leaves with the full biblical witness, not a single proof-text
+- This study is also the brother-prompted one ("a brother in the Fellowship asked"). It is more dialog than reference, and dialog wants more handles to grab.
+- The single gradient on the page (the Spectroscope band) is specifically scoped to a literal rainbow — the rest of the design stays flat. The exception is honest and local.
+
+**Why this does not become the new norm:**
+- Most collections will be reference-shaped (TON's "what settled where" is one example). They want one signature interactive, not three.
+- A page that needs three interactives is making three teaching jobs do work that one couldn't. That should be a deliberate choice with a defensible reason, not a habit.
+
+**Operational note:** The plain Scripture index list stays below the Canon Walk. The Walk is the experience; the index is the static quick-reference (and the print-friendly fallback). Don't let live interactives replace text that earns its place by being readable on paper and by screen readers without JS.

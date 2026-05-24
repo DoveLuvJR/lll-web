@@ -72,7 +72,21 @@
   <section class="study">
     <h2>How do they know? — Reading the light</h2>
     <p>Let us be honest about the strongest part of the question first: no human being has ever traveled to a star and returned with a sample of it. That is simply true. But traveling to a thing is not the only way to study it. The main tool astronomers use is called spectroscopy — and the simplest way to understand it is this: they read the starlight. When light is spread into a band of colors, like a rainbow after rain, that band is crossed by sharp dark and bright lines. Every chemical element leaves its own unique pattern of lines, like a fingerprint. By reading which fingerprints appear in a star's light, scientists infer what it is made of, how hot it is, and even how fast it is moving. One striking confirmation: the element helium was first identified in the light of our own sun in 1868 — its name comes from <em>Helios</em>, the Greek word for the sun — and only later was it found here on earth. So "balls of plasma and gas" is not a guess pulled from the air; it is an inference drawn from reading light. And yet the brother's instinct still has weight: this is inference, not a returned sample, and it rests on the assumption that the same physics holds everywhere. That assumption works astonishingly well — but it is a different kind of knowing than touching and tasting. Scripture offers yet another kind of knowing.</p>
-    <!-- Batch 2: The Spectroscope interactive goes at the end of this section -->
+
+    <div class="spectroscope" aria-labelledby="spec-title">
+      <h3 id="spec-title" class="spec-h">See for yourself &mdash; the spectroscope</h3>
+      <p class="spec-intro">No one has traveled to a star. So how do we know what it is made of? We read its light. When starlight is spread into a band of color, each element leaves dark lines where it absorbs &mdash; a fingerprint. Pick one and watch.</p>
+      <div class="echips" role="tablist" aria-label="Elements to inspect">
+        <button class="echip" type="button" data-elem="hydrogen" role="tab" aria-selected="true">Hydrogen</button>
+        <button class="echip" type="button" data-elem="helium" role="tab" aria-selected="false">Helium</button>
+        <button class="echip" type="button" data-elem="sodium" role="tab" aria-selected="false">Sodium</button>
+        <button class="echip" type="button" data-elem="iron" role="tab" aria-selected="false">Iron</button>
+        <button class="echip" type="button" data-elem="sun" role="tab" aria-selected="false">The Sun</button>
+      </div>
+      <div class="spec-band" id="spec-band" role="img" aria-label="Visible-light spectrum with absorption lines for the selected element" aria-describedby="spec-note"></div>
+      <div class="spec-axis"><span>380 nm</span><span>violet</span><span>green</span><span>yellow</span><span>red</span><span>700 nm</span></div>
+      <p class="spec-note" id="spec-note"></p>
+    </div>
   </section>
 
   <section class="study">
@@ -137,9 +151,25 @@
     <p class="persp-more">More perspectives may be added as the Fellowship continues to search the Scriptures together.</p>
   </section>
 
+  <section class="study canon-walk" aria-labelledby="walk-title">
+    <h2 id="walk-title">The Canon Walk</h2>
+    <p class="walk-intro">Every place the Scriptures speak of the stars, in order &mdash; from the fourth day of creation to the Lamb who calls Himself the morning star. Step through the testimony.</p>
+    <div class="walk-sky" id="walk-sky" aria-hidden="true"></div>
+    <div class="walk-panel" id="walk-panel" aria-live="polite">
+      <p class="walk-ref" id="walk-ref"></p>
+      <p class="walk-text" id="walk-text"></p>
+      <p class="walk-gloss" id="walk-gloss"></p>
+      <p class="walk-closing" id="walk-closing" hidden>From the fourth day of creation to the last page of Revelation, the testimony lands on a Person: Christ, the bright morning star.</p>
+    </div>
+    <div class="walk-ctrls">
+      <button class="walk-btn" type="button" id="walk-prev" aria-label="Previous passage">&larr; Previous</button>
+      <span class="walk-pos" id="walk-pos">1 of 17</span>
+      <button class="walk-btn" type="button" id="walk-next" aria-label="Next passage">Next &rarr;</button>
+    </div>
+  </section>
+
   <section class="study scripture-index">
     <h2>Scripture index</h2>
-    <!-- Batch 2: The Canon Walk interactive will replace/augment this index -->
     <ul class="idx">
       <li><span class="ref">Genesis 1:14&ndash;18</span> <span class="gloss">the stars made as lights, for signs and seasons</span></li>
       <li><span class="ref">Deuteronomy 4:19</span> <span class="gloss">a warning against worshiping the host of heaven</span></li>
