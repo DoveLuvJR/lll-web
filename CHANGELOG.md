@@ -1,5 +1,66 @@
 # Changelog — LLL Library
 
+## Batch 7 — "Why Was the Tree Reachable?" Collection (2026-08-01)
+
+Third collection. A Genesis 2–3 study asking not why the tree was forbidden but why it was placed within reach. Four traditional readings are presented as the ground the argument stands on; the study's own reading is advanced as the spine of the page and shipped with a full limits section.
+
+### New collection
+
+- `collections/why-was-the-tree-reachable/` — `index.html` + `styles.css` + `app.js`, matching the D-002 folder convention
+- Third card added to `collections/index.html` (`Genesis 2–3`). This is the only edit outside the new folder — the two existing studies are untouched
+- Ten sections in fixed order; sections 5 ("A different question") and 6 ("The guard moves") are wrapped in a shared `.spine` container with one continuous left rule so they read as one argument in two halves
+
+### Proportions are the argument
+
+Measured in the browser against the rendered page:
+
+| Section | Height | Share of study |
+|---|---|---|
+| 4 — Four older readings (compressed) | 861px | 7.8% |
+| 5 — A different question | 2811px | 25.5% |
+| 6 — The guard moves | 2639px | 23.9% |
+| **5 + 6 together (the spine)** | **5484px** | **49.7%** |
+
+The spine is 6.37× section 4. Section 4 is set at 16px against the spine's 19px. A reader who only skims can see where the study points.
+
+### Visual identity — pressed leaf under lamplight
+
+Own palette per D-003: deep pine ink (`--ink #14291e`) on bone (`--paper #f7f5ee`), muted moss chrome (`--gold #5a6b4e`), and a single copper flame (`--flame #b4531c`) held in reserve.
+
+**The copper is spent on exactly two selectors, and they rhyme:** `.moved` (the changed words in the drift panel) and `.sword-rule` (the blade in "Word and sword"). The same color marks the words that moved and the blade that followed. It appears on no heading, link, button, or chip. A third use on `.drift-tag` was caught during self-check and moved to chrome accent.
+
+Contrast verified against both grounds: `--ink` 14.1:1, `--text2` 6.0:1, `--gold` 5.3:1, `--flame` 4.6:1, `--muted` 4.9:1 on parchment / 5.4:1 on bone. `--muted` was deliberately raised above the stars page's value rather than inheriting it — those labels render at 10–11px, so large-text thresholds do not apply.
+
+### Two interactives — all states rendered in HTML
+
+Both components depart from the stars page pattern, per D-012. Every state ships in the markup; JavaScript only toggles the `hidden` attribute. It never injects content.
+
+**Lens picker (section 4)** — four traditional readings: Freedom, Maturity, Trust, Seizure. Two columns per lens, always visible together; "What it leaves open" is never collapsed or de-emphasized. The two column grounds are matched in luminance (0.847 vs 0.849) and border weight so neither reads as the more solid box. Default is Freedom. Arrow-key navigation added, expected of `role="tablist"`.
+
+The hinge line — *All four would be satisfied by a tree behind a wall.* — sits outside every tab state and is always visible.
+
+**Drift panel (section 7)** — three states: as given (Genesis 2:16–17), as retold (Genesis 3:3, `neither shall ye touch it` marked), as answered (Genesis 3:4, negation marked). Forward/back plus a clickable three-dot indicator, so no state is a dead end. *No one has eaten yet.* persists across all three. Framed as a plain observation about the text — no styling ties it to the spine.
+
+### Accessibility
+
+- `prefers-reduced-motion` block added. This is the first page in the repo to honor it; the existing studies are untouched and still do not
+- Real `<button>` elements throughout, visible focus rings, roving tabindex on the lens tabs
+- No horizontal overflow at 375px; lens columns stack to a single column with a 10px gap, both rendering identically at 153×324
+
+### Acceptance verification
+
+- [x] Prose diffed against source: 91/94 paragraphs verbatim; the 3 remaining are the drift states, restructured by Component Spec 2 into label/quote/reference (no words added or removed)
+- [x] All 24 Scripture index references render; every inline KJV quotation checked against the text
+- [x] All five limits in "What this reading does not do" render in full, in sequence, above the Scripture index
+- [x] No-JS: 4/4 lens panels and 3/3 drift states visible and readable; chips and controls hidden rather than left dead; zero blank boxes
+- [x] Console clean — the only messages are from a MetaMask extension content script, none from the page
+- [x] Zero dependencies, zero API calls, zero external `src`/`href` (per D-013)
+- [x] Tag balance, id uniqueness, and every JS/aria id target verified
+- [ ] Print preview — deferred to manual check
+- [ ] Editorial Verification — **not self-certified.** Flagged for Hashem per the batch contract
+
+---
+
 ## Batch 6 — Study-Page Navigation (2026-05-24)
 
 Added consistent upward navigation to both study pages. Before this batch the study pages were islands — built before the Library hub and `/collections/` landing existed, so a reader had no in-page path back up. This adds the same nav to both, harmonized to each page's palette.

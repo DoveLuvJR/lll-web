@@ -175,3 +175,44 @@ Everything else — colors, spacing, components, layout — stays in each collec
 - A page that needs three interactives is making three teaching jobs do work that one couldn't. That should be a deliberate choice with a defensible reason, not a habit.
 
 **Operational note:** The plain Scripture index list stays below the Canon Walk. The Walk is the experience; the index is the static quick-reference (and the print-friendly fallback). Don't let live interactives replace text that earns its place by being readable on paper and by screen readers without JS.
+
+---
+
+## D-012 (2026-08-01) Interactive study components render every state in HTML; JS toggles visibility, never injects
+
+**Decision:** Any interactive component on a Library study page ships **all of its states in the HTML**. JavaScript's only job is to hide and show them — it never writes content into an empty container. Components must render stacked, labeled, and fully readable with JavaScript unavailable.
+
+**Established by:** `collections/why-was-the-tree-reachable/` (Batch 7), whose lens picker and drift panel both follow it.
+
+**Why:**
+- **A brother on bad signal must never hit a blank box.** The Fellowship reads on phones, often on poor connections. A component whose content arrives only after a script executes is empty until it does — and stays empty if the script fails.
+- **Print works for free.** The stars page's injected components print whatever single state happened to be on screen. When every state is already in the DOM, the print stylesheet just un-hides them (`.lens-panel[hidden] { display: block !important }`) and the whole study prints.
+- **Screen readers and search engines get the full text**, not a shell.
+- This is the operational form of the note already at the end of D-011: *don't let live interactives replace text that earns its place by being readable on paper and by screen readers without JS.* D-011 said it; D-012 makes it a build rule.
+
+**Supersedes the stars-page pattern.** `collections/what-are-the-stars/app.js` does the opposite — `<p id="tel-body"></p>` is empty markup filled by `selectStar()`. **Future studies inherit D-012, not that pattern.** The stars page is left as-is (changing it was out of scope for Batch 7), so treat it as the older way, not the reference.
+
+**How to implement:**
+- Set a `has-js` class on `<html>` from a tiny inline script in `<head>`. Controls that would be dead without JS (`.chips`, `.drift-ctrls`) are `display: none` by default and shown only under `.has-js`
+- Each state carries its own visible label in the markup, so the stacked no-JS view is still navigable
+- JS hides inactive states with the `hidden` attribute; the print block overrides it
+
+**Reusable on:** every future collection. This is the default, not an exception.
+
+---
+
+## D-013 (2026-08-01) No AI or API calls in public Library pages
+
+**Decision:** Library pages make **no network calls of any kind** — no AI inference, no `fetch`, no third-party embeds, no CDN scripts or stylesheets. Everything a page needs ships in its own folder. This holds for the blog when it exists.
+
+**Why:**
+- **Client-side keys are not safe.** Any API key reachable from a public static page is public. There is no way to call a paid AI service from a page like this without exposing the credential or standing up a backend the Library deliberately does not have.
+- **Deterministic pages are the correct form for Scripture reference material.** A study is a fixed text. A reader returning to it, or printing it for dojo, must get the same words every time. Generated prose cannot promise that, and a wrong verse in a Fellowship study is worse than a missing feature.
+- **It keeps D-001 honest.** Vanilla, no build step, no dependencies — a network dependency is a dependency, whether or not it appears in a `package.json`.
+- **It survives.** No key to rotate, no quota to exhaust, no vendor to outlive the study.
+
+**Note:** the Batch 7 study's own reading is drawn from AI system architecture. That is subject matter, not implementation — the page itself is inert HTML, CSS, and 130 lines of vanilla JS.
+
+**Verification:** grep any Library page for `fetch(`, `XMLHttpRequest`, and `src="http` before shipping. Batch 7 ships with zero of each.
+
+**Companion:** vault `DECISIONS.md` DEC-022 records the same decision at program level.
