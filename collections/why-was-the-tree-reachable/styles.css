@@ -42,9 +42,16 @@ body { font-family: var(--font-body); background: var(--paper); color: var(--tex
 .crumbs a:hover, .crumbs a:focus-visible { color: var(--ink); }
 .crumbs [aria-current="page"] { color: var(--text2); }
 
-.foot-back { text-align: center; padding: 18px 20px 8px; background: var(--paper-2); border-top: 1px solid var(--line); }
-.foot-back a { font-family: var(--font-ui); font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); text-decoration: none; padding: 6px 10px; transition: color .2s; }
-.foot-back a:hover, .foot-back a:focus-visible { color: var(--ink); }
+/* ---------- Pager to the sibling studies ---------- */
+.pager { display: grid; grid-template-columns: 1fr auto 1fr; gap: 14px; align-items: center; max-width: 900px; margin: 0 auto; padding: 22px 24px 18px; background: var(--paper-2); border-top: 1px solid var(--line); }
+.pager-link { display: flex; flex-direction: column; gap: 3px; text-decoration: none; padding: 8px 10px; border-radius: 8px; min-height: 44px; justify-content: center; transition: background .2s; }
+.pager-link:hover, .pager-link:focus-visible { background: #fff; }
+.pager-link.next { text-align: right; align-items: flex-end; }
+.pager-dir { font-family: var(--font-ui); font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
+.pager-name { font-family: var(--font-body); font-size: 16px; line-height: 1.35; color: var(--gold); }
+.pager-link:hover .pager-name, .pager-link:focus-visible .pager-name { color: var(--ink); }
+.pager-all { font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); text-decoration: none; padding: 12px 12px; min-height: 44px; display: flex; align-items: center; text-align: center; }
+.pager-all:hover, .pager-all:focus-visible { color: var(--ink); }
 
 header { text-align: center; padding: 56px 24px 22px; border-bottom: 1px solid var(--line); background: var(--paper); }
 header h1 { font-family: var(--font-display); font-size: clamp(24px, 5vw, 44px); font-weight: 900; color: var(--ink); letter-spacing: 3px; text-transform: uppercase; }
@@ -86,7 +93,58 @@ header .sub { font-size: 18px; color: var(--text2); margin-top: 8px; font-style:
 .toc-back a { font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); text-decoration: none; padding: 8px 10px; display: inline-block; min-height: 36px; }
 .toc-back a:hover, .toc-back a:focus-visible { color: var(--ink); }
 
-.epigraph { max-width: 680px; margin: 26px auto 0; padding: 0 24px; font-family: var(--font-ui); font-size: 14px; line-height: 1.6; color: var(--muted); text-align: center; }
+.epigraph { max-width: 680px; margin: 24px auto 0; padding: 0 24px; font-family: var(--font-ui); font-size: 14px; line-height: 1.6; color: var(--muted); text-align: center; }
+
+/* ---------- Persistent navigation ----------
+ * A map that exists only at the trailhead is not a map. The static TOC above
+ * is the arrival view and the no-JS fallback; these two are the persistent
+ * ones, built from the document's own headings by app.js. Neither is content.
+ * Both are excluded from selection so a group-chat paste stays clean, and
+ * both are hidden from print.
+ */
+.rail, .tocbar { display: none; -webkit-user-select: none; user-select: none; }
+
+/* Wide screens: a rail beside the column, marking where the reader is. */
+@media (min-width: 1140px) {
+  .has-js .rail {
+    display: block; position: fixed; top: 74px; left: calc(50% - 380px - 258px); width: 234px;
+    max-height: calc(100vh - 120px); overflow-y: auto; overscroll-behavior: contain;
+    padding: 16px 14px 14px; background: var(--paper); border: 1px solid var(--line); border-radius: 10px;
+    opacity: 0; visibility: hidden; transition: opacity .25s;
+  }
+  .has-js.scrolled .rail { opacity: 1; visibility: visible; }
+}
+.rail-title { font-family: var(--font-ui); font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+.rail-list, .bar-list { list-style: none; counter-reset: nav; padding: 0; margin: 0; }
+.rail-list > li, .bar-list > li { counter-increment: nav; margin-bottom: 8px; }
+.rail-list > li > a::before, .bar-list > li > a::before { content: counter(nav) ". "; color: var(--gold-light); font-weight: 700; }
+.rail-list a, .bar-list a { display: block; font-family: var(--font-body); font-size: 14px; line-height: 1.35; color: var(--ink); text-decoration: none; padding: 4px 6px; border-left: 2px solid transparent; transition: color .2s, border-left-color .2s; }
+.rail-list a:hover, .bar-list a:hover, .rail-list a:focus-visible, .bar-list a:focus-visible { color: var(--gold); }
+.rail-list a.current, .bar-list a.current { color: var(--gold); border-left-color: var(--gold); font-weight: 600; }
+.nav-dek { display: block; font-family: var(--font-ui); font-size: 11px; font-style: italic; line-height: 1.4; color: var(--muted); padding: 0 6px 2px 8px; }
+.nav-sub { list-style: none; padding: 0 0 0 10px; margin: 4px 0 0; border-left: 1px solid var(--line); }
+.nav-sub li { margin-bottom: 4px; }
+.nav-sub a { font-size: 13px; color: var(--text2); padding: 3px 6px; }
+.nav-sub .nav-dek { font-size: 10px; padding-left: 6px; }
+.rail-top { display: block; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--line); font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); text-decoration: none; }
+.rail-top:hover, .rail-top:focus-visible { color: var(--ink); }
+
+/* Narrow screens: a collapsed bar naming the current section, expandable. */
+@media (max-width: 1139px) {
+  .has-js.scrolled .tocbar {
+    display: block; position: fixed; top: 0; left: 0; right: 0; z-index: 90;
+    background: var(--paper); border-bottom: 1px solid var(--line); box-shadow: 0 2px 10px rgba(20, 41, 30, .07);
+  }
+}
+.tocbar-btn { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; min-height: 46px; padding: 6px 18px; background: transparent; border: 0; cursor: pointer; text-align: left; font-family: var(--font-ui); color: inherit; }
+.tocbar-btn:focus-visible { outline: 2px solid var(--gold-light); outline-offset: -2px; }
+.tocbar-meta { display: flex; flex-direction: column; min-width: 0; }
+.tocbar-kicker { font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+.tocbar-current { font-family: var(--font-body); font-size: 15px; line-height: 1.3; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tocbar-chev { font-size: 14px; color: var(--gold); flex-shrink: 0; transition: transform .25s; }
+.tocbar.open .tocbar-chev { transform: rotate(180deg); }
+.tocbar-panel { max-height: min(68vh, 520px); overflow-y: auto; overscroll-behavior: contain; padding: 6px 18px 16px; border-top: 1px solid var(--line); }
+.tocbar-panel .bar-list a { padding: 7px 6px; min-height: 36px; }
 
 /* ---------- Prose base ---------- */
 .prose { max-width: 760px; margin: 0 auto; padding: 34px 24px 56px; }
@@ -97,6 +155,13 @@ header .sub { font-size: 18px; color: var(--text2); margin-top: 8px; font-style:
 .study p + p { margin-top: 14px; }
 .study .lede { font-size: 19px; line-height: 1.7; }
 .study strong { color: var(--ink); font-weight: 700; }
+
+/* Points the reader at the limits section before the argument runs, not after.
+ * Deliberately not styled as a warning — it is an instruction about reading
+ * order, and the section it names does the arguing. */
+.forward-note { font-size: 17px !important; line-height: 1.65; color: var(--text2) !important; margin-top: 14px !important; padding: 12px 16px; background: var(--paper-2); border-left: 3px solid var(--gold-light); border-radius: 0 8px 8px 0; }
+.forward-note a { color: var(--gold); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--gold-light); }
+.forward-note a:hover, .forward-note a:focus-visible { color: var(--ink); border-bottom-color: var(--ink); }
 
 /* One-line subtitle under headings that say nothing out of context. */
 .dek { font-family: var(--font-ui) !important; font-size: 13px !important; font-style: italic; line-height: 1.5; color: var(--muted) !important; margin-top: -6px !important; margin-bottom: 14px; }
@@ -115,9 +180,26 @@ h3 + .dek { margin-top: -4px !important; margin-bottom: 12px; }
 
 /* Static cards, not tabs. Four readings held side by side so the hinge line
  * below them ("all four would be satisfied by a tree behind a wall") can
- * actually be tested by a reader looking at all four at once. */
-.lens-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0 22px; align-items: start; }
+ * actually be tested by a reader looking at all four at once.
+ *
+ * The cards share the grid's row tracks via subgrid, so name, summary,
+ * "accounts for" and "leaves open" each start at the same height across a
+ * pair. Alignment is most of what makes a comparison grid readable — if the
+ * limits cannot be scanned at one horizontal level, this is only four stacked
+ * cards in a shape. Without subgrid support the cards still render; they just
+ * lose the cross-card alignment. */
+.lens-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0 22px; align-items: stretch; }
 .lens-card { padding: 18px 18px 16px; background: #fff; border: 1px solid var(--line); border-radius: 10px; }
+
+@supports (grid-template-rows: subgrid) {
+  @media (min-width: 681px) {
+    .lens-cards { grid-template-rows: repeat(2, auto auto auto auto); }
+    .lens-card { display: grid; grid-template-rows: subgrid; grid-row: span 4; row-gap: 12px; }
+    .lens-card > .lens-name { margin-bottom: 0 !important; }
+    .lens-card > .lens-summary { margin-bottom: 0; padding-bottom: 12px; }
+    .lens-card > .col.open { margin-top: 0; }
+  }
+}
 /* Name and attribution share one line so the source sentence transfers
    verbatim, lowercase attributions and all. */
 .lens-name { font-family: var(--font-display); font-size: 15px !important; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink); margin: 0 0 10px !important; line-height: 1.4; scroll-margin-top: 16px; }
@@ -194,8 +276,10 @@ h3 + .dek { margin-top: -4px !important; margin-bottom: 12px; }
 .scripture-index .ref:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 2px; }
 .scripture-index .gloss { color: var(--text); align-self: center; }
 
-footer { text-align: center; padding: 32px 20px; border-top: 1px solid var(--line); background: var(--paper-2); }
+footer { text-align: center; padding: 26px 20px 32px; border-top: 1px solid var(--line); background: var(--paper-2); }
 footer p { font-family: var(--font-ui); font-size: 13px; color: var(--muted); line-height: 1.6; max-width: 760px; margin: 0 auto; }
+/* A study that says its era will pass should say which era it is from. */
+.pubdate { font-weight: 600; letter-spacing: .5px; color: var(--text2) !important; margin-bottom: 10px !important; padding-bottom: 10px; border-bottom: 1px solid var(--line); max-width: 300px !important; }
 
 /* ---------- Mobile ----------
  * The Fellowship reads on phones. Cards stack; inside a card the two columns
@@ -206,6 +290,11 @@ footer p { font-family: var(--font-ui); font-size: 13px; color: var(--muted); li
   .lens-cards { grid-template-columns: 1fr; gap: 12px; }
 }
 
+/* Headings must clear the sticky bar when an anchor is followed. */
+@media (max-width: 1139px) {
+  .has-js .study h2, .has-js .study h3, .has-js .lens-name { scroll-margin-top: 62px; }
+}
+
 @media (max-width: 560px) {
   /* Every pixel above the TOC pushes the limits section below the fold, so
      the hero is trimmed hard on phones. */
@@ -213,17 +302,20 @@ footer p { font-family: var(--font-ui); font-size: 13px; color: var(--muted); li
   header .sub { margin-top: 6px; font-size: 17px; }
   .share-row { margin-top: 12px; }
   .prose { padding: 28px 18px 44px; }
-  .stats-bar { gap: 10px 20px; padding: 14px 20px; }
+  /* Four stats wrap 3-then-1 on a phone, orphaning the last one. A 2x2 grid
+     is the same height and reads as deliberate. */
+  .stats-bar { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 16px; padding: 12px 20px; }
   .stat-num { font-size: 20px; }
+  .stat-label { font-size: 10px; letter-spacing: 1.2px; }
   /* Compacted rather than collapsed. Collapsing would defeat the reason the
      TOC exists — a reader landing cold must SEE that "What this reading does
      not do" is coming. Tighter rows keep the whole hero near one screen while
      leaving the disclosure visible on arrival. Rows stay 40px for tapping. */
-  .toc { margin-left: 18px; margin-right: 18px; padding: 14px 16px 12px; }
-  .toc-title { margin-bottom: 8px; }
-  .toc-list a { font-size: 15px; padding: 6px 2px; min-height: 40px; gap: 10px; }
-  .toc-back { margin-top: 8px; padding-top: 8px; }
-  .epigraph { padding: 0 18px; margin-top: 20px; font-size: 13px; }
+  .toc { margin-left: 18px; margin-right: 18px; padding: 12px 16px 10px; }
+  .toc-title { margin-bottom: 6px; }
+  .toc-list a { font-size: 15px; padding: 5px 2px; min-height: 40px; gap: 10px; }
+  .toc-back { margin-top: 6px; padding-top: 6px; }
+  .epigraph { padding: 0 18px; margin-top: 16px; font-size: 12.5px; line-height: 1.5; }
   .spine { padding-left: 16px; border-left-width: 2px; }
   .spine .study p { font-size: 18px; }
   .spine .study h2 { font-size: 20px; }
@@ -234,6 +326,10 @@ footer p { font-family: var(--font-ui); font-size: 13px; color: var(--muted); li
   .limits { padding: 20px 18px 22px; }
   .scripture-index .idx li { flex-direction: column; gap: 0; }
   .scripture-index .ref { min-width: 0; align-self: flex-start; }
+  .pager { grid-template-columns: 1fr; gap: 4px; padding: 16px 18px 14px; text-align: center; }
+  .pager-link, .pager-link.next { align-items: center; text-align: center; }
+  .pager-all { justify-content: center; }
+  .forward-note { font-size: 16px !important; padding: 10px 14px; }
 }
 
 /* ---------- Reduced motion ---------- */
@@ -248,7 +344,7 @@ footer p { font-family: var(--font-ui); font-size: 13px; color: var(--muted); li
  * states are stacked. Print only drops the chrome and flattens the colors.
  */
 @media print {
-  .share-row, .crumbs, .foot-back, .toast, .toc { display: none !important; }
+  .share-row, .crumbs, .toast, .toc, .rail, .tocbar, .pager { display: none !important; }
   body { background: #fff; }
   .stats-bar, .limits, .drift, .caution, .hinge, .col, .lens-card, footer { background: #fff !important; border-color: #ccc !important; }
   .drift-state + .drift-state { border-top-color: #ccc !important; }

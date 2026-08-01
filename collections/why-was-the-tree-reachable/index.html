@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-<nav class="crumbs" aria-label="Breadcrumb">
+<nav class="crumbs" id="top" aria-label="Breadcrumb">
   <ol>
     <li><a href="/">Growing Stone Library</a></li>
     <li><a href="/collections/">Collections</a></li>
@@ -40,13 +40,18 @@
 <div class="stats-bar">
   <div class="stat"><div class="stat-num a">20</div><div class="stat-label">Passages</div></div>
   <div class="stat"><div class="stat-num b">4</div><div class="stat-label">Older Readings</div></div>
-  <div class="stat"><div class="stat-num c">2</div><div class="stat-label">Trees</div></div>
+  <div class="stat"><div class="stat-num c">5</div><div class="stat-label">Limits</div></div>
   <div class="stat"><div class="stat-num d">18</div><div class="stat-label">Min Read</div></div>
 </div>
 
-<!-- Table of contents. Sits in the hero so a reader landing cold can see, in
-     the first screen, that "What this reading does not do" is coming. The
-     honesty is visible on arrival, not at 90% depth. -->
+<!-- Load-bearing. It establishes that there were TWO trees, both in the midst,
+     before the reader meets a single argument. The whole second half depends
+     on the reader already knowing the tree of life was there from the start. -->
+<p class="epigraph">"And out of the ground made the LORD God to grow every tree that is pleasant to the sight, and good for food; the tree of life also in the midst of the garden, and the tree of knowledge of good and evil." — Genesis 2:9 (KJV)</p>
+
+<!-- Static table of contents. This is the arrival map and the no-JS fallback.
+     The persistent rail and the mobile bar are built from the document's own
+     headings by app.js; this list is what remains if that never runs. -->
 <nav class="toc" aria-labelledby="toc-title">
   <p class="toc-title" id="toc-title">What's in this study</p>
   <ol class="toc-list">
@@ -61,8 +66,6 @@
   </ol>
   <p class="toc-back"><a href="#scripture-index">Scripture index &amp; sources</a></p>
 </nav>
-
-<p class="epigraph">"And out of the ground made the LORD God to grow every tree that is pleasant to the sight, and good for food; the tree of life also in the midst of the garden, and the tree of knowledge of good and evil." — Genesis 2:9 (KJV)</p>
 
 <main class="prose">
 
@@ -87,39 +90,34 @@
     <p><strong>Only the other tree gets guarded.</strong> The flaming sword comes afterward, and it is set around the tree of life, not this one (Genesis 3:22–24).</p>
   </section>
 
-  <!-- ===== 4. How the command moved — textual observation, sits with the
-       textual material. Deliberately neutral: no styling shared with the
-       spine, no engineering vocabulary. It holds regardless of which
-       reading you favor, and it says so in its first line. ===== -->
+  <!-- ===== 4. How the command moved — a textual observation, sitting with the
+       textual material. Deliberately neutral: no styling shared with the spine,
+       no engineering vocabulary. All three states are always rendered. ===== -->
   <section class="study">
     <h2 id="how-the-command-moved">How the command moved</h2>
     <p class="dek">How the prohibition changed across three retellings</p>
     <p>An observation about the text, holding regardless of which reading you favor.</p>
     <p>Follow the command across three mouths.</p>
 
-    <div class="drift" id="drift">
-      <div class="drift-states">
+    <div class="drift">
+      <div class="drift-state" id="drift-1">
+        <p class="drift-head"><span class="drift-name">As given</span></p>
+        <p class="drift-text">"Of every tree of the garden thou mayest freely eat: but of the tree of the knowledge of good and evil, thou shalt not eat of it: for in the day that thou eatest thereof thou shalt surely die"</p>
+        <p class="drift-ref">Genesis 2:16–17</p>
+      </div>
 
-        <div class="drift-state" id="drift-1" role="group" aria-label="State 1 of 3: As given">
-          <p class="drift-head"><span class="drift-name">As given</span></p>
-          <p class="drift-text">"Of every tree of the garden thou mayest freely eat: but of the tree of the knowledge of good and evil, thou shalt not eat of it: for in the day that thou eatest thereof thou shalt surely die"</p>
-          <p class="drift-ref">Genesis 2:16–17</p>
-        </div>
+      <div class="drift-state" id="drift-2">
+        <p class="drift-head"><span class="drift-name">As retold</span> <span class="drift-tag">+ one addition</span></p>
+        <p class="drift-text">"Ye shall not eat of it, <mark class="moved">neither shall ye touch it</mark>, lest ye die"</p>
+        <p class="drift-ref">Genesis 3:3</p>
+        <p class="drift-gloss">Something is added. Nobody said <em>touch</em>. It may be well-meant — a fence built around the fence — but it did not come from the one who gave the command.</p>
+      </div>
 
-        <div class="drift-state" id="drift-2" role="group" aria-label="State 2 of 3: As retold">
-          <p class="drift-head"><span class="drift-name">As retold</span> <span class="drift-tag">+ one addition</span></p>
-          <p class="drift-text">"Ye shall not eat of it, <mark class="moved">neither shall ye touch it</mark>, lest ye die"</p>
-          <p class="drift-ref">Genesis 3:3</p>
-          <p class="drift-gloss">Something is added. Nobody said <em>touch</em>. It may be well-meant — a fence built around the fence — but it did not come from the one who gave the command.</p>
-        </div>
-
-        <div class="drift-state" id="drift-3" role="group" aria-label="State 3 of 3: As answered">
-          <p class="drift-head"><span class="drift-name">As answered</span> <span class="drift-tag">&minus; the consequence reversed</span></p>
-          <p class="drift-text"><mark class="moved">"Ye shall not surely die"</mark></p>
-          <p class="drift-ref">Genesis 3:4</p>
-          <p class="drift-gloss">The consequence is flatly negated.</p>
-        </div>
-
+      <div class="drift-state" id="drift-3">
+        <p class="drift-head"><span class="drift-name">As answered</span> <span class="drift-tag">&minus; the consequence reversed</span></p>
+        <p class="drift-text"><mark class="moved">"Ye shall not surely die"</mark></p>
+        <p class="drift-ref">Genesis 3:4</p>
+        <p class="drift-gloss">The consequence is flatly negated.</p>
       </div>
 
       <p class="drift-persist">No one has eaten yet.</p>
@@ -129,12 +127,13 @@
     <p>Whatever else the account is doing, it shows the change happening in the retelling before it happens in the hand.</p>
   </section>
 
-  <!-- ===== 5. Four older readings — static cards, no tabs.
-       The section's rhetorical move is comparison: "all four would be
-       satisfied by a tree behind a wall" only lands if the reader can hold
-       four readings at once. Cards make that possible; a tab strip made it
-       impossible. "What it accounts for" and "What it leaves open" carry
-       identical type and treatment — neither is the lighter one. ===== -->
+  <!-- ===== 5. Four older readings — static cards.
+       The section's move is comparison: "all four would be satisfied by a tree
+       behind a wall" only lands if the reader can hold four readings at once.
+       The four cards share row tracks via subgrid so that "What it leaves
+       open" starts at the same height across each pair — if the limits cannot
+       be scanned at one horizontal level, the grid is only four stacked cards
+       in a shape. ===== -->
   <section class="study compressed" aria-labelledby="four-older-readings">
     <h2 id="four-older-readings">Four older readings</h2>
     <p>These answer <em>why a prohibition</em>. Each catches something. None of them spends much time on placement.</p>
@@ -143,7 +142,7 @@
 
       <article class="lens-card">
         <h3 class="lens-name" id="reading-freedom">Freedom <span class="lens-attrib">— Augustine, and most of the West after him.</span></h3>
-        <p class="lens-summary">Love that cannot be refused is not love. The tree is the price of making someone rather than something.</p>
+        <p class="lens-summary">The tree is the price of making someone rather than something.</p>
         <div class="col acc">
           <div class="col-hdr">What it accounts for</div>
           <p class="col-body">Why a good God would permit real risk at all, and why the consequence is grave rather than corrective. Love that cannot be refused is not love.</p>
@@ -156,7 +155,7 @@
 
       <article class="lens-card">
         <h3 class="lens-name" id="reading-maturity">Maturity <span class="lens-attrib">— Irenaeus, and much of the East.</span></h3>
-        <p class="lens-summary">They were young. A training constraint, not permanent exclusion — which fits the Isaiah, Samuel, and Hebrews passages, where discerning good and evil marks an adult rather than a sinner.</p>
+        <p class="lens-summary">A training constraint, not a permanent exclusion. They were young.</p>
         <div class="col acc">
           <div class="col-hdr">What it accounts for</div>
           <p class="col-body">The passages where discerning good and evil marks an adult rather than a sinner (Isaiah 7:15–16; 2 Samuel 19:35; Hebrews 5:14), and the gentleness of the response — coats made for them as they go.</p>
@@ -169,7 +168,7 @@
 
       <article class="lens-card">
         <h3 class="lens-name" id="reading-trust">Trust without leverage <span class="lens-attrib">— an emphasis common in Jewish reading.</span></h3>
-        <p class="lens-summary">A rule whose reason you can verify is kept by agreement, not trust. The consequence is stated, but the reason behind the command never is. "Lean not unto thine own understanding" (Proverbs 3:5).</p>
+        <p class="lens-summary">A rule you can verify is kept by agreement. Only an unverifiable one is kept by trust. "Lean not unto thine own understanding" (Proverbs 3:5).</p>
         <div class="col acc">
           <div class="col-hdr">What it accounts for</div>
           <p class="col-body">Why the command looks arbitrary from inside the garden, and why what follows in Scripture runs on trust rather than proof. Genesis 2:17 discloses the consequence and withholds the reason.</p>
@@ -182,7 +181,7 @@
 
       <article class="lens-card">
         <h3 class="lens-name" id="reading-seizure">Seizure, not substance <span class="lens-attrib">— a timing reading.</span></h3>
-        <p class="lens-summary">The offense was the taking, not the knowledge. Set the serpent's "ye shall be as gods" (Genesis 3:5) beside the One who "thought it not robbery to be equal with God" and emptied himself instead (Philippians 2:6–7). Same equality. Opposite motion.</p>
+        <p class="lens-summary">The offense was the taking, not the knowledge.</p>
         <div class="col acc">
           <div class="col-hdr">What it accounts for</div>
           <p class="col-body">The actual content of the serpent's offer, which is about becoming like God rather than about fruit, and Philippians 2:6–7 as its exact reversal.</p>
@@ -208,6 +207,7 @@
       <h2 id="a-different-question">A different question</h2>
       <p class="dek">Why the tree was placed within reach</p>
       <p class="lede">This next part came from an unexpected direction — from listening to how people build systems around artificial intelligence. It carries no traditional authority. It is offered because it presses where the older four do not.</p>
+      <p class="forward-note">What is wrong with it is set out in full further down, under <a href="#what-this-reading-does-not-do">What this reading does not do</a>. Read that alongside this section rather than after it.</p>
 
       <h3 id="two-layers-never-one-hand">Two layers, never one hand</h3>
       <p>Engineers building on these systems keep two things strictly apart.</p>
@@ -254,12 +254,14 @@
       <p>The guard moves. It transfers from the tree that had a prohibition to the tree that never had one. And it changes in kind as it moves. What was a word becomes a blade.</p>
 
       <h3 id="word-and-sword">Word and sword</h3>
+      <p class="dek">What can be refused, and what cannot</p>
       <p>A word can be refused. That is what a word is. It arrives, and the one who hears it decides.</p>
       <hr class="sword-rule" aria-hidden="true">
       <p>A flaming sword turning every way cannot be refused. It does not address you. It stops you.</p>
       <p>If the reading above is right, then the reachable boundary was not a flaw that got patched once it failed. It was the honorable form — the arrangement in which a man's obedience belonged to him. What follows the fall is government by force, and losing the first kind is part of what was lost. The man does not only lose the garden. He loses the terms.</p>
 
       <h3 id="where-this-cuts-back">Where this cuts back</h3>
+      <p class="dek">What this reading costs to hold</p>
       <p>It has to be said that this bites the reading as much as it feeds it.</p>
       <p>If reachable is the honorable form, then God's own next move is to make something unreachable. The reading cannot celebrate reachability and then pass quickly over the sword.</p>
       <p>The only honest answer is an uncomfortable one. Force is what governs when the covenant form has been shown insufficient. That is not an improvement. It is a lower arrangement, imposed as consequence — which fits the sentence but should not be mistaken for good news.</p>
@@ -279,6 +281,7 @@
       <p>Which is worth sitting with, given everything above. Where there is no boundary, there is no account. The narrative itself behaves the way this reading says a life does.</p>
 
       <h3 id="the-sword-is-not-the-last-word">The sword is not the last word</h3>
+      <p class="dek">Why the guard is a season, not a settlement</p>
       <p>One more thing, and it matters for how heavy the section above is allowed to feel.</p>
       <p>The guard is a season, not a settlement. At the end, the tree of life stands again — in the midst of the street, yielding fruit every month, its leaves for the healing of the nations (Revelation 22:2) — and there is a right to it for those who enter (Revelation 22:14).</p>
       <p>Whatever the sword is, it is an interruption. The last picture Scripture gives of that tree is not a blade around it.</p>
@@ -345,8 +348,20 @@
   </section>
 </main>
 
-<div class="foot-back"><a href="/collections/">&lsaquo; Back to all collections</a></div>
+<nav class="pager" aria-label="Other studies in the Library">
+  <a class="pager-link prev" href="/collections/what-are-the-stars/">
+    <span class="pager-dir">&larr; Previous study</span>
+    <span class="pager-name">What Are the Stars?</span>
+  </a>
+  <a class="pager-all" href="/collections/">All collections</a>
+  <a class="pager-link next" href="/collections/table-of-nations/">
+    <span class="pager-dir">Also in the Library &rarr;</span>
+    <span class="pager-name">The Table of 70 Nations</span>
+  </a>
+</nav>
+
 <footer>
+  <p class="pubdate">First published 1 August 2026.</p>
   <p>Sources: The Holy Bible, King James Version. Augustinian and Irenaean readings drawn from the standard history of Christian interpretation. The reading in "A different question" is the compiler's own, prompted by talks on agent architecture given at a 2026 developer conference; it carries no traditional authority and is offered as a question rather than a finding.<br>Compiled for the Growing Stone Fellowship &middot; Jumpshots from The Bleachers Inc.</p>
 </footer>
 <div class="toast" id="toast"></div>

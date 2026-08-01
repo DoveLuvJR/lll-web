@@ -1,5 +1,76 @@
 # Changelog — LLL Library
 
+## Batch 9 — Tree Study, Second Revision Pass (2026-08-01)
+
+Navigation, alignment, and the epigraph. The study stays **one page at one URL — permanently closed as a question.**
+
+### Content source re-pulled
+
+Card summaries trimmed (three of four had been repeating their own "accounts for" box); a forward link to the limits added inside "A different question"; `2 Trees` replaced by **`5 Limits`** in the stat bar, so the self-critique is advertised on arrival by a real count rather than a decorative one; reading time written into the source.
+
+### The TOC persists (Task 1)
+
+A map that exists only at the trailhead is not a map. Fourteen of fifteen screens had no navigation.
+
+- **Wide screens (≥1140px):** a fixed rail beside the column, current section marked as the reader scrolls
+- **Narrow screens:** a 46px sticky bar naming the current section, expanding to the full outline. Tapping an entry closes it; Escape closes it
+- **h3 sub-sections included** — the ten under "A different question" and "After the crossing" were invisible to the old TOC
+- **Deks shown in the nav**, which is where they earn the most: they were written to make opaque headings legible out of context
+
+Both are **built from the document's own h2/h3 elements by `app.js`**, so the outline has one source of truth and no duplicated copy for Ctrl+F to trip over. Neither is content. The static hero TOC remains as the arrival view and the no-JS fallback. Recorded as **D-015**.
+
+Nav chrome is `user-select: none`, so a group-chat paste stays clean, and is hidden from print.
+
+### Epigraph restored (Task 2)
+
+Genesis 2:9 is back, between the stat bar and the TOC. It is load-bearing: it establishes that there were **two** trees, both in the midst, before the reader meets a single argument, and the whole second half depends on that.
+
+### Three deks added (Task 3)
+
+"Word and sword", "Where this cuts back", "The sword is not the last word" — eight deks total.
+
+### Card alignment (Task 4)
+
+`align-items: start` → `stretch`, plus **subgrid** so the four cards share row tracks. "What it leaves open" now begins at the **identical pixel** across each pair — measured delta **0px**, against 452px vs 576px before. Cards in a row are equal height (524/524 and 526/526). Without subgrid support the cards still render and simply lose cross-card alignment.
+
+### Footer (Task 6)
+
+First-published date, and a pager to both sibling studies alongside "All collections".
+
+### Verified by eye at 375px, not measured (Task 5)
+
+Screenshots at a real 375px viewport, which caught **two bugs that measurement alone would have scored as passing:**
+
+1. **The sticky bar never appeared.** `has-js` was set on `<html>` and `scrolled` on `<body>`, so the selector `.has-js.scrolled` could never match a single element. Both flags now live on `<html>`.
+2. **Deep links left the bar hidden.** A hash jump happens after the script runs and fires no scroll event, so the first visibility pass ran against `scrollY: 0`. Added `load` and `hashchange` passes.
+
+Confirmed visually: card grid collapses to one column; the long Genesis 2:16–17 quote wraps across five lines with no overflow; the sticky bar costs 46px of 820 (5.6%); the stat bar was wrapping 3-then-1 and orphaning "18 Min Read", now a 2×2 grid.
+
+**Fold positions at 375px** (hero tightened to recover room lost to the epigraph):
+
+| Element | Position | 375×820 | 375×667 (SE) |
+|---|---|---|---|
+| "5 Limits" stat | 335–376 | above fold | above fold |
+| Epigraph | 405–499 | above fold | below fold |
+| TOC "What this reading does not do" | 804–844 | top edge visible | below fold |
+
+The limits link no longer fully clears the fold on any phone — the restored epigraph costs about 100px, and per Task 2 that trade is correct. The **"5 Limits" stat now carries the arrival disclosure instead**, and clears the fold on both.
+
+### Acceptance verification (Batch 8 suite re-run)
+
+- [x] Prose vs re-pulled source: **zero unexplained differences**
+- [x] Scripture index: 20 entries, 20/20 linked
+- [x] Five limits in full; stat bar reads 20 · 4 · 5 · 18
+- [x] Heading ids: 9/9 h2, 14/14 h3; 16/16 in-page anchors resolve
+- [x] Select-all captures all three drift states, both components, the forward note, and the date — **every probe confirmed unique in the source before testing**, per the rule added to GOTCHAS.md
+- [x] Print: all three drift states `block`, cards 2-up, rail/bar/pager/TOC dropped, 7 limit paragraphs
+- [x] Console: **0 errors, 0 warnings**
+- [x] Copper still at exactly two placements; zero dependencies; zero API calls
+- [ ] Print preview by eye — carried over, Hashem's with Ctrl+P
+- [ ] Editorial Verification — **not self-certified**
+
+---
+
 ## Batch 8 — Tree Study Revision Pass (2026-08-01)
 
 Revision of the Batch 7 study after a second review. The study stays **one page at one URL** — a proposal to split it into four spoke pages plus a standalone index was rejected, on the grounds that moving the limits section to its own URL makes it *less* likely to be read, and the reader is a brother on a phone before dojo who wants one scroll, one link, one Print button, one Ctrl+F.

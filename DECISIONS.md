@@ -239,3 +239,28 @@ Everything else — colors, spacing, components, layout — stays in each collec
 **Relationship to [[D-012]]:** D-012 says every state must render in the HTML and JS may only toggle visibility. D-014 goes further for the comparison case: do not toggle at all. D-012 remains the rule for anything that legitimately steps.
 
 **Reusable on:** every future collection. Prefer static. Make a component stateful only when the sequence itself carries meaning, and expect to justify it.
+
+---
+
+## D-015 (2026-08-01) Long studies carry persistent navigation, derived from their own headings
+
+**Decision:** Any Library study long enough that its table of contents scrolls out of view carries **persistent** navigation — a fixed rail on wide screens, a sticky collapsed bar on narrow ones. Both are **generated at runtime from the page's own `h2`/`h3` elements**, never authored as a second copy of the outline. The static in-page TOC stays as the arrival view and the no-JS fallback.
+
+**Established by:** Batch 9 on `why-was-the-tree-reachable`, which ran ~15 screens with navigation on exactly one of them.
+
+**Why:**
+- **A map that exists only at the trailhead is not a map.** A reader fourteen screens deep had no outline, no sense of position, and no way back to the top.
+- **One source of truth.** Deriving the outline from the headings means it cannot drift out of sync with the document, and there is no duplicated block of link text for Ctrl+F to return twice.
+- **It stays honest about what is chrome.** The deks and sub-headings appear in the nav because they were written to make opaque headings legible out of context — which is exactly what a nav entry is.
+
+**Rules that come with it:**
+- Nav chrome is `user-select: none` and hidden from print, so a paste into a group chat and a printed copy both carry the study and not the furniture
+- Headings get `scroll-margin-top` at least the height of the sticky bar, or deep links land underneath it
+- Chrome appears only once the reader has left the hero, so the static TOC is never shadowed by a duplicate of itself
+- Sub-headings are included. A 15-screen page mapped only by its `h2`s is a coarse map
+
+**This does not relax [[D-012]] or [[D-014]].** Those govern *content*: every state renders in the HTML, and comparison components are static. Navigation derived from headings is not content — if the script never runs, the study is complete and every anchor still works.
+
+**Two implementation traps, both found by looking at a real 375px screen rather than measuring:**
+1. Put the `has-js` and `scrolled` flags on the **same element**. Split across `<html>` and `<body>`, a selector like `.has-js.scrolled` silently never matches and the chrome simply never appears.
+2. A deep link scrolls **after** the script runs and fires **no scroll event**. Without a `load` and `hashchange` pass, the first visibility check runs against `scrollY: 0` and the chrome stays hidden for anyone arriving by shared link — which is most people.
