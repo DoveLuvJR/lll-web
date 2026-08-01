@@ -1,5 +1,53 @@
 # Changelog — LLL Library
 
+## Batch 10 — Tree Study, Final Pass (2026-08-01)
+
+One defect, three placements, a source correction. **After this batch the study's shape is final.** Splitting it across multiple URLs is closed permanently and is not to be revisited.
+
+### Content source re-pulled
+
+The drift section **moved in the source** to sit after "What the text gives us," matching where it has rendered since Batch 8 — source order and page order had disagreed for two batches, which was a maintenance trap for whoever touched this next. It now carries its own heading and dek in the source.
+
+"As given" gained a commentary line: *The command as it was spoken. Nothing has moved yet.* With all three panels annotated, the count now reads explicitly down the column — **nothing moved, one addition, one reversal.** The claim of that section is a count, so the count is visible without the reader assembling it.
+
+### Scripture index gloss alignment (Task 1 — the defect)
+
+On phones the reference and gloss stack, but the gloss was centering while the reference sat flush left, producing a staircase: measured left edges of 77, 34, 85, 56, 55, 18 against references all at 18.
+
+Cause: the desktop rule `.gloss { align-self: center }` vertically centers the gloss against its reference in a row. In the stacked column that same declaration centers it *horizontally*. Fixed with `align-items: flex-start` on the row plus an explicit override. **All twenty rows now share one left edge at 18px.** A reference table exists to be scanned.
+
+### Entry TOC brought up to standard (Task 2)
+
+Deks added to the entry TOC. **Subsections deliberately left to the sticky panel** — reported as a judgment call:
+
+- Only three of the eight top-level sections carry deks, and that asymmetry is correct rather than arbitrary: those three are the headings that say nothing out of context. The other five explain themselves, which is why they never got one.
+- The entry TOC is consulted while deciding whether to spend eighteen minutes; eight sections is the right grain for that decision. The sticky panel is consulted while reading, which is where the twenty-entry map belongs.
+- Adding ten subsections plus their deks would roughly triple the hero on a phone and push the study's first words far down.
+
+### Epigraph moved below the TOC (Task 3)
+
+Genesis 2:9 now sits at the top of the prose column, directly above "The question" — the section that asks about it, which is where a text under discussion belongs. It is out from between two pieces of navigation furniture, and the hero is title, subtitle, stats, TOC.
+
+Nothing above the fold moved, and the change **recovered** fold room: the TOC's "What this reading does not do" link went from 804–844 (top edge only) to **770–810, fully above the 820 fold.**
+
+### Verified
+
+- [x] Prose vs re-pulled source: **zero unexplained differences**; page section order matches the source's new order exactly
+- [x] 20 index entries, 20/20 linked; 5 limits; stat bar `20 · 4 · 5 · 18`
+- [x] Index gloss alignment: all rows ref-left = gloss-left = 18px
+- [x] "5 Limits" stat clears the fold on both 375×820 and 375×667
+- [x] Select-all captures the new commentary line, the epigraph in its new home, and every component
+- [x] Print: all three drift states `block`, epigraph prints, all four nav elements dropped, 7 limit paragraphs
+- [x] Console **0 errors, 0 warnings**; copper still at exactly two placements; zero dependencies, zero API calls
+- [ ] Print preview by eye — Hashem, Ctrl+P
+- [ ] Editorial Verification — **not self-certified**
+
+### Standing practice adopted
+
+Two Batch 9 bugs — the `has-js`/`scrolled` split across `<html>` and `<body>`, and deep-link arrival firing no scroll event — both passed every DOM assertion worth writing. **Class application is not evidence of effect.** Sticky, scroll-linked, and deep-link-entry behavior is now verified visually on a fresh load as standing practice, not as an occasional instruction. Logged to `GOTCHAS.md` and project memory alongside the probe-uniqueness rule from Batch 8.
+
+---
+
 ## Batch 9 — Tree Study, Second Revision Pass (2026-08-01)
 
 Navigation, alignment, and the epigraph. The study stays **one page at one URL — permanently closed as a question.**

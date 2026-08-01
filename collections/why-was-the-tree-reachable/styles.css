@@ -92,8 +92,14 @@ header .sub { font-size: 18px; color: var(--text2); margin-top: 8px; font-style:
 .toc-back { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); text-align: center; }
 .toc-back a { font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); text-decoration: none; padding: 8px 10px; display: inline-block; min-height: 36px; }
 .toc-back a:hover, .toc-back a:focus-visible { color: var(--ink); }
+/* Same job as .dek in the body: make a title that says nothing out of context
+   legible to someone deciding whether to read. */
+.toc-dek { display: block; font-family: var(--font-ui); font-size: 12px; font-style: italic; line-height: 1.4; color: var(--muted); padding: 0 4px 8px 26px; margin-top: -4px; }
 
-.epigraph { max-width: 680px; margin: 24px auto 0; padding: 0 24px; font-family: var(--font-ui); font-size: 14px; line-height: 1.6; color: var(--muted); text-align: center; }
+/* Sits at the top of the prose column, directly above "The question" — the
+   section that asks about it — rather than sandwiched between the stat bar
+   and the table of contents. */
+.epigraph { max-width: 640px; margin: 0 auto 30px; padding: 0 0 22px; font-family: var(--font-ui); font-size: 14px; line-height: 1.6; color: var(--muted); text-align: center; border-bottom: 1px solid var(--line); }
 
 /* ---------- Persistent navigation ----------
  * A map that exists only at the trailhead is not a map. The static TOC above
@@ -315,7 +321,8 @@ footer p { font-family: var(--font-ui); font-size: 13px; color: var(--muted); li
   .toc-title { margin-bottom: 6px; }
   .toc-list a { font-size: 15px; padding: 5px 2px; min-height: 40px; gap: 10px; }
   .toc-back { margin-top: 6px; padding-top: 6px; }
-  .epigraph { padding: 0 18px; margin-top: 16px; font-size: 12.5px; line-height: 1.5; }
+  .epigraph { margin-bottom: 24px; padding-bottom: 18px; font-size: 12.5px; line-height: 1.5; }
+  .toc-dek { font-size: 11.5px; padding-left: 24px; }
   .spine { padding-left: 16px; border-left-width: 2px; }
   .spine .study p { font-size: 18px; }
   .spine .study h2 { font-size: 20px; }
@@ -324,8 +331,13 @@ footer p { font-family: var(--font-ui); font-size: 13px; color: var(--muted); li
   .drift { padding: 18px 16px 16px; }
   .drift-text { font-size: 18px !important; }
   .limits { padding: 20px 18px 22px; }
-  .scripture-index .idx li { flex-direction: column; gap: 0; }
+  /* Both the reference and its gloss must share one left edge. The desktop
+     rule vertically centers the gloss against the reference; in a stacked
+     column that same declaration centers it horizontally, and the index
+     becomes a staircase. A reference table exists to be scanned. */
+  .scripture-index .idx li { flex-direction: column; gap: 0; align-items: flex-start; }
   .scripture-index .ref { min-width: 0; align-self: flex-start; }
+  .scripture-index .gloss { align-self: flex-start; text-align: left; }
   .pager { grid-template-columns: 1fr; gap: 4px; padding: 16px 18px 14px; text-align: center; }
   .pager-link, .pager-link.next { align-items: center; text-align: center; }
   .pager-all { justify-content: center; }
