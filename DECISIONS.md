@@ -216,3 +216,26 @@ Everything else — colors, spacing, components, layout — stays in each collec
 **Verification:** grep any Library page for `fetch(`, `XMLHttpRequest`, and `src="http` before shipping. Batch 7 ships with zero of each.
 
 **Companion:** vault `DECISIONS.md` DEC-022 records the same decision at program level.
+
+---
+
+## D-014 (2026-08-01) Components whose rhetorical move is comparison are static, never tabbed
+
+**Decision:** If a study component exists so the reader can **hold several things side by side**, it renders as static cards. Not tabs, not an accordion, not a carousel. Tabs are permitted only where the states are genuinely sequential or alternative — never where the page's argument depends on seeing them together.
+
+**Established by:** Batch 8, replacing the four-tab lens picker in "Why Was the Tree Reachable?" with four static cards.
+
+**Why:**
+- **The layout was fighting the argument.** Section 5 ends on "All four would be satisfied by a tree behind a wall." That line is a claim about all four readings at once. A reader who can only see one at a time cannot test it. A tab strip is the single layout that makes comparison impossible, and it had been specced for the one section built entirely on comparison.
+- **It removes a class of defects rather than one defect.** Static cards mean no `hidden` attributes, which means print, Ctrl+F, select-all-copy, translation tools, screen readers, and no-JS all work with nothing extra written for any of them.
+- **It is less code.** `app.js` went from 122 lines to 71 — the tab handlers, arrow-key navigation, and roving tabindex all deleted. Fewer states to get wrong.
+
+**How to tell which you have.** Ask what breaks if the reader sees everything at once. If the answer is "nothing, it just takes more space," it is a comparison — use cards. If the answer is "the sequence stops meaning anything," it may legitimately step.
+
+**No live exceptions.** The drift panel in the same study was the candidate — its three retellings are genuinely sequential — and it was built as a stepper first. It was then made static too, because verification showed a select-all copy captured only the visible state, and a brother pasting the passage into a group chat is a real use. Stacked, the three retellings also read *better*: the addition and the negation are visible at the same time, which is the observation the section is making. Nothing on the page is hidden from copy, find, translation, or print.
+
+**What this cost, and why it was still right:** the stepper's named controls were deleted. The gain was that the entire `has-js` progressive-enhancement mechanism became unnecessary, `app.js` fell to the share row alone, and the print stylesheet no longer has anything to un-hide.
+
+**Relationship to [[D-012]]:** D-012 says every state must render in the HTML and JS may only toggle visibility. D-014 goes further for the comparison case: do not toggle at all. D-012 remains the rule for anything that legitimately steps.
+
+**Reusable on:** every future collection. Prefer static. Make a component stateful only when the sequence itself carries meaning, and expect to justify it.

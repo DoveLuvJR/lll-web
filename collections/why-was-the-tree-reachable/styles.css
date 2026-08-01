@@ -5,8 +5,8 @@
  * muted moss for chrome, and a single copper flame held in reserve.
  *
  * --flame / --flame-soft appear in exactly TWO places on this page:
- *   1. .moved  — the changed words in the drift panel (section 7)
- *   2. .sword-rule — the blade in "Word and sword" (section 6)
+ *   1. .moved  — the changed words in the drift panel
+ *   2. .sword-rule — the blade in "Word and sword"
  * Do not spend it anywhere else. Used twice, the copper connects the words
  * that moved to the blade that followed. Spent on headings or buttons, that
  * connection is gone and it is just styling.
@@ -33,7 +33,7 @@
 
 body { font-family: var(--font-body); background: var(--paper); color: var(--text); min-height: 100vh; }
 
-/* ---------- Chrome: breadcrumb, header, share, stats ---------- */
+/* ---------- Chrome: breadcrumb, header, share ---------- */
 .crumbs { background: var(--paper); border-bottom: 1px solid var(--line); padding: 10px 20px; }
 .crumbs ol { list-style: none; margin: 0 auto; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; max-width: 1200px; font-family: var(--font-ui); font-size: 12px; font-weight: 600; letter-spacing: .5px; }
 .crumbs li { display: inline-flex; align-items: center; min-height: 32px; }
@@ -46,13 +46,12 @@ body { font-family: var(--font-body); background: var(--paper); color: var(--tex
 .foot-back a { font-family: var(--font-ui); font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); text-decoration: none; padding: 6px 10px; transition: color .2s; }
 .foot-back a:hover, .foot-back a:focus-visible { color: var(--ink); }
 
-header { text-align: center; padding: 56px 24px 20px; border-bottom: 1px solid var(--line); background: var(--paper); }
+header { text-align: center; padding: 56px 24px 22px; border-bottom: 1px solid var(--line); background: var(--paper); }
 header h1 { font-family: var(--font-display); font-size: clamp(24px, 5vw, 44px); font-weight: 900; color: var(--ink); letter-spacing: 3px; text-transform: uppercase; }
 header .sub { font-size: 18px; color: var(--text2); margin-top: 8px; font-style: italic; }
-header .verse { font-size: 14px; color: var(--muted); margin-top: 12px; font-family: var(--font-ui); max-width: 680px; margin-left: auto; margin-right: auto; line-height: 1.6; }
 
-.share-row { display: flex; justify-content: center; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
-.share-btn { font-family: var(--font-ui); font-size: 12px; font-weight: 600; padding: 7px 16px; border: 1px solid var(--line); border-radius: 20px; cursor: pointer; background: #fff; color: var(--text2); transition: all .2s; display: flex; align-items: center; gap: 6px; }
+.share-row { display: flex; justify-content: center; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
+.share-btn { font-family: var(--font-ui); font-size: 12px; font-weight: 600; padding: 7px 16px; min-height: 36px; border: 1px solid var(--line); border-radius: 20px; cursor: pointer; background: #fff; color: var(--text2); transition: all .2s; display: flex; align-items: center; gap: 6px; }
 .share-btn:hover { background: var(--acc-bg); border-color: var(--gold-light); color: var(--gold); }
 .share-btn:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 2px; }
 .share-btn svg { width: 14px; height: 14px; }
@@ -60,7 +59,7 @@ header .verse { font-size: 14px; color: var(--muted); margin-top: 12px; font-fam
 .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(80px); background: var(--ink); color: #fff; padding: 12px 24px; border-radius: 8px; font-family: var(--font-ui); font-size: 14px; opacity: 0; transition: all .3s; z-index: 999; pointer-events: none; }
 .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-.stats-bar { display: flex; justify-content: center; gap: 32px; padding: 24px 20px; border-bottom: 1px solid var(--line); background: var(--paper-2); flex-wrap: wrap; }
+.stats-bar { display: flex; justify-content: center; gap: 32px; padding: 22px 20px; border-bottom: 1px solid var(--line); background: var(--paper-2); flex-wrap: wrap; }
 .stat { text-align: center; }
 .stat-num { font-family: var(--font-display); font-size: 28px; font-weight: 900; }
 .stat-num.a { color: var(--ink); }
@@ -69,65 +68,79 @@ header .verse { font-size: 14px; color: var(--muted); margin-top: 12px; font-fam
 .stat-num.d { color: var(--gold); }
 .stat-label { font-family: var(--font-ui); font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px; margin-top: 2px; }
 
+/* ---------- Table of contents ----------
+ * Sits in the hero, above the epigraph. The reason it exists is that this
+ * study runs long: a reader landing cold must be able to see on the first
+ * screen that "What this reading does not do" is coming. The honesty is
+ * disclosed on arrival, not at 90% scroll depth.
+ */
+.toc { max-width: 620px; margin: 26px auto 0; padding: 20px 24px 18px; background: #fff; border: 1px solid var(--line); border-radius: 10px; }
+.toc-title { font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); text-align: center; margin-bottom: 12px; }
+.toc-list { list-style: none; counter-reset: toc; padding: 0; margin: 0; }
+.toc-list li { counter-increment: toc; border-bottom: 1px dotted var(--line); }
+.toc-list li:last-child { border-bottom: 0; }
+.toc-list a { display: flex; align-items: baseline; gap: 12px; padding: 9px 4px; min-height: 40px; font-family: var(--font-body); font-size: 17px; line-height: 1.35; color: var(--ink); text-decoration: none; transition: color .2s; }
+.toc-list a::before { content: counter(toc); font-family: var(--font-ui); font-size: 11px; font-weight: 700; color: var(--gold-light); flex-shrink: 0; min-width: 14px; }
+.toc-list a:hover, .toc-list a:focus-visible { color: var(--gold); }
+.toc-back { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); text-align: center; }
+.toc-back a { font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); text-decoration: none; padding: 8px 10px; display: inline-block; min-height: 36px; }
+.toc-back a:hover, .toc-back a:focus-visible { color: var(--ink); }
+
+.epigraph { max-width: 680px; margin: 26px auto 0; padding: 0 24px; font-family: var(--font-ui); font-size: 14px; line-height: 1.6; color: var(--muted); text-align: center; }
+
 /* ---------- Prose base ---------- */
-.prose { max-width: 760px; margin: 0 auto; padding: 40px 24px 56px; }
+.prose { max-width: 760px; margin: 0 auto; padding: 34px 24px 56px; }
 .study { margin-bottom: 38px; }
-.study h2 { font-family: var(--font-display); font-size: 20px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
-.study h3 { font-family: var(--font-display); font-size: 15px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-soft); margin-top: 26px; margin-bottom: 10px; }
+.study h2 { font-family: var(--font-display); font-size: 20px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--line); scroll-margin-top: 16px; }
+.study h3 { font-family: var(--font-display); font-size: 15px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-soft); margin-top: 26px; margin-bottom: 10px; scroll-margin-top: 16px; }
 .study p { font-family: var(--font-body); font-size: 18px; line-height: 1.75; color: var(--text); }
 .study p + p { margin-top: 14px; }
 .study .lede { font-size: 19px; line-height: 1.7; }
 .study strong { color: var(--ink); font-weight: 700; }
 
+/* One-line subtitle under headings that say nothing out of context. */
+.dek { font-family: var(--font-ui) !important; font-size: 13px !important; font-style: italic; line-height: 1.5; color: var(--muted) !important; margin-top: -6px !important; margin-bottom: 14px; }
+h3 + .dek { margin-top: -4px !important; margin-bottom: 12px; }
+
 /* The single-line question that section 2 turns on. */
 .pivot { font-family: var(--font-display) !important; font-size: 24px !important; font-weight: 700; letter-spacing: 1px; color: var(--ink); text-align: center; margin-top: 22px !important; padding: 14px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 
-/* ---------- Section 4: deliberately compressed ----------
- * Section 4 must read as visibly smaller than the spine (5 + 6). Tighter
- * type, tighter leading, tighter rhythm. It is the ground the argument
- * stands on, not the argument.
+/* ---------- Section 5: four older readings, deliberately compressed ----------
+ * Compressed relative to the spine: tighter type, tighter leading. It is the
+ * ground the argument stands on, not the argument.
  */
-.compressed p { font-size: 16px; line-height: 1.62; color: var(--text2); }
-.compressed p + p { margin-top: 10px; }
+.compressed > p { font-size: 16px; line-height: 1.62; color: var(--text2); }
+.compressed > p + p { margin-top: 10px; }
 .compressed strong { color: var(--ink-soft); }
 
-/* ---------- Lens picker ---------- */
-.lenses { margin: 20px 0 22px; }
+/* Static cards, not tabs. Four readings held side by side so the hinge line
+ * below them ("all four would be satisfied by a tree behind a wall") can
+ * actually be tested by a reader looking at all four at once. */
+.lens-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0 22px; align-items: start; }
+.lens-card { padding: 18px 18px 16px; background: #fff; border: 1px solid var(--line); border-radius: 10px; }
+/* Name and attribution share one line so the source sentence transfers
+   verbatim, lowercase attributions and all. */
+.lens-name { font-family: var(--font-display); font-size: 15px !important; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink); margin: 0 0 10px !important; line-height: 1.4; scroll-margin-top: 16px; }
+.lens-attrib { display: block; font-family: var(--font-body); font-style: italic; font-size: 14px; font-weight: 400; letter-spacing: 0; text-transform: none; line-height: 1.45; color: var(--muted); margin-top: 3px; }
+.lens-summary { font-family: var(--font-body) !important; font-size: 15px !important; line-height: 1.6; color: var(--text) !important; padding-bottom: 14px; margin-bottom: 14px; border-bottom: 1px dotted var(--line); }
 
-/* Chips do nothing without JS, so they are not shown without JS. */
-.chips { display: none; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
-.has-js .chips { display: flex; }
-.chip { font-family: var(--font-ui); font-size: 13px; font-weight: 600; padding: 8px 18px; border: 1.5px solid var(--line); border-radius: 24px; cursor: pointer; background: #fff; color: var(--text2); transition: all .2s; }
-.chip:hover { border-color: var(--gold-light); color: var(--gold); }
-.chip.active { background: var(--gold); border-color: var(--gold); color: #fff; }
-.chip:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 2px; }
-
-.lens-panel { margin-bottom: 14px; }
-.has-js .lens-panel { margin-bottom: 0; }
-.lens-panel:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 4px; }
-.lens-name { font-family: var(--font-display) !important; font-size: 16px !important; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink) !important; text-align: center; }
-.lens-attrib { font-family: var(--font-body) !important; font-style: italic; font-size: 15px !important; color: var(--muted) !important; text-align: center; margin-top: 2px !important; margin-bottom: 14px; }
-
-/* Both columns are always rendered together and given identical weight.
- * "What it leaves open" is never collapsed, hidden, or de-emphasized —
- * the two grounds are matched in luminance and the borders in weight so
- * neither reads as the more solid box. */
-.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: stretch; }
-.col { padding: 18px 20px 20px; border-radius: 10px; border: 1px solid; }
+/* Both grounds are matched in luminance (0.847 / 0.849) and border weight,
+ * and both bodies carry identical type. Neither is the lighter one — that
+ * symmetry is the point of the section. */
+.col { padding: 14px 15px 15px; border-radius: 8px; border: 1px solid; }
 .col.acc { background: var(--acc-bg); border-color: var(--acc-line); }
-.col.open { background: var(--open-bg); border-color: var(--open-line); }
-.col-hdr { font-family: var(--font-ui); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--ink-soft); margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid; }
+.col.open { background: var(--open-bg); border-color: var(--open-line); margin-top: 10px; }
+.col-hdr { font-family: var(--font-ui); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: var(--ink-soft); margin-bottom: 9px; padding-bottom: 8px; border-bottom: 1px solid; }
 .col.acc .col-hdr { border-bottom-color: var(--acc-line); }
 .col.open .col-hdr { border-bottom-color: var(--open-line); }
-.col .col-body { font-family: var(--font-body); font-size: 16px !important; line-height: 1.65; color: var(--text) !important; }
+.col .col-body { font-family: var(--font-body); font-size: 15px !important; line-height: 1.6; color: var(--text) !important; }
 
-/* The hinge into section 5. Lives outside every tab state, always visible. */
+/* The hinge into the spine. Outside every component, always visible. */
 .hinge { font-family: var(--font-display) !important; font-size: 19px !important; font-weight: 700; line-height: 1.5; letter-spacing: .5px; color: var(--ink) !important; text-align: center; margin-top: 24px !important; padding: 18px 16px; background: var(--paper-2); border: 1px solid var(--line); border-radius: 10px; }
 
-/* ---------- Sections 5 + 6: the spine ----------
- * One argument in two halves. A single continuous rule runs down both
- * sections so they read as one unit, and the type is set larger than the
- * rest of the page. If a reader only skims, this shape is the argument.
+/* ---------- Sections 6 + 7: the spine ----------
+ * One argument in two halves. A single continuous rule runs down both so they
+ * read as one unit, and the type is set larger than the rest of the page.
  */
 .spine { border-left: 3px solid var(--ink-soft); padding-left: 26px; margin: 0 0 38px; }
 .spine .spine-half { margin-bottom: 0; }
@@ -136,18 +149,19 @@ header .verse { font-size: 14px; color: var(--muted); margin-top: 12px; font-fam
 .spine .study h3 { font-size: 16px; }
 .spine .study p { font-size: 19px; line-height: 1.78; }
 .spine .study .lede { font-size: 20px; }
+.spine .study .dek { font-size: 13px !important; }
 
 /* The blade. Copper placement 1 of 2. */
 .sword-rule { border: 0; height: 2px; background: var(--flame); width: 82px; margin: 20px 0; }
 
-/* ---------- Section 7: the drift panel ----------
- * Framed as a plain observation about the text. No shared styling with the
- * spine, no engineering vocabulary, no visual claim that it is evidence.
+/* ---------- Section 4: the drift panel ----------
+ * A plain observation about the text. No styling shared with the spine, no
+ * engineering vocabulary. Its position before the argument must not make it
+ * read as setup — it holds regardless of which reading you favor.
  */
 .drift { margin: 22px 0; padding: 22px 22px 20px; background: #fff; border: 1px solid var(--line); border-radius: 10px; }
 .drift-state { padding-bottom: 4px; }
 .drift-state + .drift-state { margin-top: 20px; padding-top: 20px; border-top: 1px dotted var(--line); }
-.has-js .drift-state + .drift-state { margin-top: 0; padding-top: 0; border-top: 0; }
 .drift-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
 .drift-name { font-family: var(--font-ui); font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-soft); }
 /* Chrome accent, not flame. The copper belongs to the changed words below,
@@ -162,21 +176,7 @@ header .verse { font-size: 14px; color: var(--muted); margin-top: 12px; font-fam
 
 .drift-persist { font-family: var(--font-ui) !important; font-size: 13px !important; font-weight: 600; letter-spacing: 1px; color: var(--text2) !important; text-align: center; margin-top: 20px !important; padding-top: 16px; border-top: 1px solid var(--line); }
 
-.drift-ctrls { display: none; justify-content: space-between; align-items: center; margin-top: 14px; gap: 12px; flex-wrap: wrap; }
-.has-js .drift-ctrls { display: flex; }
-.drift-btn { font-family: var(--font-ui); font-size: 13px; font-weight: 600; padding: 8px 18px; border: 1.5px solid var(--line); border-radius: 24px; cursor: pointer; background: #fff; color: var(--ink); transition: all .2s; }
-.drift-btn:hover:not(:disabled) { border-color: var(--gold-light); color: var(--gold); }
-.drift-btn:disabled { opacity: .4; cursor: not-allowed; }
-.drift-btn:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 2px; }
-.drift-dots { display: flex; gap: 10px; align-items: center; }
-.drift-dot { width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid var(--gold-light); background: #fff; padding: 0; cursor: pointer; transition: background .2s, transform .2s; }
-.drift-dot:hover { background: var(--gold-light); }
-.drift-dot.current { background: var(--gold); border-color: var(--gold); transform: scale(1.2); }
-.drift-dot:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
-
-/* ---------- Section 8: the limits ----------
- * Rendered in full, in sequence, above the Scripture index. Never collapsed.
- */
+/* ---------- Section 8: the limits ---------- */
 .limits { background: var(--paper-2); border: 1px solid var(--line); border-radius: 10px; padding: 24px 24px 26px; }
 .limits h2 { border-bottom-color: var(--gold-light); }
 .limits-close { font-style: italic; color: var(--ink) !important; margin-top: 18px !important; padding-top: 14px; border-top: 1px solid var(--line); }
@@ -185,30 +185,45 @@ header .verse { font-size: 14px; color: var(--muted); margin-top: 12px; font-fam
 .caution { margin-top: 20px !important; padding: 18px 20px; background: var(--acc-bg); border: 1px solid var(--acc-line); border-radius: 10px; font-size: 17px !important; line-height: 1.7; }
 
 /* ---------- Section 10: Scripture index ---------- */
+.scripture-index .idx-intro { font-family: var(--font-body); font-style: italic; font-size: 15px; color: var(--text2); margin-bottom: 6px; }
 .scripture-index .idx { list-style: none; padding: 0; margin-top: 6px; }
-.scripture-index .idx li { display: flex; gap: 12px; padding: 8px 0; border-bottom: 1px dotted var(--line); font-family: var(--font-body); font-size: 16px; line-height: 1.5; }
+.scripture-index .idx li { display: flex; gap: 12px; padding: 6px 0; border-bottom: 1px dotted var(--line); font-family: var(--font-body); font-size: 16px; line-height: 1.5; }
 .scripture-index .idx li:last-child { border-bottom: none; }
-.scripture-index .ref { font-family: var(--font-ui); font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); flex-shrink: 0; min-width: 150px; padding-top: 3px; }
-.scripture-index .gloss { color: var(--text); }
+.scripture-index .ref { display: inline-flex; align-items: center; min-height: 34px; font-family: var(--font-ui); font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); text-decoration: none; border-bottom: 1px dotted var(--gold-light); flex-shrink: 0; min-width: 150px; transition: color .2s, border-bottom-color .2s; }
+.scripture-index .ref:hover, .scripture-index .ref:focus-visible { color: var(--ink); border-bottom-color: var(--gold); }
+.scripture-index .ref:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 2px; }
+.scripture-index .gloss { color: var(--text); align-self: center; }
 
 footer { text-align: center; padding: 32px 20px; border-top: 1px solid var(--line); background: var(--paper-2); }
 footer p { font-family: var(--font-ui); font-size: 13px; color: var(--muted); line-height: 1.6; max-width: 760px; margin: 0 auto; }
 
 /* ---------- Mobile ----------
- * The Fellowship reads on phones. Columns stack rather than shrink, and the
- * gap between them is kept tight so "What it leaves open" arrives right after
- * "What it accounts for" — never far enough down to read as a footnote.
+ * The Fellowship reads on phones. Cards stack; inside a card the two columns
+ * are already stacked, and "leaves open" sits directly under "accounts for"
+ * so it can never read as a footnote.
  */
-@media (max-width: 620px) {
-  .cols { grid-template-columns: 1fr; gap: 10px; }
-  .col { padding: 16px 16px 18px; }
+@media (max-width: 680px) {
+  .lens-cards { grid-template-columns: 1fr; gap: 12px; }
 }
 
 @media (max-width: 560px) {
-  header { padding: 40px 20px 18px; }
-  .prose { padding: 32px 18px 44px; }
-  .stats-bar { gap: 14px 22px; }
-  .stat-num { font-size: 22px; }
+  /* Every pixel above the TOC pushes the limits section below the fold, so
+     the hero is trimmed hard on phones. */
+  header { padding: 26px 20px 14px; }
+  header .sub { margin-top: 6px; font-size: 17px; }
+  .share-row { margin-top: 12px; }
+  .prose { padding: 28px 18px 44px; }
+  .stats-bar { gap: 10px 20px; padding: 14px 20px; }
+  .stat-num { font-size: 20px; }
+  /* Compacted rather than collapsed. Collapsing would defeat the reason the
+     TOC exists — a reader landing cold must SEE that "What this reading does
+     not do" is coming. Tighter rows keep the whole hero near one screen while
+     leaving the disclosure visible on arrival. Rows stay 40px for tapping. */
+  .toc { margin-left: 18px; margin-right: 18px; padding: 14px 16px 12px; }
+  .toc-title { margin-bottom: 8px; }
+  .toc-list a { font-size: 15px; padding: 6px 2px; min-height: 40px; gap: 10px; }
+  .toc-back { margin-top: 8px; padding-top: 8px; }
+  .epigraph { padding: 0 18px; margin-top: 20px; font-size: 13px; }
   .spine { padding-left: 16px; border-left-width: 2px; }
   .spine .study p { font-size: 18px; }
   .spine .study h2 { font-size: 20px; }
@@ -217,32 +232,30 @@ footer p { font-family: var(--font-ui); font-size: 13px; color: var(--muted); li
   .drift { padding: 18px 16px 16px; }
   .drift-text { font-size: 18px !important; }
   .limits { padding: 20px 18px 22px; }
-  .scripture-index .idx li { flex-direction: column; gap: 2px; }
-  .scripture-index .ref { min-width: 0; }
-  .drift-ctrls { justify-content: center; }
-  .drift-dots { order: -1; flex-basis: 100%; justify-content: center; }
+  .scripture-index .idx li { flex-direction: column; gap: 0; }
+  .scripture-index .ref { min-width: 0; align-self: flex-start; }
 }
 
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
   .toast { transition: none; }
-  .drift-dot.current { transform: none; }
 }
 
 /* ---------- Print ----------
- * Every lens panel and every drift state prints, whatever the screen state
- * was. JS hides with the hidden attribute; print overrides it.
+ * Nothing on this page is ever hidden, so there is nothing to un-hide. Both
+ * components are static: the four readings are cards and all three drift
+ * states are stacked. Print only drops the chrome and flattens the colors.
  */
 @media print {
-  .share-row, .chips, .drift-ctrls, .crumbs, .foot-back, .toast { display: none !important; }
+  .share-row, .crumbs, .foot-back, .toast, .toc { display: none !important; }
   body { background: #fff; }
-  .stats-bar, .limits, .drift, .caution, .hinge, .col, footer { background: #fff !important; border-color: #ccc !important; }
-  .lens-panel[hidden], .drift-state[hidden] { display: block !important; }
-  .lens-panel { margin-bottom: 14px; }
-  .drift-state + .drift-state { margin-top: 20px !important; padding-top: 20px !important; border-top: 1px dotted #ccc !important; }
-  .study, .col, .lens-panel, .drift-state { break-inside: avoid; }
+  .stats-bar, .limits, .drift, .caution, .hinge, .col, .lens-card, footer { background: #fff !important; border-color: #ccc !important; }
+  .drift-state + .drift-state { border-top-color: #ccc !important; }
+  .lens-cards { grid-template-columns: 1fr 1fr; }
+  .study, .col, .lens-card, .drift-state { break-inside: avoid; }
   .spine { border-left-color: #999 !important; }
   .sword-rule { background: #333 !important; }
   .moved { background: #eee !important; box-shadow: inset 0 -2px 0 #333 !important; }
+  .scripture-index .ref { color: #000 !important; border-bottom: 0; }
 }

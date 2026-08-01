@@ -1,5 +1,88 @@
 # Changelog — LLL Library
 
+## Batch 8 — Tree Study Revision Pass (2026-08-01)
+
+Revision of the Batch 7 study after a second review. The study stays **one page at one URL** — a proposal to split it into four spoke pages plus a standalone index was rejected, on the grounds that moving the limits section to its own URL makes it *less* likely to be read, and the reader is a brother on a phone before dojo who wants one scroll, one link, one Print button, one Ctrl+F.
+
+The problem underneath that proposal was real, though: 3,565 words with no map on entry. The fix is navigation, not fragmentation.
+
+### Content source re-pulled
+
+Three upstream edits: Scripture index cut from 24 to 20 (Genesis 3:6, Joshua 24:15, Romans 7:7, and 1 Corinthians 10:13 were indexed but cited nowhere in the body); the Genesis 2:17 point in "What the text gives us" trimmed to a clause ending "More on this below," so "But a reason is given" lands as a turn rather than a repeat; and section 6 renamed **"The guard moves" → "After the crossing"**, since three of its five sub-sections are about the arrangement that follows rather than the guard's movement.
+
+### Navigation (Task 1)
+
+- **Table of contents** in the hero, below the stat bar and above the epigraph. Eight top-level sections plus a Scripture-index link set apart as back matter
+- **Reading time** in the stat bar: 18 min (3,565 words at 200 wpm)
+- **Deks** — one-line grey subtitles under the five headings that say nothing out of context
+- **Heading ids on all 23 headings** (9 h2, 14 h3), slugified. Was 4 of 20; the study is now fully deep-linkable and citable
+
+The TOC is **compacted on mobile rather than collapsed.** Collapsing would defeat the reason it exists — a reader landing cold must *see* that "What this reading does not do" is coming. Header and stat bar were trimmed on phones to buy the room: all eight entries now sit above the fold on a 375×820 screen (last item ends at 787px, was 838px).
+
+### Tabs became static cards (Task 2)
+
+Section 5's rhetorical move is **comparison** — "all four would be satisfied by a tree behind a wall" only works if the reader can hold four readings at once, and a tab strip is the one layout that makes that impossible. The four-tab picker is now four static cards, 2×2 on desktop and stacked on mobile, each carrying name and attribution, the one-line summary, then both columns.
+
+The prose block that restated all four beneath the tabs is deleted; its content is the summary line inside each card. The section no longer says everything twice.
+
+This removes a whole class of problems at once: no `hidden` attributes, prints correctly, Ctrl+F finds everything, translation tools work, no-JS is moot. `app.js` dropped from 122 lines to 71 — all tab, arrow-key, and roving-tabindex code is gone. Recorded as **D-014**.
+
+### Drift widget (Tasks 3, 5)
+
+- **Moved** to immediately after "What the text gives us," before "Four older readings." It is a textual observation and belongs with the textual material, where it primes the reader instead of sending them from Revelation back to Genesis 3 after the argument has closed
+- **Made static and stacked.** All three retellings now render at once. See below — this replaced the stepper entirely
+- The reported "initializes on state 3" defect did not reproduce. Verified on fresh cache-busted loads before and after the rewrite: state 1, Previous disabled, showing "Of every tree of the garden thou mayest freely eat." The likely cause of the report is a page someone had already stepped through. The concern underneath it — that the sequence was not discoverable from unlabelled dots — is resolved by stacking, which shows all three without any control at all
+
+### Section order
+
+| # | Section |
+|---|---|
+| 1 | Header, stat bar, TOC, epigraph |
+| 2 | The question |
+| 3 | What the text gives us |
+| 4 | How the command moved *(moved)* |
+| 5 | Four older readings |
+| 6 | A different question |
+| 7 | After the crossing |
+| 8 | What this reading does not do |
+| 9 | Holding it together |
+| 10 | Scripture index + sources |
+
+### Acceptance verification (full Batch 7 suite re-run)
+
+- [x] Prose vs re-pulled source: **zero unexplained differences.** The four reading lines now transfer verbatim — a Batch 7 capitalization slip ("An emphasis common in Jewish reading" for the source's lowercase "an") was caught and fixed by putting name and attribution on one line
+- [x] Scripture index: 20 entries, **20/20 linked** to the section where the passage is discussed
+- [x] All five limits render in full, in sequence, above the index
+- [x] Proportions: spine 48.0% of the study, **4.00× section 5** (was 6.37× — section 5 grew from 7.8% to 12.0% because cards are taller than a tab strip). Still visibly dominant, still 19px against section 5's 16px
+- [x] Copper still at exactly two placements
+- [x] Print verified by forcing the `@media print` block through the live cascade via CSSOM: **all three drift states resolve to `display: block`**, cards print 2-up, TOC and controls drop out
+- [x] No-JS: 3/3 drift states, 4/4 cards with both columns, TOC and links functional
+- [x] 375px: no horizontal overflow, cards stack, both columns 286px at 15px, controls 44px
+- [x] Console clean — only MetaMask extension messages, none from the page
+- [x] Zero dependencies, zero API calls, zero external references
+- [x] Tag balance, id uniqueness, 16/16 in-page anchors resolve, no tab remnants
+- [x] **Select-all-copy captures all three drift states** — after the widget was made static. See below
+- [ ] Editorial Verification — **not self-certified.** Flagged for Hashem
+
+### The drift widget was made static too
+
+Task 4 asked for select-all to be verified rather than assumed. It failed: selecting the whole page captured the "As given" state and nothing else, because `hidden` content is not selectable and Ctrl+F will not find it either. An earlier probe appeared to pass, but that was a false result — the string tested also appears in the Scripture index gloss. Re-testing with strings unique to each state showed states 2 and 3 both lost.
+
+Ruled: stack them. All three retellings now render at once, the same call made for the four readings in Task 2 and for the same reason.
+
+**What this removed, beyond the defect:**
+
+- The `has-js` class and the inline `<script>` in `<head>` — nothing needs progressive enhancement now
+- The Previous/Next and named step buttons added earlier in this batch
+- The print stylesheet's `[hidden]` override — there is nothing left to un-hide
+- `app.js` is now **41 lines**, down from 122 at the start of the batch. It contains the share row and nothing else. If it fails to load, three buttons stop working and the study is otherwise untouched
+
+**It also reads better.** The section's observation is that the command was expanded and then inverted. Stacked, the addition and the negation sit on screen together, which is the comparison the prose is making. Stepping hid half of it at any moment.
+
+Recorded as **D-014**, which now carries no live exceptions.
+
+---
+
 ## Batch 7 — "Why Was the Tree Reachable?" Collection (2026-08-01)
 
 Third collection. A Genesis 2–3 study asking not why the tree was forbidden but why it was placed within reach. Four traditional readings are presented as the ground the argument stands on; the study's own reading is advanced as the spine of the page and shipped with a full limits section.
