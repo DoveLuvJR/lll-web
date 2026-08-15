@@ -31,6 +31,8 @@ LLL-Web/
 |---|---|---|
 | Table of Nations | Live | `/collections/table-of-nations/` |
 | What Are the Stars? | Live | `/collections/what-are-the-stars/` |
+| Why Was the Tree Reachable? | Live | `/collections/why-was-the-tree-reachable/` |
+| The Spiral and the Line | Live | `/collections/the-spiral-and-the-line/` |
 | Cellular Engineering | Planned | `/collections/cellular-engineering/` |
 | Drenchy Breakdown | Planned | `/collections/drenchy-breakdown/` |
 

@@ -1,5 +1,41 @@
 # Changelog — LLL Library
 
+## Batch 11 — "The Spiral and the Line" Collection (2026-08-15)
+
+Fourth collection. A study of biblical **recapitulation** — the Hebrew habit of retelling the same stretch of history more than once ("the spiral") rather than only marching straight through it ("the line"). It runs from Pharaoh's double dream through Daniel, Ezekiel, and the Olivet Discourse to the seals/trumpets/bowls of Revelation. The page is **spiral-featured but even-handed**: the telescopic (line) reading is presented as a faithful reading throughout, never as an error.
+
+### New collection
+
+- `collections/the-spiral-and-the-line/` — `index.html` + `styles.css` + `app.js`, matching the D-002 folder convention. Authored first as a self-contained page, then split into the three-file shape.
+- Imports `../../shared/styles.css` for fonts + reset; all palette and components stay local (D-003). Own accent tokens layered over the shared gold: `--spiral #1a6fa0` (parallel / recapitulation), `--line #a03a2a` (telescopic / consecutive), `--stone #1a7a4a` (the finish line).
+- Breadcrumb + "‹ Back to all collections" per the Batch 6 nav convention; both hidden in print.
+- Fourth card added to `collections/index.html` (`Daniel 2–Revelation 16`). That card is the only edit outside the new folder besides docs.
+
+### Six movements
+
+I The Hook (Pharaoh's two dreams as a *signature of certainty*, Gen 41:32) · II The Toolbox (ten parallelism devices) · III The Master Pattern (recapitulation; a spiral-vs-line SVG pair) · IV The Blueprints (Daniel 2/7, Ezekiel's envelope, the Olivet Discourse) · V The Great Debate (Revelation's three sevens) · VI The Twist (how chapter titles, *kai* vs. *meta tauta*, and cross-reference margins quietly argue for one reading before the reader has decided).
+
+### Two interactives — every state rendered in HTML; JS only toggles classes
+
+- **Daniel's Double Vision** — five flip cards (four empires + a centered "Finish Line"). One toggle flips the whole set from the Daniel 2 statue (human view) to the Daniel 7 beasts (divine view); any single card also flips on tap.
+- **The Timeline Flipper** — one set of judgments shown two ways: a **Parallel** table (the same target struck across seals/trumpets/bowls; tap a row for why they line up) and a **Telescopic** nest (each series' 7th judgment opening into the next).
+
+### Verified
+
+- [x] Byte-fidelity: all three files written to the repo, re-read, and SHA-256 matched to source exactly (`index` cdf770a0…, `styles` df5b38fa…, `app` 6b7975bd…)
+- [x] `app.js` passes `node --check`; zero dependencies, zero API calls, zero external `src`/`href`
+- [x] Structure/paths: folder + three files per D-002; links `../../shared/styles.css` then `./styles.css`; `<script src="./app.js">`; breadcrumb + foot-back present
+- [x] Discoverability: card added to `/collections/`; README collections table updated (and the missing Tree-study row back-filled)
+- [x] Print stylesheet hides nav, share row, breadcrumb, back-link, and telescope controls, and forces the toolbox/telescope open for paper — **verified in the CSS, not yet by eye**
+- [ ] Browser render + mobile (375px) + print preview **by eye** — Hashem, on first load after deploy
+- [ ] Editorial / theological verification — **not self-certified.** Flagged for Hashem
+
+### Deploy
+
+Push to `main`; Vercel auto-deploys to `/collections/the-spiral-and-the-line/`.
+
+---
+
 ## Batch 10 — Tree Study, Final Pass (2026-08-01)
 
 One defect, three placements, a source correction. **After this batch the study's shape is final.** Splitting it across multiple URLs is closed permanently and is not to be revisited.

@@ -1,0 +1,234 @@
+/* The Spiral and the Line — collection-specific styles
+ * Shared design tokens (fonts, reset) come from /shared/styles.css.
+ */
+
+:root{
+  --gold:#8B6914;--gold-light:#C9A84C;--gold-bg:#FAF6ED;
+  --spiral:#1a6fa0;--spiral-bg:#e8f4fc;   /* parallel / recapitulation */
+  --line:#a03a2a;--line-bg:#fdf0ee;        /* telescopic / consecutive */
+  --stone:#1a7a4a;--stone-bg:#edf8f2;      /* the finish line / kingdom */
+  --text:#1a1a1a;--text2:#5a5a5a;--muted:#888;--bg:#fff;--rule:#eee;
+}
+body{font-family:'EB Garamond',serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6}
+
+/* ---------- Header ---------- */
+header{text-align:center;padding:56px 24px 22px;border-bottom:1px solid var(--rule);background:var(--gold-bg)}
+header h1{font-family:'Cinzel',serif;font-size:clamp(26px,5.4vw,50px);font-weight:900;color:var(--gold);letter-spacing:3px;text-transform:uppercase;line-height:1.1}
+header .sub{font-size:19px;color:var(--text2);margin-top:10px;font-style:italic}
+header .verse{font-size:14px;color:var(--muted);margin-top:14px;font-family:'Inter',sans-serif;max-width:640px;margin-left:auto;margin-right:auto;line-height:1.65}
+.share-row{display:flex;justify-content:center;gap:10px;margin-top:18px;flex-wrap:wrap}
+.share-btn{font-family:'Inter',sans-serif;font-size:12px;font-weight:600;padding:7px 16px;border:1px solid #ddd;border-radius:20px;cursor:pointer;background:#fff;color:var(--text2);transition:all .2s;display:flex;align-items:center;gap:6px}
+.share-btn:hover{background:var(--gold-bg);border-color:var(--gold-light);color:var(--gold)}
+.share-btn svg{width:14px;height:14px}
+
+/* ---------- Movement nav ---------- */
+.nav{display:flex;justify-content:center;gap:6px;padding:14px 16px;flex-wrap:wrap;position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--rule)}
+.nav a{font-family:'Inter',sans-serif;font-size:12px;font-weight:600;padding:7px 14px;border:1px solid #e2e2e2;border-radius:20px;color:var(--text2);text-decoration:none;transition:all .2s;white-space:nowrap}
+.nav a:hover{border-color:var(--gold-light);color:var(--gold)}
+.nav a.active{background:var(--gold);border-color:var(--gold);color:#fff}
+
+/* ---------- Layout ---------- */
+.wrap{max-width:900px;margin:0 auto;padding:8px 22px 90px}
+.thesis{font-size:19px;color:var(--text2);text-align:center;max-width:720px;margin:34px auto 8px;line-height:1.7}
+.thesis b{color:var(--gold);font-weight:700}
+
+.movement{padding:44px 0 8px;border-top:1px solid var(--rule);margin-top:20px}
+.movement:first-of-type{border-top:none}
+.m-head{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+.m-num{font-family:'Cinzel',serif;font-size:20px;font-weight:900;color:#fff;background:var(--gold);width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;letter-spacing:1px}
+.m-head h2{font-family:'Cinzel',serif;font-size:clamp(20px,3.4vw,28px);font-weight:700;color:var(--gold);letter-spacing:1px;line-height:1.15}
+.m-head .m-sub{font-family:'Inter',sans-serif;font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:2px;margin-top:3px}
+.m-body p{font-size:17.5px;margin:0 0 16px;color:var(--text)}
+.m-body p .ref{font-family:'Inter',sans-serif;font-size:12.5px;font-style:normal;color:var(--gold);font-weight:600;white-space:nowrap}
+
+/* Pull quote */
+.pq{border-left:4px solid var(--gold-light);background:var(--gold-bg);padding:18px 22px;margin:22px 0;font-size:19px;font-style:italic;color:#3a3018;border-radius:0 8px 8px 0}
+.pq .attr{display:block;font-family:'Inter',sans-serif;font-size:12px;font-style:normal;color:var(--muted);margin-top:8px;letter-spacing:1px;text-transform:uppercase}
+
+/* Key idea box */
+.keybox{border:1px solid var(--gold-light);border-radius:10px;background:#fffdf8;padding:18px 20px;margin:22px 0}
+.keybox .kl{font-family:'Inter',sans-serif;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--gold);margin-bottom:6px}
+.keybox p{font-size:17px;margin:0;color:var(--text)}
+
+/* ---------- Toolbox cards (Movement II) ---------- */
+.tools{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px;margin:8px 0 4px}
+.tool{border:1px solid #e8e8e8;border-left:4px solid var(--spiral);border-radius:9px;background:#fff;cursor:pointer;transition:all .2s;overflow:hidden}
+.tool:hover{box-shadow:0 6px 18px rgba(0,0,0,.07)}
+.tool-sum{padding:14px 16px;display:flex;align-items:baseline;gap:8px}
+.tool-name{font-family:'Cinzel',serif;font-size:16px;font-weight:700;color:var(--spiral)}
+.tool-arr{margin-left:auto;color:#ccc;transition:transform .25s;font-size:15px}
+.tool.open .tool-arr{transform:rotate(180deg)}
+.tool-tag{font-family:'Inter',sans-serif;font-size:11px;color:var(--muted);font-weight:500}
+.tool-det{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.tool.open .tool-det{max-height:320px}
+.tool-in{padding:0 16px 15px;font-size:15.5px;color:var(--text2)}
+.tool-in .ex{display:block;margin-top:8px;padding:9px 12px;background:var(--spiral-bg);border-radius:6px;font-style:italic;color:#204a63;font-size:15px}
+
+/* ---------- Spiral vs Line SVG ---------- */
+.svgrow{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0 6px}
+.svgcard{border:1px solid #eee;border-radius:10px;padding:18px;text-align:center;background:#fff}
+.svgcard h4{font-family:'Cinzel',serif;font-size:15px;letter-spacing:1px;margin-bottom:4px}
+.svgcard.line h4{color:var(--line)}
+.svgcard.spiral h4{color:var(--spiral)}
+.svgcard p{font-family:'Inter',sans-serif;font-size:12.5px;color:var(--muted);margin:6px 0 0}
+.svgcard svg{width:100%;height:120px}
+
+/* ---------- Daniel Double Vision widget (Movement IV) ---------- */
+.widget{border:1px solid #e6e6e6;border-radius:14px;padding:22px 20px 24px;margin:26px 0;background:linear-gradient(#fff,#fdfcf8)}
+.widget-top{text-align:center;margin-bottom:6px}
+.widget-kicker{font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold)}
+.widget-title{font-family:'Cinzel',serif;font-size:22px;font-weight:700;color:var(--text);margin-top:2px}
+.widget-hint{font-family:'Inter',sans-serif;font-size:13px;color:var(--muted);margin-top:6px}
+
+.toggle{display:inline-flex;border:2px solid var(--gold-light);border-radius:26px;overflow:hidden;margin:14px auto 4px;background:#fff}
+.toggle button{font-family:'Inter',sans-serif;font-size:12.5px;font-weight:600;padding:9px 16px;border:none;background:#fff;color:var(--text2);cursor:pointer;transition:all .2s}
+.toggle button.on{color:#fff}
+#danStatueBtn.on{background:var(--gold);}
+#danBeastBtn.on{background:var(--line);}
+.tg-center{text-align:center}
+
+.dcards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}
+.dcard{perspective:1100px;height:214px;cursor:pointer}
+.dcard.finish{grid-column:1 / -1;width:220px;justify-self:center}
+.dinner{position:relative;width:100%;height:100%;transition:transform .7s;transform-style:preserve-3d}
+.dcard.flipped .dinner{transform:rotateY(180deg)}
+.dface{position:absolute;inset:0;backface-visibility:hidden;border-radius:11px;padding:14px 12px;display:flex;flex-direction:column;align-items:center;text-align:center;overflow:hidden;border:1px solid #e2e2e2}
+.dface .emp{font-family:'Inter',sans-serif;font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#fff;padding:3px 10px;border-radius:10px;margin-bottom:8px}
+.dface .glyph{font-size:34px;line-height:1;margin:6px 0 8px}
+.dface .lead{font-family:'Cinzel',serif;font-size:14.5px;font-weight:700;line-height:1.25}
+.dface .desc{font-size:13.5px;color:var(--text2);margin-top:6px;line-height:1.4}
+.dface .sc{font-family:'Inter',sans-serif;font-size:10.5px;color:var(--muted);margin-top:auto;padding-top:6px}
+.dfront{background:#fffef9}
+.dfront .emp{background:var(--gold)}
+.dfront .lead{color:var(--gold)}
+.dback{background:#fff8f6;transform:rotateY(180deg)}
+.dback .emp{background:var(--line)}
+.dback .lead{color:var(--line)}
+.dcard.finish .dfront{background:var(--stone-bg);border-color:#bfe3cf}
+.dcard.finish .dfront .emp{background:var(--stone)}
+.dcard.finish .dfront .lead{color:var(--stone)}
+.dcard.finish .dback{background:var(--stone-bg);border-color:#bfe3cf}
+.dcard.finish .dback .emp{background:var(--stone)}
+.dcard.finish .dback .lead{color:var(--stone)}
+.widget-foot{font-family:'Inter',sans-serif;font-size:12.5px;color:var(--muted);text-align:center;margin-top:16px;line-height:1.6}
+
+/* ---------- Timeline Flipper widget (Movement V) ---------- */
+#tlFlipBtn .on{}
+#tlParaBtn.on{background:var(--spiral)}
+#tlTeleBtn.on{background:var(--line)}
+.toggle.tl{border-color:#d8d8d8}
+.tl-stage{margin-top:18px}
+.tl-view{display:none}
+.tl-view.show{display:block;animation:fade .4s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* Parallel table */
+table.tlp{width:100%;border-collapse:collapse;font-size:14px}
+table.tlp th{font-family:'Inter',sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:1px;padding:10px 8px;color:#fff;text-align:left}
+table.tlp th.tgt{background:#6b6b6b}
+table.tlp th.se{background:var(--spiral)}
+table.tlp th.tr{background:#2a7fae}
+table.tlp th.bo{background:#166087}
+table.tlp td{padding:10px 8px;border-bottom:1px solid #eee;vertical-align:top;line-height:1.4}
+table.tlp td.tgt{font-family:'Inter',sans-serif;font-size:12px;font-weight:600;color:var(--text2);background:#fafafa}
+.tl-row{cursor:pointer;transition:background .15s}
+.tl-row:hover td{background:var(--spiral-bg)}
+.tl-row:hover td.tgt{background:#dcecf6}
+.tl-row.fin td{background:var(--stone-bg)}
+.tl-row.fin td.tgt{background:#d7efe1;color:var(--stone)}
+.tl-row.fin:hover td{background:#d7efe1}
+.tl-note{display:none}
+.tl-note.open{display:table-row}
+.tl-note td{background:#fbfaf5;font-size:14.5px;color:var(--text2);border-bottom:2px solid var(--gold-light);padding:12px 14px}
+.tl-note .nl{font-family:'Inter',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:4px}
+.tl-clue{font-family:'Inter',sans-serif;font-size:12.5px;color:var(--muted);margin-top:10px;text-align:center}
+
+/* Escalation bar */
+.esc{display:flex;gap:8px;margin-top:16px}
+.esc div{flex:1;text-align:center;padding:10px 6px;border-radius:8px;font-family:'Inter',sans-serif}
+.esc .lbl{font-size:11px;font-weight:600;letter-spacing:.5px}
+.esc .amt{font-family:'Cinzel',serif;font-size:22px;font-weight:900;margin-top:2px}
+.esc .e1{background:var(--spiral-bg);color:var(--spiral)}
+.esc .e2{background:#dff0d8;color:#3a7d32}
+.esc .e3{background:var(--line-bg);color:var(--line)}
+
+/* Telescopic nest */
+.tele{margin-top:6px}
+.cycle{border:2px solid var(--line);border-radius:12px;padding:14px 14px 16px;background:#fff;margin-bottom:4px}
+.cycle .ch{font-family:'Cinzel',serif;font-size:16px;font-weight:700;color:var(--line);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.cycle .ch .cnt{font-family:'Inter',sans-serif;font-size:10.5px;font-weight:600;color:#fff;background:var(--line);padding:2px 8px;border-radius:10px;letter-spacing:1px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-family:'Inter',sans-serif;font-size:12px;padding:7px 10px;border:1px solid #e4d5cf;border-radius:8px;background:#fdf7f5;color:#5a4038;line-height:1.3;flex:1 1 120px;min-width:110px}
+.chip b{display:block;font-size:10px;color:var(--line);letter-spacing:.5px}
+.door{cursor:pointer;background:var(--line);color:#fff;border-color:var(--line);font-weight:600;display:flex;align-items:center;justify-content:space-between;transition:filter .2s}
+.door:hover{filter:brightness(1.1)}
+.door b{color:#ffe;}
+.door .darr{font-size:15px;margin-left:8px;transition:transform .3s}
+.nest{margin-top:12px;margin-left:14px;border-left:3px dashed var(--line);padding-left:14px;display:none}
+.nest.open{display:block;animation:fade .45s ease}
+.opens-into{font-family:'Inter',sans-serif;font-size:11.5px;font-style:italic;color:var(--line);margin:2px 0 6px 2px}
+.tele-end{text-align:center;font-family:'Cinzel',serif;font-size:16px;color:var(--stone);font-weight:700;padding:12px;background:var(--stone-bg);border-radius:8px;margin-top:12px}
+.tele-controls{text-align:center;margin-bottom:12px}
+.mini-btn{font-family:'Inter',sans-serif;font-size:12px;font-weight:600;padding:6px 14px;border:1px solid #ddd;border-radius:16px;background:#fff;color:var(--text2);cursor:pointer}
+.mini-btn:hover{border-color:var(--line);color:var(--line)}
+
+/* ---------- Comparison table ---------- */
+.cmp{width:100%;border-collapse:collapse;margin:24px 0 8px;font-size:15px}
+.cmp th{font-family:'Cinzel',serif;font-size:14px;padding:12px 12px;text-align:left;letter-spacing:.5px}
+.cmp th.f{background:#f4f4f4;color:var(--text2);font-family:'Inter',sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:1px}
+.cmp th.p{background:var(--spiral-bg);color:var(--spiral)}
+.cmp th.c{background:var(--line-bg);color:var(--line)}
+.cmp td{padding:11px 12px;border-bottom:1px solid #eee;vertical-align:top;line-height:1.4}
+.cmp td.f{font-family:'Inter',sans-serif;font-size:12px;font-weight:600;color:var(--text2);background:#fafafa}
+.cmp td.p{background:#f5fafd}
+.cmp td.c{background:#fdf6f4}
+
+/* Formatting-nudge cards (Movement VI) */
+.nudge{border:1px solid #eee;border-radius:10px;padding:16px 18px;margin:12px 0;background:#fff}
+.nudge h4{font-family:'Cinzel',serif;font-size:16px;color:var(--gold);margin-bottom:6px}
+.nudge p{font-size:16px;color:var(--text2);margin:0}
+.nudge .split{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.nudge .split div{padding:9px 12px;border-radius:7px;font-size:13.5px;font-family:'Inter',sans-serif}
+.nudge .split .pv{background:var(--spiral-bg);color:#204a63}
+.nudge .split .cv{background:var(--line-bg);color:#6e2a1f}
+.nudge .split b{display:block;font-size:10.5px;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px}
+
+/* Closer */
+.closer{text-align:center;background:var(--gold-bg);border-radius:12px;padding:28px 24px;margin:30px 0 0}
+.closer p{font-size:19px;font-style:italic;color:#3a3018;max-width:640px;margin:0 auto}
+
+footer{text-align:center;padding:34px 20px;border-top:1px solid var(--rule);background:#fafafa;margin-top:40px}
+footer p{font-family:'Inter',sans-serif;font-size:13px;color:var(--muted);line-height:1.7}
+
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(80px);background:#1a1a1a;color:#fff;padding:12px 24px;border-radius:8px;font-family:'Inter',sans-serif;font-size:14px;opacity:0;transition:all .3s;z-index:999;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@media(max-width:720px){.dcards{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:440px){.dcards{grid-template-columns:1fr}.dcard.finish{width:auto;justify-self:stretch}}
+@media(max-width:640px){
+  .svgrow{grid-template-columns:1fr}
+  .nudge .split{grid-template-columns:1fr}
+  .m-body p{font-size:16.5px}
+  table.tlp{font-size:12.5px}
+  table.tlp td,table.tlp th{padding:8px 6px}
+}
+@media print{
+  .nav,.share-row,.tele-controls,.mini-btn{display:none!important}
+  .tool-det{max-height:none!important}
+  .tl-view{display:block!important}
+  .nest{display:block!important}
+  .movement{break-inside:avoid}
+}
+
+/* breadcrumb + back-link (site convention, matches sibling studies) */
+.crumbs{background:var(--bg);border-bottom:1px solid var(--rule);padding:10px 20px}
+.crumbs ol{list-style:none;margin:0 auto;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;max-width:900px;font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:.5px}
+.crumbs li{display:inline-flex;align-items:center;min-height:32px}
+.crumbs li + li::before{content:"›";color:var(--muted);margin-right:8px;font-weight:400}
+.crumbs a{color:var(--gold);text-decoration:none;padding:6px 2px;transition:color .2s}
+.crumbs a:hover,.crumbs a:focus-visible{color:var(--gold-light)}
+.crumbs [aria-current="page"]{color:var(--text2)}
+.foot-back{text-align:center;padding:18px 20px 8px;background:#fafafa;border-top:1px solid var(--rule)}
+.foot-back a{font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--gold);text-decoration:none;padding:6px 10px;transition:color .2s}
+.foot-back a:hover,.foot-back a:focus-visible{color:var(--gold-light)}
+@media print{.crumbs,.foot-back{display:none!important}}
