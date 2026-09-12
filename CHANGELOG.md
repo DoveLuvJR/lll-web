@@ -1,5 +1,34 @@
 # Changelog — LLL Library
 
+## Batch 13 — Gate Study: Widget Layout Pass (2026-09-12)
+
+Both interactives on `whose-name-is-on-the-gate` were correct in structure and wrong in proportion. Reported after first render: the widgets were unbalanced and would not fit on screen without scrolling, which **cost them their function** — the Inscription Stone exists so a reader can see one element highlighted across six inscriptions at once, and a pattern that needs scrolling is not a pattern.
+
+### The Inscription Stone — two column → three
+
+- Grid is now `repeat(3, 1fr)`, so all six slabs land in two rows instead of three-plus-a-stranded-cell. The full-width `grid-column: 1 / -1` on the Revelation slab is **removed**: all six are now the same size, which is the honest presentation — the point is that six inscriptions share one grammar and one breaks it, not that one is bigger.
+- Slabs are `display:flex; flex-direction:column` with `margin-top:auto` on the note, so the provenance lines sit on a common baseline regardless of how long the inscription above them runs.
+- Text trimmed throughout — the Theodotus inscription (the tallest by far) lost its repeated office titles and the long "reading of the Law and teaching of the commandments" clause. The "rendered from published translations" caveat moved out of the Gudea slab into the widget footer, where it covers all six at once instead of padding one.
+- Type down from 15.5px to 14.5px, padding tightened.
+- Breakpoints: 3 columns to 860px, 2 columns to 560px, 1 below.
+
+### The Donor Wall — aligned bands via subgrid
+
+The original used `margin-top: auto` on the foundations band to push it to the bottom of each wall. The two columns carry very different content volumes, so that never aligned anything — it just opened a large hole in the middle of Herod's column.
+
+- `.wall-pair` now declares four explicit rows; each `.wall` spans all four with `grid-template-rows: subgrid`. **Gates align with gates and foundations with foundations**, which is the comparison the section is making. Same technique as the Batch 9 card alignment.
+- `@supports not (grid-template-rows: subgrid)` falls back to the previous flex column — the walls still render, they simply lose cross-wall alignment. No hole either way, because `margin-top: auto` is gone.
+- Gate and foundation tiles now 4-across instead of 3, cutting a row off each grid; 3-across below 640px.
+- Both band notes on the New Jerusalem side trimmed to one line; Herod's stone descriptions shortened.
+- Mobile and print both reset `grid-row` and drop subgrid explicitly.
+
+### Not verified
+
+- [ ] Whether either widget now fits a viewport without scrolling — this is a measurement, not a judgment, and is being checked in a browser session next
+- [ ] Mobile (375px) and print preview by eye
+
+---
+
 ## Batch 12 — "Whose Name Is On the Gate?" Collection (2026-09-12)
 
 Fifth collection. A study of **benefaction** — the ancient practice of cutting a donor's name into sacred architecture — and what it means that Jesus forbade the Twelve the benefactor's title and then gave them names on the foundations of the New Jerusalem. It runs from Sumerian foundation cones through Herod's donor-funded Temple to Revelation 21, and lands on Daniel 2's stone cut without hands.
