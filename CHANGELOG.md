@@ -1,5 +1,54 @@
 # Changelog — LLL Library
 
+## Batch 14 — Gate Study: Inscription Stone Rebuilt as Rows (2026-09-12)
+
+Acting on a browser audit of the live page (graded C). The audit confirmed the Batch 13 **alignment** work landed perfectly — subgrid supported, gates-band delta 0px, foundations-band delta 0px, slab heights matched to the pixel per row — and confirmed the **fit** work failed: Inscription Stone 1059px against 836px usable at 1440×900, and 323px over at 1280×800. Both widgets measured identically at both widths, because the content column is capped at 900px. A larger monitor was never going to help.
+
+### The Inscription Stone — card grid → six full-width rows
+
+Trimming copy could not close a 223–323px gap; the shape was wrong. A three-across grid of six cards stretches every cell to the tallest in its row — the audit measured 121px of empty box in slab 4 and 96px in slab 6, with rows costing 343px and 413px.
+
+- Each inscription is now **one full-width row**: a 200px identity rail (place · date, then the artifact name) beside the inscription text. Rows cost roughly 90px each instead of ~380px per row of three.
+- The per-slab provenance note is now an **inline continuation of the inscription** rather than a separate bordered block — same words, no divider, no extra vertical box.
+- Widget chrome tightened: padding 22/20/24 → 18/18/20, control row and hint margins reduced, footer sentence cut.
+- The `.slab-hd` / `.slab-name` pair became `.slab-id` > `.slab-meta` + `.slab-name`.
+- Mobile: the rail stacks above the text below 560px.
+
+The highlight mechanism is untouched and still tints spans without hiding anything. `app.js` unchanged — nothing about this was a scripting problem.
+
+### The Donor Wall — void filled, height accepted
+
+**Ruled not to chase the fold.** The Wall's comparison runs horizontally — both columns are on screen together at any scroll position — so its total height is cosmetic, not functional. Forcing it under 836px would have meant shrinking tiles and gutting the band notes to buy a property the component does not need. See **D-017**.
+
+The 157px void under Herod's single foundation card was a real defect either way, and is fixed by stretching the dashed "Unnamed ashlars" card to fill its band. An empty dashed course now reads as the finding — no names were cut here — instead of as an accidental gap.
+
+### D-013 amended — the page is clean, the deploy is not
+
+The audit found **five requests to `vercel.live`**, a third-party iframe, and two polling fetches on a page whose source contains none of them. That is the Vercel Toolbar, injected at deploy time — the floating button bottom-right.
+
+D-013 as written promised zero network calls and could not deliver that, because the platform adds its own. Amended to cover **what we author**, plus a standing operational requirement: disable the Vercel Toolbar for Production, and check the network tab on a **live deploy**, not just grep the repo.
+
+**Action outside the repo, still open:** disable the Toolbar in the Vercel project settings.
+
+### D-017 added
+
+If a component's argument is simultaneity, its height is a requirement and gets measured at 1280×800. If the comparison runs horizontally, it does not. Also records the two traps this batch found: a width-capped column hides the problem on any monitor size, and trimming words never closes a 200px gap.
+
+### Carried clean from the audit (no action needed)
+
+- Slabs 1–5 report HAS gift, slab 6 reports NO gift — verified in the DOM and by eye. The argument survives.
+- Every button behaviour correct: toggle-off, Clear, `aria-pressed`, distinct tints.
+- Mobile: no horizontal overflow; walls stack without interleaving.
+- Print: tints correctly stripped, no slab or wall split across a page break.
+
+### Not verified
+
+- [ ] Re-measure both widgets at 1440×900 and 1280×800 — regression run against this batch
+- [ ] Confirm the Herod foundations card fills its band with no gap remaining
+- [ ] Confirm `vercel.live` requests are gone once the Toolbar is disabled
+
+---
+
 ## Batch 13 — Gate Study: Widget Layout Pass (2026-09-12)
 
 Both interactives on `whose-name-is-on-the-gate` were correct in structure and wrong in proportion. Reported after first render: the widgets were unbalanced and would not fit on screen without scrolling, which **cost them their function** — the Inscription Stone exists so a reader can see one element highlighted across six inscriptions at once, and a pattern that needs scrolling is not a pattern.

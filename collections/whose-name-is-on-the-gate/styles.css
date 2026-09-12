@@ -60,33 +60,40 @@ header .verse{font-size:14px;color:var(--muted);margin-top:14px;font-family:'Int
 .keybox p{font-size:17px;margin:0;color:var(--text)}
 
 /* ---------- Widget shell ---------- */
-.widget{border:1px solid #e6e6e6;border-radius:14px;padding:22px 20px 24px;margin:26px 0;background:linear-gradient(#fff,#fdfcf8)}
+.widget{border:1px solid #e6e6e6;border-radius:14px;padding:18px 18px 20px;margin:26px 0;background:linear-gradient(#fff,#fdfcf8)}
 .widget-top{text-align:center;margin-bottom:6px}
 .widget-kicker{font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold)}
 .widget-title{font-family:'Cinzel',serif;font-size:22px;font-weight:700;color:var(--text);margin-top:2px}
-.widget-hint{font-family:'Inter',sans-serif;font-size:13px;color:var(--muted);margin-top:6px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.55}
-.widget-foot{font-family:'Inter',sans-serif;font-size:12.5px;color:var(--muted);text-align:center;margin-top:16px;line-height:1.6;max-width:640px;margin-left:auto;margin-right:auto}
+.widget-hint{font-family:'Inter',sans-serif;font-size:13px;color:var(--muted);margin-top:5px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.5}
+.widget-foot{font-family:'Inter',sans-serif;font-size:12.5px;color:var(--muted);text-align:center;margin-top:14px;line-height:1.55;max-width:640px;margin-left:auto;margin-right:auto}
 
 /* ---------- WIDGET 1 · The Inscription Stone ---------- */
 /* Controls are dead without JS, so they are hidden until has-js (D-012). */
 .hl-ctrls{display:none}
-.has-js .hl-ctrls{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:16px 0 4px}
-.hl-btn{font-family:'Inter',sans-serif;font-size:12px;font-weight:600;padding:8px 15px;border:1.5px solid #e0dcd2;border-radius:20px;background:#fff;color:var(--text2);cursor:pointer;transition:all .18s}
+.has-js .hl-ctrls{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;margin:13px 0 2px}
+.hl-btn{font-family:'Inter',sans-serif;font-size:12px;font-weight:600;padding:7px 14px;border:1.5px solid #e0dcd2;border-radius:20px;background:#fff;color:var(--text2);cursor:pointer;transition:all .18s}
 .hl-btn:hover{border-color:var(--gold-light)}
 .hl-btn[aria-pressed="true"]{color:#fff}
 .b-who[aria-pressed="true"]{background:var(--bronze);border-color:var(--bronze)}
 .b-what[aria-pressed="true"]{background:var(--jasper);border-color:var(--jasper)}
 .b-why[aria-pressed="true"]{background:var(--gold);border-color:var(--gold)}
 
-.slabs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
-.slab{border:1px solid #e6e0d4;border-left:4px solid var(--bronze);border-radius:9px;background:#fffdf9;padding:12px 13px 11px;display:flex;flex-direction:column}
-.slab-hd{display:flex;justify-content:space-between;gap:8px;font-family:'Inter',sans-serif;font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
-.slab-name{font-family:'Cinzel',serif;font-size:14.5px;font-weight:700;color:var(--bronze);margin-bottom:7px;line-height:1.2}
+/* Six full-width rows, not a card grid. The widget's job is simultaneous
+ * comparison across all six inscriptions, so total height is a functional
+ * requirement, not a cosmetic one. Rows cost ~90px each; cards cost ~380px
+ * per row of three because every cell stretches to the tallest in its row. */
+.slabs{display:grid;grid-template-columns:1fr;gap:7px;margin-top:14px}
+.slab{border:1px solid #e6e0d4;border-left:4px solid var(--bronze);border-radius:8px;background:#fffdf9;padding:10px 14px;display:grid;grid-template-columns:200px 1fr;gap:3px 16px;align-items:start}
+.slab-id{display:flex;flex-direction:column;gap:2px}
+.slab-meta{display:flex;flex-wrap:wrap;gap:1px 8px}
+.slab-loc,.slab-date{font-family:'Inter',sans-serif;font-size:9.5px;font-weight:600;letter-spacing:1.1px;text-transform:uppercase;color:var(--muted);line-height:1.35}
+.slab-date{opacity:.82}
+.slab-name{font-family:'Cinzel',serif;font-size:13.5px;font-weight:700;color:var(--bronze);line-height:1.2}
 .slab-text{font-size:14.5px;line-height:1.5;color:var(--text);margin:0}
-.slab-note{font-family:'Inter',sans-serif;font-size:11px;color:var(--muted);line-height:1.45;margin:8px 0 0;padding-top:7px;border-top:1px dashed #e8e2d6;margin-top:auto}
+.slab-note{font-family:'Inter',sans-serif;font-size:11px;color:var(--muted);line-height:1.5}
 .slab.final{border-left-color:var(--stone);background:var(--stone-bg)}
 .slab.final .slab-name{color:var(--stone)}
-.slab.final .slab-note{border-top-color:#bfe3cf;color:#3d6b53}
+.slab.final .slab-note{color:#3d6b53}
 
 /* Highlight only — never hides. Copy, print, find and no-JS all stay whole. */
 .slabs .who,.slabs .what,.slabs .why{border-radius:3px;padding:1px 2px;transition:background .2s,box-shadow .2s}
@@ -112,7 +119,12 @@ header .verse{font-size:14px;color:var(--muted);margin-top:14px;font-family:'Int
 
 .band{padding:13px 14px 14px;border-bottom:1px solid #f0f0f0}
 .band:last-of-type{border-bottom:none}
-.band.founds{background:#fbfaf7;border-top:3px double #ddd8cc}
+.band.founds{background:#fbfaf7;border-top:3px double #ddd8cc;display:flex;flex-direction:column}
+/* Herod's foundations band holds one card against the New Jerusalem's twelve,
+ * so subgrid leaves it short. Stretch the card to fill rather than leaving a
+ * void: an empty dashed course is the finding, an accidental gap is a defect. */
+.band.founds .stones{flex:1}
+.stone.anon{flex:1;display:flex;flex-direction:column;justify-content:center}
 .band-lbl{font-family:'Inter',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
 .band-lbl .cite{color:var(--gold);letter-spacing:.5px;text-transform:none;font-size:10.5px}
 .band-note{font-family:'Inter',sans-serif;font-size:11.5px;color:var(--muted);line-height:1.55;margin:10px 0 0}
@@ -169,17 +181,13 @@ footer p{font-family:'Inter',sans-serif;font-size:13px;color:var(--muted);line-h
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
 /* ---------- Responsive ---------- */
-@media(max-width:860px){
-  .slabs{grid-template-columns:1fr 1fr}
-}
 @media(max-width:760px){
   .wall-pair{grid-template-columns:1fr;grid-template-rows:none}
   .wall{grid-row:auto;display:block}
   .unc{grid-template-columns:1fr}
 }
 @media(max-width:560px){
-  .slabs{grid-template-columns:1fr}
-  .slab-note{margin-top:8px}
+  .slab{grid-template-columns:1fr;gap:5px}
 }
 @media(max-width:640px){
   .m-body p{font-size:16.5px}
@@ -197,7 +205,6 @@ footer p{font-family:'Inter',sans-serif;font-size:13px;color:var(--muted);line-h
   .widget,.slab,.wall,.uitem{break-inside:avoid}
   .wall-pair{grid-template-columns:1fr 1fr;grid-template-rows:none}
   .wall{grid-row:auto;display:block}
-  .slabs{grid-template-columns:repeat(3,1fr)}
   .unc{grid-template-columns:1fr 1fr}
   .slabs .who,.slabs .what,.slabs .why{background:none!important;box-shadow:none!important}
 }

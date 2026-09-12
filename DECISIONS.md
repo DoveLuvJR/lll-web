@@ -217,6 +217,8 @@ Everything else — colors, spacing, components, layout — stays in each collec
 
 **Companion:** vault `DECISIONS.md` DEC-022 records the same decision at program level.
 
+**Amendment (2026-09-12, Batch 14).** A browser audit of the gate study found **five requests to `vercel.live`**, a third-party iframe, and two polling fetches on a page whose source contains none of them. That is the Vercel Toolbar, injected by the platform at deploy time. The rule as written overclaimed: it can only promise that **the page's own source** makes no network calls, not that the host doesn't add its own. D-013 now reads as a rule about what we author, plus an operational requirement: **the Vercel Toolbar must be disabled for Production** on this project, and the network tab must be checked on a live deploy — not only grepped in the repo — before a study is called clean.
+
 ---
 
 ## D-014 (2026-08-01) Components whose rhetorical move is comparison are static, never tabbed
@@ -285,3 +287,25 @@ Everything else — colors, spacing, components, layout — stays in each collec
 **Print rule that comes with it:** strip the highlight backgrounds in `@media print`. A tint that is meaningful on screen becomes an unexplained grey box on paper, and the reader cannot press the button that would explain it.
 
 **Also settled in Batch 12:** the Donor Wall on the same page was specced as a two-mode toggle (Herod's Temple / New Jerusalem) and was built **static** instead, straight off [[D-014]]. Recorded here only as confirmation that D-014 now has a second application and still no live exceptions.
+
+---
+
+## D-017 (2026-09-12) If a component's argument is simultaneity, its height is a requirement — and it gets measured
+
+**Decision:** When a component exists so the reader can see several things *at the same time*, its rendered height must fit the usable viewport at **1280×800**, and that is verified with a number from a real browser before the component is called done. Components whose comparison runs **horizontally** carry no such requirement.
+
+**Established by:** the two widgets on `whose-name-is-on-the-gate` (Batches 13–14), which were correct in structure, passed every alignment check, and still failed — because a browser audit measured the Inscription Stone at **1059px against 836px of usable height**, and the Donor Wall at 1026px.
+
+**The distinction that matters.** These two components look alike and are not alike:
+- The **Inscription Stone** tints one element across six inscriptions. Its whole claim is *five carry this and one does not.* A reader who must scroll cannot see the claim, so the scroll destroys the component even though nothing is broken. Height is functional.
+- The **Donor Wall** sets two walls beside each other. That comparison is intact at any scroll position, because the columns are side by side. Reading it top to bottom is normal. Height is cosmetic — and forcing it under the fold would have meant shrinking tiles and gutting notes to buy a property the component does not need.
+
+The same rule applied to both would have degraded the Wall to fix the Stone.
+
+**Why card grids are the wrong shape for this.** A three-across grid of six cards stretches every cell to the tallest in its row — the audit found 121px of empty box in one slab and 96px in another, and two rows costing 343px and 413px. Six full-width rows cost about 90px each. **Cards pay for their tallest member; rows pay only for themselves.** Prefer rows for any set of more than four items that must be compared at once.
+
+**Two traps this found:**
+1. **A width-capped column hides the problem.** `.wrap` is 900px, so the widgets measured identically at 1440 and 1280. A bigger monitor never rescues a component inside a fixed measure — checking on one large screen proves nothing.
+2. **Trimming words does not close a 200px gap.** It buys tens of pixels and costs substance. When the gap is that size the shape is wrong, not the copy.
+
+**Verification is a number, not a judgment.** Report widget height against `window.innerHeight` minus the sticky nav, at 1440×900 and 1280×800. "Looks fine" is not a result.
