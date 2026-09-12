@@ -13,7 +13,10 @@ LLL-Web/
 ├── collections/
 │   ├── index.html          ← /collections/ landing page (live)
 │   ├── table-of-nations/   ← interactive Genesis 10–11 study tool
-│   └── what-are-the-stars/ ← lights, signs, and the host of heaven
+│   ├── what-are-the-stars/ ← lights, signs, and the host of heaven
+│   ├── why-was-the-tree-reachable/ ← Genesis 2–3, access and jurisdiction
+│   ├── the-spiral-and-the-line/    ← recapitulation in Hebrew prophecy
+│   └── whose-name-is-on-the-gate/  ← benefaction, inscription, the Twelve
 ├── shared/
 │   ├── styles.css          ← fonts + reset + font-family tokens (kept minimal)
 │   ├── site.css            ← site-level chrome for the hub + collections landing
@@ -33,6 +36,7 @@ LLL-Web/
 | What Are the Stars? | Live | `/collections/what-are-the-stars/` |
 | Why Was the Tree Reachable? | Live | `/collections/why-was-the-tree-reachable/` |
 | The Spiral and the Line | Live | `/collections/the-spiral-and-the-line/` |
+| Whose Name Is On the Gate? | Live | `/collections/whose-name-is-on-the-gate/` |
 | Cellular Engineering | Planned | `/collections/cellular-engineering/` |
 | Drenchy Breakdown | Planned | `/collections/drenchy-breakdown/` |
 

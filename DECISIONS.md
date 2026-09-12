@@ -264,3 +264,24 @@ Everything else — colors, spacing, components, layout — stays in each collec
 **Two implementation traps, both found by looking at a real 375px screen rather than measuring:**
 1. Put the `has-js` and `scrolled` flags on the **same element**. Split across `<html>` and `<body>`, a selector like `.has-js.scrolled` silently never matches and the chrome simply never appears.
 2. A deep link scrolls **after** the script runs and fires **no scroll event**. Without a `load` and `hashchange` pass, the first visibility check runs against `scrollY: 0` and the chrome stays hidden for anyone arriving by shared link — which is most people.
+
+---
+
+## D-016 (2026-09-12) Interactives that reveal a *pattern* highlight; they never swap content
+
+**Decision:** When a component's teaching job is to show that several texts share a structure, it renders **every text in full, all the time**, and the control applies a **highlight class** to spans already in the markup. It never swaps, replaces, or hides content to "focus" the reader.
+
+**Established by:** the Inscription Stone in `collections/whose-name-is-on-the-gate/` (Batch 12), where six real dedicatory inscriptions are each marked into three spans — the name, the gift, the standing claimed — and the buttons tint one span type across all six at once.
+
+**Why:**
+- **The pattern is the lesson, and a pattern needs its instances visible together.** The whole point of that widget is that five inscriptions have all three elements and the sixth is missing one. A reader shown one inscription at a time can be *told* that; they cannot *see* it.
+- **Highlighting is the only interaction that costs nothing.** Because no content is removed from the DOM or marked `hidden`, select-all-copy, Ctrl+F, translation tools, screen readers, print, and no-JS all get the complete text with no extra code written for any of them. This is [[D-012]]'s goal reached by deleting the problem instead of compensating for it.
+- **It degrades to plain reading.** With JS off, the controls are `display: none` (they would be dead) and the component is six readable slabs. Nothing is lost but the tint.
+
+**Relationship to the existing rules.** [[D-012]] says every state renders in HTML and JS may only toggle visibility. [[D-014]] says comparison components do not toggle at all. D-016 covers the third case: a component that is neither a sequence nor a two-way comparison, but a **set with a shared shape**. The answer there is additive emphasis, not alternation.
+
+**How to tell you have one.** Ask what the reader is supposed to notice. If the answer names a relationship *across* the items ("they all do X"; "this one doesn't"), highlight. If it names one item at a time, you may have a sequence — see D-012.
+
+**Print rule that comes with it:** strip the highlight backgrounds in `@media print`. A tint that is meaningful on screen becomes an unexplained grey box on paper, and the reader cannot press the button that would explain it.
+
+**Also settled in Batch 12:** the Donor Wall on the same page was specced as a two-mode toggle (Herod's Temple / New Jerusalem) and was built **static** instead, straight off [[D-014]]. Recorded here only as confirmation that D-014 now has a second application and still no live exceptions.

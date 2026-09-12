@@ -1,5 +1,51 @@
 # Changelog — LLL Library
 
+## Batch 12 — "Whose Name Is On the Gate?" Collection (2026-09-12)
+
+Fifth collection. A study of **benefaction** — the ancient practice of cutting a donor's name into sacred architecture — and what it means that Jesus forbade the Twelve the benefactor's title and then gave them names on the foundations of the New Jerusalem. It runs from Sumerian foundation cones through Herod's donor-funded Temple to Revelation 21, and lands on Daniel 2's stone cut without hands.
+
+### New collection
+
+- `collections/whose-name-is-on-the-gate/` — `index.html` + `styles.css` + `app.js`, per the D-002 folder convention.
+- Imports `../../shared/styles.css` for fonts + reset; all palette and components local (D-003). Own accent tokens layered over the shared gold: `--bronze #8a5b2a` (the bought economy), `--jasper #2a6b7c` (the given economy), `--stone #1a7a4a` (the unbought building — deliberately the same hex as the Spiral study's `--stone`, since both pages land on the Growing Stone).
+- Breadcrumb + "‹ Back to all collections" per the Batch 6 nav convention; both hidden in print.
+- Fifth card added to `collections/index.html` (`Luke 22 · Revelation 21`).
+
+### Six movements, plus two back-matter sections
+
+I The Named Gate (Nicanor's bronze doors and his ossuary) · II The Honor Economy (euergetism, *D.S.P.F.*, Gudea's buried cones, Nebuchadnezzar laying his inscription beside Naram-Sin's) · III A Donor Building (Herod as *Euergetes*; the Paris-of-Rhodes pavement plaque; the Theodotus stone) · IV The Wrong Men (why the Twelve were never candidates) · V The Inversion (Luke 22:25–30; gates/tribes vs foundations/apostles; the *styloi* thread; the Temple Scroll's twelve tribal gates) · VI Not Made With Hands (Mark 14:58 into Daniel 2).
+
+Then **Where the Ground Is Uncertain** — six named scholarly disputes the study does not settle — and a 17-entry **Scripture Index**.
+
+### Two interactives — both compliant with D-012 and D-014
+
+- **The Inscription Stone** — six real inscriptions rendered as slabs, each marked into three spans: the name, the gift, the standing claimed. The controls apply a **highlight class only**; nothing is ever hidden, so select-all, Ctrl+F, translation, print and no-JS all capture the full text. Five slabs carry all three elements; the sixth (Revelation 21:14) has a name and a belonging and no gift — the widget exists to make that absence visible.
+- **The Donor Wall** — a **fully static** side-by-side comparison (new **D-016**). Herod's Temple wall (named gates and surfaces above, unnamed foundation ashlars below) beside the New Jerusalem's (twelve tribal gates above, twelve apostolic foundations below). No JS touches it at all.
+
+### Two house rules applied against the obvious design
+
+The Donor Wall was specced as a two-mode toggle. **D-014 forbids it** — the page's argument is that the two walls share an architecture and differ in economy, which a reader cannot test one panel at a time. Built static instead. Likewise the Inscription Stone was specced to swap slab content; **D-012** requires every state in the HTML, so it highlights rather than swaps. Both changes made the components simpler, not more complex: `app.js` is 71 lines and does highlighting, nav, and the share row.
+
+### Editorial posture
+
+The study makes a real historical argument and flags its own soft ground in a dedicated section rather than in footnotes: the Beautiful Gate is **not** confidently identified with Nicanor's; the Klein/Schwartz dispute over the ossuary is named; the mid-first-century dating of the doors (possibly post-ministry) is stated plainly; no apostle is matched to any gemstone, because Scripture does not do it.
+
+### Verified
+
+- [x] Structure/paths: folder + three files per D-002; links `../../shared/styles.css` then `./styles.css`; `<script src="./app.js">`; breadcrumb + foot-back present
+- [x] Zero dependencies, zero API calls, zero external `src`/`href` (D-013)
+- [x] `app.js` injects no content; the Donor Wall renders with JS disabled; highlight controls hidden until `has-js`
+- [x] Discoverability: card added to `/collections/`; README collections table and structure tree updated (structure tree also back-filled — it had been missing the Tree and Spiral studies)
+- [x] Print block hides nav, share row and highlight controls, and strips highlight backgrounds — **verified in the CSS, not yet by eye**
+- [ ] Browser render + mobile (375px) + print preview **by eye** — Hashem, on first load after deploy
+- [ ] Editorial / theological verification — **not self-certified.** Flagged for Hashem
+
+### Deploy
+
+Push to `main`; Vercel auto-deploys to `/collections/whose-name-is-on-the-gate/`.
+
+---
+
 ## Batch 11 — "The Spiral and the Line" Collection (2026-08-15)
 
 Fourth collection. A study of biblical **recapitulation** — the Hebrew habit of retelling the same stretch of history more than once ("the spiral") rather than only marching straight through it ("the line"). It runs from Pharaoh's double dream through Daniel, Ezekiel, and the Olivet Discourse to the seals/trumpets/bowls of Revelation. The page is **spiral-featured but even-handed**: the telescopic (line) reading is presented as a faithful reading throughout, never as an error.

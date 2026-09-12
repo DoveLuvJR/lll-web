@@ -1,0 +1,200 @@
+/* Whose Name Is On the Gate? — collection-specific styles
+ * Shared design tokens (fonts, reset) come from /shared/styles.css.
+ *
+ * Local identity: "the quarry" — library gold for chrome, bronze for the
+ * bought economy, jasper for the given one, stone-green for the Daniel 2
+ * finish line (deliberately the same hex as the-spiral-and-the-line's
+ * --stone, since both pages land on the Growing Stone).
+ *
+ * Per D-003 none of these are promoted to shared/styles.css.
+ * Per D-012 every state renders in the HTML; JS only adds highlight classes.
+ * Per D-014 the Donor Wall is static — its whole job is side-by-side comparison.
+ */
+
+:root{
+  --gold:#8B6914;--gold-light:#C9A84C;--gold-bg:#FAF6ED;
+  --bronze:#8a5b2a;--bronze-bg:#faf2e8;   /* the bought economy */
+  --jasper:#2a6b7c;--jasper-bg:#eaf4f6;   /* the given economy */
+  --stone:#1a7a4a;--stone-bg:#edf8f2;     /* the unbought building */
+  --text:#1a1a1a;--text2:#5a5a5a;--muted:#888;--bg:#fff;--rule:#eee;
+}
+body{font-family:'EB Garamond',serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6}
+
+/* ---------- Header ---------- */
+header{text-align:center;padding:56px 24px 22px;border-bottom:1px solid var(--rule);background:var(--gold-bg)}
+header h1{font-family:'Cinzel',serif;font-size:clamp(25px,5.2vw,48px);font-weight:900;color:var(--gold);letter-spacing:3px;text-transform:uppercase;line-height:1.12}
+header .sub{font-size:19px;color:var(--text2);margin-top:10px;font-style:italic}
+header .verse{font-size:14px;color:var(--muted);margin-top:14px;font-family:'Inter',sans-serif;max-width:640px;margin-left:auto;margin-right:auto;line-height:1.65}
+.share-row{display:flex;justify-content:center;gap:10px;margin-top:18px;flex-wrap:wrap}
+.share-btn{font-family:'Inter',sans-serif;font-size:12px;font-weight:600;padding:7px 16px;border:1px solid #ddd;border-radius:20px;cursor:pointer;background:#fff;color:var(--text2);transition:all .2s;display:flex;align-items:center;gap:6px}
+.share-btn:hover{background:var(--gold-bg);border-color:var(--gold-light);color:var(--gold)}
+.share-btn svg{width:14px;height:14px}
+
+/* ---------- Movement nav ---------- */
+.nav{display:flex;justify-content:center;gap:6px;padding:14px 16px;flex-wrap:wrap;position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--rule)}
+.nav a{font-family:'Inter',sans-serif;font-size:12px;font-weight:600;padding:7px 14px;border:1px solid #e2e2e2;border-radius:20px;color:var(--text2);text-decoration:none;transition:all .2s;white-space:nowrap}
+.nav a:hover{border-color:var(--gold-light);color:var(--gold)}
+.nav a.active{background:var(--gold);border-color:var(--gold);color:#fff}
+
+/* ---------- Layout ---------- */
+.wrap{max-width:900px;margin:0 auto;padding:8px 22px 90px}
+.thesis{font-size:19px;color:var(--text2);text-align:center;max-width:720px;margin:34px auto 8px;line-height:1.7}
+.thesis b{color:var(--gold);font-weight:700}
+
+.movement{padding:44px 0 8px;border-top:1px solid var(--rule);margin-top:20px;scroll-margin-top:70px}
+.movement:first-of-type{border-top:none}
+.m-head{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+.m-num{font-family:'Cinzel',serif;font-size:20px;font-weight:900;color:#fff;background:var(--gold);width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;letter-spacing:1px}
+.m-head h2{font-family:'Cinzel',serif;font-size:clamp(20px,3.4vw,28px);font-weight:700;color:var(--gold);letter-spacing:1px;line-height:1.15}
+.m-head .m-sub{font-family:'Inter',sans-serif;font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:2px;margin-top:3px}
+.m-body p{font-size:17.5px;margin:0 0 16px;color:var(--text)}
+.m-body p .ref,.ref{font-family:'Inter',sans-serif;font-size:12.5px;font-style:normal;color:var(--gold);font-weight:600;white-space:nowrap}
+
+/* Pull quote */
+.pq{border-left:4px solid var(--gold-light);background:var(--gold-bg);padding:18px 22px;margin:22px 0;font-size:19px;font-style:italic;color:#3a3018;border-radius:0 8px 8px 0}
+.pq .attr{display:block;font-family:'Inter',sans-serif;font-size:12px;font-style:normal;color:var(--muted);margin-top:8px;letter-spacing:1px;text-transform:uppercase}
+
+/* Key idea box */
+.keybox{border:1px solid var(--gold-light);border-radius:10px;background:#fffdf8;padding:18px 20px;margin:22px 0}
+.keybox .kl{font-family:'Inter',sans-serif;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:2px;color:var(--gold);margin-bottom:6px}
+.keybox p{font-size:17px;margin:0;color:var(--text)}
+
+/* ---------- Widget shell ---------- */
+.widget{border:1px solid #e6e6e6;border-radius:14px;padding:22px 20px 24px;margin:26px 0;background:linear-gradient(#fff,#fdfcf8)}
+.widget-top{text-align:center;margin-bottom:6px}
+.widget-kicker{font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold)}
+.widget-title{font-family:'Cinzel',serif;font-size:22px;font-weight:700;color:var(--text);margin-top:2px}
+.widget-hint{font-family:'Inter',sans-serif;font-size:13px;color:var(--muted);margin-top:6px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.55}
+.widget-foot{font-family:'Inter',sans-serif;font-size:12.5px;color:var(--muted);text-align:center;margin-top:16px;line-height:1.6;max-width:640px;margin-left:auto;margin-right:auto}
+
+/* ---------- WIDGET 1 · The Inscription Stone ---------- */
+/* Controls are dead without JS, so they are hidden until has-js (D-012). */
+.hl-ctrls{display:none}
+.has-js .hl-ctrls{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:16px 0 4px}
+.hl-btn{font-family:'Inter',sans-serif;font-size:12px;font-weight:600;padding:8px 15px;border:1.5px solid #e0dcd2;border-radius:20px;background:#fff;color:var(--text2);cursor:pointer;transition:all .18s}
+.hl-btn:hover{border-color:var(--gold-light)}
+.hl-btn[aria-pressed="true"]{color:#fff}
+.b-who[aria-pressed="true"]{background:var(--bronze);border-color:var(--bronze)}
+.b-what[aria-pressed="true"]{background:var(--jasper);border-color:var(--jasper)}
+.b-why[aria-pressed="true"]{background:var(--gold);border-color:var(--gold)}
+
+.slabs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.slab{border:1px solid #e6e0d4;border-left:4px solid var(--bronze);border-radius:9px;background:#fffdf9;padding:14px 16px 13px}
+.slab-hd{display:flex;justify-content:space-between;gap:8px;font-family:'Inter',sans-serif;font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.slab-name{font-family:'Cinzel',serif;font-size:15.5px;font-weight:700;color:var(--bronze);margin-bottom:8px;line-height:1.2}
+.slab-text{font-size:15.5px;line-height:1.55;color:var(--text);margin:0}
+.slab-note{font-family:'Inter',sans-serif;font-size:11.5px;color:var(--muted);line-height:1.5;margin:9px 0 0;padding-top:8px;border-top:1px dashed #e8e2d6}
+.slab.final{border-left-color:var(--stone);background:var(--stone-bg);grid-column:1 / -1}
+.slab.final .slab-name{color:var(--stone)}
+.slab.final .slab-note{border-top-color:#bfe3cf;color:#3d6b53}
+
+/* Highlight only — never hides. Copy, print, find and no-JS all stay whole. */
+.slabs .who,.slabs .what,.slabs .why{border-radius:3px;padding:1px 2px;transition:background .2s,box-shadow .2s}
+.slabs.hl-who .who{background:#f0dcc2;box-shadow:0 0 0 1px #d9b98e}
+.slabs.hl-what .what{background:#d6ebf0;box-shadow:0 0 0 1px #a5cfd9}
+.slabs.hl-why .why{background:#f3e6bd;box-shadow:0 0 0 1px #ddc885}
+
+/* ---------- WIDGET 2 · The Donor Wall (static, D-014) ---------- */
+.wall-pair{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+.wall{border:1px solid #e4e4e4;border-radius:12px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
+.wall-hd{padding:14px 16px 12px;text-align:center;color:#fff}
+.wall.bought .wall-hd{background:var(--bronze)}
+.wall.given .wall-hd{background:var(--jasper)}
+.wall-ttl{font-family:'Cinzel',serif;font-size:17px;font-weight:700;letter-spacing:1px}
+.wall-sub{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;opacity:.88;margin-top:3px}
+
+.band{padding:14px 15px 15px;border-bottom:1px solid #f0f0f0}
+.band:last-of-type{border-bottom:none}
+.band.founds{background:#fbfaf7;border-top:3px double #ddd8cc;margin-top:auto}
+.band-lbl{font-family:'Inter',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
+.band-lbl .cite{color:var(--gold);letter-spacing:.5px;text-transform:none;font-size:10.5px}
+.band-note{font-family:'Inter',sans-serif;font-size:11.5px;color:var(--muted);line-height:1.55;margin:10px 0 0}
+
+.stones{display:flex;flex-direction:column;gap:8px}
+.stone{border:1px solid #e8e0d2;border-radius:7px;background:var(--bronze-bg);padding:9px 11px}
+.stone b{display:block;font-family:'Cinzel',serif;font-size:13.5px;color:var(--bronze);line-height:1.25;margin-bottom:3px}
+.stone span{font-family:'Inter',sans-serif;font-size:11.5px;color:var(--text2);line-height:1.5;display:block}
+.stone.anon{background:#f4f4f2;border-color:#e2e2e2;border-style:dashed}
+.stone.anon b{color:var(--muted)}
+
+.gate-grid,.found-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.gate,.found{border-radius:6px;padding:7px 5px;text-align:center;font-family:'Cinzel',serif;font-size:12.5px;font-weight:700;line-height:1.15}
+.gate em,.found em{display:block;font-family:'Inter',sans-serif;font-size:8.5px;font-style:normal;font-weight:600;letter-spacing:1px;text-transform:uppercase;opacity:.65;margin-bottom:2px}
+.gate{background:var(--jasper-bg);color:var(--jasper);border:1px solid #cde2e8}
+.found{background:var(--stone-bg);color:var(--stone);border:1px solid #c6e4d4}
+
+.wall-foot{font-family:'Inter',sans-serif;font-size:12px;color:var(--text2);padding:12px 15px;border-top:1px solid #eee;background:#fafafa;line-height:1.5}
+.tag{display:inline-block;font-size:9.5px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:#fff;padding:2px 8px;border-radius:9px;margin-right:7px}
+.tag.paid{background:var(--bronze)}
+.tag.lamb{background:var(--stone)}
+
+/* ---------- Comparison table ---------- */
+.cmp{width:100%;border-collapse:collapse;margin:24px 0 8px;font-size:15px}
+.cmp th{font-family:'Cinzel',serif;font-size:14px;padding:12px;text-align:left;letter-spacing:.5px}
+.cmp th.f{background:#f4f4f4;color:var(--text2);font-family:'Inter',sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:1px}
+.cmp th.p{background:var(--bronze-bg);color:var(--bronze)}
+.cmp th.c{background:var(--gold-bg);color:var(--gold)}
+.cmp td{padding:11px 12px;border-bottom:1px solid #eee;vertical-align:top;line-height:1.4}
+.cmp td.f{font-family:'Inter',sans-serif;font-size:12px;font-weight:600;color:var(--text2);background:#fafafa}
+.cmp td.p{background:#fdf9f4}
+.cmp td.c{background:#fdfbf4}
+.cmp tbody tr:last-child td{background:var(--stone-bg);font-weight:600;color:var(--stone)}
+.cmp tbody tr:last-child td.f{background:#daf0e4}
+
+/* ---------- Uncertainty list ---------- */
+.unc{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+.uitem{border:1px solid #ececec;border-left:3px solid var(--muted);border-radius:8px;background:#fcfcfc;padding:12px 14px;font-family:'Inter',sans-serif;font-size:12.5px;color:var(--text2);line-height:1.55}
+.uitem b{display:block;font-family:'Cinzel',serif;font-size:14px;color:var(--text);margin-bottom:4px;line-height:1.2}
+
+/* ---------- Scripture index ---------- */
+.idx{width:100%;border-collapse:collapse;font-size:16px}
+.idx td{padding:10px 12px;border-bottom:1px solid #f0f0f0;vertical-align:top;line-height:1.45}
+.idx td.r{font-family:'Inter',sans-serif;font-size:12.5px;font-weight:600;color:var(--gold);white-space:nowrap;width:1%;background:#fdfbf5}
+
+/* Closer */
+.closer{text-align:center;background:var(--gold-bg);border-radius:12px;padding:28px 24px;margin:30px 0 0}
+.closer p{font-size:19px;font-style:italic;color:#3a3018;max-width:660px;margin:0 auto}
+
+footer{text-align:center;padding:34px 20px;border-top:1px solid var(--rule);background:#fafafa;margin-top:40px}
+footer p{font-family:'Inter',sans-serif;font-size:13px;color:var(--muted);line-height:1.7}
+
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(80px);background:#1a1a1a;color:#fff;padding:12px 24px;border-radius:8px;font-family:'Inter',sans-serif;font-size:14px;opacity:0;transition:all .3s;z-index:999;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ---------- Responsive ---------- */
+@media(max-width:760px){
+  .slabs{grid-template-columns:1fr}
+  .wall-pair{grid-template-columns:1fr}
+  .unc{grid-template-columns:1fr}
+  .band.founds{margin-top:0}
+}
+@media(max-width:640px){
+  .m-body p{font-size:16.5px}
+  .cmp{font-size:13.5px}
+  .cmp td,.cmp th{padding:9px 8px}
+  .idx{font-size:15px}
+  .idx td{padding:9px 8px}
+  .gate-grid,.found-grid{grid-template-columns:repeat(2,1fr)}
+}
+
+/* ---------- Print ---------- */
+@media print{
+  .nav,.share-row,.hl-ctrls{display:none!important}
+  .movement{break-inside:avoid}
+  .widget,.slab,.wall,.uitem{break-inside:avoid}
+  .wall-pair,.slabs,.unc{grid-template-columns:1fr 1fr}
+  .slabs .who,.slabs .what,.slabs .why{background:none!important;box-shadow:none!important}
+}
+
+/* breadcrumb + back-link (site convention, matches sibling studies) */
+.crumbs{background:var(--bg);border-bottom:1px solid var(--rule);padding:10px 20px}
+.crumbs ol{list-style:none;margin:0 auto;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;max-width:900px;font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:.5px}
+.crumbs li{display:inline-flex;align-items:center;min-height:32px}
+.crumbs li + li::before{content:"›";color:var(--muted);margin-right:8px;font-weight:400}
+.crumbs a{color:var(--gold);text-decoration:none;padding:6px 2px;transition:color .2s}
+.crumbs a:hover,.crumbs a:focus-visible{color:var(--gold-light)}
+.crumbs [aria-current="page"]{color:var(--text2)}
+.foot-back{text-align:center;padding:18px 20px 8px;background:#fafafa;border-top:1px solid var(--rule)}
+.foot-back a{font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--gold);text-decoration:none;padding:6px 10px;transition:color .2s}
+.foot-back a:hover,.foot-back a:focus-visible{color:var(--gold-light)}
+@media print{.crumbs,.foot-back{display:none!important}}
