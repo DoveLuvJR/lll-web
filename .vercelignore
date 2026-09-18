@@ -1,0 +1,8 @@
+# Publish only the live site: the two root pages, the collections, and shared assets.
+# Everything else in this repo (README, CHANGELOG, DECISIONS, future notes) is
+# internal and must never be served. A new root-level page must be added here, or it will 404.
+/*
+!index.html
+!about.html
+!collections
+!shared
