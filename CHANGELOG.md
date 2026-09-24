@@ -9,8 +9,22 @@ A new study, **"Names on the Wall: Three Faiths, One Street at Dura-Europos,"** 
 Same file set, chrome, and palette as the gate study: breadcrumb, sticky section nav, numbered movements, widget shell, back link, footer. There is no share/print row, because the spec rules sharing buttons out of scope. One new colour token, `--sand`, is the rampart fill.
 
 - **The Three Doors** (`#doorsWidget`): three `aria-pressed` buttons, one house's six-row panel at a time, fixed height. This is a tabbed comparison, approved as an exception to D-014 and recorded as **D-018**. With JS off, all three panels stack (D-012).
-- **Names on the Wall** (`#namesWidget`): static, three columns (Synagogue, Mithraeum, House Church), rows aligned by subgrid as in `#wallWidget`. The columns stay side by side on a 390px phone, with smaller type. The House Church column is deliberately quieter: dashed edge, grey header, light weight.
+- **Names on the Wall** (`#namesWidget`): static, three columns (Synagogue, Mithraeum, House Church), rows aligned by subgrid as in `#wallWidget`. The columns stay side by side on a 390px phone, with smaller type. The House Church column is the widget's highlight in library gold. This replaced the original "quieter" treatment; see the spec reversal below.
 - **The Rampart** (`#rampartWidget`): an inline SVG side view with Before/After buttons. The embankment is in the markup and fades in over 0.3s, with no fade under `prefers-reduced-motion`. With JS off it reads as "Before". The SVG has a `<title>` and a `<desc>` covering both states.
+
+### Spec reversal — House Church column becomes the highlight (owner-approved)
+
+**This reverses spec rule 4 for Widget 2** ("the House Church column has a visibly quieter treatment … to show 'unsigned'"). The owner ruled the opposite after seeing the first build: the unsigned column is the one the study wants the reader to notice.
+
+- **Colour:** `--gold`, the same token as the section-number badge (`.m-num`). No new colour.
+- **Header band:** solid gold with white text, mirroring the jasper and bronze headers.
+- **Subheader band:** `--gold-bg` tint with gold text, mirroring the other two tints.
+- **Rows:** normal text colours, same as the other columns (the muted override is removed).
+- **Border:** still dashed, now gold.
+- **Lift:** a soft gold glow (`box-shadow`, `--gold-light` at 50%). **No transform, translate, or scale.** Moving the column would break subgrid row alignment, and scaling could push a phone into sideways scroll.
+- **Contrast (new test `house_church_contrast`):** header 5.09:1 (white on `#8B6914`), subheader 4.72:1 (`#8B6914` on `#FAF6ED`). Both clear 4.5:1 at 390×844 and 1440×900.
+- **Dark mode:** the site has none (no `prefers-color-scheme` anywhere). Forcing a dark colour scheme renders the page identically, with the same ratios.
+- Re-run after the change: **38/38 checks**, `names_rows_align` 0.00px on every row at both sizes, phone `scrollWidth` 390/390.
 
 ### Existing pages
 

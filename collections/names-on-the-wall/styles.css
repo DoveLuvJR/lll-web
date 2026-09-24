@@ -3,8 +3,8 @@
  *
  * Local identity: borrowed wholesale from whose-name-is-on-the-gate, its
  * paired study — library gold for chrome, jasper for the synagogue, bronze
- * for the Mithraeum, stone-green for the house church. The house church goes
- * muted in the Names widget, where "unsigned" is the point.
+ * for the Mithraeum, stone-green for the house church. In the Names widget the house church
+ * column takes library gold as the highlight (owner reversal, Batch 15).
  * One new token: --sand, the rampart fill (nothing in the palette fit).
  *
  * Per D-003 none of these are promoted to shared/styles.css.
@@ -105,11 +105,14 @@ header h1{font-family:'Cinzel',serif;font-size:clamp(24px,4.6vw,42px);font-weigh
 .nm-cell:last-child{border-bottom:none}
 .nm-lbl{display:block;font-family:'Inter',sans-serif;font-size:9.5px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin-bottom:3px;line-height:1.35}
 
-/* The house church is "unsigned": dashed edge, muted header, lighter type. */
-.names-col.church{border-style:dashed;background:#fcfcfb}
-.names-col.church .nm-house{background:#f1f1ef;color:var(--text2);font-weight:400}
-.names-col.church .nm-head{color:var(--text2);font-weight:400;background:#fafaf9}
-.names-col.church .nm-cell{color:var(--text2)}
+/* The house church is the highlight: library gold, the same token as the
+ * section badge (.m-num). Solid header and light tint mirror the other two
+ * columns; the dashed edge still says "unsigned". Lifted by a glow only —
+ * never transform/translate/scale, which would break row alignment and can
+ * push a phone into sideways scroll. (Owner reversal of spec rule 4, Batch 15.) */
+.names-col.church{border:1px dashed var(--gold);box-shadow:0 0 14px rgba(201,168,76,.5)}
+.names-col.church .nm-house{background:var(--gold)}
+.names-col.church .nm-head{color:var(--gold);background:var(--gold-bg)}
 
 /* ---------- WIDGET 3 · The Rampart ---------- */
 .ramp-svg{display:block;width:100%;max-width:640px;height:auto;margin:6px auto 0}
