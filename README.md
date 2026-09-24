@@ -16,7 +16,8 @@ LLL-Web/
 │   ├── what-are-the-stars/ ← lights, signs, and the host of heaven
 │   ├── why-was-the-tree-reachable/ ← Genesis 2–3, access and jurisdiction
 │   ├── the-spiral-and-the-line/    ← recapitulation in Hebrew prophecy
-│   └── whose-name-is-on-the-gate/  ← benefaction, inscription, the Twelve
+│   ├── whose-name-is-on-the-gate/  ← benefaction, inscription, the Twelve
+│   └── names-on-the-wall/          ← three faiths, one street at Dura-Europos
 ├── shared/
 │   ├── styles.css          ← fonts + reset + font-family tokens (kept minimal)
 │   ├── site.css            ← site-level chrome for the hub + collections landing
@@ -37,6 +38,7 @@ LLL-Web/
 | Why Was the Tree Reachable? | Live | `/collections/why-was-the-tree-reachable/` |
 | The Spiral and the Line | Live | `/collections/the-spiral-and-the-line/` |
 | Whose Name Is On the Gate? | Live | `/collections/whose-name-is-on-the-gate/` |
+| Names on the Wall | Live | `/collections/names-on-the-wall/` |
 | Cellular Engineering | Planned | `/collections/cellular-engineering/` |
 | Drenchy Breakdown | Planned | `/collections/drenchy-breakdown/` |
 

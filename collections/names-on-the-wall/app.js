@@ -5,10 +5,11 @@
  * Names on the Wall (Widget 2) needs no JS at all — it is a static
  * comparison per D-014, so nothing here touches it.
  *
- * Three jobs only:
+ * Four jobs only:
  *   1. The Three Doors — show one house's panel (D-018)
  *   2. The Rampart — toggle the embankment
  *   3. Nav active-on-scroll
+ *   4. Share / copy / print
  */
 
 /* Mark exactly one button in a group pressed. */
@@ -66,3 +67,31 @@ function pressOnly(btns, key, attr) {
   }, { rootMargin: '-45% 0px -50% 0px' });
   secs.forEach(function (s) { if (s) io.observe(s); });
 })();
+
+/* ---------- Share / print ---------- */
+function showToast(m) {
+  var t = document.getElementById('toast');
+  if (!t) return;
+  t.textContent = m;
+  t.classList.add('show');
+  setTimeout(function () { t.classList.remove('show'); }, 2500);
+}
+
+function copyLink() {
+  if (!navigator.clipboard) { showToast("Couldn't copy — try manually"); return; }
+  navigator.clipboard.writeText(window.location.href)
+    .then(function () { showToast('Link copied to clipboard'); })
+    .catch(function () { showToast("Couldn't copy — try manually"); });
+}
+
+function shareNative() {
+  if (navigator.share) {
+    navigator.share({
+      title: 'Names on the Wall',
+      text: 'Three faiths, one street at Dura-Europos.',
+      url: window.location.href
+    }).catch(function () { /* user dismissed the sheet */ });
+  } else {
+    copyLink();
+  }
+}

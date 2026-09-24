@@ -24,8 +24,12 @@
 body{font-family:'EB Garamond',serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6}
 
 /* ---------- Header ---------- */
-header{text-align:center;padding:56px 24px 30px;border-bottom:1px solid var(--rule);background:var(--gold-bg)}
+header{text-align:center;padding:56px 24px 22px;border-bottom:1px solid var(--rule);background:var(--gold-bg)}
 header h1{font-family:'Cinzel',serif;font-size:clamp(24px,4.6vw,42px);font-weight:900;color:var(--gold);letter-spacing:3px;text-transform:uppercase;line-height:1.15;max-width:860px;margin:0 auto}
+.share-row{display:flex;justify-content:center;gap:10px;margin-top:18px;flex-wrap:wrap}
+.share-btn{font-family:'Inter',sans-serif;font-size:12px;font-weight:600;padding:7px 16px;border:1px solid #ddd;border-radius:20px;cursor:pointer;background:#fff;color:var(--text2);transition:all .2s;display:flex;align-items:center;gap:6px}
+.share-btn:hover{background:var(--gold-bg);border-color:var(--gold-light);color:var(--gold)}
+.share-btn svg{width:14px;height:14px}
 
 /* ---------- Movement nav ---------- */
 .nav{display:flex;justify-content:center;gap:6px;padding:14px 16px;flex-wrap:wrap;position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--rule)}
@@ -112,7 +116,10 @@ header h1{font-family:'Cinzel',serif;font-size:clamp(24px,4.6vw,42px);font-weigh
  * push a phone into sideways scroll. (Owner reversal of spec rule 4, Batch 15.) */
 .names-col.church{border:1px dashed var(--gold);box-shadow:0 0 14px rgba(201,168,76,.5)}
 .names-col.church .nm-house{background:var(--gold)}
-.names-col.church .nm-head{color:var(--gold);background:var(--gold-bg)}
+/* Band tint is built from --gold so it reads as gold beside the Mithraeum's
+ * cream. At that depth --gold text falls under 4.5:1, so the label uses a
+ * deeper gold from the same token (measured in house_church_contrast). */
+.names-col.church .nm-head{color:color-mix(in srgb,var(--gold) 78%,#000);background:color-mix(in srgb,var(--gold) 20%,#fff)}
 
 /* ---------- WIDGET 3 · The Rampart ---------- */
 .ramp-svg{display:block;width:100%;max-width:640px;height:auto;margin:6px auto 0}
@@ -136,6 +143,9 @@ header h1{font-family:'Cinzel',serif;font-size:clamp(24px,4.6vw,42px);font-weigh
 footer{text-align:center;padding:34px 20px;border-top:1px solid var(--rule);background:#fafafa;margin-top:40px}
 footer p{font-family:'Inter',sans-serif;font-size:13px;color:var(--muted);line-height:1.7}
 
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(80px);background:#1a1a1a;color:#fff;padding:12px 24px;border-radius:8px;font-family:'Inter',sans-serif;font-size:14px;opacity:0;transition:all .3s;z-index:999;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
 /* ---------- Responsive ---------- */
 @media(max-width:640px){
   .m-body p,.qs li{font-size:16.5px}
@@ -153,7 +163,7 @@ footer p{font-family:'Inter',sans-serif;font-size:13px;color:var(--muted);line-h
 
 /* ---------- Print ---------- */
 @media print{
-  .nav,.door-ctrls,.ramp-ctrls{display:none!important}
+  .nav,.share-row,.door-ctrls,.ramp-ctrls{display:none!important}
   .widget,.names-col,.door-panel{break-inside:avoid}
   /* Print every house, stacked and labeled, whatever is on screen. */
   .has-js .door-panel,.has-js .door-panel[hidden]{grid-area:auto;display:block;visibility:visible}

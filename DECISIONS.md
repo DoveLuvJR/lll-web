@@ -326,4 +326,4 @@ The same rule applied to both would have degraded the Wall to fix the Stone.
 
 **Why accept the exception here:** the Doors panel is a six-row reference card per house, not the page's argument. The page's argument, credit → rank → prayer, lives in the static Names widget.
 
-**Does not set a precedent.** D-014 remains the default. A future tabbed comparison needs its own ruling.
+**Scope: this page only.** D-018 covers `#doorsWidget` on `collections/names-on-the-wall/` and nothing else. [[D-014]] stays in force for every other page and every other component, including the other two widgets on this page. It does not set a precedent. A future tabbed comparison anywhere else needs its own ruling.

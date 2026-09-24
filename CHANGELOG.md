@@ -6,7 +6,7 @@ A new study, **"Names on the Wall: Three Faiths, One Street at Dura-Europos,"** 
 
 ### New page — `collections/names-on-the-wall/` (index.html, styles.css, app.js)
 
-Same file set, chrome, and palette as the gate study: breadcrumb, sticky section nav, numbered movements, widget shell, back link, footer. There is no share/print row, because the spec rules sharing buttons out of scope. One new colour token, `--sand`, is the rampart fill.
+Same file set, chrome, and palette as the gate study: breadcrumb, sticky section nav, numbered movements, widget shell, back link, footer. The Copy Link / Share / Print row was added by owner ruling (see below). One new colour token, `--sand`, is the rampart fill.
 
 - **The Three Doors** (`#doorsWidget`): three `aria-pressed` buttons, one house's six-row panel at a time, fixed height. This is a tabbed comparison, approved as an exception to D-014 and recorded as **D-018**. With JS off, all three panels stack (D-012).
 - **Names on the Wall** (`#namesWidget`): static, three columns (Synagogue, Mithraeum, House Church), rows aligned by subgrid as in `#wallWidget`. The columns stay side by side on a 390px phone, with smaller type. The House Church column is the widget's highlight in library gold. This replaced the original "quieter" treatment; see the spec reversal below.
@@ -18,13 +18,22 @@ Same file set, chrome, and palette as the gate study: breadcrumb, sticky section
 
 - **Colour:** `--gold`, the same token as the section-number badge (`.m-num`). No new colour.
 - **Header band:** solid gold with white text, mirroring the jasper and bronze headers.
-- **Subheader band:** `--gold-bg` tint with gold text, mirroring the other two tints.
+- **Subheader band:** first built as `--gold-bg`, which read too close to the Mithraeum's cream band. Deepened on owner request to a tint built from the token, `color-mix(--gold 20%, white)`. At that depth plain `--gold` text measured under 4.5:1, so the label is a deeper gold from the same token, `color-mix(--gold 78%, black)`. Measured **5.64:1**.
 - **Rows:** normal text colours, same as the other columns (the muted override is removed).
 - **Border:** still dashed, now gold.
 - **Lift:** a soft gold glow (`box-shadow`, `--gold-light` at 50%). **No transform, translate, or scale.** Moving the column would break subgrid row alignment, and scaling could push a phone into sideways scroll.
-- **Contrast (new test `house_church_contrast`):** header 5.09:1 (white on `#8B6914`), subheader 4.72:1 (`#8B6914` on `#FAF6ED`). Both clear 4.5:1 at 390×844 and 1440×900.
+- **Contrast (new test `house_church_contrast`):** header 5.09:1 (white on `#8B6914`), subheader 5.64:1 (deep gold on the gold tint). Both clear 4.5:1 at 390×844 and 1440×900.
 - **Dark mode:** the site has none (no `prefers-color-scheme` anywhere). Forcing a dark colour scheme renders the page identically, with the same ratios.
-- Re-run after the change: **38/38 checks**, `names_rows_align` 0.00px on every row at both sizes, phone `scrollWidth` 390/390.
+- Re-run after all changes: **38/38 checks**, `names_rows_align` 0.00px on every row at both sizes, phone `scrollWidth` 390/390.
+
+### Spec reversal — Copy Link / Share / Print row added (owner-approved)
+
+The spec lists "sharing buttons" as out of scope, so the first build left the row off. The owner ruled to add it. It is the gate study's row verbatim (markup, styles, toast, `copyLink` / `shareNative`), hidden in print. The share sheet text is "Three faiths, one street at Dura-Europos."
+
+### Docs
+
+- README: Names on the Wall added to the folder tree and the collections table.
+- D-018 tightened: **scope is this page's `#doorsWidget` only**, and D-014 stays in force everywhere else, including this page's other two widgets.
 
 ### Existing pages
 

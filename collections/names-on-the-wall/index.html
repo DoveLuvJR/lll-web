@@ -23,6 +23,11 @@
 
 <header>
   <h1>Names on the Wall: Three Faiths, One Street at Dura-Europos</h1>
+  <div class="share-row">
+    <button class="share-btn" onclick="copyLink()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>Copy Link</button>
+    <button class="share-btn" onclick="shareNative()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>Share</button>
+    <button class="share-btn" onclick="window.print()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>Print</button>
+  </div>
 </header>
 
 <nav class="nav" id="nav">
@@ -261,6 +266,7 @@
 
 <div class="foot-back"><a href="/collections/">&lsaquo; Back to all collections</a></div>
 <footer><p>Compiled for the Growing Stone Fellowship &middot; Jumpshots from The Bleachers Inc.</p></footer>
+<div class="toast" id="toast"></div>
 
 <script src="./app.js"></script>
 </body>
