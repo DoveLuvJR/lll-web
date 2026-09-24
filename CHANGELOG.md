@@ -1,5 +1,35 @@
 # Changelog — LLL Library
 
+## Batch 15 — New Study: Names on the Wall (2026-09-24)
+
+A new study, **"Names on the Wall: Three Faiths, One Street at Dura-Europos,"** at `/collections/names-on-the-wall/`, built from `SPEC_names-on-the-wall.md`. It pairs with "Whose Name Is On the Gate?". It covers three houses of worship on one street (synagogue, house church, Mithraeum), buried by the same rampart around 256 CE, and asks who signed each wall. The page text is the spec's text, word for word, checked by script (34/34 lines).
+
+### New page — `collections/names-on-the-wall/` (index.html, styles.css, app.js)
+
+Same file set, chrome, and palette as the gate study: breadcrumb, sticky section nav, numbered movements, widget shell, back link, footer. There is no share/print row, because the spec rules sharing buttons out of scope. One new colour token, `--sand`, is the rampart fill.
+
+- **The Three Doors** (`#doorsWidget`): three `aria-pressed` buttons, one house's six-row panel at a time, fixed height. This is a tabbed comparison, approved as an exception to D-014 and recorded as **D-018**. With JS off, all three panels stack (D-012).
+- **Names on the Wall** (`#namesWidget`): static, three columns (Synagogue, Mithraeum, House Church), rows aligned by subgrid as in `#wallWidget`. The columns stay side by side on a 390px phone, with smaller type. The House Church column is deliberately quieter: dashed edge, grey header, light weight.
+- **The Rampart** (`#rampartWidget`): an inline SVG side view with Before/After buttons. The embankment is in the markup and fades in over 0.3s, with no fade under `prefers-reduced-motion`. With JS off it reads as "Before". The SVG has a `<title>` and a `<desc>` covering both states.
+
+### Existing pages
+
+- Gate study: one line at the end, "Related study: Names on the Wall", plus a 2-rule `.related` style. Nothing else changed.
+- Collections index: a sixth card.
+
+### Verified (Playwright, headless Chromium, 390×844 and 1440×900)
+
+All ten spec tests pass at both sizes, along with extras: D-017 fit under the sticky nav, JS-off fallback, reduced motion, no console errors, and verbatim text. **33/33 checks.** Tallest widget: 585px of 844px on the phone (615px usable under the nav), 529px of 900px on desktop. Row alignment delta 0.00px. Phone `scrollWidth` 390px. The source makes no network calls (D-013 grep).
+
+### Not verified / open
+
+- [ ] Vercel preview URL. The branch `names-on-the-wall` needs pushing to get one
+- [ ] Network tab on the live preview (D-013 amendment: the Vercel Toolbar is still an open item)
+- On a 390px phone the sticky nav wraps to 229px, the same behaviour as the gate study. The Doors widget still fits under it, with 30px to spare
+- The Rampart prints whichever state is on screen
+
+---
+
 ## Batch 14 — Gate Study: Inscription Stone Rebuilt as Rows (2026-09-12)
 
 Acting on a browser audit of the live page (graded C). The audit confirmed the Batch 13 **alignment** work landed perfectly — subgrid supported, gates-band delta 0px, foundations-band delta 0px, slab heights matched to the pixel per row — and confirmed the **fit** work failed: Inscription Stone 1059px against 836px usable at 1440×900, and 323px over at 1280×800. Both widgets measured identically at both widths, because the content column is capped at 900px. A larger monitor was never going to help.
