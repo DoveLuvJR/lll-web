@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Names on the Wall: Three Faiths, One Street at Dura-Europos</title>
+<meta name="description" content="A synagogue, a Christian house church, and a Mithraeum stood on the same street in Dura-Europos and were buried by the same rampart around 256 CE. An interactive study of who signed the wall.">
+<meta property="og:title" content="Names on the Wall">
+<meta property="og:description" content="Three houses of worship on one street in Dura-Europos, buried by the same rampart around 256 CE. An interactive study.">
+<link rel="stylesheet" href="../../shared/styles.css">
+<link rel="stylesheet" href="./styles.css">
+<script>document.documentElement.className+=' has-js';</script>
+</head>
+<body>
+
+<nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Growing Stone Library</a></li>
+    <li><a href="/collections/">Collections</a></li>
+    <li aria-current="page">Names on the Wall</li>
+  </ol>
+</nav>
+
+<header>
+  <h1>Names on the Wall: Three Faiths, One Street at Dura-Europos</h1>
+  <div class="share-row">
+    <button class="share-btn" onclick="copyLink()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>Copy Link</button>
+    <button class="share-btn" onclick="shareNative()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>Share</button>
+    <button class="share-btn" onclick="window.print()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>Print</button>
+  </div>
+</header>
+
+<nav class="nav" id="nav">
+  <a href="#m1" data-t="m1">I · One street, one wall, three houses</a>
+  <a href="#m2" data-t="m2">II · Three houses on one street</a>
+  <a href="#m3" data-t="m3">III · Who signed the wall</a>
+  <a href="#m4" data-t="m4">IV · What the art was for</a>
+  <a href="#m5" data-t="m5">V · The wall that saved them</a>
+  <a href="#m6" data-t="m6">VI · For study and reflection</a>
+</nav>
+
+<div class="wrap">
+
+  <!-- ======================= SECTION I ======================= -->
+  <section class="movement" id="m1">
+    <div class="m-head"><span class="m-num">I</span><div><h2>One street, one wall, three houses</h2></div></div>
+    <div class="m-body">
+      <p>Around 256 CE, three houses of worship stood a short walk apart on the same street in Dura-Europos. One belonged to Jews, one to Christians, and one to Roman soldiers who served the god Mithras.</p>
+
+      <p>Dura-Europos was a small Roman garrison town on the Euphrates River, in what is now eastern Syria. It sat on the empire's edge, facing the Sasanian Persians across the desert.</p>
+
+      <p>When the Persians came, the town's defenders did something desperate. They packed sand and rubble against the inside of the western wall to make it thick enough to hold. The houses along that street were filled in and buried. The city fell anyway. But the sand kept those rooms, and the paint on their walls, hidden for almost 1,700 years.</p>
+
+      <p>When excavators uncovered them in the 1920s and 1930s, they found something no one expected: three rival faiths, side by side, each telling its story on its walls. And each one left a different answer to a simple question. Who signed the wall?</p>
+    </div>
+  </section>
+
+  <!-- ======================= SECTION II ======================= -->
+  <section class="movement" id="m2">
+    <div class="m-head"><span class="m-num">II</span><div><h2>Three houses on one street</h2></div></div>
+    <div class="m-body">
+      <p>All three began as ordinary Roman houses and were remodeled for worship. What each community changed tells you what it needed.</p>
+
+      <!-- ============ WIDGET 1: THE THREE DOORS ============ -->
+      <!-- Per D-018: one house at a time with JS; all three stacked without it (D-012). -->
+      <div class="widget" id="doorsWidget">
+        <div class="widget-top">
+          <div class="widget-kicker">Interactive · Widget 1 of 3</div>
+          <div class="widget-title">The Three Doors</div>
+        </div>
+
+        <div class="door-ctrls">
+          <button type="button" class="pick-btn" data-door="syn" aria-pressed="true" aria-controls="door-syn">The Synagogue</button>
+          <button type="button" class="pick-btn" data-door="church" aria-pressed="false" aria-controls="door-church">The House Church</button>
+          <button type="button" class="pick-btn" data-door="mith" aria-pressed="false" aria-controls="door-mith">The Mithraeum</button>
+        </div>
+
+        <div class="door-panels">
+          <div class="door-panel syn" id="door-syn">
+            <div class="door-lbl">The Synagogue</div>
+            <dl>
+              <div class="door-row"><dt>Who gathered</dt><dd>Local Jewish families</dd></div>
+              <div class="door-row"><dt>Final form</dt><dd>About 244–245 CE</dd></div>
+              <div class="door-row"><dt>What they built</dt><dd>Walls knocked down for one tall hall, benches around it, a Torah niche facing Jerusalem</dd></div>
+              <div class="door-row"><dt>Feel of the room</dt><dd>Open and communal</dd></div>
+              <div class="door-row"><dt>Main art</dt><dd>Hebrew Bible stories in bands around the walls</dd></div>
+              <div class="door-row"><dt>Where it is now</dt><dd>National Museum of Damascus, Syria</dd></div>
+            </dl>
+          </div>
+
+          <div class="door-panel church" id="door-church">
+            <div class="door-lbl">The House Church</div>
+            <dl>
+              <div class="door-row"><dt>Who gathered</dt><dd>Local Christian converts</dd></div>
+              <div class="door-row"><dt>Final form</dt><dd>About 232–233 CE; oldest known house church</dd></div>
+              <div class="door-row"><dt>What they built</dt><dd>A home kept mostly as it was; one back room made into a baptistery with a canopied font</dd></div>
+              <div class="door-row"><dt>Feel of the room</dt><dd>Quiet and hidden</dd></div>
+              <div class="door-row"><dt>Main art</dt><dd>Salvation scenes around the baptism font</dd></div>
+              <div class="door-row"><dt>Where it is now</dt><dd>Yale University Art Gallery</dd></div>
+            </dl>
+          </div>
+
+          <div class="door-panel mith" id="door-mith">
+            <div class="door-lbl">The Mithraeum</div>
+            <dl>
+              <div class="door-row"><dt>Who gathered</dt><dd>Roman soldiers and officers (men only)</dd></div>
+              <div class="door-row"><dt>Final form</dt><dd>Founded about 168–171 CE; rebuilt about 240 CE</dd></div>
+              <div class="door-row"><dt>What they built</dt><dd>A long, dark, cave-like hall with benches down both sides and a painted niche at the end</dd></div>
+              <div class="door-row"><dt>Feel of the room</dt><dd>Secret and exclusive</dd></div>
+              <div class="door-row"><dt>Main art</dt><dd>Mithras slaying the bull, framed by the zodiac</dd></div>
+              <div class="door-row"><dt>Where it is now</dt><dd>Yale University Art Gallery (cult niche and paintings reconstructed)</dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <!-- ============ /WIDGET 1 ============ -->
+
+      <p><b>The synagogue</b> was the boldest remodel. Its builders made a hall large for its town, with painted walls rising about seven meters. That was a public statement: we are here, and this is our story.</p>
+
+      <p><b>The house church</b> barely changed the house at all. From the street it still looked like a home. Only one small room inside was set apart and painted.</p>
+
+      <p><b>The Mithraeum</b> was built to feel like a cave, the place where Mithras killed the cosmic bull. Initiates reclined on the side benches for shared meals, facing the bright niche at the end of a dark room.</p>
+    </div>
+  </section>
+
+  <!-- ======================= SECTION III ======================= -->
+  <section class="movement" id="m3">
+    <div class="m-head"><span class="m-num">III</span><div><h2>Who signed the wall</h2></div></div>
+    <div class="m-body">
+      <p>The three houses left three different kinds of names behind. One named its builders, one named its ranks, and one mostly asked God to remember.</p>
+
+      <!-- ============ WIDGET 2: NAMES ON THE WALL (static, D-014) ============ -->
+      <!-- Subgrid keeps the rows on shared tracks across all three columns,
+           same technique as #wallWidget on whose-name-is-on-the-gate. -->
+      <div class="widget" id="namesWidget">
+        <div class="widget-top">
+          <div class="widget-kicker">Interactive · Widget 2 of 3</div>
+          <div class="widget-title">Names on the Wall</div>
+        </div>
+
+        <div class="names-grid">
+          <div class="names-col syn">
+            <div class="nm-house" data-row="house">The Synagogue</div>
+            <div class="nm-head" data-row="head">Named its builders</div>
+            <div class="nm-cell" data-row="where"><span class="nm-lbl">Where the names are</span>Painted ceiling tiles</div>
+            <div class="nm-cell" data-row="whose"><span class="nm-lbl">Whose names</span>The elder and the donors who paid</div>
+            <div class="nm-cell" data-row="meant"><span class="nm-lbl">What the name meant</span>Honor for giving</div>
+          </div>
+
+          <div class="names-col mith">
+            <div class="nm-house" data-row="house">The Mithraeum</div>
+            <div class="nm-head" data-row="head">Named its ranks</div>
+            <div class="nm-cell" data-row="where"><span class="nm-lbl">Where the names are</span>Walls and altars</div>
+            <div class="nm-cell" data-row="whose"><span class="nm-lbl">Whose names</span>Soldiers, their posts, their initiation grades</div>
+            <div class="nm-cell" data-row="meant"><span class="nm-lbl">What the name meant</span>Status and belonging</div>
+          </div>
+
+          <div class="names-col church">
+            <div class="nm-house" data-row="house">The House Church</div>
+            <div class="nm-head" data-row="head">Left prayers</div>
+            <div class="nm-cell" data-row="where"><span class="nm-lbl">Where the names are</span>A few scratched lines</div>
+            <div class="nm-cell" data-row="whose"><span class="nm-lbl">Whose names</span>People asking to be remembered</div>
+            <div class="nm-cell" data-row="meant"><span class="nm-lbl">What the name meant</span>A request to God</div>
+          </div>
+        </div>
+      </div>
+      <!-- ============ /WIDGET 2 ============ -->
+
+      <p><b>The synagogue named its builders.</b> Painted tiles in the ceiling carry dedications in Aramaic and Greek. They name the elder who led the rebuilding and the members who helped pay for it, and they ask that those givers be remembered. Giving was honorable, and it was recorded where the whole congregation could look up and see it.</p>
+
+      <p><b>The Mithraeum named its ranks.</b> Its walls are crowded with inscriptions and graffiti from soldiers. Men recorded their names, their military posts, their gifts, and their progress through the cult's seven grades of initiation. The temple doubled as a network. A name on that wall said who you were and how high you had climbed.</p>
+
+      <p><b>The house church mostly left prayers.</b> No dedication names a patron or a builder. What survives are a few short scratched lines asking Christ to remember a person by name. The name is there, but it is not credit. It is a request.</p>
+
+      <p>Set side by side, the walls ask the reader a question that still matters. When you give, whose name goes on the wall, and who is it written for?</p>
+    </div>
+  </section>
+
+  <!-- ======================= SECTION IV ======================= -->
+  <section class="movement" id="m4">
+    <div class="m-head"><span class="m-num">IV</span><div><h2>What the art was for</h2></div></div>
+    <div class="m-body">
+      <p>Each house painted for a different reason: the synagogue to remember a people's story, the church to explain a single act, and the Mithraeum to map the heavens.</p>
+
+      <p><b>The synagogue told history.</b> Bands of scenes wrap the hall: baby Moses drawn from the Nile, the crossing of the Red Sea, Samuel anointing David, Elijah, and Esther before the king. The figures wear Roman and Persian clothing, as if the stories happened in Dura. God's face is never shown. Instead, a hand reaches down from heaven to guide and rescue. The paintings also overturn an old assumption that early synagogues never showed people at all.</p>
+
+      <p><b>The church explained baptism.</b> Its paintings sit around the font, and they point to what happens in the water. Jesus heals a paralyzed man. Jesus and Peter walk on the water. Above the font stands the Good Shepherd carrying a sheep, a figure borrowed from common Roman art and given new meaning. One large panel shows women carrying torches toward a white building. Many read it as the women arriving at Jesus' tomb; others see the parable of the wise virgins. Scholars still debate it.</p>
+
+      <p><b>The Mithraeum mapped the cosmos.</b> At its center, Mithras plunges a knife into a bull while a dog, a snake, a scorpion, and a raven gather around. The arch above carries the signs of the zodiac. The Sun and Moon look on. The art was not a story to follow. It was a picture of the universe, meant to be understood only by those who had been initiated.</p>
+
+      <p>The synagogue paintings are usually called frescoes, but they were painted in tempera on dry plaster.</p>
+    </div>
+  </section>
+
+  <!-- ======================= SECTION V ======================= -->
+  <section class="movement" id="m5">
+    <div class="m-head"><span class="m-num">V</span><div><h2>The wall that saved them</h2></div></div>
+    <div class="m-body">
+      <p>The houses survived because a defense failed. The rampart built to save the city buried them instead, and that burial is why we can see them today.</p>
+
+      <!-- ============ WIDGET 3: THE RAMPART ============ -->
+      <!-- Both states live in the SVG (D-012). Without JS the embankment stays
+           hidden and the diagram reads as "Before the siege". -->
+      <div class="widget" id="rampartWidget">
+        <div class="widget-top">
+          <div class="widget-kicker">Interactive · Widget 3 of 3</div>
+          <div class="widget-title">The Rampart</div>
+        </div>
+
+        <div class="ramp-ctrls">
+          <button type="button" class="pick-btn" data-ramp="before" aria-pressed="true" aria-controls="rampSvg">Before the siege</button>
+          <button type="button" class="pick-btn" data-ramp="after" aria-pressed="false" aria-controls="rampSvg">After the rampart</button>
+        </div>
+
+        <svg class="ramp-svg" id="rampSvg" viewBox="0 0 400 236" role="img" aria-labelledby="rampTitle rampDesc">
+          <title id="rampTitle">The western wall of Dura-Europos, before and after the rampart</title>
+          <desc id="rampDesc">A side view. At the left edge stands the city's western wall. To its right is a street, then three simple buildings in a row: the synagogue, the house church, and the Mithraeum. Before the siege, all three buildings stand fully visible. After the rampart, a sloped fill of sand and earth rises from the street against the inside of the wall and covers all three buildings. It is labeled as the sand and earth embankment, about 256 CE.</desc>
+
+          <line class="ground" x1="0" y1="210" x2="400" y2="210"/>
+
+          <rect class="wall-block" x="10" y="44" width="22" height="166"/>
+          <text class="lbl" x="10" y="34">Western wall</text>
+
+          <rect class="bldg syn" x="78" y="140" width="92" height="70"/>
+          <rect class="bldg church" x="178" y="140" width="92" height="70"/>
+          <rect class="bldg mith" x="278" y="140" width="92" height="70"/>
+
+          <g class="emb">
+            <polygon class="emb-fill" points="32,54 400,124 400,210 32,210"/>
+            <text class="lbl emb-lbl" x="232" y="112" text-anchor="middle">Sand and earth embankment,</text>
+            <text class="lbl emb-lbl" x="232" y="127" text-anchor="middle">about 256 CE</text>
+          </g>
+
+          <text class="lbl bldg-lbl" x="124" y="180" text-anchor="middle">Synagogue</text>
+          <text class="lbl bldg-lbl" x="224" y="180" text-anchor="middle">House church</text>
+          <text class="lbl bldg-lbl" x="324" y="180" text-anchor="middle">Mithraeum</text>
+        </svg>
+      </div>
+      <!-- ============ /WIDGET 3 ============ -->
+
+      <p>Around 256–257 CE, the defenders filled the street along the western wall with packed earth and sand. Houses, temples, and the church on that street disappeared under the embankment. The Persians took the city, the people were gone, and the desert covered the rest.</p>
+
+      <p>The three sacred spaces sat in the path of the rampart. The walls that held their paintings were packed in and sealed from light and weather. Rooms farther from the wall fell to ruin. These were kept.</p>
+
+      <p>The story did not end in the ground. The synagogue panels went to Damascus in the 1930s. The church's baptistery and the Mithraeum's niche went to Yale. During the Syrian civil war, the Dura-Europos site itself was heavily looted. The paintings survived only because they had already been moved.</p>
+    </div>
+  </section>
+
+  <!-- ======================= SECTION VI ======================= -->
+  <section class="movement" id="m6">
+    <div class="m-head"><span class="m-num">VI</span><div><h2>For study and reflection</h2></div></div>
+    <div class="m-body">
+      <p>This page pairs with <a href="/collections/whose-name-is-on-the-gate/">"Whose Name Is On the Gate?"</a>. That study looked at benefaction: givers whose names were carved on public buildings. Dura shows the same practice inside three houses of worship, and one house that set it aside.</p>
+
+      <ol class="qs">
+        <li>The synagogue honored its donors on the ceiling. The Mithraeum honored its soldiers on the walls. What did each community believe a name on the wall was for?</li>
+        <li>The house church left prayers asking to be remembered, not dedications. How does that compare with Jesus' teaching to give in secret (Matthew 6:1–4)?</li>
+        <li>The synagogue told a people's shared history. The church pointed to one act of rebirth. What does each suggest about how that community understood belonging?</li>
+        <li>The Mithraeum was open only to initiated men. The synagogue was built for a whole congregation. The church hid inside a home. Which kind of room does your own community most resemble?</li>
+        <li>A rampart meant to save the city failed, yet it preserved these rooms. Where have you seen something kept by the very thing that seemed to end it?</li>
+      </ol>
+    </div>
+  </section>
+
+</div>
+
+<div class="foot-back"><a href="/collections/">&lsaquo; Back to all collections</a></div>
+<footer><p>Compiled for the Growing Stone Fellowship &middot; Jumpshots from The Bleachers Inc.</p></footer>
+<div class="toast" id="toast"></div>
+
+<script src="./app.js"></script>
+</body>
+</html>

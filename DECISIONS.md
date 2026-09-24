@@ -309,3 +309,21 @@ The same rule applied to both would have degraded the Wall to fix the Stone.
 2. **Trimming words does not close a 200px gap.** It buys tens of pixels and costs substance. When the gap is that size the shape is wrong, not the copy.
 
 **Verification is a number, not a judgment.** Report widget height against `window.innerHeight` minus the sticky nav, at 1440×900 and 1280×800. "Looks fine" is not a result.
+
+---
+
+## D-018 (2026-09-24) The Three Doors: an approved tabbed comparison, with the D-012 safety net
+
+**Decision:** `#doorsWidget` on `collections/names-on-the-wall/` shows **one house at a time** behind three buttons, as its spec requires. That is a comparison component built as tabs, which [[D-014]] forbids. It is an **explicit exception approved by Hashem**, not a relaxation of D-014.
+
+**Established by:** Batch 15. The spec asked for one-at-a-time panels, no static six-row table anywhere, and, with JavaScript off, only the Synagogue panel. The last part would also have broken [[D-012]], since the other two houses' details would be unreachable without a script.
+
+**How it honours what it can:**
+- **D-012 is kept in full.** All three panels are in the HTML. JS only sets `hidden`. With JS off the buttons are `display: none` and all three panels stack, each under its own label. The Synagogue is first, so the spec's "shows the Synagogue panel" still holds, and nothing is lost.
+- **No jump.** With JS on, the three panels share one grid cell, and inactive ones are `visibility: hidden` rather than `display: none`. The box is always as tall as the tallest house, with no measuring script.
+- **Print un-hides all three**, same as D-012's print rule.
+- **The comparison still happens on the page.** The Names on the Wall widget in the same study is static, three columns side by side, per D-014.
+
+**Why accept the exception here:** the Doors panel is a six-row reference card per house, not the page's argument. The page's argument, credit → rank → prayer, lives in the static Names widget.
+
+**Scope: this page only.** D-018 covers `#doorsWidget` on `collections/names-on-the-wall/` and nothing else. [[D-014]] stays in force for every other page and every other component, including the other two widgets on this page. It does not set a precedent. A future tabbed comparison anywhere else needs its own ruling.

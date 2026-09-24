@@ -1,5 +1,58 @@
 # Changelog — LLL Library
 
+## Batch 15 — New Study: Names on the Wall (2026-09-24)
+
+A new study, **"Names on the Wall: Three Faiths, One Street at Dura-Europos,"** at `/collections/names-on-the-wall/`, built from `SPEC_names-on-the-wall.md`. It pairs with "Whose Name Is On the Gate?". It covers three houses of worship on one street (synagogue, house church, Mithraeum), buried by the same rampart around 256 CE, and asks who signed each wall. The page text is the spec's text, word for word, checked by script (34/34 lines).
+
+### New page — `collections/names-on-the-wall/` (index.html, styles.css, app.js)
+
+Same file set, chrome, and palette as the gate study: breadcrumb, sticky section nav, numbered movements, widget shell, back link, footer. The Copy Link / Share / Print row was added by owner ruling (see below). One new colour token, `--sand`, is the rampart fill.
+
+- **The Three Doors** (`#doorsWidget`): three `aria-pressed` buttons, one house's six-row panel at a time, fixed height. This is a tabbed comparison, approved as an exception to D-014 and recorded as **D-018**. With JS off, all three panels stack (D-012).
+- **Names on the Wall** (`#namesWidget`): static, three columns (Synagogue, Mithraeum, House Church), rows aligned by subgrid as in `#wallWidget`. The columns stay side by side on a 390px phone, with smaller type. The House Church column is the widget's highlight in library gold. This replaced the original "quieter" treatment; see the spec reversal below.
+- **The Rampart** (`#rampartWidget`): an inline SVG side view with Before/After buttons. The embankment is in the markup and fades in over 0.3s, with no fade under `prefers-reduced-motion`. With JS off it reads as "Before". The SVG has a `<title>` and a `<desc>` covering both states.
+
+### Spec reversal — House Church column becomes the highlight (owner-approved)
+
+**This reverses spec rule 4 for Widget 2** ("the House Church column has a visibly quieter treatment … to show 'unsigned'"). The owner ruled the opposite after seeing the first build: the unsigned column is the one the study wants the reader to notice.
+
+- **Colour:** `--gold`, the same token as the section-number badge (`.m-num`). No new colour.
+- **Header band:** solid gold with white text, mirroring the jasper and bronze headers.
+- **Subheader band:** first built as `--gold-bg`, which read too close to the Mithraeum's cream band. Deepened on owner request to a tint built from the token, `color-mix(--gold 20%, white)`. At that depth plain `--gold` text measured under 4.5:1, so the label is a deeper gold from the same token, `color-mix(--gold 78%, black)`. Measured **5.64:1**.
+- **Rows:** normal text colours, same as the other columns (the muted override is removed).
+- **Border:** still dashed, now gold.
+- **Lift:** a soft gold glow (`box-shadow`, `--gold-light` at 50%). **No transform, translate, or scale.** Moving the column would break subgrid row alignment, and scaling could push a phone into sideways scroll.
+- **Contrast (new test `house_church_contrast`):** header 5.09:1 (white on `#8B6914`), subheader 5.64:1 (deep gold on the gold tint). Both clear 4.5:1 at 390×844 and 1440×900.
+- **Dark mode:** the site has none (no `prefers-color-scheme` anywhere). Forcing a dark colour scheme renders the page identically, with the same ratios.
+- Re-run after all changes: **38/38 checks**, `names_rows_align` 0.00px on every row at both sizes, phone `scrollWidth` 390/390.
+
+### Spec reversal — Copy Link / Share / Print row added (owner-approved)
+
+The spec lists "sharing buttons" as out of scope, so the first build left the row off. The owner ruled to add it. It is the gate study's row verbatim (markup, styles, toast, `copyLink` / `shareNative`), hidden in print. The share sheet text is "Three faiths, one street at Dura-Europos."
+
+### Docs
+
+- README: Names on the Wall added to the folder tree and the collections table.
+- D-018 tightened: **scope is this page's `#doorsWidget` only**, and D-014 stays in force everywhere else, including this page's other two widgets.
+
+### Existing pages
+
+- Gate study: one line at the end, "Related study: Names on the Wall", plus a 2-rule `.related` style. Nothing else changed.
+- Collections index: a sixth card.
+
+### Verified (Playwright, headless Chromium, 390×844 and 1440×900)
+
+All ten spec tests pass at both sizes, along with extras: D-017 fit under the sticky nav, JS-off fallback, reduced motion, no console errors, and verbatim text. **33/33 checks.** Tallest widget: 585px of 844px on the phone (615px usable under the nav), 529px of 900px on desktop. Row alignment delta 0.00px. Phone `scrollWidth` 390px. The source makes no network calls (D-013 grep).
+
+### Not verified / open
+
+- [ ] Vercel preview URL. The branch `names-on-the-wall` needs pushing to get one
+- [ ] Network tab on the live preview (D-013 amendment: the Vercel Toolbar is still an open item)
+- On a 390px phone the sticky nav wraps to 229px, the same behaviour as the gate study. The Doors widget still fits under it, with 30px to spare
+- The Rampart prints whichever state is on screen
+
+---
+
 ## Batch 14 — Gate Study: Inscription Stone Rebuilt as Rows (2026-09-12)
 
 Acting on a browser audit of the live page (graded C). The audit confirmed the Batch 13 **alignment** work landed perfectly — subgrid supported, gates-band delta 0px, foundations-band delta 0px, slab heights matched to the pixel per row — and confirmed the **fit** work failed: Inscription Stone 1059px against 836px usable at 1440×900, and 323px over at 1280×800. Both widgets measured identically at both widths, because the content column is capped at 900px. A larger monitor was never going to help.
