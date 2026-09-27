@@ -327,3 +327,21 @@ The same rule applied to both would have degraded the Wall to fix the Stone.
 **Why accept the exception here:** the Doors panel is a six-row reference card per house, not the page's argument. The page's argument, credit → rank → prayer, lives in the static Names widget.
 
 **Scope: this page only.** D-018 covers `#doorsWidget` on `collections/names-on-the-wall/` and nothing else. [[D-014]] stays in force for every other page and every other component, including the other two widgets on this page. It does not set a precedent. A future tabbed comparison anywhere else needs its own ruling.
+
+---
+
+## D-019 (2026-09-27) The fit contract is 1440×900; 1280×800 is deferred
+
+**Decision:** D-017's fit target changes. A simultaneity widget must fit the usable height at **1440×900**, which is **836px** under the 64px sticky nav. **1280×800 is not a gate for now.** Both widgets on `whose-name-is-on-the-gate` are held to it, the Donor Wall included.
+
+**Ruled by:** Hashem, 2026-09-27, in the viewport-fit spec for the gate study (Batch 16).
+
+**What changes from D-017:**
+- **Target size.** D-017 named 1280×800. That needs about 100px more cut from each widget, and the chrome can't give that much. It would mean cutting study copy, which D-017 itself warns against ("trimming words does not close a 200px gap").
+- **The Donor Wall is now in scope.** D-017 called its height cosmetic, since side-by-side columns survive scrolling. The owner ruled it must fit as well, so both widgets carry the requirement on this page.
+
+**What does not change:** verification is still a number from a real browser at the stated size, and a width-capped column still hides the problem. Both widgets measure the same at 1440 and 1280.
+
+**How the height was bought (and how not to buy it):** trim chrome only: widget padding, the eyebrow line, a one-line hint, and the caption moved *outside* the box as commentary. The Donor Wall's two bands are sized by Herod's wall (about 1px of slack each), so shrinking anything on the New Jerusalem side saves nothing. `.wall-hd` and `.wall-foot` are trimmed by padding only, never by a fixed row height on `.wall-pair`, which would break the subgrid.
+
+**Known exposure:** at 1280×800 the Stone overflows by about 74px and the Wall by about 92px. Revisit if reader data shows laptop-height screens matter.

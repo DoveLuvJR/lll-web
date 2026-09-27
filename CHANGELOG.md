@@ -1,5 +1,47 @@
 # Changelog — LLL Library
 
+## Batch 16 — Gate Study: Widget Viewport Fit (2026-09-27)
+
+Both widgets on `/collections/whose-name-is-on-the-gate/` were still taller than the screen, so a reader had to scroll to compare all six inscriptions or both walls. This was a chrome-only trim, built from the viewport-fit spec. No study copy, slab content, wall card or subgrid structure changed. The fit contract is now **1440×900 (836px usable)**, recorded as **D-019**.
+
+### Heights at 1440×900 (usable 836px)
+
+| Widget | Before | After | Headroom |
+|---|---|---|---|
+| `#stoneWidget` | 955 | **810** | 26px |
+| `#wallWidget` | 1012 | **828** | 8px |
+
+Gates band delta **0**, foundations band delta **0**, same as before.
+
+### Changes
+
+- **Both widgets:** the "Interactive · Widget N of 2" eyebrow is removed. The hint is one line and the title has a tighter line height. `.widget-top` went from 99 to 50px. Widget padding went from 18/20 to 12px.
+- **Captions moved outside the box.** Both `.widget-foot` captions are now siblings of their widget, not children. Their text is unchanged, and they sit 14px below the box through a negative margin that collapses with the widget's own. Print keeps each caption with its widget (`break-before: avoid`).
+- **Stone:** the `.hl-ctrls` and `.slabs` top margins are now 10px.
+- **Wall:** the `.wall-pair` gap and top margin are now 10px. The `.wall-hd` padding went from 12/11 to 8/6, which cut the row by 9px. The `.wall-foot` padding went from 12 to 6, which cut the row by 12px. Both were done through padding, never a fixed row height.
+- **Mobile (≤640px):** `.hl-btn` gets `min-height: 44px`, up from 31. It is mobile-only so the desktop Stone keeps its headroom. The gate and foundation tile grids are now `repeat(3, minmax(0,1fr))`. The spec asked for `repeat(3,1fr)`, but that was already the rule. Plain `1fr` lets the longest word ("Chrysoprase") widen its column, which is what made the columns ragged. At 375px they are now 88.33px × 3 with no tile overflow.
+
+### Spec notes
+
+- **The wall landed at 828, not the spec's estimated 821.** Item 2.5, the gap from 14 to 10, saves no height. Each wall's own rows use `row-gap: 0` in the subgrid, so the parent's gap never separated them vertically. Every other item hit its number. Pulling the "The Lamb…" footer onto one line would save 18px, but it only fits with 1–2px to spare, so it was not taken.
+- **Print audit:** the stale `.slabs { repeat(3,1fr) }` rule the spec expected is **already gone**. It was removed with the Batch 14 row rebuild, and `.slabs` prints as a single 830px column. Confirmed with print emulation: `.nav`, `.share-row`, `.hl-ctrls`, `.crumbs` and `.foot-back` are `display:none`. The tint-strip `!important` rules are present. `break-inside: avoid` lands on `.widget`, `.slab`, `.wall` and `.uitem`, which all still exist.
+- **The `.widget-kicker` rule is deleted.** It is no longer used on this page, and the style is page-local.
+
+### Verified (Playwright, headless Chromium, local server)
+
+- 1440×900: the heights above, and both band deltas 0.
+- "The gift": slabs 1–5 HAS, slab 6 NO. `aria-pressed` is true only on the active button. Pressing it again clears, and Clear clears with all four false. No console errors.
+- 375×812: `scrollWidth` 375 = `clientWidth` 375, all four `.hl-btn` are 44px, and `.found-grid` has 3 equal columns.
+- For the record (out of scope): at 1280×800 the usable height is 736, the stone 810 and the wall 828.
+
+### Not verified / open
+
+- [ ] **Vercel Live on production.** This is a dashboard setting, and no repo file controls it. Turn off the Vercel Toolbar for Production, then re-check `vercel.live` on the **top-level** page, never inside an iframe.
+- [ ] Heights on the live deploy and on a Mac. The Wall's 8px headroom is thin enough that font metrics could matter.
+- **Pre-existing defect, not fixed (out of scope):** `.m-body p` (specificity 0,1,1) overrides `.band-note` (0,1,0). The two New Jerusalem band notes therefore render at 17.5px with a 16px bottom margin instead of 11.5px, and have since Batch 12. Fixing it cannot change the wall's height, since Herod's wall sets the rows.
+
+---
+
 ## Batch 15 — New Study: Names on the Wall (2026-09-24)
 
 A new study, **"Names on the Wall: Three Faiths, One Street at Dura-Europos,"** at `/collections/names-on-the-wall/`, built from `SPEC_names-on-the-wall.md`. It pairs with "Whose Name Is On the Gate?". It covers three houses of worship on one street (synagogue, house church, Mithraeum), buried by the same rampart around 256 CE, and asks who signed each wall. The page text is the spec's text, word for word, checked by script (34/34 lines).
