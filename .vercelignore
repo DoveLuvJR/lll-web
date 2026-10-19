@@ -6,3 +6,5 @@
 !about.html
 !collections
 !shared
+# Deploy config (D-022). Read by Vercel at build time; not a page.
+!vercel.json

@@ -1,5 +1,30 @@
 # Changelog — LLL Library
 
+## Batch 19 — Font Caching + Production Check (2026-10-19)
+
+The production check after the Batch 18 merge passed: 0 third-party requests on all 8 pages. It also found that Vercel serves the self-hosted fonts with `cache-control: public, max-age=0, must-revalidate`, so a returning reader's browser re-checks every font on every page load. Google's CDN used to let browsers keep them for a year. Hashem ruled to fix it with a minimal `vercel.json`. That is an explicit exception to D-005, recorded as **D-022**.
+
+### What changed
+
+- **`vercel.json`** (new) holds one `headers` rule: `/shared/fonts/(.*)` gets `Cache-Control: public, max-age=31536000, immutable`. There is nothing else in the file.
+- **`.vercelignore`** now allowlists `vercel.json`. The ignore file excludes everything at the root by default, and the Vercel docs don't say whether an ignored `vercel.json` is still read. Allowlisting it removes the doubt. Whether the file itself gets served is checked below.
+- **The CHANGELOG's open items were ticked** from the production check: Batch 16 Vercel Toolbar (×2), Batch 15 preview and network tab, Batch 17b live deploy, Batch 18 live deploy and caching. Batch 16's "heights on a Mac" stays open; the live heights part is done.
+
+### Verified on production (`table-of-nations.vercel.app`, merge `9451aff`, before this batch)
+
+- **External requests: 0 on all 8 pages.** No `vercel.live` request, so the Vercel Toolbar is off in Production. That closes D-013's operational requirement, open since Batch 14.
+- **Fonts load from `/shared/fonts/`** with status 200, 3–5 files per page.
+- **Gate widgets at 1440×900:** Stone **810**, Wall **828**.
+- **Batch 17/17b text is live:** "Nabonidus records", "a predecessor", "leads to destruction", `(8:5; 11:19; 16:18)` in the table and `(Rev 8:5; …)` in the note. The Movement VI `6:12` is intact, and a Nineveh search shows Nimrod and Asshur with `Gen 10:11, 22`.
+
+### To verify on this branch's preview (after Hashem pushes)
+
+- [ ] A font file returns `cache-control: public, max-age=31536000, immutable`.
+- [ ] `/vercel.json` is **not** served (expect 404).
+- [ ] Pages still load, and there are still 0 external requests.
+
+---
+
 ## Batch 18 — Self-Host the Fonts (2026-10-19)
 
 D-003 put a Google Fonts `@import` in `shared/styles.css`. D-013 says a page makes no network calls of any kind. So every page broke D-013 on load: Batch 17 counted 42 requests to Google's font CDN across the 9 pages. Hashem ruled to keep D-013 absolute, with no exception, and move the fonts into the repo. **D-021** amends D-003 item 1 to match. The branch is cut from `batch-17-trust-check` (ruled by Hashem), since 17/17b are not merged yet.
@@ -42,8 +67,8 @@ A typical page fetches 3–5 of these files (about 140–255 KB). That is the sa
 
 ### Not verified / open
 
-- [ ] **The live deploy.** `.vercelignore` already publishes `shared/`, so `shared/fonts/` will deploy. Check the network tab on the real site, top-level page and not inside an iframe, for 0 third-party requests (the Vercel Toolbar is covered by D-013's amendment).
-- [ ] **Caching.** Google's CDN served these with long cache lifetimes. Vercel's default caching for `/shared/fonts/*` hasn't been checked. A `vercel.json` cache header would be a separate ruling (D-005 says no config until it's needed).
+- [x] *(verified on production 2026-10-19, Batch 19: 0 third-party requests on all 8 pages)* **The live deploy.** `.vercelignore` already publishes `shared/`, so `shared/fonts/` will deploy. Check the network tab on the real site, top-level page and not inside an iframe, for 0 third-party requests (the Vercel Toolbar is covered by D-013's amendment).
+- [x] *(addressed in 19: `vercel.json` cache header, D-022)* **Caching.** Google's CDN served these with long cache lifetimes. Vercel's default caching for `/shared/fonts/*` hasn't been checked. A `vercel.json` cache header would be a separate ruling (D-005 says no config until it's needed).
 - `about.html` is an empty placeholder. It still links `shared/styles.css` but draws no text, so it requests no font files.
 - The scan reads text nodes, not CSS `::before`/`::after` content. No page draws pseudo-element text in Cinzel 400, but that was not machine-checked.
 
@@ -75,7 +100,7 @@ The Batch 17 audit found four factual errors that were already live. Batch 17's 
 
 ### Not verified / open
 
-- [ ] The live deploy (local server only).
+- [x] *(verified on production 2026-10-19: Nabonidus, Psalm 1:6, both Rev 8:5 cites and the Nineveh notes all live; Movement VI 6:12 intact)* The live deploy (local server only).
 - [ ] Nimrod's "Uniquely, a Hamite who dominated Semitic territory" is still `[NEEDS SOURCE]`. It was not in 17b's scope.
 
 ---
@@ -194,8 +219,8 @@ Gates band delta **0**, foundations band delta **0**, same as before.
 
 ### Not verified / open
 
-- [ ] **Vercel Live on production.** This is a dashboard setting, and no repo file controls it. Turn off the Vercel Toolbar for Production, then re-check `vercel.live` on the **top-level** page, never inside an iframe.
-- [ ] Heights on the live deploy and on a Mac. The Wall's 8px headroom is thin enough that font metrics could matter.
+- [x] *(verified 2026-10-19, Batch 19: no `vercel.live` request on any production page)* **Vercel Live on production.** This is a dashboard setting, and no repo file controls it. Turn off the Vercel Toolbar for Production, then re-check `vercel.live` on the **top-level** page, never inside an iframe.
+- [ ] *(live deploy verified 2026-10-19: Stone 810, Wall 828 on production, Windows Chromium. Mac still open.)* Heights on the live deploy and on a Mac. The Wall's 8px headroom is thin enough that font metrics could matter.
 - **Pre-existing defect, not fixed (out of scope):** `.m-body p` (specificity 0,1,1) overrides `.band-note` (0,1,0). The two New Jerusalem band notes therefore render at 17.5px with a 16px bottom margin instead of 11.5px, and have since Batch 12. Fixing it cannot change the wall's height, since Herod's wall sets the rows.
 
 ---
@@ -246,8 +271,8 @@ All ten spec tests pass at both sizes, along with extras: D-017 fit under the st
 
 ### Not verified / open
 
-- [ ] Vercel preview URL. The branch `names-on-the-wall` needs pushing to get one
-- [ ] Network tab on the live preview (D-013 amendment: the Vercel Toolbar is still an open item)
+- [x] *(moot: the study is on production, verified 2026-10-19)* Vercel preview URL. The branch `names-on-the-wall` needs pushing to get one
+- [x] *(verified on production 2026-10-19: 0 external requests)* Network tab on the live preview (D-013 amendment: the Vercel Toolbar is still an open item)
 - On a 390px phone the sticky nav wraps to 229px, the same behaviour as the gate study. The Doors widget still fits under it, with 30px to spare
 - The Rampart prints whichever state is on screen
 
@@ -298,7 +323,7 @@ If a component's argument is simultaneity, its height is a requirement and gets 
 
 - [ ] Re-measure both widgets at 1440×900 and 1280×800 — regression run against this batch
 - [ ] Confirm the Herod foundations card fills its band with no gap remaining
-- [ ] Confirm `vercel.live` requests are gone once the Toolbar is disabled
+- [x] *(verified 2026-10-19, Batch 19)* Confirm `vercel.live` requests are gone once the Toolbar is disabled
 
 ---
 
