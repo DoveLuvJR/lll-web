@@ -17,11 +17,11 @@ The production check after the Batch 18 merge passed: 0 third-party requests on 
 - **Gate widgets at 1440×900:** Stone **810**, Wall **828**.
 - **Batch 17/17b text is live:** "Nabonidus records", "a predecessor", "leads to destruction", `(8:5; 11:19; 16:18)` in the table and `(Rev 8:5; …)` in the note. The Movement VI `6:12` is intact, and a Nineveh search shows Nimrod and Asshur with `Gen 10:11, 22`.
 
-### To verify on this branch's preview (after Hashem pushes)
+### Verified on this branch's preview (`2432d99`, via Vercel share link)
 
-- [ ] A font file returns `cache-control: public, max-age=31536000, immutable`.
-- [ ] `/vercel.json` is **not** served (expect 404).
-- [ ] Pages still load, and there are still 0 external requests.
+- [x] Every font file on all 8 pages returns `cache-control: public, max-age=31536000, immutable` (was `max-age=0, must-revalidate`).
+- [x] `/vercel.json` returns **404**, as do `/.vercelignore` and `/CHANGELOG.md`. Allowlisting the config did not publish it.
+- [x] All 8 pages return 200 with their own titles. **0 external requests.** Gate widgets are 810/828.
 
 ---
 
