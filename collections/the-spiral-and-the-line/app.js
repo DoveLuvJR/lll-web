@@ -1,7 +1,7 @@
 /* ---------- Toolbox data ---------- */
 const TOOLS=[
   {n:"Synonymous",t:"the base pair",d:"The second line says the same thing as the first, in fresh words.",ex:"“The heavens declare the glory of God; the skies proclaim the work of his hands.” — Psalm 19:1"},
-  {n:"Antithetic",t:"the base pair",d:"The second line states the opposite, sharpening the first by contrast.",ex:"“The LORD watches over the righteous, but the way of the wicked He frustrates.” — Psalm 1:6"},
+  {n:"Antithetic",t:"the base pair",d:"The second line states the opposite, sharpening the first by contrast.",ex:"“For the LORD watches over the way of the righteous, but the way of the wicked leads to destruction.” — Psalm 1:6"},
   {n:"Synthetic",t:"the base pair",d:"The second line completes or extends the first, building the thought forward.",ex:"“The law of the LORD is perfect, reviving the soul.” — Psalm 19:7"},
   {n:"Chiasmus",t:"A‑B‑B‑A",d:"Ideas mirror inward and back out, so the turning point at the center is the message.",ex:"“The Sabbath was made for man, not man for the Sabbath.” — Mark 2:27"},
   {n:"Staircase",t:"climbing repetition",d:"A word from one line is picked up and lifted higher in the next, like a rising staircase.",ex:"“Ascribe to the LORD… ascribe to the LORD glory and strength.” — Psalm 29:1"},
@@ -38,7 +38,7 @@ const REV=[
   {t:"The Heavens / Sky",s:"4th — Pale Horse: Death over a quarter of the earth",tr:"4th — sun, moon &amp; stars darkened",b:"4th — the sun scorches people with fire",note:"Each turns to the sky and the lights above."},
   {t:"The Spiritual Realm &amp; Woe",s:"5th — martyrs cry out from under the altar",tr:"5th — locusts from the abyss torment mankind",b:"5th — darkness falls on the Beast's throne",note:"A shift from the physical to the spiritual — the cost of faith and the seat of evil."},
   {t:"Prep for the End · Armageddon",s:"6th — the sky recedes; “the great day of wrath has come”",tr:"6th — angels at the Euphrates released",b:"6th — the Euphrates dries for the kings' final march",note:"The sixth of each series stages the final battle. The seal already voices the world crying that the end has arrived (Rev 6:16–17).",fin:true},
-  {t:"The Final Judgment",s:"7th — silence, then thunder, lightning &amp; earthquake",tr:"7th — “The kingdom has become the Lord's”; earthquake &amp; hail",b:"7th — “It is done!” — the greatest earthquake ever",note:"THE FINISH LINE. All three close with the same thunder, lightning, and history-ending earthquake (Rev 6:12; 11:19; 16:18). This identical ending is the strongest case for the spiral reading.",fin:true}
+  {t:"The Final Judgment",s:"7th — silence, then thunder, lightning &amp; earthquake",tr:"7th — “The kingdom has become the Lord's”; earthquake &amp; hail",b:"7th — “It is done!” — the greatest earthquake ever",note:"THE FINISH LINE. All three close with the same thunder, lightning, and history-ending earthquake (Rev 8:5; 11:19; 16:18). This identical ending is the strongest case for the spiral reading.",fin:true}
 ];
 (function(){const b=document.getElementById("tlBody");REV.forEach((r,i)=>{const tr=document.createElement("tr");tr.className="tl-row"+(r.fin?" fin":"");tr.onclick=()=>{const n=document.getElementById("tln"+i);n.classList.toggle("open")};tr.innerHTML=`<td class="tgt">${r.t}</td><td>${r.s}</td><td>${r.tr}</td><td>${r.b}</td>`;b.appendChild(tr);const nt=document.createElement("tr");nt.className="tl-note";nt.id="tln"+i;nt.innerHTML=`<td colspan="4"><span class="nl">Why they line up</span>${r.note}</td>`;b.appendChild(nt)})})();
 

@@ -345,3 +345,20 @@ The same rule applied to both would have degraded the Wall to fix the Stone.
 **How the height was bought (and how not to buy it):** trim chrome only: widget padding, the eyebrow line, a one-line hint, and the caption moved *outside* the box as commentary. The Donor Wall's two bands are sized by Herod's wall (about 1px of slack each), so shrinking anything on the New Jerusalem side saves nothing. `.wall-hd` and `.wall-foot` are trimmed by padding only, never by a fixed row height on `.wall-pair`, which would break the subgrid.
 
 **Known exposure:** at 1280×800 the Stone overflows by about 74px and the Wall by about 92px. Revisit if reader data shows laptop-height screens matter.
+
+---
+
+## D-020 (2026-10-19) Copy passes freeze Scripture; confirmed errors get their own batch
+
+**Decision:** A copy pass, like Batch 17's Trust Check, **freezes** every Scripture quotation, verse reference, quoted source, name, date and number. A rewrite then can't change any of them by accident. When the pass finds a confirmed factual error in frozen text, the error is **flagged, not fixed**. It is then fixed in its own small batch, approved by Hashem, with its own commit. It is never folded silently into the rewrite.
+
+**Ruled by:** Hashem, 2026-10-19. Batch 17b is the first case: Psalm 1:6, the Rev 8:5 cite, the Nabonidus credit, and the Gen 10:11 note.
+
+**Why:**
+- **A rewrite diff should be checkable by one rule:** no verse, quote, name or number moved. Mixing fact fixes into a copy pass breaks that rule. A reviewer can no longer tell an intended correction from an accidental one.
+- **D-013 already says a wrong verse is worse than a clumsy sentence.** The fix for a wrong verse deserves the same weight: a named batch, a ruling, and a before → after record. A line buried in a style diff gets none of that.
+- **A separate commit is revertible on its own.** If a "fix" turns out to be wrong, it can be undone without losing the copy work, or the other way round.
+
+**How to apply:**
+- The copy-pass report lists factual errors under honesty flags, marked HIGH, with the evidence. Its proposed rewrites never touch them.
+- The fix batch lifts the freeze **for named items only** and lists them. Anything found in passing (as with Batch 17b's second `6:12`, and "ancestor" → "predecessor") needs an explicit ruling before it rides along.

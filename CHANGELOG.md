@@ -1,5 +1,36 @@
 # Changelog — LLL Library
 
+## Batch 17b — Verse and Attribution Fixes (2026-10-19)
+
+The Batch 17 audit found four factual errors that were already live. Batch 17's rules froze every verse and reference, so it could only flag them. Hashem approved fixing them here, as their own commit (**D-020**). The freeze was lifted for these items only. No other verse, quote, reference, `id` or `href` changed.
+
+### Fixes
+
+| # | Where | Before → after | Why |
+|---|---|---|---|
+| 1 | Spiral `app.js`, Toolbox "Antithetic" card | "The LORD watches over the righteous, but the way of the wicked He frustrates." → "For the LORD watches over the way of the righteous, but the way of the wicked leads to destruction." (still labeled Psalm 1:6) | The old line spliced Psalm 1:6's first half onto Psalm 146:9's second half. The new text is NIV, to match the page's other quotes. |
+| 2a | Spiral `index.html`, comparison table "Best evidence" row | `(6:12; 11:19; 16:18)` → `(8:5; 11:19; 16:18)` | The claim is that all three series end in thunder, lightning and a great earthquake. 6:12 (sixth seal) has only an earthquake. The seals end at 8:5. |
+| 2b | Spiral `app.js`, Timeline Flipper "Final Judgment" note | `(Rev 6:12; 11:19; 16:18)` → `(Rev 8:5; 11:19; 16:18)` | The same claim, with the same error. It was not in the 17b spec. **Ruled in by Hashem** so the page doesn't contradict itself. |
+| 3 | Gate `index.html`, Movement II | "Nebuchadnezzar II records cutting a trench…" → "Nabonidus records cutting a trench…"; also "an ancestor separated from him" → "a predecessor separated from him" | The find of Naram-Sin's foundation deposit is credited to Nabonidus, the last king of Babylon. "Ancestor" was loose for either king, since Naram-Sin was a royal predecessor, not a forebear. **The second change was ruled in by Hashem** (one word beyond the spec). "Well over a thousand years" still holds (about 1,700). |
+| 4 | Table of Nations `app.js`, Nimrod and Asshur | Nimrod: "Built Babel, Erech, Akkad, Nineveh." → "Built Babel, Erech and Akkad, and in most modern translations Nineveh too (Gen 10:11 can be read either way)." Asshur `sg`: "Founded Assyria and built Nineveh." → "Founded Assyria. The KJV reading of Genesis 10:11 credits him with building Nineveh; most modern translations give it to Nimrod." Asshur `sc`: "Gen 10:22; Num 24:22" → "Gen 10:11, 22; Num 24:22" | This one was a silent split, not an error. Gen 10:11 reads both ways, and the page gave Nineveh to both men without saying why. |
+
+### Verified (Playwright, Chromium 156, local server)
+
+- **The word-level diff has exactly 11 changed runs**, all listed above and nothing else. No `id` or `href` is in any changed run.
+- **The Movement VI `6:12`** ("links the 7th-bowl earthquake (16:18) back to the 6th-seal earthquake (6:12)") is present and unchanged. It is the only `6:12` left in the Spiral HTML.
+- **Spiral:** the Antithetic card was opened in the browser and screenshotted. The curly quotes and em dash render correctly. The Best-evidence cell and the Final Judgment note both read `8:5; 11:19; 16:18`.
+- **Table of Nations:** a search for "Nineveh" returns exactly two cards, Nimrod and Asshur. Both were expanded, and the new Significance text and the Asshur Scripture line read correctly.
+- **Gate:** the edited sentence was read back from the rendered page.
+- **No page errors on the three edited pages.** The only console error was a 404 for `/favicon.ico`, which the browser requests by itself; the repo has no favicon. That is not a page defect.
+- **D-013 grep:** `fetch(` 0, `XMLHttpRequest` 0, `src="http` 0.
+
+### Not verified / open
+
+- [ ] The live deploy (local server only).
+- [ ] Nimrod's "Uniquely, a Hamite who dominated Semitic territory" is still `[NEEDS SOURCE]`. It was not in 17b's scope.
+
+---
+
 ## Batch 17 — Trust Check: Humanize the Study Pages (2026-10-19)
 
 Readers said the study pages read like AI wrote them. A Trust Check pass (honesty first, then AI tells, then voice) ran over all seven pages under `/collections/`. Phase A wrote an audit report outside the repo (`claude-code-prompts/LLL-Web-Batch-17-REPORT.md`, 35 honesty flags, 55 proposed rewrites). Hashem approved every rewrite that sits outside a widget and outside a Fellowship card, and those are applied here. No verse, quote, inscription, name, date, number, `id`, `href`, Fellowship card or footer credit changed. The branch starts from `gate-viewport-fit` rather than `main`, because `main` does not yet have Batches 15–16 (ruled by Hashem).
@@ -40,10 +71,10 @@ Words are counted on the rendered page (body text with JS run, scripts and style
 ### Not verified / open
 
 **Four HIGH items for Hashem's own hand. The batch rules barred touching them:**
-- [ ] **Spiral `app.js`, Antithetic example:** the quote labeled Psalm 1:6 is not Psalm 1:6. The wording is close to Psalm 146:9 (NIV).
-- [ ] **Spiral, row 7 note and comparison table:** `Rev 6:12` is cited as the seventh-seal earthquake. 6:12 is the sixth seal; the seventh-seal thunder, lightning and earthquake are at Rev 8:5.
-- [ ] **Gate, Movement II:** Nebuchadnezzar II is credited with finding Naram-Sin's foundation deposit. The usual attribution is Nabonidus.
-- [ ] **Table of Nations:** Nimrod and Asshur are each said to have built Nineveh (Gen 10:11 reads either way depending on translation). Pick one reading.
+- [x] *(fixed in 17b)* **Spiral `app.js`, Antithetic example:** the quote labeled Psalm 1:6 is not Psalm 1:6. The wording is close to Psalm 146:9 (NIV).
+- [x] *(fixed in 17b, both places)* **Spiral, row 7 note and comparison table:** `Rev 6:12` is cited as the seventh-seal earthquake. 6:12 is the sixth seal; the seventh-seal thunder, lightning and earthquake are at Rev 8:5.
+- [x] *(fixed in 17b)* **Gate, Movement II:** Nebuchadnezzar II is credited with finding Naram-Sin's foundation deposit. The usual attribution is Nabonidus.
+- [x] *(fixed in 17b; both readings now stated)* **Table of Nations:** Nimrod and Asshur are each said to have built Nineveh (Gen 10:11 reads either way depending on translation). Pick one reading.
 
 **Open `[NEEDS SOURCE]` flags:**
 - [ ] TON: Nimrod "Uniquely, a Hamite who dominated Semitic territory".
