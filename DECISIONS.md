@@ -362,3 +362,20 @@ The same rule applied to both would have degraded the Wall to fix the Stone.
 **How to apply:**
 - The copy-pass report lists factual errors under honesty flags, marked HIGH, with the evidence. Its proposed rewrites never touch them.
 - The fix batch lifts the freeze **for named items only** and lists them. Anything found in passing (as with Batch 17b's second `6:12`, and "ancestor" → "predecessor") needs an explicit ruling before it rides along.
+
+---
+
+## D-021 (2026-10-19) Fonts are self-hosted; amends D-003 item 1
+
+**Decision:** D-003 item 1 changes from "Google Fonts import (Cinzel, EB Garamond, Inter)" to **self-hosted `@font-face` for Cinzel, EB Garamond and Inter, with the WOFF2 files in `shared/fonts/`**. The OFL license texts sit beside the files. D-003's other items, the reset and the three font-family variables, are unchanged.
+
+**Ruled by:** Hashem, 2026-10-19: "self-host, no D-013 exception." Batch 18.
+
+**Why:**
+- **D-003 and D-013 contradicted each other.** D-003 required a stylesheet from Google's CDN, and D-013 forbids every network call. Each page broke D-013 on load (42 requests across 9 pages). D-013 is the rule with a reason that holds up: a study must load the same way on bad signal and outlive any vendor. So D-003 gives way.
+- **It costs nothing visible.** The same font versions, the same fixed-weight declarations and the same `unicode-range` subsets produce pixel-identical text (0 differing pixels across 20 before/after pairs).
+
+**How to apply:**
+- **Ship only faces a page draws.** Measure computed family, weight and style across every page before adding or dropping a face. Cinzel 400 was dropped this way.
+- **Keep fixed weights** (`font-weight: 600`), not ranges, unless a ruling accepts the visual change. Google's declarations are fixed, and Inter 700 text has always rendered at 600.
+- **Add a subset** (for example Greek) only when a page uses that script. Files load lazily through `unicode-range`, so a shipped subset costs repo size, not page weight.

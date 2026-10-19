@@ -1,5 +1,54 @@
 # Changelog — LLL Library
 
+## Batch 18 — Self-Host the Fonts (2026-10-19)
+
+D-003 put a Google Fonts `@import` in `shared/styles.css`. D-013 says a page makes no network calls of any kind. So every page broke D-013 on load: Batch 17 counted 42 requests to Google's font CDN across the 9 pages. Hashem ruled to keep D-013 absolute, with no exception, and move the fonts into the repo. **D-021** amends D-003 item 1 to match. The branch is cut from `batch-17-trust-check` (ruled by Hashem), since 17/17b are not merged yet.
+
+### What changed
+
+- **`shared/fonts/`** (new) holds 8 WOFF2 files, plus the three OFL license texts from the google/fonts repo.
+- **`shared/styles.css`:** the `@import` line is replaced by 18 local `@font-face` rules, all `font-display: swap`. Nothing else in the file changed. The reset and the three `--font-*` variables are untouched.
+
+### Which files, and why these
+
+- **Weights were measured, not guessed.** Every text node on all 9 pages, hidden ones included, was checked for its computed family, weight and style. Faces actually drawn: Cinzel 700/900; EB Garamond 400/600/700 and 400 italic; Inter 400/500/600. **Cinzel 400 was in the import and is never used, so its rule is dropped.**
+- **Fixed weights, copied exactly.** Google serves each family as one variable file, but declares fixed weights. Text styled Inter 700/900 has always rendered at 600, the heaviest Inter weight declared. The local rules copy the same fixed declarations rather than a `100 900` range. A range would have made every bold Inter label visibly heavier, and could have moved the Gate widgets.
+- **Subsets: latin + latin-ext only.** EB Garamond needs latin-ext for ē and ō ("euergetēs", "planētēs"). The Cinzel and Inter latin-ext files aren't needed by today's text. They are shipped anyway so a future accented letter doesn't silently fall back. Because of `unicode-range`, a browser only downloads them if a page uses one of those characters. No page uses Cyrillic, Greek or Vietnamese script, so those subsets are not shipped. The arrows and emoji render in system fonts, as they did before.
+- **Same versions as live:** Cinzel v26, EB Garamond v33, Inter v20, matching the "before" request log.
+
+| File | Bytes |
+|---|---|
+| `cinzel-latin.woff2` | 25,904 |
+| `cinzel-latin-ext.woff2` | 14,540 |
+| `ebgaramond-latin.woff2` | 44,336 |
+| `ebgaramond-latin-ext.woff2` | 113,928 |
+| `ebgaramond-italic-latin.woff2` | 25,388 |
+| `ebgaramond-italic-latin-ext.woff2` | 45,468 |
+| `inter-latin.woff2` | 48,256 |
+| `inter-latin-ext.woff2` | 85,068 |
+| **Fonts total** | **402,888 (393 KB)** |
+| `OFL-cinzel.txt`, `OFL-ebgaramond.txt`, `OFL-inter.txt` | 13,158 |
+| **`shared/fonts/` total** | **416,046 (406 KB)** |
+
+A typical page fetches 3–5 of these files (about 140–255 KB). That is the same files it used to fetch from Google.
+
+### Verified (Playwright, Chromium 156, local server, all 9 pages)
+
+- **Grep:** the two Google Fonts domains (the stylesheet API and the static file host) return **0** hits in the whole repo, docs included. Batch 17's open item that named the two domains was reworded when it was ticked off.
+- **Network:** external requests went from **42 to 0**. The local font files return 200: `cinzel-latin`, `ebgaramond-latin`, `ebgaramond-latin-ext`, `ebgaramond-italic-latin`, `ebgaramond-italic-latin-ext`, `inter-latin`.
+- **Rendering:** there are 20 before/after screenshot pairs: one heading, one EB Garamond paragraph and one Inter paragraph per page, where the page has them. **0 differing pixels** across all 20, with a pixelmatch threshold of 0. The loaded FontFace set is identical before and after: Cinzel 700/900, EB Garamond 400/600/700 and 400 italic, Inter 400/500/600.
+- **Gate widgets at 1440×900 (D-019, ≤ 836):** `#stoneWidget` **810**, `#wallWidget` **828**, unchanged.
+- **No page errors.** `fetch(` / `XMLHttpRequest` / `src="http` are still 0.
+
+### Not verified / open
+
+- [ ] **The live deploy.** `.vercelignore` already publishes `shared/`, so `shared/fonts/` will deploy. Check the network tab on the real site, top-level page and not inside an iframe, for 0 third-party requests (the Vercel Toolbar is covered by D-013's amendment).
+- [ ] **Caching.** Google's CDN served these with long cache lifetimes. Vercel's default caching for `/shared/fonts/*` hasn't been checked. A `vercel.json` cache header would be a separate ruling (D-005 says no config until it's needed).
+- `about.html` is an empty placeholder. It still links `shared/styles.css` but draws no text, so it requests no font files.
+- The scan reads text nodes, not CSS `::before`/`::after` content. No page draws pseudo-element text in Cinzel 400, but that was not machine-checked.
+
+---
+
 ## Batch 17b — Verse and Attribution Fixes (2026-10-19)
 
 The Batch 17 audit found four factual errors that were already live. Batch 17's rules froze every verse and reference, so it could only flag them. Hashem approved fixing them here, as their own commit (**D-020**). The freeze was lifted for these items only. No other verse, quote, reference, `id` or `href` changed.
@@ -104,7 +153,7 @@ Words are counted on the rendered page (body text with JS run, scripts and style
 
 **Pre-existing, not caused by this batch (out of scope):**
 - [ ] Spiral page overflows at 375px: `scrollWidth` 377 vs `clientWidth` 375, the same before and after.
-- [ ] Every page loads Google Fonts (`fonts.googleapis.com`, `fonts.gstatic.com`) through `shared/styles.css`. D-003 calls for that import, but D-013 says "no CDN scripts or stylesheets". The two decisions conflict and need a ruling.
+- [x] *(fixed in 18: fonts self-hosted, D-021)* Every page loads Google Fonts (from Google's font CDN) through `shared/styles.css`. D-003 calls for that import, but D-013 says "no CDN scripts or stylesheets". The two decisions conflict and need a ruling.
 - [ ] The `main` branch does not have Batches 15–16. Merging this branch brings them in.
 
 ---
