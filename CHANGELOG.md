@@ -1,5 +1,83 @@
 # Changelog — LLL Library
 
+## Batch 17 — Trust Check: Humanize the Study Pages (2026-10-19)
+
+Readers said the study pages read like AI wrote them. A Trust Check pass (honesty first, then AI tells, then voice) ran over all seven pages under `/collections/`. Phase A wrote an audit report outside the repo (`claude-code-prompts/LLL-Web-Batch-17-REPORT.md`, 35 honesty flags, 55 proposed rewrites). Hashem approved every rewrite that sits outside a widget and outside a Fellowship card, and those are applied here. No verse, quote, inscription, name, date, number, `id`, `href`, Fellowship card or footer credit changed. The branch starts from `gate-viewport-fit` rather than `main`, because `main` does not yet have Batches 15–16 (ruled by Hashem).
+
+### Per page
+
+| Page | Rewrites applied | Words before → after |
+|---|---|---|
+| `/collections/` | 1 | 137 → 135 |
+| Table of 70 Nations (`app.js`) | 4 | 2598 → 2601 |
+| What Are the Stars? | 13 | 1969 → 1914 |
+| Why Was the Tree Reachable? | 12 | 4060 → 4010 |
+| The Spiral and the Line | 12 | 2528 → 2495 |
+| Whose Name Is On the Gate? | 9 | 2826 → 2810 |
+| Names on the Wall | 3 | 1599 → 1585 |
+| **Total** | **54** | **15717 → 15550** |
+
+Words are counted on the rendered page (body text with JS run, scripts and styles removed), so the counts include nav and chrome. Only the change between before and after is meaningful.
+
+### What changed
+
+- **Signposting removed:** "Now the payoff", "Read that again slowly", "Here is the sobering part", "Sit with what that phrase does", "One more line, because…".
+- **"It's not X — it's Y" setups** rewritten where they were habit, not argument. The Tree study keeps its own aphorisms ("They explain the fence. They do not explain the gate in it."). Only its transitions were touched.
+- **Sermon and hype voice flattened:** "Let us be honest… That is simply true", "beautiful tension", "only detonate", "blew them up to book scale".
+- **Overclaims about readers removed:** "Here's what almost no reader realizes", "something no one expected".
+- **One accuracy fix made through wording only:** the Spiral page called chiasmus, envelope and staircase "the last three" toolbox cards. They are cards 4, 5 and 8 of 10. The sentence now says "Keep three of these in mind." The names are unchanged.
+- **Flagged claims kept verbatim inside rewritten sentences:** "everywhere, for three thousand years" (Gate) and "both defended by the earliest church" (Spiral).
+- **Not applied (by ruling):** the `#danWidget` caption (W) and the two suggestions for the Stars page's second Fellowship card (F). Pass those to the brother who wrote the card.
+
+### Verified (Playwright, Chromium 156, local server)
+
+- **Diff check, word-level:** the changed text has 0 `id=`, 0 `href=`, and 0 hits on `persp`, `class="pq"`, `class="verse"`, `drift-text`, `epigraph`, curly quotes, or the footer credit. There are 4 `\d+:\d+` hits, in two matched pairs: `Rev 20:8` (Magog) and `Gen 11:14-15` (Shelah). Each appears the same on both sides. Word-diff attaches them to the note text because the TON data has no space between the `sc` and `sg` fields. Neither reference changed.
+- **Exact-text guard:** each of the 55 find strings (54 rewrites; Spiral's Movement V edit has two parts) matched exactly once before it was replaced. The script would have aborted without writing anything otherwise.
+- **Widgets at 1440×900 (D-019, ≤ 836):** `#stoneWidget` 810, `#wallWidget` 828. Both are unchanged from Batch 16, and no widget text was edited. Also unchanged: `#danWidget` 705, `#doorsWidget` 406, `#namesWidget` 379.
+- **375×812:** `scrollWidth` = `clientWidth` = 375 on six of the seven pages. The Spiral page is 377/375 **before and after** (see open items).
+- **D-013 grep across `collections/`:** `fetch(` 0, `XMLHttpRequest` 0, `src="http` 0. No page errors.
+
+### Not verified / open
+
+**Four HIGH items for Hashem's own hand. The batch rules barred touching them:**
+- [ ] **Spiral `app.js`, Antithetic example:** the quote labeled Psalm 1:6 is not Psalm 1:6. The wording is close to Psalm 146:9 (NIV).
+- [ ] **Spiral, row 7 note and comparison table:** `Rev 6:12` is cited as the seventh-seal earthquake. 6:12 is the sixth seal; the seventh-seal thunder, lightning and earthquake are at Rev 8:5.
+- [ ] **Gate, Movement II:** Nebuchadnezzar II is credited with finding Naram-Sin's foundation deposit. The usual attribution is Nabonidus.
+- [ ] **Table of Nations:** Nimrod and Asshur are each said to have built Nineveh (Gen 10:11 reads either way depending on translation). Pick one reading.
+
+**Open `[NEEDS SOURCE]` flags:**
+- [ ] TON: Nimrod "Uniquely, a Hamite who dominated Semitic territory".
+- [ ] TON: Arvadites "the only inhabited island on the eastern Mediterranean". Cyprus contradicts it; probably means "off the Syrian coast".
+- [ ] TON: Meshech → Moscow, Tubal → Tbilisi.
+- [ ] TON: "Most scholars" for Tarshish = Tartessus and Dodanim = Rhodes.
+- [ ] TON: Arkites "about 12 miles NE of Tripoli" (usually given as about 13–14 mi).
+- [ ] Stars: footer "drawn from the standard history of astronomy" is too vague to count as a source.
+- [ ] Stars: Pleiades "roughly 440 light-years", Arcturus "about 37 light-years".
+- [ ] Stars: "the host of heaven" used for both stars and angels. No verse is given for the angelic sense (1 Kings 22:19 is the usual one).
+- [ ] Tree: "Every generation has read Scripture through its most impressive technology — clockwork, then steam, then the telephone exchange, then the computer."
+- [ ] Tree: "Trust without leverage — an emphasis common in Jewish reading."
+- [ ] Tree: "Augustine, and most of the West after him" / "Irenaeus, and much of the East". The footer source is only "the standard history of Christian interpretation".
+- [ ] Spiral: "The spiral and the line are both ancient, both defended by the earliest church."
+- [ ] Spiral: no sources line, and no translation named. Quotes mix ESV and NIV-style wording.
+- [ ] Gate: "how the ancient world built sacred architecture, everywhere, for three thousand years".
+- [ ] Gate: "a thousand priests as masons and carpenters" and "another eighty years". These come from Josephus, who is not cited.
+- [ ] Gate: "the largest benefaction project in the Jewish world".
+- [ ] Gate: golden eagle "the youths were executed" (inside `#wallWidget`; Josephus, uncited).
+- [ ] Gate: no sources line on the page with the most archaeology in the library.
+- [ ] Names: no sources line at all. The dates (244–245, 232–233, 168–171 / 240 CE), "about seven meters", the museum locations and "oldest known house church" are all unsourced.
+
+**Report-only items (not source gaps):**
+- Gate: the Nicanor pull-quote (`class="pq"`, attributed "On the Nicanor ossuary, now in the British Museum") reads as a quotation but appears to be our own prose. Either cite it or restyle it as commentary.
+- Spiral `app.js`: row notes 1–2 state interpretations as fact ("All three open by striking the land itself"; "The seal's war is what churns it"). The "Seals ¼ … Bowls 100%" strip is partly interpretive.
+- Stars: Fellowship card 2's second paragraph reads as the compiler's assessment inside a brother's card (D-010). Ask him.
+
+**Pre-existing, not caused by this batch (out of scope):**
+- [ ] Spiral page overflows at 375px: `scrollWidth` 377 vs `clientWidth` 375, the same before and after.
+- [ ] Every page loads Google Fonts (`fonts.googleapis.com`, `fonts.gstatic.com`) through `shared/styles.css`. D-003 calls for that import, but D-013 says "no CDN scripts or stylesheets". The two decisions conflict and need a ruling.
+- [ ] The `main` branch does not have Batches 15–16. Merging this branch brings them in.
+
+---
+
 ## Batch 16 — Gate Study: Widget Viewport Fit (2026-09-27)
 
 Both widgets on `/collections/whose-name-is-on-the-gate/` were still taller than the screen, so a reader had to scroll to compare all six inscriptions or both walls. This was a chrome-only trim, built from the viewport-fit spec. No study copy, slab content, wall card or subgrid structure changed. The fit contract is now **1440×900 (836px usable)**, recorded as **D-019**.
