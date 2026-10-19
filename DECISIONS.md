@@ -379,3 +379,20 @@ The same rule applied to both would have degraded the Wall to fix the Stone.
 - **Ship only faces a page draws.** Measure computed family, weight and style across every page before adding or dropping a face. Cinzel 400 was dropped this way.
 - **Keep fixed weights** (`font-weight: 600`), not ranges, unless a ruling accepts the visual change. Google's declarations are fixed, and Inter 700 text has always rendered at 600.
 - **Add a subset** (for example Greek) only when a page uses that script. Files load lazily through `unicode-range`, so a shipped subset costs repo size, not page weight.
+
+---
+
+## D-022 (2026-10-19) `vercel.json` exists for one header: long-lived font caching
+
+**Decision:** The repo carries a `vercel.json` with exactly one rule. Everything under `/shared/fonts/` is served with `Cache-Control: public, max-age=31536000, immutable`. This is an **explicit exception to [[D-005]]** ("no `vercel.json` yet"), not a repeal of it. `.vercelignore` allowlists `vercel.json` so Vercel is certain to read it.
+
+**Ruled by:** Hashem, 2026-10-19. Batch 19.
+
+**Why:**
+- **D-021 moved the fonts off Google's CDN, and the cache lifetime went with them.** Vercel's default for static files is `max-age=0, must-revalidate`, so every page view re-checks 3–5 font files with the server. Each check is cheap, but on the poor phone signal D-012 is written for, that is 3–5 round trips per page with nothing to show for them.
+- **Fonts are the one asset that never changes in place.** Pages and stylesheets do change. They keep Vercel's default revalidation, so an edited study is seen right away. Only the fonts get the long lifetime.
+- **This is the "needed" D-005 waited for.** D-005 said to add config only once something requires it. A measured header problem on production qualifies, and the file holds only that.
+
+**How to apply:**
+- **Never replace a font file under the same name.** `immutable` means returning readers keep the old file for up to a year. A changed font gets a new filename (for example `inter-latin-v21.woff2`) and an updated `@font-face` `src`.
+- **Anything else added to `vercel.json`** (redirects, `cleanUrls`, other headers) needs its own ruling and DECISIONS entry. D-005 still holds for everything this decision doesn't name.
