@@ -1,5 +1,205 @@
 # Changelog — LLL Library
 
+## Batch 18 — Self-Host the Fonts (2026-10-19)
+
+D-003 put a Google Fonts `@import` in `shared/styles.css`. D-013 says a page makes no network calls of any kind. So every page broke D-013 on load: Batch 17 counted 42 requests to Google's font CDN across the 9 pages. Hashem ruled to keep D-013 absolute, with no exception, and move the fonts into the repo. **D-021** amends D-003 item 1 to match. The branch is cut from `batch-17-trust-check` (ruled by Hashem), since 17/17b are not merged yet.
+
+### What changed
+
+- **`shared/fonts/`** (new) holds 8 WOFF2 files, plus the three OFL license texts from the google/fonts repo.
+- **`shared/styles.css`:** the `@import` line is replaced by 18 local `@font-face` rules, all `font-display: swap`. Nothing else in the file changed. The reset and the three `--font-*` variables are untouched.
+
+### Which files, and why these
+
+- **Weights were measured, not guessed.** Every text node on all 9 pages, hidden ones included, was checked for its computed family, weight and style. Faces actually drawn: Cinzel 700/900; EB Garamond 400/600/700 and 400 italic; Inter 400/500/600. **Cinzel 400 was in the import and is never used, so its rule is dropped.**
+- **Fixed weights, copied exactly.** Google serves each family as one variable file, but declares fixed weights. Text styled Inter 700/900 has always rendered at 600, the heaviest Inter weight declared. The local rules copy the same fixed declarations rather than a `100 900` range. A range would have made every bold Inter label visibly heavier, and could have moved the Gate widgets.
+- **Subsets: latin + latin-ext only.** EB Garamond needs latin-ext for ē and ō ("euergetēs", "planētēs"). The Cinzel and Inter latin-ext files aren't needed by today's text. They are shipped anyway so a future accented letter doesn't silently fall back. Because of `unicode-range`, a browser only downloads them if a page uses one of those characters. No page uses Cyrillic, Greek or Vietnamese script, so those subsets are not shipped. The arrows and emoji render in system fonts, as they did before.
+- **Same versions as live:** Cinzel v26, EB Garamond v33, Inter v20, matching the "before" request log.
+
+| File | Bytes |
+|---|---|
+| `cinzel-latin.woff2` | 25,904 |
+| `cinzel-latin-ext.woff2` | 14,540 |
+| `ebgaramond-latin.woff2` | 44,336 |
+| `ebgaramond-latin-ext.woff2` | 113,928 |
+| `ebgaramond-italic-latin.woff2` | 25,388 |
+| `ebgaramond-italic-latin-ext.woff2` | 45,468 |
+| `inter-latin.woff2` | 48,256 |
+| `inter-latin-ext.woff2` | 85,068 |
+| **Fonts total** | **402,888 (393 KB)** |
+| `OFL-cinzel.txt`, `OFL-ebgaramond.txt`, `OFL-inter.txt` | 13,158 |
+| **`shared/fonts/` total** | **416,046 (406 KB)** |
+
+A typical page fetches 3–5 of these files (about 140–255 KB). That is the same files it used to fetch from Google.
+
+### Verified (Playwright, Chromium 156, local server, all 9 pages)
+
+- **Grep:** the two Google Fonts domains (the stylesheet API and the static file host) return **0** hits in the whole repo, docs included. Batch 17's open item that named the two domains was reworded when it was ticked off.
+- **Network:** external requests went from **42 to 0**. The local font files return 200: `cinzel-latin`, `ebgaramond-latin`, `ebgaramond-latin-ext`, `ebgaramond-italic-latin`, `ebgaramond-italic-latin-ext`, `inter-latin`.
+- **Rendering:** there are 20 before/after screenshot pairs: one heading, one EB Garamond paragraph and one Inter paragraph per page, where the page has them. **0 differing pixels** across all 20, with a pixelmatch threshold of 0. The loaded FontFace set is identical before and after: Cinzel 700/900, EB Garamond 400/600/700 and 400 italic, Inter 400/500/600.
+- **Gate widgets at 1440×900 (D-019, ≤ 836):** `#stoneWidget` **810**, `#wallWidget` **828**, unchanged.
+- **No page errors.** `fetch(` / `XMLHttpRequest` / `src="http` are still 0.
+
+### Not verified / open
+
+- [ ] **The live deploy.** `.vercelignore` already publishes `shared/`, so `shared/fonts/` will deploy. Check the network tab on the real site, top-level page and not inside an iframe, for 0 third-party requests (the Vercel Toolbar is covered by D-013's amendment).
+- [ ] **Caching.** Google's CDN served these with long cache lifetimes. Vercel's default caching for `/shared/fonts/*` hasn't been checked. A `vercel.json` cache header would be a separate ruling (D-005 says no config until it's needed).
+- `about.html` is an empty placeholder. It still links `shared/styles.css` but draws no text, so it requests no font files.
+- The scan reads text nodes, not CSS `::before`/`::after` content. No page draws pseudo-element text in Cinzel 400, but that was not machine-checked.
+
+---
+
+## Batch 17b — Verse and Attribution Fixes (2026-10-19)
+
+The Batch 17 audit found four factual errors that were already live. Batch 17's rules froze every verse and reference, so it could only flag them. Hashem approved fixing them here, as their own commit (**D-020**). The freeze was lifted for these items only. No other verse, quote, reference, `id` or `href` changed.
+
+### Fixes
+
+| # | Where | Before → after | Why |
+|---|---|---|---|
+| 1 | Spiral `app.js`, Toolbox "Antithetic" card | "The LORD watches over the righteous, but the way of the wicked He frustrates." → "For the LORD watches over the way of the righteous, but the way of the wicked leads to destruction." (still labeled Psalm 1:6) | The old line spliced Psalm 1:6's first half onto Psalm 146:9's second half. The new text is NIV, to match the page's other quotes. |
+| 2a | Spiral `index.html`, comparison table "Best evidence" row | `(6:12; 11:19; 16:18)` → `(8:5; 11:19; 16:18)` | The claim is that all three series end in thunder, lightning and a great earthquake. 6:12 (sixth seal) has only an earthquake. The seals end at 8:5. |
+| 2b | Spiral `app.js`, Timeline Flipper "Final Judgment" note | `(Rev 6:12; 11:19; 16:18)` → `(Rev 8:5; 11:19; 16:18)` | The same claim, with the same error. It was not in the 17b spec. **Ruled in by Hashem** so the page doesn't contradict itself. |
+| 3 | Gate `index.html`, Movement II | "Nebuchadnezzar II records cutting a trench…" → "Nabonidus records cutting a trench…"; also "an ancestor separated from him" → "a predecessor separated from him" | The find of Naram-Sin's foundation deposit is credited to Nabonidus, the last king of Babylon. "Ancestor" was loose for either king, since Naram-Sin was a royal predecessor, not a forebear. **The second change was ruled in by Hashem** (one word beyond the spec). "Well over a thousand years" still holds (about 1,700). |
+| 4 | Table of Nations `app.js`, Nimrod and Asshur | Nimrod: "Built Babel, Erech, Akkad, Nineveh." → "Built Babel, Erech and Akkad, and in most modern translations Nineveh too (Gen 10:11 can be read either way)." Asshur `sg`: "Founded Assyria and built Nineveh." → "Founded Assyria. The KJV reading of Genesis 10:11 credits him with building Nineveh; most modern translations give it to Nimrod." Asshur `sc`: "Gen 10:22; Num 24:22" → "Gen 10:11, 22; Num 24:22" | This one was a silent split, not an error. Gen 10:11 reads both ways, and the page gave Nineveh to both men without saying why. |
+
+### Verified (Playwright, Chromium 156, local server)
+
+- **The word-level diff has exactly 11 changed runs**, all listed above and nothing else. No `id` or `href` is in any changed run.
+- **The Movement VI `6:12`** ("links the 7th-bowl earthquake (16:18) back to the 6th-seal earthquake (6:12)") is present and unchanged. It is the only `6:12` left in the Spiral HTML.
+- **Spiral:** the Antithetic card was opened in the browser and screenshotted. The curly quotes and em dash render correctly. The Best-evidence cell and the Final Judgment note both read `8:5; 11:19; 16:18`.
+- **Table of Nations:** a search for "Nineveh" returns exactly two cards, Nimrod and Asshur. Both were expanded, and the new Significance text and the Asshur Scripture line read correctly.
+- **Gate:** the edited sentence was read back from the rendered page.
+- **No page errors on the three edited pages.** The only console error was a 404 for `/favicon.ico`, which the browser requests by itself; the repo has no favicon. That is not a page defect.
+- **D-013 grep:** `fetch(` 0, `XMLHttpRequest` 0, `src="http` 0.
+
+### Not verified / open
+
+- [ ] The live deploy (local server only).
+- [ ] Nimrod's "Uniquely, a Hamite who dominated Semitic territory" is still `[NEEDS SOURCE]`. It was not in 17b's scope.
+
+---
+
+## Batch 17 — Trust Check: Humanize the Study Pages (2026-10-19)
+
+Readers said the study pages read like AI wrote them. A Trust Check pass (honesty first, then AI tells, then voice) ran over all seven pages under `/collections/`. Phase A wrote an audit report outside the repo (`claude-code-prompts/LLL-Web-Batch-17-REPORT.md`, 35 honesty flags, 55 proposed rewrites). Hashem approved every rewrite that sits outside a widget and outside a Fellowship card, and those are applied here. No verse, quote, inscription, name, date, number, `id`, `href`, Fellowship card or footer credit changed. The branch starts from `gate-viewport-fit` rather than `main`, because `main` does not yet have Batches 15–16 (ruled by Hashem).
+
+### Per page
+
+| Page | Rewrites applied | Words before → after |
+|---|---|---|
+| `/collections/` | 1 | 137 → 135 |
+| Table of 70 Nations (`app.js`) | 4 | 2598 → 2601 |
+| What Are the Stars? | 13 | 1969 → 1914 |
+| Why Was the Tree Reachable? | 12 | 4060 → 4010 |
+| The Spiral and the Line | 12 | 2528 → 2495 |
+| Whose Name Is On the Gate? | 9 | 2826 → 2810 |
+| Names on the Wall | 3 | 1599 → 1585 |
+| **Total** | **54** | **15717 → 15550** |
+
+Words are counted on the rendered page (body text with JS run, scripts and styles removed), so the counts include nav and chrome. Only the change between before and after is meaningful.
+
+### What changed
+
+- **Signposting removed:** "Now the payoff", "Read that again slowly", "Here is the sobering part", "Sit with what that phrase does", "One more line, because…".
+- **"It's not X — it's Y" setups** rewritten where they were habit, not argument. The Tree study keeps its own aphorisms ("They explain the fence. They do not explain the gate in it."). Only its transitions were touched.
+- **Sermon and hype voice flattened:** "Let us be honest… That is simply true", "beautiful tension", "only detonate", "blew them up to book scale".
+- **Overclaims about readers removed:** "Here's what almost no reader realizes", "something no one expected".
+- **One accuracy fix made through wording only:** the Spiral page called chiasmus, envelope and staircase "the last three" toolbox cards. They are cards 4, 5 and 8 of 10. The sentence now says "Keep three of these in mind." The names are unchanged.
+- **Flagged claims kept verbatim inside rewritten sentences:** "everywhere, for three thousand years" (Gate) and "both defended by the earliest church" (Spiral).
+- **Not applied (by ruling):** the `#danWidget` caption (W) and the two suggestions for the Stars page's second Fellowship card (F). Pass those to the brother who wrote the card.
+
+### Verified (Playwright, Chromium 156, local server)
+
+- **Diff check, word-level:** the changed text has 0 `id=`, 0 `href=`, and 0 hits on `persp`, `class="pq"`, `class="verse"`, `drift-text`, `epigraph`, curly quotes, or the footer credit. There are 4 `\d+:\d+` hits, in two matched pairs: `Rev 20:8` (Magog) and `Gen 11:14-15` (Shelah). Each appears the same on both sides. Word-diff attaches them to the note text because the TON data has no space between the `sc` and `sg` fields. Neither reference changed.
+- **Exact-text guard:** each of the 55 find strings (54 rewrites; Spiral's Movement V edit has two parts) matched exactly once before it was replaced. The script would have aborted without writing anything otherwise.
+- **Widgets at 1440×900 (D-019, ≤ 836):** `#stoneWidget` 810, `#wallWidget` 828. Both are unchanged from Batch 16, and no widget text was edited. Also unchanged: `#danWidget` 705, `#doorsWidget` 406, `#namesWidget` 379.
+- **375×812:** `scrollWidth` = `clientWidth` = 375 on six of the seven pages. The Spiral page is 377/375 **before and after** (see open items).
+- **D-013 grep across `collections/`:** `fetch(` 0, `XMLHttpRequest` 0, `src="http` 0. No page errors.
+
+### Not verified / open
+
+**Four HIGH items for Hashem's own hand. The batch rules barred touching them:**
+- [x] *(fixed in 17b)* **Spiral `app.js`, Antithetic example:** the quote labeled Psalm 1:6 is not Psalm 1:6. The wording is close to Psalm 146:9 (NIV).
+- [x] *(fixed in 17b, both places)* **Spiral, row 7 note and comparison table:** `Rev 6:12` is cited as the seventh-seal earthquake. 6:12 is the sixth seal; the seventh-seal thunder, lightning and earthquake are at Rev 8:5.
+- [x] *(fixed in 17b)* **Gate, Movement II:** Nebuchadnezzar II is credited with finding Naram-Sin's foundation deposit. The usual attribution is Nabonidus.
+- [x] *(fixed in 17b; both readings now stated)* **Table of Nations:** Nimrod and Asshur are each said to have built Nineveh (Gen 10:11 reads either way depending on translation). Pick one reading.
+
+**Open `[NEEDS SOURCE]` flags:**
+- [ ] TON: Nimrod "Uniquely, a Hamite who dominated Semitic territory".
+- [ ] TON: Arvadites "the only inhabited island on the eastern Mediterranean". Cyprus contradicts it; probably means "off the Syrian coast".
+- [ ] TON: Meshech → Moscow, Tubal → Tbilisi.
+- [ ] TON: "Most scholars" for Tarshish = Tartessus and Dodanim = Rhodes.
+- [ ] TON: Arkites "about 12 miles NE of Tripoli" (usually given as about 13–14 mi).
+- [ ] Stars: footer "drawn from the standard history of astronomy" is too vague to count as a source.
+- [ ] Stars: Pleiades "roughly 440 light-years", Arcturus "about 37 light-years".
+- [ ] Stars: "the host of heaven" used for both stars and angels. No verse is given for the angelic sense (1 Kings 22:19 is the usual one).
+- [ ] Tree: "Every generation has read Scripture through its most impressive technology — clockwork, then steam, then the telephone exchange, then the computer."
+- [ ] Tree: "Trust without leverage — an emphasis common in Jewish reading."
+- [ ] Tree: "Augustine, and most of the West after him" / "Irenaeus, and much of the East". The footer source is only "the standard history of Christian interpretation".
+- [ ] Spiral: "The spiral and the line are both ancient, both defended by the earliest church."
+- [ ] Spiral: no sources line, and no translation named. Quotes mix ESV and NIV-style wording.
+- [ ] Gate: "how the ancient world built sacred architecture, everywhere, for three thousand years".
+- [ ] Gate: "a thousand priests as masons and carpenters" and "another eighty years". These come from Josephus, who is not cited.
+- [ ] Gate: "the largest benefaction project in the Jewish world".
+- [ ] Gate: golden eagle "the youths were executed" (inside `#wallWidget`; Josephus, uncited).
+- [ ] Gate: no sources line on the page with the most archaeology in the library.
+- [ ] Names: no sources line at all. The dates (244–245, 232–233, 168–171 / 240 CE), "about seven meters", the museum locations and "oldest known house church" are all unsourced.
+
+**Report-only items (not source gaps):**
+- Gate: the Nicanor pull-quote (`class="pq"`, attributed "On the Nicanor ossuary, now in the British Museum") reads as a quotation but appears to be our own prose. Either cite it or restyle it as commentary.
+- Spiral `app.js`: row notes 1–2 state interpretations as fact ("All three open by striking the land itself"; "The seal's war is what churns it"). The "Seals ¼ … Bowls 100%" strip is partly interpretive.
+- Stars: Fellowship card 2's second paragraph reads as the compiler's assessment inside a brother's card (D-010). Ask him.
+
+**Pre-existing, not caused by this batch (out of scope):**
+- [ ] Spiral page overflows at 375px: `scrollWidth` 377 vs `clientWidth` 375, the same before and after.
+- [x] *(fixed in 18: fonts self-hosted, D-021)* Every page loads Google Fonts (from Google's font CDN) through `shared/styles.css`. D-003 calls for that import, but D-013 says "no CDN scripts or stylesheets". The two decisions conflict and need a ruling.
+- [ ] The `main` branch does not have Batches 15–16. Merging this branch brings them in.
+
+---
+
+## Batch 16 — Gate Study: Widget Viewport Fit (2026-09-27)
+
+Both widgets on `/collections/whose-name-is-on-the-gate/` were still taller than the screen, so a reader had to scroll to compare all six inscriptions or both walls. This was a chrome-only trim, built from the viewport-fit spec. No study copy, slab content, wall card or subgrid structure changed. The fit contract is now **1440×900 (836px usable)**, recorded as **D-019**.
+
+### Heights at 1440×900 (usable 836px)
+
+| Widget | Before | After | Headroom |
+|---|---|---|---|
+| `#stoneWidget` | 955 | **810** | 26px |
+| `#wallWidget` | 1012 | **828** | 8px |
+
+Gates band delta **0**, foundations band delta **0**, same as before.
+
+### Changes
+
+- **Both widgets:** the "Interactive · Widget N of 2" eyebrow is removed. The hint is one line and the title has a tighter line height. `.widget-top` went from 99 to 50px. Widget padding went from 18/20 to 12px.
+- **Captions moved outside the box.** Both `.widget-foot` captions are now siblings of their widget, not children. Their text is unchanged, and they sit 14px below the box through a negative margin that collapses with the widget's own. Print keeps each caption with its widget (`break-before: avoid`).
+- **Stone:** the `.hl-ctrls` and `.slabs` top margins are now 10px.
+- **Wall:** the `.wall-pair` gap and top margin are now 10px. The `.wall-hd` padding went from 12/11 to 8/6, which cut the row by 9px. The `.wall-foot` padding went from 12 to 6, which cut the row by 12px. Both were done through padding, never a fixed row height.
+- **Mobile (≤640px):** `.hl-btn` gets `min-height: 44px`, up from 31. It is mobile-only so the desktop Stone keeps its headroom. The gate and foundation tile grids are now `repeat(3, minmax(0,1fr))`. The spec asked for `repeat(3,1fr)`, but that was already the rule. Plain `1fr` lets the longest word ("Chrysoprase") widen its column, which is what made the columns ragged. At 375px they are now 88.33px × 3 with no tile overflow.
+
+### Spec notes
+
+- **The wall landed at 828, not the spec's estimated 821.** Item 2.5, the gap from 14 to 10, saves no height. Each wall's own rows use `row-gap: 0` in the subgrid, so the parent's gap never separated them vertically. Every other item hit its number. Pulling the "The Lamb…" footer onto one line would save 18px, but it only fits with 1–2px to spare, so it was not taken.
+- **Print audit:** the stale `.slabs { repeat(3,1fr) }` rule the spec expected is **already gone**. It was removed with the Batch 14 row rebuild, and `.slabs` prints as a single 830px column. Confirmed with print emulation: `.nav`, `.share-row`, `.hl-ctrls`, `.crumbs` and `.foot-back` are `display:none`. The tint-strip `!important` rules are present. `break-inside: avoid` lands on `.widget`, `.slab`, `.wall` and `.uitem`, which all still exist.
+- **The `.widget-kicker` rule is deleted.** It is no longer used on this page, and the style is page-local.
+
+### Verified (Playwright, headless Chromium, local server)
+
+- 1440×900: the heights above, and both band deltas 0.
+- "The gift": slabs 1–5 HAS, slab 6 NO. `aria-pressed` is true only on the active button. Pressing it again clears, and Clear clears with all four false. No console errors.
+- 375×812: `scrollWidth` 375 = `clientWidth` 375, all four `.hl-btn` are 44px, and `.found-grid` has 3 equal columns.
+- For the record (out of scope): at 1280×800 the usable height is 736, the stone 810 and the wall 828.
+
+### Not verified / open
+
+- [ ] **Vercel Live on production.** This is a dashboard setting, and no repo file controls it. Turn off the Vercel Toolbar for Production, then re-check `vercel.live` on the **top-level** page, never inside an iframe.
+- [ ] Heights on the live deploy and on a Mac. The Wall's 8px headroom is thin enough that font metrics could matter.
+- **Pre-existing defect, not fixed (out of scope):** `.m-body p` (specificity 0,1,1) overrides `.band-note` (0,1,0). The two New Jerusalem band notes therefore render at 17.5px with a 16px bottom margin instead of 11.5px, and have since Batch 12. Fixing it cannot change the wall's height, since Herod's wall sets the rows.
+
+---
+
 ## Batch 15 — New Study: Names on the Wall (2026-09-24)
 
 A new study, **"Names on the Wall: Three Faiths, One Street at Dura-Europos,"** at `/collections/names-on-the-wall/`, built from `SPEC_names-on-the-wall.md`. It pairs with "Whose Name Is On the Gate?". It covers three houses of worship on one street (synagogue, house church, Mithraeum), buried by the same rampart around 256 CE, and asks who signed each wall. The page text is the spec's text, word for word, checked by script (34/34 lines).

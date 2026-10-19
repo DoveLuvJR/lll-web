@@ -327,3 +327,55 @@ The same rule applied to both would have degraded the Wall to fix the Stone.
 **Why accept the exception here:** the Doors panel is a six-row reference card per house, not the page's argument. The page's argument, credit → rank → prayer, lives in the static Names widget.
 
 **Scope: this page only.** D-018 covers `#doorsWidget` on `collections/names-on-the-wall/` and nothing else. [[D-014]] stays in force for every other page and every other component, including the other two widgets on this page. It does not set a precedent. A future tabbed comparison anywhere else needs its own ruling.
+
+---
+
+## D-019 (2026-09-27) The fit contract is 1440×900; 1280×800 is deferred
+
+**Decision:** D-017's fit target changes. A simultaneity widget must fit the usable height at **1440×900**, which is **836px** under the 64px sticky nav. **1280×800 is not a gate for now.** Both widgets on `whose-name-is-on-the-gate` are held to it, the Donor Wall included.
+
+**Ruled by:** Hashem, 2026-09-27, in the viewport-fit spec for the gate study (Batch 16).
+
+**What changes from D-017:**
+- **Target size.** D-017 named 1280×800. That needs about 100px more cut from each widget, and the chrome can't give that much. It would mean cutting study copy, which D-017 itself warns against ("trimming words does not close a 200px gap").
+- **The Donor Wall is now in scope.** D-017 called its height cosmetic, since side-by-side columns survive scrolling. The owner ruled it must fit as well, so both widgets carry the requirement on this page.
+
+**What does not change:** verification is still a number from a real browser at the stated size, and a width-capped column still hides the problem. Both widgets measure the same at 1440 and 1280.
+
+**How the height was bought (and how not to buy it):** trim chrome only: widget padding, the eyebrow line, a one-line hint, and the caption moved *outside* the box as commentary. The Donor Wall's two bands are sized by Herod's wall (about 1px of slack each), so shrinking anything on the New Jerusalem side saves nothing. `.wall-hd` and `.wall-foot` are trimmed by padding only, never by a fixed row height on `.wall-pair`, which would break the subgrid.
+
+**Known exposure:** at 1280×800 the Stone overflows by about 74px and the Wall by about 92px. Revisit if reader data shows laptop-height screens matter.
+
+---
+
+## D-020 (2026-10-19) Copy passes freeze Scripture; confirmed errors get their own batch
+
+**Decision:** A copy pass, like Batch 17's Trust Check, **freezes** every Scripture quotation, verse reference, quoted source, name, date and number. A rewrite then can't change any of them by accident. When the pass finds a confirmed factual error in frozen text, the error is **flagged, not fixed**. It is then fixed in its own small batch, approved by Hashem, with its own commit. It is never folded silently into the rewrite.
+
+**Ruled by:** Hashem, 2026-10-19. Batch 17b is the first case: Psalm 1:6, the Rev 8:5 cite, the Nabonidus credit, and the Gen 10:11 note.
+
+**Why:**
+- **A rewrite diff should be checkable by one rule:** no verse, quote, name or number moved. Mixing fact fixes into a copy pass breaks that rule. A reviewer can no longer tell an intended correction from an accidental one.
+- **D-013 already says a wrong verse is worse than a clumsy sentence.** The fix for a wrong verse deserves the same weight: a named batch, a ruling, and a before → after record. A line buried in a style diff gets none of that.
+- **A separate commit is revertible on its own.** If a "fix" turns out to be wrong, it can be undone without losing the copy work, or the other way round.
+
+**How to apply:**
+- The copy-pass report lists factual errors under honesty flags, marked HIGH, with the evidence. Its proposed rewrites never touch them.
+- The fix batch lifts the freeze **for named items only** and lists them. Anything found in passing (as with Batch 17b's second `6:12`, and "ancestor" → "predecessor") needs an explicit ruling before it rides along.
+
+---
+
+## D-021 (2026-10-19) Fonts are self-hosted; amends D-003 item 1
+
+**Decision:** D-003 item 1 changes from "Google Fonts import (Cinzel, EB Garamond, Inter)" to **self-hosted `@font-face` for Cinzel, EB Garamond and Inter, with the WOFF2 files in `shared/fonts/`**. The OFL license texts sit beside the files. D-003's other items, the reset and the three font-family variables, are unchanged.
+
+**Ruled by:** Hashem, 2026-10-19: "self-host, no D-013 exception." Batch 18.
+
+**Why:**
+- **D-003 and D-013 contradicted each other.** D-003 required a stylesheet from Google's CDN, and D-013 forbids every network call. Each page broke D-013 on load (42 requests across 9 pages). D-013 is the rule with a reason that holds up: a study must load the same way on bad signal and outlive any vendor. So D-003 gives way.
+- **It costs nothing visible.** The same font versions, the same fixed-weight declarations and the same `unicode-range` subsets produce pixel-identical text (0 differing pixels across 20 before/after pairs).
+
+**How to apply:**
+- **Ship only faces a page draws.** Measure computed family, weight and style across every page before adding or dropping a face. Cinzel 400 was dropped this way.
+- **Keep fixed weights** (`font-weight: 600`), not ranges, unless a ruling accepts the visual change. Google's declarations are fixed, and Inter 700 text has always rendered at 600.
+- **Add a subset** (for example Greek) only when a page uses that script. Files load lazily through `unicode-range`, so a shipped subset costs repo size, not page weight.

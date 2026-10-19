@@ -60,17 +60,21 @@ header .verse{font-size:14px;color:var(--muted);margin-top:14px;font-family:'Int
 .keybox p{font-size:17px;margin:0;color:var(--text)}
 
 /* ---------- Widget shell ---------- */
-.widget{border:1px solid #e6e6e6;border-radius:14px;padding:18px 18px 20px;margin:26px 0;background:linear-gradient(#fff,#fdfcf8)}
+.widget{border:1px solid #e6e6e6;border-radius:14px;padding:12px;margin:26px 0;background:linear-gradient(#fff,#fdfcf8)}
+/* D-019: both widgets must fit 836px of usable height at 1440x900, so the
+ * frame is kept lean — one title line, one hint line, no eyebrow. */
 .widget-top{text-align:center;margin-bottom:6px}
-.widget-kicker{font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold)}
-.widget-title{font-family:'Cinzel',serif;font-size:22px;font-weight:700;color:var(--text);margin-top:2px}
-.widget-hint{font-family:'Inter',sans-serif;font-size:13px;color:var(--muted);margin-top:5px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.5}
-.widget-foot{font-family:'Inter',sans-serif;font-size:12.5px;color:var(--muted);text-align:center;margin-top:14px;line-height:1.55;max-width:640px;margin-left:auto;margin-right:auto}
+.widget-title{font-family:'Cinzel',serif;font-size:22px;font-weight:700;color:var(--text);line-height:1.25}
+.widget-hint{font-family:'Inter',sans-serif;font-size:13px;color:var(--muted);margin-top:3px;line-height:1.5}
+/* The caption sits just outside the box, not inside it: it is commentary on
+ * the comparison, not part of it, so it does not count against D-019. The
+ * negative margin collapses with the widget's 26px to leave a 14px gap. */
+.widget-foot{font-family:'Inter',sans-serif;font-size:12.5px;color:var(--muted);text-align:center;margin:-12px auto 26px;line-height:1.55;max-width:640px}
 
 /* ---------- WIDGET 1 · The Inscription Stone ---------- */
 /* Controls are dead without JS, so they are hidden until has-js (D-012). */
 .hl-ctrls{display:none}
-.has-js .hl-ctrls{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;margin:13px 0 2px}
+.has-js .hl-ctrls{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;margin:10px 0 2px}
 .hl-btn{font-family:'Inter',sans-serif;font-size:12px;font-weight:600;padding:7px 14px;border:1.5px solid #e0dcd2;border-radius:20px;background:#fff;color:var(--text2);cursor:pointer;transition:all .18s}
 .hl-btn:hover{border-color:var(--gold-light)}
 .hl-btn[aria-pressed="true"]{color:#fff}
@@ -82,7 +86,7 @@ header .verse{font-size:14px;color:var(--muted);margin-top:14px;font-family:'Int
  * comparison across all six inscriptions, so total height is a functional
  * requirement, not a cosmetic one. Rows cost ~90px each; cards cost ~380px
  * per row of three because every cell stretches to the tallest in its row. */
-.slabs{display:grid;grid-template-columns:1fr;gap:7px;margin-top:14px}
+.slabs{display:grid;grid-template-columns:1fr;gap:7px;margin-top:10px}
 .slab{border:1px solid #e6e0d4;border-left:4px solid var(--bronze);border-radius:8px;background:#fffdf9;padding:10px 14px;display:grid;grid-template-columns:200px 1fr;gap:3px 16px;align-items:start}
 .slab-id{display:flex;flex-direction:column;gap:2px}
 .slab-meta{display:flex;flex-wrap:wrap;gap:1px 8px}
@@ -108,10 +112,12 @@ header .verse{font-size:14px;color:var(--muted);margin-top:14px;font-family:'Int
  * with gates and foundations with foundations. Same technique as the Batch 9
  * card alignment. Without subgrid support the walls still render; they simply
  * lose cross-wall alignment. */
-.wall-pair{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto auto auto;gap:14px;margin-top:18px}
+.wall-pair{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto auto auto;gap:10px;margin-top:10px}
 .wall{grid-row:span 4;display:grid;grid-template-rows:subgrid;row-gap:0;border:1px solid #e4e4e4;border-radius:12px;overflow:hidden;background:#fff}
 @supports not (grid-template-rows:subgrid){.wall{display:flex;flex-direction:column}}
-.wall-hd{padding:12px 15px 11px;text-align:center;color:#fff}
+/* Header and footer rows are trimmed by padding only, never by a fixed row
+ * height: the subgrid must stay free to size the two bands (D-019). */
+.wall-hd{padding:8px 15px 6px;text-align:center;color:#fff}
 .wall.bought .wall-hd{background:var(--bronze)}
 .wall.given .wall-hd{background:var(--jasper)}
 .wall-ttl{font-family:'Cinzel',serif;font-size:17px;font-weight:700;letter-spacing:1px}
@@ -142,7 +148,7 @@ header .verse{font-size:14px;color:var(--muted);margin-top:14px;font-family:'Int
 .gate{background:var(--jasper-bg);color:var(--jasper);border:1px solid #cde2e8}
 .found{background:var(--stone-bg);color:var(--stone);border:1px solid #c6e4d4}
 
-.wall-foot{font-family:'Inter',sans-serif;font-size:12px;color:var(--text2);padding:12px 15px;border-top:1px solid #eee;background:#fafafa;line-height:1.5}
+.wall-foot{font-family:'Inter',sans-serif;font-size:12px;color:var(--text2);padding:6px 15px;border-top:1px solid #eee;background:#fafafa;line-height:1.5}
 .tag{display:inline-block;font-size:9.5px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:#fff;padding:2px 8px;border-radius:9px;margin-right:7px}
 .tag.paid{background:var(--bronze)}
 .tag.lamb{background:var(--stone)}
@@ -199,7 +205,8 @@ footer p{font-family:'Inter',sans-serif;font-size:13px;color:var(--muted);line-h
   .cmp td,.cmp th{padding:9px 8px}
   .idx{font-size:15px}
   .idx td{padding:9px 8px}
-  .gate-grid,.found-grid{grid-template-columns:repeat(3,1fr)}
+  .gate-grid,.found-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .hl-btn{min-height:44px}
 }
 
 /* ---------- Print ---------- */
@@ -207,6 +214,7 @@ footer p{font-family:'Inter',sans-serif;font-size:13px;color:var(--muted);line-h
   .nav,.share-row,.hl-ctrls{display:none!important}
   .movement{break-inside:avoid}
   .widget,.slab,.wall,.uitem{break-inside:avoid}
+  .widget + .widget-foot{break-before:avoid}
   .wall-pair{grid-template-columns:1fr 1fr;grid-template-rows:none}
   .wall{grid-row:auto;display:block}
   .unc{grid-template-columns:1fr 1fr}
