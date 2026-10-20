@@ -419,3 +419,30 @@ The same rule applied to both would have degraded the Wall to fix the Stone.
 - **New studies** ship with a sources line, and with every quote checked against its named translation (biblegateway.com is enough).
 - **Researched citations go through a ruling before they reach a page.** An agent may propose a source but never apply it unruled (Batch 17's honesty rule, carried forward).
 - **Where a source is known only second-hand** (a search summary, a 403), the CHANGELOG says so until someone opens it.
+
+
+---
+
+## D-024 (2026-10-20) Origin accounts: the nation's own words, in their own lane, with marks for what is not ours to tell
+
+**Decision:** When a study presents where a people came from, it follows these rules:
+1. **Two lanes, never merged.** A nation's own account sits beside a scholarly reconstruction, such as a linguist's homeland. The two are never combined into one sentence.
+2. **Lane A is a short paraphrase of what the nation itself has published,** linked to that page. Outside retellings are never used.
+3. **Four marks, modeled on Local Contexts Traditional Knowledge labels, in our own wording:**
+   - **Winter story:** told only in winter, so kept to an outline.
+   - **Sacred place:** names a place the nation protects.
+   - **Held by the Nation:** kept for the nation's own members. Never retold; the row says only that the nation holds it.
+   - **Ask permission:** the nation asks to be contacted before its stories are used.
+4. **When a nation asks for caution, the page says less than the draft did,** and the batch records what was cut.
+
+**Ruled by:** Hashem, 2026-10-20: adopted as written, as a standing rule. Batch 21.
+
+**Why:**
+- **They are different kinds of claim.** Side by side, each keeps its standing, and the reader can compare them.
+- **Several nations ask that their stories not circulate out of context** (the Hopi Cultural Preservation Office; the Delaware Nation's caution about publishing Lenape culture; seasonal telling for Diné and Ojibwe accounts; the Catawba archive's members-only access). Using only what a nation chose to publish respects that, and keeps the page defensible.
+- **A mark is cheaper than a judgment call each time.** The reader sees why a row is short, and the next study inherits the rule.
+
+**How to apply:**
+- A Lane A row may claim only what its linked page says. Batch 21's review caught an outline that claimed more (Hopi), so check the page itself.
+- Link the nation's own record, even when it is restricted (the Catawba archive). Never link a third-party retelling instead.
+- The marks are additive tints and text, so D-016 holds: nothing hides.

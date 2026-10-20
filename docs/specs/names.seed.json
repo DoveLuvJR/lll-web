@@ -1,5 +1,5 @@
 {
- "_note": "SEED DATA from research 2026-10-20. Every map_label must be checked against the LOC scan (set map_label_checked=true). Hashem reviews before publish. Entries with publish=false stay hidden.",
+ "_note": "SEED DATA from research 2026-10-20. Every map_label must be checked against the LOC scan (set map_label_checked=true). Hashem reviews before publish. Entries with publish=false stay hidden. 2026-10-20 (Batch 21): every map_label checked against LOC ct003648r. 22 matched; 6 respelled to the printed form; 4 not printed as one label (map_note). seed_label keeps the original seed value. Ruled by Hashem: print what the map prints. Batch 21: reader_note is the reviewed, reader-facing version of caution (shown on the page); reader_note_why records any caution that is not shown in full.",
  "entries": [
   {
    "id": "papago",
@@ -16,10 +16,11 @@
    ],
    "confidence": "high",
    "caution": "Meaning and label origin are from Wikipedia, not the nation.",
-   "map_label_checked": false,
+   "map_label_checked": true,
    "publish": true,
    "label_kind": "outsider-name",
-   "nc": false
+   "nc": false,
+   "reader_note": "The meaning and the label's origin come from Wikipedia, not from the Nation."
   },
   {
    "id": "winnebago",
@@ -36,14 +37,15 @@
    ],
    "confidence": "high",
    "caution": "Winnebago Tribe of Nebraska still uses 'Winnebago' officially.",
-   "map_label_checked": false,
+   "map_label_checked": true,
    "publish": true,
    "label_kind": "outsider-name",
-   "nc": false
+   "nc": false,
+   "reader_note": "The Winnebago Tribe of Nebraska still uses Winnebago as its official name."
   },
   {
    "id": "sioux",
-   "map_label": "Sioux",
+   "map_label": "Teton · Yankton · Yanktonai · Santee",
    "self_name": "Lakota · Dakota · Nakota; Oceti Sakowin",
    "meaning": "Oceti Sakowin: Seven Council Fires",
    "label_origin": "French, from an Ojibwe word; meaning disputed",
@@ -56,14 +58,17 @@
    ],
    "confidence": "medium",
    "caution": "Many governments keep 'Sioux'. No tribal page confirmed. Do not repeat the 'little snakes' gloss as fact.",
-   "map_label_checked": false,
+   "map_label_checked": true,
    "publish": true,
    "label_kind": "outsider-name",
-   "nc": false
+   "nc": false,
+   "seed_label": "Sioux",
+   "map_note": "No single \"Sioux\" label. The map prints the divisions.",
+   "reader_note": "Many governments keep Sioux in their official names. The label's meaning is disputed, so none is given here."
   },
   {
    "id": "navajo",
-   "map_label": "Navajo",
+   "map_label": "Navaho",
    "self_name": "Diné",
    "meaning": "The People",
    "label_origin": "Spanish, from a Tewa place word",
@@ -76,10 +81,12 @@
    ],
    "confidence": "high",
    "caution": "The nation officially uses 'Navajo Nation'.",
-   "map_label_checked": false,
+   "map_label_checked": true,
    "publish": true,
    "label_kind": "outsider-name",
-   "nc": false
+   "nc": false,
+   "seed_label": "Navajo",
+   "reader_note": "The Nation's official name is Navajo Nation."
   },
   {
    "id": "iroquois",
@@ -95,10 +102,11 @@
    ],
    "confidence": "high",
    "caution": "",
-   "map_label_checked": false,
+   "map_label_checked": true,
    "publish": true,
    "label_kind": "outsider-name",
-   "nc": false
+   "nc": false,
+   "reader_note": ""
   },
   {
    "id": "tuscarora",
@@ -115,14 +123,15 @@
    ],
    "confidence": "medium",
    "caution": "Self-name spelling from Wikipedia. NC thread.",
-   "map_label_checked": false,
+   "map_label_checked": true,
    "publish": true,
    "label_kind": "own-name-respelled",
-   "nc": true
+   "nc": true,
+   "reader_note": "The self-name's spelling comes from Wikipedia."
   },
   {
    "id": "creek",
-   "map_label": "Creek",
+   "map_label": "Muskogee",
    "self_name": "Mvskoke",
    "meaning": "not stated",
    "label_origin": "British coinage, likely from 'Ochese Creek'",
@@ -135,14 +144,17 @@
    ],
    "confidence": "high",
    "caution": "Legal name still includes '(Creek)'; the 2021 change was branding.",
-   "map_label_checked": false,
+   "map_label_checked": true,
    "publish": true,
-   "label_kind": "outsider-name",
-   "nc": false
+   "label_kind": "own-name-respelled",
+   "nc": false,
+   "seed_label": "Creek",
+   "label_kind_note": "Batch 21: the map prints Muskogee (the own name, respelled), so the printed label is own-name-respelled. The outsider label is Creek (seed_label); label_origin describes Creek.",
+   "reader_note": "The legal name still includes (Creek). The 2021 change was to the Nation's branding."
   },
   {
    "id": "huron",
-   "map_label": "Huron",
+   "map_label": "(not printed)",
    "self_name": "Wendat / Wyandot",
    "meaning": "not stated by the nation",
    "label_origin": "French, probably from 'hure'",
@@ -155,10 +167,13 @@
    ],
    "confidence": "high",
    "caution": "Quebec nation officially uses 'Huron-Wendat'.",
-   "map_label_checked": false,
+   "map_label_checked": true,
    "publish": true,
    "label_kind": "outsider-name",
-   "nc": false
+   "nc": false,
+   "seed_label": "Huron",
+   "map_note": "Not on this sheet. Their homeland lies north of the area the map colors.",
+   "reader_note": "The Quebec nation's official name is Huron-Wendat."
   },
   {
    "id": "fox",
@@ -174,10 +189,11 @@
    ],
    "confidence": "high",
    "caution": "Legal name still 'Sac & Fox'.",
-   "map_label_checked": false,
+   "map_label_checked": true,
    "publish": true,
    "label_kind": "outsider-name",
-   "nc": false
+   "nc": false,
+   "reader_note": "The legal name is still Sac & Fox."
   },
   {
    "id": "delaware",
@@ -193,10 +209,11 @@
    ],
    "confidence": "high",
    "caution": "Both Oklahoma governments keep 'Delaware'.",
-   "map_label_checked": false,
+   "map_label_checked": true,
    "publish": true,
    "label_kind": "outsider-name",
-   "nc": false
+   "nc": false,
+   "reader_note": "Both Oklahoma governments keep Delaware in their names."
   },
   {
    "id": "nez-perce",
@@ -213,14 +230,15 @@
    ],
    "confidence": "high",
    "caution": "Spelling varies on the tribe's own site.",
-   "map_label_checked": false,
+   "map_label_checked": true,
    "publish": true,
    "label_kind": "outsider-name",
-   "nc": false
+   "nc": false,
+   "reader_note": "Spellings of the self-name vary, even on the Tribe's own site."
   },
   {
    "id": "blackfoot",
-   "map_label": "Blackfeet",
+   "map_label": "Blackfoot",
    "self_name": "Niitsítapi",
    "meaning": "The Real People",
    "label_origin": "Black-dyed moccasins; first the Siksika's name only",
@@ -233,10 +251,13 @@
    ],
    "confidence": "medium",
    "caution": "Check map spelling: Blackfeet vs Blackfoot.",
-   "map_label_checked": false,
+   "map_label_checked": true,
    "publish": true,
    "label_kind": "outsider-name",
-   "nc": false
+   "nc": false,
+   "seed_label": "Blackfeet",
+   "reader_note": "The map prints Blackfoot. The Montana government is the Blackfeet Nation.",
+   "reader_note_why": "Seed caution was a builder check ('Blackfeet vs Blackfoot'); resolved against the scan (map prints Blackfoot)."
   },
   {
    "id": "crow",
@@ -253,10 +274,11 @@
    ],
    "confidence": "high",
    "caution": "The self-name itself came from neighbors, the Hidatsa.",
-   "map_label_checked": false,
+   "map_label_checked": true,
    "publish": true,
    "label_kind": "outsider-name",
-   "nc": false
+   "nc": false,
+   "reader_note": "The name Apsáalooke itself came from neighbors, the Hidatsa."
   },
   {
    "id": "cheyenne",
@@ -273,10 +295,11 @@
    ],
    "confidence": "medium",
    "caution": "Self-name spelling from Wikipedia.",
-   "map_label_checked": false,
+   "map_label_checked": true,
    "publish": true,
    "label_kind": "outsider-name",
-   "nc": false
+   "nc": false,
+   "reader_note": "The self-name's spelling comes from Wikipedia."
   },
   {
    "id": "comanche",
@@ -293,14 +316,15 @@
    ],
    "confidence": "high",
    "caution": "",
-   "map_label_checked": false,
+   "map_label_checked": true,
    "publish": true,
    "label_kind": "outsider-name",
-   "nc": false
+   "nc": false,
+   "reader_note": ""
   },
   {
    "id": "apache",
-   "map_label": "Apache",
+   "map_label": "Jicarilla · Mescalero · Lipan · Chiricahua · White Mountain",
    "self_name": "Indé / Ndee",
    "meaning": "Person, people",
    "label_origin": "Uncertain; likely a Zuni word",
@@ -312,10 +336,13 @@
    ],
    "confidence": "medium",
    "caution": "Do not repeat 'Apache = enemy' as fact. No tribal site confirmed.",
-   "map_label_checked": false,
+   "map_label_checked": true,
    "publish": true,
    "label_kind": "outsider-name",
-   "nc": false
+   "nc": false,
+   "seed_label": "Apache",
+   "map_note": "No single \"Apache\" label. The map prints the divisions.",
+   "reader_note": "The label's origin is uncertain, so no meaning is given here. No page from the tribes themselves was found for this entry."
   },
   {
    "id": "assiniboin",
@@ -331,14 +358,15 @@
    ],
    "confidence": "medium",
    "caution": "No tribal site confirmed.",
-   "map_label_checked": false,
+   "map_label_checked": true,
    "publish": true,
    "label_kind": "outsider-name",
-   "nc": false
+   "nc": false,
+   "reader_note": "No page from the nations themselves was found for this entry."
   },
   {
    "id": "chippewa",
-   "map_label": "Chippewa",
+   "map_label": "Ojibwa",
    "self_name": "Anishinaabe",
    "meaning": "not stated",
    "label_origin": "English (Chippewa) and French (Ojibwa) forms of Ojibwe",
@@ -350,14 +378,16 @@
    ],
    "confidence": "medium",
    "caution": "'Ojibwe' is itself an older self-name, not purely an outsider label.",
-   "map_label_checked": false,
+   "map_label_checked": true,
    "publish": true,
    "label_kind": "outsider-name",
-   "nc": false
+   "nc": false,
+   "seed_label": "Chippewa",
+   "reader_note": "Ojibwe is itself an older self-name, not only an outsider's label."
   },
   {
    "id": "menominee",
-   "map_label": "Menominee",
+   "map_label": "Menomini",
    "self_name": "Mamaceqtaw",
    "meaning": "The People",
    "label_origin": "Ojibwe 'wild rice people'",
@@ -370,10 +400,12 @@
    ],
    "confidence": "medium",
    "caution": "Self-name spelling from Wikipedia.",
-   "map_label_checked": false,
+   "map_label_checked": true,
    "publish": true,
    "label_kind": "outsider-name",
-   "nc": false
+   "nc": false,
+   "seed_label": "Menominee",
+   "reader_note": "The self-name's spelling comes from Wikipedia."
   },
   {
    "id": "sauk",
@@ -390,10 +422,11 @@
    ],
    "confidence": "medium",
    "caution": "Self-name not confirmed on nation site.",
-   "map_label_checked": false,
+   "map_label_checked": true,
    "publish": true,
    "label_kind": "outsider-name",
-   "nc": false
+   "nc": false,
+   "reader_note": "The self-name is not confirmed on the Nation's own site."
   },
   {
    "id": "catawba",
@@ -410,10 +443,12 @@
    ],
    "confidence": "medium",
    "caution": "Self-name not on nation homepage. NC thread; recognition is contested by the Lumbee.",
-   "map_label_checked": false,
+   "map_label_checked": true,
    "publish": true,
    "label_kind": "outsider-name",
-   "nc": true
+   "nc": true,
+   "reader_note": "The self-name does not appear on the Nation's homepage.",
+   "reader_note_why": "Omits the seed caution's 'recognition is contested by the Lumbee'. Researched 2026-10-20: no source found for it. The Cherokee One Feather (2026-06-11) reports the June 5, 2026 recognition with no objection from anyone, and the one Lumbee statement found (Chairman Paul Brooks, GGB Magazine, 2014-07-12) supports a Catawba land application. Ruled by Hashem: keep it off the page."
   },
   {
    "id": "cherokee",
@@ -430,14 +465,15 @@
    ],
    "confidence": "medium",
    "caution": "Officially used. Native-language spellings from Wikipedia. NC thread.",
-   "map_label_checked": false,
+   "map_label_checked": true,
    "publish": true,
    "label_kind": "outsider-name",
-   "nc": true
+   "nc": true,
+   "reader_note": "Cherokee is the official name. The Cherokee-language spellings come from Wikipedia."
   },
   {
    "id": "seminole",
-   "map_label": "Seminole",
+   "map_label": "(not printed)",
    "self_name": "Seminole",
    "meaning": "not stated",
    "label_origin": "Muscogee word; also linked to Spanish 'cimarrón'",
@@ -449,10 +485,13 @@
    ],
    "confidence": "high",
    "caution": "Embraced: the tribe calls it a badge of honor for some.",
-   "map_label_checked": false,
+   "map_label_checked": true,
    "publish": true,
    "label_kind": "outsider-name",
-   "nc": false
+   "nc": false,
+   "seed_label": "Seminole",
+   "map_note": "Not on this map. Florida shows the earlier peoples: Timucua, Calusa, Apalachee and others.",
+   "reader_note": "Both governments use Seminole as their official name."
   },
   {
    "id": "chickasaw",
@@ -468,10 +507,11 @@
    ],
    "confidence": "high",
    "caution": "The people's own name, anglicized.",
-   "map_label_checked": false,
+   "map_label_checked": true,
    "publish": true,
    "label_kind": "own-name-respelled",
-   "nc": false
+   "nc": false,
+   "reader_note": "The people's own name, in English spelling."
   },
   {
    "id": "choctaw",
@@ -487,10 +527,11 @@
    ],
    "confidence": "high",
    "caution": "The people's own name, anglicized.",
-   "map_label_checked": false,
+   "map_label_checked": true,
    "publish": true,
    "label_kind": "own-name-respelled",
-   "nc": false
+   "nc": false,
+   "reader_note": "The people's own name, in English spelling."
   },
   {
    "id": "pima",
@@ -507,10 +548,11 @@
    ],
    "confidence": "medium",
    "caution": "GRIC may spell O'otham; confirm.",
-   "map_label_checked": false,
+   "map_label_checked": true,
    "publish": true,
    "label_kind": "outsider-name",
-   "nc": false
+   "nc": false,
+   "reader_note": "Spellings vary; the Gila River Indian Community may write O'otham."
   },
   {
    "id": "osage",
@@ -526,10 +568,11 @@
    ],
    "confidence": "medium",
    "caution": "Spelling varies on the nation's own site.",
-   "map_label_checked": false,
+   "map_label_checked": true,
    "publish": true,
    "label_kind": "own-name-respelled",
-   "nc": false
+   "nc": false,
+   "reader_note": "Spellings vary, even on the Nation's own site."
   },
   {
    "id": "omaha",
@@ -545,10 +588,11 @@
    ],
    "confidence": "medium",
    "caution": "",
-   "map_label_checked": false,
+   "map_label_checked": true,
    "publish": true,
    "label_kind": "own-name-respelled",
-   "nc": false
+   "nc": false,
+   "reader_note": ""
   },
   {
    "id": "ponca",
@@ -564,14 +608,15 @@
    ],
    "confidence": "medium",
    "caution": "No tribal site confirmed.",
-   "map_label_checked": false,
+   "map_label_checked": true,
    "publish": true,
    "label_kind": "own-name-respelled",
-   "nc": false
+   "nc": false,
+   "reader_note": "No page from the tribes themselves was found for this entry."
   },
   {
    "id": "shoshone",
-   "map_label": "Shoshone",
+   "map_label": "Shoshoni",
    "self_name": "Newe",
    "meaning": "People",
    "label_origin": "Uncertain",
@@ -583,10 +628,12 @@
    ],
    "confidence": "medium",
    "caution": "Self-name not on tribal homepage.",
-   "map_label_checked": false,
+   "map_label_checked": true,
    "publish": true,
    "label_kind": "outsider-name",
-   "nc": false
+   "nc": false,
+   "seed_label": "Shoshone",
+   "reader_note": "The self-name does not appear on the tribes' homepage."
   },
   {
    "id": "ute",
@@ -602,10 +649,12 @@
    ],
    "confidence": "medium",
    "caution": "Use the tribe's own gloss of 'Ute'.",
-   "map_label_checked": false,
+   "map_label_checked": true,
    "publish": true,
    "label_kind": "outsider-name",
-   "nc": false
+   "nc": false,
+   "reader_note": "",
+   "reader_note_why": "Seed caution ('Use the tribe's own gloss of Ute') is an instruction to the builder, not a fact for readers. No note shown; the meaning 'The People' is shown as seeded. Review item."
   },
   {
    "id": "kickapoo",
@@ -621,10 +670,12 @@
    ],
    "confidence": "low",
    "caution": "Self-name not confirmed. Hold back until confirmed.",
-   "map_label_checked": false,
+   "map_label_checked": true,
    "publish": false,
    "label_kind": "outsider-name",
-   "nc": false
+   "nc": false,
+   "reader_note": "",
+   "reader_note_why": "publish: false; never written into the page."
   }
  ]
 }
