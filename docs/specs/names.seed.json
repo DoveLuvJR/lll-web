@@ -140,9 +140,10 @@
    "caution": "Legal name still includes '(Creek)'; the 2021 change was branding.",
    "map_label_checked": true,
    "publish": true,
-   "label_kind": "outsider-name",
+   "label_kind": "own-name-respelled",
    "nc": false,
-   "seed_label": "Creek"
+   "seed_label": "Creek",
+   "label_kind_note": "Batch 21: the map prints Muskogee (the own name, respelled), so the printed label is own-name-respelled. The outsider label is Creek (seed_label); label_origin describes Creek."
   },
   {
    "id": "huron",

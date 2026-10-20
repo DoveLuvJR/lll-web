@@ -55,8 +55,16 @@ for i, n in enumerate(FAMS):
     sz = ndi.sum(np.ones_like(cc), cc, range(1, k + 1))
     bad = np.isin(cc, [j + 1 for j, z in enumerate(sz) if z < 350])
     fl[bad] = -2
-for n in ('ocean', 'outland'):
-    pass
+# tiny stocks exist only where the sheet prints them (grid boxes x0, x1, y0, y1);
+# anywhere else the same colour is a speck of linework
+WHERE = {'wakashan': (180, 270, 100, 200), 'kutenai': (420, 540, 140, 210),
+         'chimakuan': (190, 280, 100, 200), 'karankawa': (940, 1100, 1050, 1170),
+         'yukian': (110, 180, 440, 580), 'keres': (560, 700, 760, 860),
+         'aztec-tanoan': (0, 1060, 0, 2000), 'na-dene': (0, 1060, 0, 2000)}
+for n, (x0, x1, y0, y1) in WHERE.items():
+    i = FAMS.index(n)
+    box = np.zeros(fl.shape, bool); box[y0:y1, x0:x1] = True
+    fl[(fl == i) & ~box] = -2
 fl[(fl >= len(FAMS))] = -2  # background classes inside land are linework residue
 known = fl >= 0
 idx = ndi.distance_transform_edt(~known, return_distances=False, return_indices=True)
@@ -68,6 +76,7 @@ for i, n in enumerate(FAMS):
         m[300:, :] = False  # only the Idaho/Montana panhandle carries Kutenai on this sheet
     res['families'][n] = paths(m, min_area=150)
 
+np.save('fl.npy', fl); np.save('wsc.npy', ws)
 # render check image in the legend's own colours
 import importlib.util
 LEG = {'na-dene': (179, 199, 219), 'algonkian': (218, 151, 171), 'gulf': (203, 97, 120), 'tonkawa': (222, 214, 201), 'siouan-yuchi': (203, 213, 211), 'iroquoian': (149, 86, 125), 'caddoan': (239, 230, 189), 'hokan-coahuiltecan': (209, 213, 180), 'penutian': (229, 197, 169), 'aztec-tanoan': (205, 147, 171), 'keres': (238, 225, 145), 'yukian': (121, 165, 204), 'kutenai': (144, 175, 174), 'karankawa': (174, 190, 146), 'chimakuan': (191, 55, 95), 'salish': (213, 146, 101), 'wakashan': (169, 164, 136), 'timucua': (215, 148, 159), 'insufficient': (176, 174, 172)}
