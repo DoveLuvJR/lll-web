@@ -108,9 +108,8 @@ New: `collections/nations-before-the-map/` (index.html, app.js, styles.css, img/
 
 - [x] *(ruled 2026-10-20)* Hashem's review list; stocks marked `ruled: true`; rebuilt without `--draft`.
 - [x] *(2026-10-20)* Item 6 researched and ruled; merged `--no-ff` locally.
-- [ ] **Push** (Hashem), then check production: network tab, widget heights, 375 width.
+- [x] *(verified on production 2026-10-20, merge `ffb31d0`)* **The live deploy.** Page 200 with its title; Explorer 822 and Lenses 827 under a 64px nav; 375 wide at 375px; 31/13/9/19 rows, cards and fills; no draft mark; tapping Plains lights its card; the collections card links here; **0 off-site requests**; `/docs/...`, `/CHANGELOG.md` and `/DECISIONS.md` return 404. The only console error is the favicon 404, which every study shares (pre-existing).
 - [ ] The Commission's "June 6" vs the One Feather's "June 5": one day apart. The page states only the year.
-- [ ] **The live deploy:** network tab and widget heights on production after merge.
 - [ ] **Britannica (403) and Shoshone-Bannock (refused):** open both by hand in a browser.
 - [ ] **The Muscogee Council Oak link** could move to its `muscogeenation.com` address. It redirects fine today.
 - [ ] MED findings NBM-08, NBM-09 and NBM-10.
