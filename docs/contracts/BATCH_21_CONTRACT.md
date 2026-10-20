@@ -1,5 +1,5 @@
 # BATCH 21 CONTRACT
-**Project:** Growing Stone Library (LLL-Web) | **Title:** The Nations Before the Map | **Created:** 2026-10-20 | **Status:** 🔄 IN PROGRESS
+**Project:** Growing Stone Library (LLL-Web) | **Title:** The Nations Before the Map | **Created:** 2026-10-20 | **Status:** 🟡 BUILT, IN REVIEW (Hashem's review list blocks the merge)
 **Spec:** `docs/specs/SPEC_2026-10-20_nations-before-the-map.html` · **Branch:** `batch-21-nations-before-the-map`
 
 ## Ceremony tier (ship-over-harden)
@@ -74,3 +74,27 @@ Required (new UI, highlight state, responsive layout). Run with Playwright again
 
 ## Rollback
 The page is new and lives on its own branch. Rollback is `git revert` of the merge commit. No data or schema changes.
+
+## PROOF GATE — Batch 21 (2026-10-20)
+
+Evidence is in CHANGELOG.md, Batch 21. The scripts are `docs/build/shot.js` and `docs/build/interact.js` (Playwright, Chromium 156).
+
+| Criterion | Evidence | Status |
+|---|---|---|
+| Widget fit | Explorer 822, Lenses map+tree 827, nav 64 (≤ 836) | ✅ |
+| Phone width | `scrollWidth` 375 at 375 | ✅ |
+| Data integrity (gate) | 31 name rows, 13 Lane A rows, every one with a source link; Kickapoo absent | ✅ |
+| Map labels (gate) | 32/32 `map_label_checked` | ✅ |
+| Links | 60 checked one at a time: 55 OK, 3 redirect, 1 403, 1 refused; all logged, none removed | ✅ |
+| Keyboard | 50 controls + 19 fills by Tab; Enter/Space on SVG regions and fills | ✅ |
+| Contrast | text ≥ 4.72 light / 6.11 dark; every fill ≥ 3:1 against both seams (spec difference, see CHANGELOG) | ✅ |
+| Page weight | 806 KB | ✅ |
+| No network calls | 0 / 0 / 0 greps; 0 off-site requests | ✅ |
+| Nothing hidden | 0 `hidden`; select-all 44/44 | ✅ |
+| Restricted content (gate) | no Catawba story text; Walam Olum only as a fabrication | ✅ |
+| Trust-check (gate) | 5 honesty flags, 4 AI tells, all fixed; Scripture checked against KJV and NIV | ✅ |
+| No-JS read | 9 cards, 31 names, 13 accounts; chips hidden | ✅ |
+| Adversarial review | Codex gpt-5.6-sol: 7 HIGH fixed and re-tested; 3 MED logged; 2 LOW fixed | ✅ |
+| Docs | CHANGELOG entry; D-024 proposed; README, collections card | ✅ |
+| **Hashem's review list** | 9 items in CHANGELOG, Batch 21 | ⬜ **open: blocks the merge** |
+| Stocks table ruled | `build_page.py` refuses to publish until all 18 rows are `ruled: true` | ⬜ **open** |

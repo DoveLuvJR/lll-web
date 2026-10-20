@@ -176,6 +176,9 @@ header h1{font-family:'Cinzel',serif;font-size:clamp(24px,4.6vw,42px);font-weigh
 #lenses.mode-language .ca,#lenses.mode-language .ca-lbls{opacity:.25}
 #lenses.has-pick .fam{opacity:.22}
 #lenses.has-pick .fam.is-on{opacity:1}
+.fam:focus{outline:none}
+.fam:focus-visible{stroke:var(--hl);stroke-width:3px}
+.draft{font-family:'Inter',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.4px;color:var(--b-ask);background:var(--b-ask-bg);border:1px solid currentColor;border-radius:4px;padding:1px 6px;margin-left:8px;vertical-align:3px}
 
 .tree-hd{font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
 .tree{list-style:none;margin:0;padding:0 0 0 10px;border-left:2px solid var(--rule)}
@@ -259,12 +262,21 @@ footer p{font-family:'Inter',sans-serif;font-size:13px;color:var(--muted);line-h
 
 /* ---------- Print (D-016: strip every tint) ---------- */
 @media print{
+  /* Paper is always light, whatever the screen theme (a dark-theme page would
+   * otherwise print pale text once the browser drops background colours). */
+  :root,:root[data-theme="dark"],:root:not([data-theme="light"]){
+    --gold:#8B6914;--gold-light:#C9A84C;--gold-bg:#fff;--text:#1a1a1a;--text2:#555;--muted:#6b6b6b;
+    --bg:#fff;--panel:#fff;--rule:#ccc;--rule2:#e5e5e5;--seam:#fff;--ca:#1a1a1a;
+    --nc:#1f5f8b;--nc-bg:#fff;--b-winter:#1f5f8b;--b-sacred:#2d6a3e;--b-held:#4a4a4a;--b-ask:#8a5300;
+    --lane-a:#8B6914;--lane-b:#4b6a85;color-scheme:light}
   .nav,.share-row,.chips,.crumbs,.foot-back{display:none!important}
   .widget.wide{width:auto;margin-left:0}
   .widget,.org-row,.ex-card,.nm-row{break-inside:avoid}
   .area,.area.is-on,#explorer.hl-nc .area[data-nc]{fill:transparent;stroke:#333;stroke-width:1px}
   .ex-card.is-on,#explorer .ex-peoples li.nc,.names-tbl td,.org-row{background:none!important;box-shadow:none!important}
-  #lenses .fam{opacity:1!important}
-  #lenses .ca,#lenses .ca-lbls{opacity:1!important}
+  .ex-card.is-on{border-color:var(--rule)}
+  #lenses .fam{opacity:1!important;stroke:var(--seam);stroke-width:1.6px}
+  #lenses .ca{opacity:1!important;stroke-width:2px!important}
+  #lenses .ca-lbls{opacity:1!important}
   .stock[aria-pressed="true"]{border-color:transparent;background:none}
 }

@@ -40,7 +40,7 @@ LLL-Web/
 | The Spiral and the Line | Live | `/collections/the-spiral-and-the-line/` |
 | Whose Name Is On the Gate? | Live | `/collections/whose-name-is-on-the-gate/` |
 | Names on the Wall | Live | `/collections/names-on-the-wall/` |
-| The Nations Before the Map | Live | `/collections/nations-before-the-map/` |
+| The Nations Before the Map | In review (Batch 21) | `/collections/nations-before-the-map/` |
 | Cellular Engineering | Planned | `/collections/cellular-engineering/` |
 | Drenchy Breakdown | Planned | `/collections/drenchy-breakdown/` |
 

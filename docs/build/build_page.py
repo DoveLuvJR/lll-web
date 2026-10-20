@@ -149,36 +149,7 @@ def w1():
     return '\n'.join(out)
 
 
-# ---------- Widget 2: reader-facing notes (rewritten from each seed entry's internal 'caution') ----------
-NOTES = {
-    'papago': 'The meaning and the label\'s origin come from a general reference, not from the Nation.',
-    'winnebago': 'The Winnebago Tribe of Nebraska still uses Winnebago as its official name.',
-    'sioux': 'Many governments keep Sioux in their official names. The label\'s meaning is disputed, so none is given here.',
-    'navajo': 'The Nation\'s official name is Navajo Nation.',
-    'tuscarora': 'The self-name\'s spelling comes from a general reference.',
-    'creek': 'The legal name still includes (Creek). The 2021 change was to the Nation\'s branding.',
-    'huron': 'The Quebec nation\'s official name is Huron-Wendat.',
-    'fox': 'The legal name is still Sac & Fox.',
-    'delaware': 'Both Oklahoma governments keep Delaware in their names.',
-    'nez-perce': 'Spellings of the self-name vary, even on the Tribe\'s own site.',
-    'blackfoot': 'The map prints Blackfoot. The Montana government is the Blackfeet Nation.',
-    'crow': 'The name Apsáalooke itself came from neighbors, the Hidatsa.',
-    'cheyenne': 'The self-name\'s spelling comes from a general reference.',
-    'apache': 'The label\'s origin is uncertain, so no meaning is given here.',
-    'assiniboin': 'No page from the nations themselves was found for this entry.',
-    'chippewa': 'Ojibwe is itself an older self-name, not only an outsider\'s label.',
-    'menominee': 'The self-name\'s spelling comes from a general reference.',
-    'sauk': 'The self-name is not confirmed on the Nation\'s own site.',
-    'catawba': 'The self-name does not appear on the Nation\'s homepage.',
-    'cherokee': 'Cherokee is the official name. The Cherokee-language spellings come from a general reference.',
-    'seminole': 'Both governments use Seminole as their official name.',
-    'chickasaw': 'The people\'s own name, in English spelling.',
-    'choctaw': 'The people\'s own name, in English spelling.',
-    'pima': 'Spellings vary; the Gila River Indian Community may write O\'otham.',
-    'osage': 'Spellings vary, even on the Nation\'s own site.',
-    'ponca': 'No page from the tribes themselves was found for this entry.',
-    'shoshone': 'The self-name does not appear on the tribes\' homepage.',
-}
+# ---------- Widget 2 ----------
 GROUPS = [
     ('Southeast', ['cherokee', 'creek', 'choctaw', 'chickasaw', 'catawba', 'tuscarora', 'seminole']),
     ('Northeast', ['iroquois', 'delaware', 'huron', 'fox', 'sauk', 'menominee', 'chippewa', 'winnebago']),
@@ -191,6 +162,11 @@ KIND = {'outsider-name': ('outsider', 'Outsider name'), 'own-name-respelled': ('
 # label_origin in the seed describes the common label, not the printed one
 ORIGIN_IS_SEED_LABEL = {'creek', 'sioux', 'apache', 'huron', 'seminole'}
 SILENT_MEANING = ('not stated', 'not confirmed', 'no consensus', 'not stated by the nation')
+
+
+def safe(u):
+    assert urlparse(u).scheme in ('https', 'http'), u
+    return u
 
 
 def src_label(u):
@@ -255,9 +231,11 @@ def w2():
             if m and not m.lower().startswith(SILENT_MEANING):
                 right.append(f'<span class="nm-line"><span class="k">Meaning</span> {e(m)}</span>')
             right.append(f'<span class="nm-line"><span class="k">Today</span> {e(n["nations_today"])}</span>')
-            if i in NOTES:
-                right.append(f'<span class="nm-line note">{e(NOTES[i])}</span>')
-            links = ' · '.join(f'<a href="{e(u)}">{e(src_label(u))}</a>' for u in n['sources'])
+            # Every non-empty caution needs a reviewed reader_note (empty is allowed, with reader_note_why)
+            assert 'reader_note' in n and (n['reader_note'] or not n['caution'] or n.get('reader_note_why')), i
+            if n['reader_note']:
+                right.append(f'<span class="nm-line note">{e(n["reader_note"])}</span>')
+            links = ' · '.join(f'<a href="{e(safe(u))}">{e(src_label(u))}</a>' for u in n['sources'])
             right.append(f'<span class="nm-src"><span class="k">Source</span> {links}</span>')
             out.append(f'            <tr class="nm-row" data-tags="{" ".join(tags)}">')
             out.append('              <td class="on-map">' + ''.join(left) + '</td>')
@@ -319,10 +297,10 @@ def w3():
            '        </div>',
            '        <div class="ln-grid">',
            '          <div class="ln-map">',
-           f'            <svg class="map-svg" viewBox="{VIEWBOX}" role="img" aria-label="Language stocks in color, with the nine culture areas outlined, traced from the 1967 map">',
+           f'            <svg class="map-svg" viewBox="{VIEWBOX}" role="group" aria-label="Language stocks in color, with the nine culture areas outlined, traced from the 1967 map">',
            '              <g class="fams">']
     for t, _ in TREE:
-        out.append(f'                <path class="fam" data-fam="{t}" style="--c:{palette[t]}" d="{path_d(paths["families"][t])}"/>')
+        out.append(f'                <path class="fam" data-fam="{t}" style="--c:{palette[t]}" tabindex="0" role="button" aria-pressed="false" aria-label="{STOCK_NAMES[t]}" d="{path_d(paths["families"][t])}"/>')
     out.append('              </g>')
     out.append('              <g class="cas">')
     for a in AREA_NAMES:
@@ -346,7 +324,7 @@ def w3():
         out.append(f'              <li><button type="button" class="stock" data-fam="{t}" aria-pressed="false"><span class="sw" style="--c:{palette[t]}"></span>{STOCK_NAMES[t]}</button><span class="kin">{e(kin)}</span></li>')
     out += ['            </ul>', '          </div>', '        </div>',
             '        <table class="stocks-tbl">',
-            '          <caption>The 1967 stocks today</caption>',
+            '          <caption>The 1967 stocks today' + (' <span class="draft">Draft: awaiting ruling</span>' if any(not x.get('ruled') for x in stocks) else '') + '</caption>',
             '          <thead><tr><th scope="col">Stock, as printed in 1967</th><th scope="col">How linguists class it today</th></tr></thead>',
             '          <tbody>']
     for s in stocks:
@@ -369,12 +347,6 @@ MIGRATION = {'chickasaw', 'choctaw', 'poarch-creek'}
 BADGE = {'winter': ('b-winter', 'Winter story'), 'sacred-place': ('b-sacred', 'Sacred place'),
          'restricted': ('b-held', 'Held by the Nation'), 'permission': ('b-ask', 'Ask permission'),
          'caution': ('b-ask', 'Ask permission')}
-# What the page says in lane A when it must say less than the seed draft (content rules, spec §11)
-PARAPHRASE = {
-    'catawba': 'The Catawba Indian Nation holds its creation story in its own archive, for its members. It is not retold here.',
-    'lenape': 'The Lenape have lived in their homeland, from eastern Pennsylvania to New Jersey and Delaware, since time immemorial.',
-}
-LINK = {'catawba': ('https://www.catawba.com/', "The Nation's own site")}
 LANE_A_NOTES = {
     'choctaw': 'Nvnih Waiya is a sacred site. Visits need permission from the Mississippi Band of Choctaw Indians.',
     'muscogee-fire': 'A story of continuity after removal, not a migration account.',
@@ -425,9 +397,15 @@ def w4():
             tags.append('migration')
         badges = ''.join(f'<span class="badge {BADGE[t][0]}">{BADGE[t][1]}</span>' for t in a['tags'] if t in BADGE)
         nc = '<span class="nc-tag">NC</span>' if 'nc' in a['tags'] else ''
-        url, ltxt = LINK.get(i, (a['source'], "The Nation's own page"))
-        para = PARAPHRASE.get(i, a['paraphrase'])
-        note = f'<p class="org-note">{e(LANE_A_NOTES[i])}</p>' if i in LANE_A_NOTES else ''
+        url = safe(a['source'])
+        ltxt = "The Nation's archive record (members only)" if 'restricted' in a['tags'] else "The Nation's own page"
+        para = a.get('page_text', a['paraphrase'])
+        note = ''
+        if i in LANE_A_NOTES:
+            extra = ''
+            if a.get('permission_link'):
+                extra = f' <a href="{e(safe(a["permission_link"]))}">Hopi Cultural Preservation Office</a>'
+            note = f'<p class="org-note">{e(LANE_A_NOTES[i])}{extra}</p>'
         out.append(f'          <div class="org-row" data-tags="{" ".join(tags)}">')
         out.append('            <div class="lane lane-a"><span class="lane-lbl">What the nations tell</span>'
                    f'<p class="org-nation">{e(a["nation"])}{nc}</p>'
@@ -440,6 +418,12 @@ def w4():
     out += ['        </div>', '      </div>', '      <!-- ============ /WIDGET 4 ============ -->']
     return '\n'.join(out)
 
+
+import sys
+DRAFT = '--draft' in sys.argv
+unruled = [x['stock_1967'] for x in stocks if not x.get('ruled')]
+if unruled and not DRAFT:
+    sys.exit(f'Refusing to publish {len(unruled)} unruled stock rows (D-023). Rule them in families.seed.json, or build with --draft.')
 
 page = (Path(__file__).with_name('page.template.html')).read_text(encoding='utf-8')
 for k, f in (('{{W1}}', w1), ('{{W2}}', w2), ('{{W3}}', w3), ('{{W4}}', w4)):

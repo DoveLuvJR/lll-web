@@ -1,5 +1,106 @@
 # Changelog — LLL Library
 
+## Batch 21 — The Nations Before the Map (2026-10-20)
+
+A seventh study, at `/collections/nations-before-the-map/`, built from `docs/specs/SPEC_2026-10-20_nations-before-the-map.html` and its three seed files. It is built around the 1967 USGS National Atlas map of early tribes, culture areas and language stocks (W. C. Sturtevant). It asks whose names are on the map, what the nations call themselves, how their languages connect, and where the nations say they came from. **Tier 2 + content gates** (ship-over-harden, ruled by Hashem): a misnamed nation or a published restricted story fails silently. Proposed by Hashem, not an agent. This is the first new study after five correctness batches. Contract: `docs/contracts/BATCH_21_CONTRACT.md`.
+
+**Status: built on `batch-21-nations-before-the-map`, NOT merged.** Merging waits on Hashem's review list below. The stocks table is a ruled-before-publish draft (D-023): `build_page.py` refuses to build it for publication until every row is ruled.
+
+### Rulings made during the batch
+
+| # | Ruling | By |
+|---|---|---|
+| R1 | Tier 2 + content gates | Hashem |
+| R2 | Map scan from the LOC IIIF service (`ct003648r`), downloaded by Hashem to `C:\Users\irwar\loc-scan\`. The full size never enters the repo | Hashem |
+| R3 | "On the map" prints what the map prints. 22/32 labels matched the scan. 6 are respelled to the printed form (Navaho, Blackfoot, Shoshoni, Menomini, Ojibwa, Muskogee). 4 are not printed as one label (Sioux and Apache print their divisions; Huron and Seminole are absent) and carry a `map_note` | Hashem |
+| R4 | The 1967-vs-today table is rebuilt from the **18 stocks the legend prints** (the seed listed 14 different names, 5 of them not on the map) | Hashem |
+| R5 | **Nine culture areas, not ten.** The main sheet prints 9; Subarctic and Arctic are not on it | Builder, following the map |
+
+### Differences from the spec
+
+- **Widget 3 contrast.** The spec asks for 3:1 between neighboring regions. Four stocks all touch each other (Algonkian, Aztec-Tanoan, Siouan-Yuchi, Caddoan), so no set of fills can do that: it would take 27:1 between the extremes. Instead, each stock is separated by a seam in the page background colour, and **every fill reaches at least 3:1 against both the light and the dark seam** (WCAG 1.4.11; `docs/tracing/palette.py`, weakest is Salish at 3.21).
+- **The tracings were made from the scan's own colours** (`docs/tracing/`): legend colours classified pixel by pixel, the culture areas grown from seeds between the gray lines, and specks confined to where each small stock is printed. The overlay check lines up with the printed borders.
+- **The page is written by `docs/build/build_page.py`** from a hand-written template plus the seeds, so seed and page change in one commit. `index.html` is never edited by hand.
+- **Shorter nav labels** ("I · One map" … "VII · Reading honestly") keep the sticky nav to one 64px row, which D-019's 836px assumes.
+- **Lane A says less than three seed drafts.** Catawba: says only that the Nation holds the story, linked to its archive record (access is restricted to enrolled members). Lenape: drops the flood-turtle line, since the Delaware Nation urges caution. Hopi: only what the Tribe's homepage says (the covenant with Maasaw), plus a link to the Cultural Preservation Office (ruling of 2026-10-20: outline plus link).
+- **Seed edits, recorded in the seed:** `creek.label_kind` became own-name-respelled (the map prints Muskogee). Each name now has a `reader_note`, the reviewed reader-facing version of its internal `caution`. `reader_note_why` records the two cautions not shown: Catawba's unsourced "contested by the Lumbee", and Ute's builder instruction.
+
+### Sources checked on build day
+
+- **NC Commission of Indian Affairs** (`doa.nc.gov`): nine tribes listed, four urban organizations named, the Lumbee recognized by the Lumbee Fairness Act in 2025. **The Catawba state recognition is dated "June 6" with no year.** "2026" comes from the seed and the September swearing-in. The Catawba sub-page still says "petitioned for state recognition", which is out of date.
+- **USGS publication 32595** (`pubs.usgs.gov`): the mapmakers' caveats (borders from different eras by region; sharp lines mislead) were read first-hand. Section VII's paraphrase holds.
+- **Scripture:** Genesis 10:31 (KJV) and Revelation 7:9 (NIV) were checked word for word on Bible Gateway.
+- **Catawba federal recognition (1993)** comes from the seed, which drew on Wikipedia. Not re-opened.
+
+### Verified (Playwright, Chromium 156, local server)
+
+- **Fit at 1440×900, nav 64px:** Map Explorer **822**, Three Lenses map + tree **827** (≤ 836). The 1967 table sits below, as the spec allows.
+- **Phone 375:** `scrollWidth` **375**; every widget stacks to one column.
+- **Rows:** **31** names and **13** Lane A accounts, each with a source link. Kickapoo (`publish:false`) is absent.
+- **Chips tint exactly their rows:** 24/24, 7/7, 3/3 (Names); 2/2, 2/2, 3/3 (Origins). **0** `hidden` attributes. Select-all copy captures **44/44** row probes.
+- **Keyboard:** 50 regions, cards, chips and stocks plus **19** stock fills reachable by Tab. Enter and Space work on SVG regions and fills.
+- **No JS:** chips hidden; 9 cards, 31 names and 13 accounts render.
+- **Print:** chips and nav hidden, tints stripped. From a dark-mode screen it prints dark text (`rgb(26,26,26)`), a neutral card border and normal outlines.
+- **Deep link `#m4`:** heading lands 161px down; nav shows "IV · Languages".
+- **D-013:** `fetch(` / `XMLHttpRequest` / `src="http` = **0**. **0 off-site requests** on load.
+- **Weight:** **806 KB** first load (map WebP 354 KB, fetched once for three uses).
+- **Text contrast:** every token pair ≥ 4.5:1; weakest **4.72** light, **6.11** dark.
+- **Restricted content:** no Catawba story text. The Walam Olum appears only as a named fabrication (Section VII, and Oestreicher's title in the sources line).
+
+### Link check (60 links, one at a time, by a separate agent)
+
+- **55 OK**, 0 not found.
+- **3 redirect:** `mcn-nsn.gov` → `muscogeenation.com` (same path); `scit-nsn.gov` and `blackfeetnation.com` go from https to http.
+- **1 blocked:** Britannica returned 403, likely a block on automated fetchers.
+- **1 refused:** `shoshonebannocktribes.com` refused the connection on port 443.
+
+Per spec §12, every entry was kept and nothing was swapped.
+
+### Adversarial review — Codex `gpt-5.6-sol` (cross-model, not a self-review)
+
+**7 HIGH, all fixed and re-tested:**
+- **NBM-01:** unruled stocks table. Now a refused publish build, plus a visible draft mark.
+- **NBM-02:** Catawba linked to the homepage instead of its archive record.
+- **NBM-03:** Hopi outline claimed more than its linked page.
+- **NBM-04:** hand-written notes drifted from the seed cautions. They now live in the seed, with "Wikipedia" named outright.
+- **NBM-05:** stock fills were clickable but not keyboard targets.
+- **NBM-06:** print kept a lit card border and Culture-mode outlines.
+- **NBM-07:** dark-mode screens printed pale text.
+
+**MEDIUM, logged for next batch:**
+- **NBM-08:** the link audit is not part of the build. It ran as a separate pass this time.
+- **NBM-09:** the nav is authored, not derived (same as the sibling studies). On phones it wraps to several rows, so `scroll-margin-top:110px` may tuck deep-linked headings under it.
+- **NBM-10:** with JS off, the region, card and stock buttons stay in the tab order and do nothing.
+
+**LOW:** NBM-11 (no URL scheme allow-list) is fixed: the build rejects non-http(s) seed links. NBM-12 (D-024 and this entry) is done.
+
+### Review list for Hashem (blocks the merge)
+
+1. The **18 "today" rows** in the stocks table: drafted from the seed's named works (Campbell 1997, Mithun 1999, Goddard 1996), not re-opened.
+2. **Self-names spelled from Wikipedia:** Tohono O'odham meaning/origin, Skarù·ręʔ, Tsitsistas, Mamaceqtaw, and the Cherokee-language spellings. Each says so on the page.
+3. **The region tracings,** on screen.
+4. **The `map_note` wording** for Sioux, Apache, Huron and Seminole.
+5. **Lane A changes:** the Catawba, Lenape and Hopi rows above.
+6. **The two cautions not shown:** Catawba (Lumbee) and Ute.
+7. **Catawba state recognition year (2026):** inferred from the Commission's page.
+8. **D-024** (badge rule): adopt, or say what to change.
+9. **Kickapoo** stays hidden until its self-name is confirmed (spec).
+
+### Files changed
+
+New: `collections/nations-before-the-map/` (index.html, app.js, styles.css, img/ WebP + JPEG), `docs/build/` (template, build script, browser checks), `docs/tracing/` (scripts, outlines, palette), `docs/contracts/BATCH_21_CONTRACT.md`. Changed: `collections/index.html`, `README.md`, the three seeds, `CHANGELOG.md`, `DECISIONS.md`.
+
+### Not verified / open
+
+- [ ] Hashem's review list above. Then set `ruled: true` in `families.seed.json`, rebuild without `--draft`, merge `--no-ff`, and push.
+- [ ] **The live deploy:** network tab and widget heights on production after merge.
+- [ ] **Britannica (403) and Shoshone-Bannock (refused):** open both by hand in a browser.
+- [ ] **The Muscogee Council Oak link** could move to its `muscogeenation.com` address. It redirects fine today.
+- [ ] MED findings NBM-08, NBM-09 and NBM-10.
+
+---
+
+
 ## Batch 20 — Sources: Fix, Cite, Close (2026-10-19)
 
 This batch works through the `[NEEDS SOURCE]` list from Batch 17. Tier 2 (ship-over-harden): a wrong or unsourced claim fails silently, because a reader just repeats it. It protects the Gate study's own sentence: *"It is worth knowing which is which before anyone repeats it."* **Proposed by an agent, and the inward-turn detector was firing**: this is the 5th batch in a row with no new study. Hashem chose to run it anyway. The library's riskiest assumption, that Fellowship members actually read and use the studies, is still untested.

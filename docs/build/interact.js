@@ -68,6 +68,32 @@ const out = (k, v) => console.log(k.padEnd(44), typeof v === 'string' ? v : JSON
   const probes = await p.evaluate(() => [...document.querySelectorAll('#names .self, #origins .lane-a .org-nation')].map(e => e.textContent.trim()));
   out('select-all: rows probed / found', [probes.length, probes.filter(t => copy.includes(t)).length]);
 
+  // ---- review fixes (Codex NBM-02..07) ----
+  await p.focus('#lenses .fam[data-fam="gulf"]');
+  await p.keyboard.press('Enter'); await p.waitForTimeout(300);
+  out('NBM-05 Enter on Gulf fill: on, pressed, tree', await p.evaluate(() => [
+    document.querySelector('.fam[data-fam="gulf"]').classList.contains('is-on'),
+    document.querySelector('.fam[data-fam="gulf"]').getAttribute('aria-pressed'),
+    document.querySelector('.stock[data-fam="gulf"]').getAttribute('aria-pressed')]));
+  out('Tab-reachable fills in Widget 3', await p.evaluate(() => [...document.querySelectorAll('#lenses .fam')].filter(f => f.tabIndex >= 0).length));
+  out('NBM-02 Catawba link / NBM-03 Hopi text+HCPO', await p.evaluate(() => {
+    const rows = [...document.querySelectorAll('.org-row')];
+    const cat = rows.find(r => r.textContent.includes('Catawba Indian Nation'));
+    const hopi = rows.find(r => r.textContent.includes('Hopi Tribe'));
+    return [cat.querySelector('.org-src a').href.includes('catawba-archive'), /Fourth World|earlier worlds/.test(hopi.textContent),
+            !!hopi.querySelector('a[href*="hopi-cultural-preservation-office"]')];
+  }));
+  out('NBM-04 notes naming Wikipedia', await p.evaluate(() => [...document.querySelectorAll('.nm-line.note')].filter(n => n.textContent.includes('Wikipedia')).length));
+  // print with a card lit and Culture mode on, in a DARK-scheme context (NBM-06/07)
+  const dp = await (await b.newContext({ viewport: { width: 1440, height: 900 }, colorScheme: 'dark' })).newPage();
+  await dp.goto(BASE + '?v=' + Date.now(), { waitUntil: 'networkidle' });
+  await dp.locator('#explorer .ex-card[data-area="plains"]').click();
+  await dp.locator('#lenses [data-mode="culture"]').click(); await dp.waitForTimeout(300);
+  await dp.emulateMedia({ media: 'print' }); await dp.waitForTimeout(300);
+  out('NBM-06/07 print (dark scheme): body text, card border, ca stroke', await dp.evaluate(() => [
+    getComputedStyle(document.body).color, getComputedStyle(document.querySelector('.ex-card[data-area="plains"]')).borderTopColor,
+    getComputedStyle(document.querySelector('.ca')).strokeWidth]));
+
   // ---- deep link, fresh load ----
   const d = await ctx.newPage();
   await d.goto(BASE + '?v=' + Date.now() + '#m4', { waitUntil: 'networkidle' });

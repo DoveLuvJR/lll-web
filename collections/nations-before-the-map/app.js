@@ -107,14 +107,18 @@ tintGroup('names', ['outsider', 'respelled', 'nc']);
   function pick(f) {
     picked = (f === null || f === picked) ? null : f;
     w.classList.toggle('has-pick', picked !== null);
-    fams.forEach(function (p) { p.classList.toggle('is-on', p.dataset.fam === picked); });
+    fams.forEach(function (p) {
+      var on = p.dataset.fam === picked;
+      p.classList.toggle('is-on', on);
+      p.setAttribute('aria-pressed', String(on));
+    });
     stocks.forEach(function (s) { s.setAttribute('aria-pressed', String(s.dataset.fam === picked)); });
   }
 
   modes.forEach(function (c) { c.addEventListener('click', function () { setMode(c.dataset.mode); }); });
   stocks.forEach(function (s) { s.addEventListener('click', function () { pick(s.dataset.fam); }); });
-  // Mouse shortcut only: the tree buttons are the keyboard path to every stock.
-  fams.forEach(function (p) { p.addEventListener('click', function () { pick(p.dataset.fam); }); });
+  // The fills are targets too, by mouse and by keyboard (spec §13: every region by Tab).
+  fams.forEach(function (p) { onActivate(p, function () { pick(p.dataset.fam); }); });
 })();
 
 /* ---------- Widget 4: Origins & Homelands ---------- */

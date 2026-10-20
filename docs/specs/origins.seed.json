@@ -61,7 +61,9 @@
    "tags": [
     "caution"
    ],
-   "note": "The Nation urges caution about publishing Lenape culture; it asks people to contact its Historic Preservation Office."
+   "note": "The Nation urges caution about publishing Lenape culture; it asks people to contact its Historic Preservation Office.",
+   "page_text": "The Lenape have lived in their homeland, from eastern Pennsylvania to New Jersey and Delaware, since time immemorial.",
+   "page_text_why": "Drops the seed draft's flood-turtle line: the Delaware Nation urges caution about publishing Lenape culture. Review item."
   },
   {
    "id": "anishinaabe",
@@ -97,12 +99,14 @@
   {
    "id": "hopi",
    "nation": "Hopi Tribe",
-   "paraphrase": "The Hopi came through earlier worlds into the Fourth World and made a covenant with Maasaw to live as humble farmers.",
+   "paraphrase": "The Tribe describes its people as keeping a sacred covenant with Maasaw, living as peaceful and humble farmers.",
    "source": "https://www.hopi-nsn.gov/",
    "tags": [
     "permission"
    ],
-   "note": "The Hopi Cultural Preservation Office says stories must not be published without Hopi permission. Show the one-line outline and link to the office, or leave Hopi out (Hashem rules)."
+   "note": "The Hopi Cultural Preservation Office says stories must not be published without Hopi permission. Show the one-line outline and link to the office, or leave Hopi out (Hashem rules).",
+   "permission_link": "https://www.hopi-nsn.gov/tribal-services/department-natural-resources-2/hopi-cultural-preservation-office/",
+   "paraphrase_why": "Batch 21 (Codex NBM-03): the earlier draft's 'earlier worlds into the Fourth World' is not on the linked page; the paraphrase now holds only what the homepage says. Checked 2026-10-20."
   },
   {
    "id": "ho-chunk",
@@ -121,7 +125,9 @@
     "restricted",
     "nc"
    ],
-   "note": "Restricted to members. Never retell it; say only that the Nation holds it."
+   "note": "Restricted to members. Never retell it; say only that the Nation holds it.",
+   "page_text": "The Catawba Indian Nation holds its creation story in its own archive, for its members. It is not retold here.",
+   "source_note": "The archive record belongs to the Catawba Nation Archives (Cultural Services Division) and states that access is restricted to enrolled tribal members. Checked 2026-10-20 without reading the story."
   }
  ],
  "lane_b": [
