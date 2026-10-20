@@ -1,0 +1,401 @@
+<title>The Nations Before the Map</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a surveyor's field sheet — one reading column, map-label caps for headings, a right-hand margin of state stamps */
+:root{
+  --paper:#eef1f2; --sheet:#fbfcfc; --ink:#1d2a33; --muted:#5a6b76; --rule:#c9d3d8;
+  --ocean:#1f5a9c; --ocean-soft:#dce8f4; --clay:#b4433a; --clay-soft:#f6e3e0; --sage:#3f7a4f; --sage-soft:#e2efe5; --ochre:#9a6a12; --ochre-soft:#f5ebd6;
+  --f-display:"Archivo Narrow","Arial Narrow",Arial,sans-serif;
+  --f-body:"Literata",Georgia,"Times New Roman",serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#11181d; --sheet:#172128; --ink:#e3eaee; --muted:#9aabb5; --rule:#2c3a43;
+  --ocean:#7fb1e6; --ocean-soft:#1b3048; --clay:#e88a80; --clay-soft:#3a2120; --sage:#86c497; --sage-soft:#1d3324; --ochre:#e0b15a; --ochre-soft:#382c14; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#11181d; --sheet:#172128; --ink:#e3eaee; --muted:#9aabb5; --rule:#2c3a43;
+  --ocean:#7fb1e6; --ocean-soft:#1b3048; --clay:#e88a80; --clay-soft:#3a2120; --sage:#86c497; --sage-soft:#1d3324; --ochre:#e0b15a; --ochre-soft:#382c14; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font:400 16px/1.62 var(--f-body);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:32px 64px}
+.sheet{max-width:860px;margin:0 auto;background:var(--sheet);border:1px solid var(--rule);padding:clamp(20px,4vw,48px)}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;line-height:1.15;margin:0}
+h1{font-size:clamp(30px,5vw,44px);font-weight:700;letter-spacing:.01em}
+h2{font-size:15px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ocean);display:flex;gap:12px;align-items:baseline}
+h2 .n{font-family:var(--f-mono);font-weight:500;letter-spacing:0;color:var(--muted);font-size:13px}
+h3{font-size:19px;font-weight:600;margin-top:4px}
+section{border-top:1px solid var(--rule);padding-block:32px 8px;display:grid;gap:14px}
+p,li{max-width:68ch}
+p{margin:0}
+ul,ol{margin:0;padding-left:22px;display:grid;gap:6px}
+a{color:var(--ocean);text-underline-offset:2px}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--ocean);outline-offset:2px}
+code,.mono{font-family:var(--f-mono);font-size:.86em}
+code{background:var(--ocean-soft);padding:1px 5px;border-radius:3px;overflow-wrap:anywhere}
+.eyebrow{font-family:var(--f-display);font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.meta{display:flex;flex-wrap:wrap;gap:8px 18px;font-family:var(--f-mono);font-size:13px;color:var(--muted);margin-top:14px}
+.stamp{display:inline-block;font-family:var(--f-display);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:3px 8px;border:1.5px solid currentColor;border-radius:2px}
+.s-draft{color:var(--ochre)} .s-ok{color:var(--sage)} .s-warn{color:var(--clay)}
+.lede{font-size:18px;line-height:1.55;margin-top:18px}
+.plain{background:var(--ocean-soft);border-left:3px solid var(--ocean);padding:12px 16px;font-size:15px}
+.plain b{font-family:var(--f-display);letter-spacing:.06em;text-transform:uppercase;font-size:12px;color:var(--ocean);display:block;margin-bottom:2px}
+.warn{background:var(--clay-soft);border-left:3px solid var(--clay);padding:12px 16px;font-size:15px}
+.tbl{overflow-x:auto;border:1px solid var(--rule)}
+table{border-collapse:collapse;width:100%;font-size:14px;line-height:1.45}
+th,td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--rule)}
+th{font-family:var(--f-display);font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:12px;color:var(--muted);background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td.num{font-variant-numeric:tabular-nums;font-family:var(--f-mono);font-size:13px;white-space:nowrap}
+.tag{font-family:var(--f-mono);font-size:11px;padding:1px 6px;border-radius:3px;white-space:nowrap}
+.t-l{background:var(--ochre-soft);color:var(--ochre)} .t-d{background:var(--sage-soft);color:var(--sage)}
+.widgets{display:grid;gap:16px}
+.w{border:1px solid var(--rule);padding:18px;display:grid;gap:10px}
+.w header{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline}
+.w .no{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+dl{display:grid;grid-template-columns:max-content 1fr;gap:6px 14px;margin:0;font-size:15px}
+dt{font-family:var(--f-display);font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:12px;color:var(--muted);padding-top:3px}
+dd{margin:0;min-width:0}
+@media (max-width:560px){dl{grid-template-columns:1fr}dt{padding-top:6px}}
+.check{list-style:none;padding:0;gap:8px}
+.check label{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+.check input{margin-top:5px;accent-color:var(--sage)}
+.diagram{overflow-x:auto;border:1px solid var(--rule);background:var(--paper);padding:12px}
+.diagram svg{display:block;min-width:620px;width:100%;height:auto}
+.toc{display:flex;flex-wrap:wrap;gap:6px 16px;font-family:var(--f-display);font-size:14px;letter-spacing:.04em;margin-top:20px}
+.toc a{text-decoration:none}
+.copybar{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+button{font:600 13px var(--f-display);letter-spacing:.08em;text-transform:uppercase;background:var(--ocean);color:var(--sheet);border:0;padding:8px 14px;border-radius:3px;cursor:pointer}
+pre{margin:0;white-space:pre-wrap;font-family:var(--f-mono);font-size:13px;background:var(--paper);border:1px solid var(--rule);padding:14px;overflow-x:auto}
+.foot{font-size:13px;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<main class="sheet">
+  <div class="eyebrow">Growing Stone Library · Implementation spec</div>
+  <h1>The Nations Before the Map</h1>
+  <div class="meta">
+    <span><span class="stamp s-draft">Ready for your review</span></span>
+    <span>Project: Growing Stone Library</span>
+    <span>Batch: 21 (one batch)</span>
+    <span>Created: 2026-10-20</span>
+    <span>Repo: Documents\LLL-Web</span>
+  </div>
+  <p class="lede">A new study page at <code>/collections/nations-before-the-map/</code>, built around the 1967 USGS National Atlas map of early tribes, culture areas and language families. It asks whose names are written on the map, how the nations name themselves, how their languages connect, and what the nations themselves tell about where they came from. North Carolina runs through it as the close-to-home thread.</p>
+  <nav class="toc" aria-label="Spec sections">
+    <a href="#what">What</a><a href="#research">Research</a><a href="#assume">Assumptions</a><a href="#effort">Effort card</a><a href="#outline">Page outline</a><a href="#widgets">Widgets</a><a href="#data">Data</a><a href="#map">Map assets</a><a href="#files">Files</a><a href="#rules">Rules</a><a href="#tests">Tests</a><a href="#failure">Failure modes</a><a href="#scope">Out of scope</a><a href="#done">Done when</a><a href="#handoff">Handoff</a><a href="#why">Why</a>
+  </nav>
+
+  <section id="what">
+    <h2><span class="n">01</span>What we're building</h2>
+    <p>A seventh study in the Library collections, in the same house style as <em>Whose Name Is On the Gate?</em> and <em>Names on the Wall</em>: breadcrumb, share row, numbered sections with anchors, four interactive widgets, study questions, a back link and a sources block. The page is static. It has no login, no forms, stores nothing about the reader, and makes no network calls (D-013).</p>
+    <p>The map labels many peoples by names outsiders gave them. The page puts each label beside the nation's own name, shows how language families cross culture areas, and gives the nations' own origin and migration accounts next to what linguists reconstruct, kept in separate lanes.</p>
+    <div class="plain"><b>In plain terms</b>A reading page with four panels you can tap to light things up. Following your site's rules, every word is written into the page itself, so it reads fine on bad signal, prints whole and works with scripts off. The seed files are the research record that the page is written from, and they're kept in the repo for review.</div>
+  </section>
+
+  <section id="research">
+    <h2><span class="n">02</span>Research findings</h2>
+    <ul>
+      <li><strong>The site repo:</strong> <code>Documents\LLL-Web</code> (GitHub <code>lll-web</code>). Each study is <code>collections/&lt;slug&gt;/</code> with <code>index.html</code>, <code>app.js</code> and <code>styles.css</code>. Last batch was 20; last decision D-023. <code>.vercelignore</code> serves only the root pages, <code>collections/</code> and <code>shared/</code>, so <code>docs/</code> stays private.</li>
+      <li><strong>Site rules that shape this build:</strong> D-001 vanilla, no build step · D-012 every state in the HTML, JS only toggles · D-013 no network calls, no CDN · D-014 comparisons static, never tabbed · D-015 persistent nav from headings · D-016 patterns highlight, never swap · D-017/D-019 fit 836px at 1440×900 for simultaneity widgets · D-021 self-hosted fonts · D-023 sources line and ruled citations.</li>
+      <li><strong>Existing solutions:</strong> no library (D-001, D-013). Regions are inline SVG <code>&lt;path&gt;</code> elements with click and keyboard handlers that add a highlight class, the same approach as the Inscription Stone on the Gate study.</li>
+      <li><strong>Source map:</strong> Library of Congress item <a href="https://www.loc.gov/item/95682185/">95682185</a>, "National atlas. Indian tribes, cultures &amp; languages", William C. Sturtevant, USGS. The catalogue gives the printing as 1991 and citations give 1967. The LOC states its Geography and Map Division digitized collections are free to use and reuse; credit "Library of Congress, Geography and Map Division." Download through the item page or its IIIF manifest. The image ships inside the study folder (D-013).</li>
+      <li><strong>The copy you shared has altered colors.</strong> Its fills do not match its own legend (the Great Basin is pink, which the legend calls Muskogean). Use only the LOC scan.</li>
+      <li><strong>The mapmakers' own caveats</strong> (USGS publication <a href="https://pubs.usgs.gov/publication/32595">32595</a>): borders are drawn from different centuries in different regions, and sharply drawn territories are misleading. Section VII quotes this in paraphrase.</li>
+      <li><strong>Names research:</strong> 32 entries, 31 ready to publish after review, in <code>names.seed.json</code>. 30 of the 32 have at least one government that still officially uses the map's label (Cherokee Nation, Seminole Tribe, Navajo Nation, Oglala Sioux Tribe and others). Only Papago and Iroquois are no longer in any official name. The page must not suggest the old labels were dropped; the point is who chose the name.</li>
+      <li><strong>Origins research:</strong> 13 Lane A entries from the nations' own sites, 8 Lane B language-family homelands, and a table of how the 1967 "stocks" stand today, in <code>origins.seed.json</code> and <code>families.seed.json</code>.</li>
+      <li><strong>Respect guidance:</strong> the <a href="https://www2.nau.edu/libnap-p/protocols.html">Protocols for Native American Archival Materials</a> (endorsed by the Society of American Archivists, 2018); the Hopi Cultural Preservation Office's request that stories not be published without permission; the Delaware Nation's caution about publishing Lenape culture; seasonal storytelling for Diné and Ojibwe accounts; and <a href="https://localcontexts.org/labels/traditional-knowledge-labels/">Local Contexts TK labels</a> as a model for the story badges.</li>
+      <li><strong>Known fake:</strong> the Walam Olum is a 19th-century fabrication (Oestreicher 1994), and the Delaware Nation calls it fraudulent. It never appears as a source.</li>
+      <li><strong>North Carolina:</strong> nine state-recognized tribes, with the Catawba Nation added in June 2026. The Lumbee Tribe received full federal recognition on 2025-12-18. These are recent changes, so Claude Code re-checks the NC Commission of Indian Affairs page on build day.</li>
+      <li><strong>Anthropic/MCP shortcuts:</strong> none applicable. D-013 forbids them on Library pages.</li>
+    </ul>
+  </section>
+
+  <section id="assume">
+    <h2><span class="n">03</span>Assumptions (Probably Log)</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>Assumption</th><th>Who confirms</th><th>Cost if wrong</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>The study follows the folder pattern <code>collections/&lt;slug&gt;/</code></td><td>Repo</td><td>Medium: wrong folder</td><td>Confirmed 2026-10-20 in <code>Documents\LLL-Web</code></td></tr>
+        <tr><td>Each <code>map_label</code> matches the spelling printed on the map</td><td>Claude Code, checking against the LOC scan</td><td>Medium: a misquoted label</td><td>Open: set <code>map_label_checked</code> per entry</td></tr>
+        <tr><td>Self-name spellings that came from Wikipedia are right</td><td>Hashem, before publish</td><td>High: misnaming a nation</td><td>Open: flagged in each entry's <code>caution</code></td></tr>
+        <tr><td>Hopi is shown as a one-line outline plus a link, not left out</td><td>Hashem</td><td>Medium: goes against a nation's stated wish</td><td>Ruled 2026-10-20: outline plus link</td></tr>
+        <tr><td>Region shapes traced from the scan are approximate, and the page says so</td><td>Hashem</td><td>Low</td><td>Proceeding</td></tr>
+        <tr><td>The Names and Origins widgets are horizontal comparisons, so D-017 gives them no height gate</td><td>Hashem</td><td>Low: long widgets</td><td>Proceeding on D-017 as written; rule otherwise if you want them to fit one screen</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section id="effort">
+    <h2><span class="n">04</span>Effort card</h2>
+    <p><strong>Main job:</strong> a reader opens the study, taps a region or a name, and leaves knowing whose name it is and where the people's own account says they came from.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Test</th><th>Budget</th><th>After this batch</th></tr></thead>
+      <tbody>
+        <tr><td>Steps to the first answer</td><td class="num">≤ 4</td><td>1 to 2 (open the page; tap a region to light it up)</td></tr>
+        <tr><td>Blank decisions</td><td class="num">0</td><td>0: everything is visible from the start</td></tr>
+        <tr><td>Hand work</td><td>core input only</td><td>none (taps only)</td></tr>
+        <tr><td>Check-backs</td><td class="num">0</td><td>0</td></tr>
+        <tr><td>Cold start</td><td>yes, alone</td><td>yes</td></tr>
+      </tbody>
+    </table></div>
+    <p>Over budget: none.</p>
+  </section>
+
+  <section id="outline">
+    <h2><span class="n">05</span>Page outline</h2>
+    <p>Breadcrumb (Growing Stone Library › Collections › The Nations Before the Map), then the share row (Copy Link · Share · Print), the H1, a table of contents to <code>#m1</code>–<code>#m7</code>, and these sections:</p>
+    <div class="tbl"><table>
+      <thead><tr><th>#</th><th>Section</th><th>Holds</th></tr></thead>
+      <tbody>
+        <tr><td class="num">I · m1</td><td>One map, many names</td><td>The LOC scan as the opening figure, with credit. The question: who wrote these names down?</td></tr>
+        <tr><td class="num">II · m2</td><td>Reading the land</td><td>Widget 1, Map Explorer</td></tr>
+        <tr><td class="num">III · m3</td><td>Whose name is on the map?</td><td>Widget 2, Names Then &amp; Now</td></tr>
+        <tr><td class="num">IV · m4</td><td>Tongues that cross the borders</td><td>Widget 3, Three Lenses (with the family tree inside)</td></tr>
+        <tr><td class="num">V · m5</td><td>Where the people say they came from</td><td>Widget 4, Origins &amp; Homelands</td></tr>
+        <tr><td class="num">VI · m6</td><td>Close to home</td><td>Prose: the Tuscarora War (1711–1713) and the 1722 move north to become the sixth Haudenosaunee nation; Cherokee Kituwah; the Catawba; the nine NC state-recognized tribes and the four urban organizations, including the Guilford Native American Association. Points readers to the NC rows, which carry an NC mark in Widgets 2 and 4.</td></tr>
+        <tr><td class="num">VII · m7</td><td>Reading the map honestly, and for study</td><td>The USGS caveats in paraphrase, what changed in linguistics since 1967, a note that these are living nations, then five study questions</td></tr>
+      </tbody>
+    </table></div>
+    <p>Then the back link, the sources line (D-023, the same "Author, <em>Title</em>, year" pattern separated by "·") and the standard footer. Persistent navigation per D-015. Add the study to <code>collections/index.html</code> and the README collections table.</p>
+  </section>
+
+  <section id="widgets">
+    <h2><span class="n">06</span>The four widgets</h2>
+    <p>All four follow D-012: every word renders in the HTML, controls are hidden until JS runs (<code>has-js</code>), and JS only adds or removes a highlight class. Nothing is hidden, swapped or fetched, so copy, find, print and translation tools get the whole study. Each is labeled "Interactive · Widget N of 4", works by keyboard (Tab, Enter), and stacks to one column under 640px.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Widget</th><th>Kind</th><th>Rule</th><th>Fit gate (836px)</th></tr></thead>
+      <tbody>
+        <tr><td>1 · Map Explorer</td><td>Set with a shared shape</td><td>D-016 highlight</td><td>Yes: the map and its cards are read together</td></tr>
+        <tr><td>2 · Names Then &amp; Now</td><td>Side-by-side comparison</td><td>D-014 static</td><td>No: comparison runs across each row (D-017)</td></tr>
+        <tr><td>3 · Three Lenses</td><td>Pattern across one map</td><td>D-016 highlight</td><td>Yes</td></tr>
+        <tr><td>4 · Origins &amp; Homelands</td><td>Side-by-side comparison</td><td>D-014 static</td><td>No: comparison runs across each row (D-017)</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="widgets">
+      <article class="w">
+        <header><span class="no">Widget 1 of 4 · #explorerWidget</span><h3>Map Explorer</h3></header>
+        <dl>
+          <dt>What it shows</dt><dd>The traced map with the ten culture areas, and beside it ten compact cards, one per area, all visible: area name, main language families, three to six peoples (map label · own name), and a one-line note.</dd>
+          <dt>Interaction</dt><dd>Tapping a region, or pressing Enter on it, highlights the region and its card together. Tapping a card highlights its region. An NC chip highlights the Southeast and its North Carolina peoples. Nothing hides.</dd>
+          <dt>No JS</dt><dd>The map image with a caption, then the ten cards.</dd>
+          <dt>Layout</dt><dd>Map left (about 55%), cards in a two-column grid on the right; cards go below the map under 640px. Fits 836px at 1440×900.</dd>
+        </dl>
+      </article>
+      <article class="w">
+        <header><span class="no">Widget 2 of 4 · #namesWidget</span><h3>Names Then &amp; Now</h3></header>
+        <dl>
+          <dt>What it shows</dt><dd>A static two-column comparison: "On the map" and "In their own words." Every published row is visible: the label, the self-name and its meaning, the nation or nations today, a short line on where the label came from, a "Still in official use" mark where it applies, the caution note and the source link.</dd>
+          <dt>Interaction</dt><dd>Three chips tint rows without hiding any: Outsider names · Own names, respelled · NC. Per D-016, print strips the tint.</dd>
+          <dt>Order</dt><dd>Grouped by culture area, Southeast first.</dd>
+          <dt>Source</dt><dd><code>names.seed.json</code>, entries with <code>publish: true</code>.</dd>
+        </dl>
+      </article>
+      <article class="w">
+        <header><span class="no">Widget 3 of 4 · #lensesWidget</span><h3>Three Lenses</h3></header>
+        <dl>
+          <dt>What it shows</dt><dd>One traced map carrying both layers at once: culture-area outlines as lines and language families as fills. Below it, a static family tree with every family as a branch, showing far-apart relatives. Example: Navajo and Apache sit with the Athabaskan peoples of Alaska and Canada.</dd>
+          <dt>Interaction</dt><dd>Chips Culture · Language strengthen one layer and fade the other; both stay on the map. Tapping a family in the tree highlights its fill. Opens with nothing highlighted.</dd>
+          <dt>1967 vs today</dt><dd>A small static two-column table under the tree: each 1967 stock and how linguists classify it now (D-014, never a toggle). Source: <code>families.seed.json</code>.</dd>
+          <dt>Colors</dt><dd>A new palette with at least 3:1 contrast between neighboring regions, in light and dark. Never copy the colors of the shared copy. Fits 836px at 1440×900; the 1967 table may sit just below the fold.</dd>
+        </dl>
+      </article>
+      <article class="w">
+        <header><span class="no">Widget 4 of 4 · #originsWidget</span><h3>Origins &amp; Homelands</h3></header>
+        <dl>
+          <dt>What it shows</dt><dd>Static rows, one per nation, with two lanes side by side: "What the nations tell" (a short paraphrase linked to the nation's own page) and "What linguists reconstruct" (the family's likely homeland and how certain it is). Every row is visible.</dd>
+          <dt>Badges</dt><dd>Winter story · Sacred place · Held by the Nation · Ask permission. Modeled on Local Contexts TK labels, in our own wording.</dd>
+          <dt>Interaction</dt><dd>Chips tint rows: NC · Winter stories · Shared migration (Chickasaw, Choctaw, Creek). Nothing hides.</dd>
+          <dt>Order</dt><dd>Chickasaw and Choctaw first (one migration told by two nations), then by region.</dd>
+          <dt>Source</dt><dd><code>origins.seed.json</code>.</dd>
+        </dl>
+      </article>
+    </div>
+  </section>
+
+  <section id="data">
+    <h2><span class="n">07</span>The seed files</h2>
+    <p>Three seed files come with this spec: <a href="names.seed.json">names.seed.json</a>, <a href="origins.seed.json">origins.seed.json</a> and <a href="families.seed.json">families.seed.json</a>. They live in <code>docs/specs/</code>, which is never served. Claude Code writes the page's markup from them by hand; the page never loads them (D-012, D-013). When a name changes later, change the seed file and the page in the same commit so the record stays true.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>File</th><th>Holds</th><th>Key fields</th></tr></thead>
+      <tbody>
+        <tr><td><code>names.seed.json</code></td><td>32 label/self-name pairs, 31 to publish</td><td><code>id, map_label, self_name, meaning, label_origin, nations_today, family, label_kind, still_uses_label, nc, sources[], confidence, caution, map_label_checked, publish</code></td></tr>
+        <tr><td><code>origins.seed.json</code></td><td>13 nation accounts, 8 family homelands</td><td><code>lane_a[]: id, nation, paraphrase, source, tags[], note</code>; <code>lane_b[]: family, name, homeland, status, cite</code></td></tr>
+        <tr><td><code>families.seed.json</code></td><td>14 map stocks and how each stands today</td><td><code>stock_1967, today</code></td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section id="map">
+    <h2><span class="n">08</span>Map assets</h2>
+    <ol>
+      <li>Download the LOC scan of item 95682185 through its page or IIIF manifest. Keep the full-size original out of the repo.</li>
+      <li>Make a web copy in <code>collections/nations-before-the-map/img/</code>: WebP, 2400px wide, under 900 KB, plus a JPEG fallback. Alt text names the map, its maker and its date.</li>
+      <li>Trace the ten culture areas and the main language-family zones as simplified shapes, written inline in <code>index.html</code> as SVG (so no extra request is needed and highlights are plain CSS). A caption says the shapes are simplified tracings of the 1967 map.</li>
+      <li>Credit line under every use: "Map: W. C. Sturtevant, National Atlas of the United States, USGS. Scan: Library of Congress, Geography and Map Division."</li>
+    </ol>
+  </section>
+
+  <section id="files">
+    <h2><span class="n">09</span>Files to create and modify</h2>
+    <p>Confirmed against <code>Documents\LLL-Web</code> on 2026-10-20.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Path</th><th>Change</th></tr></thead>
+      <tbody>
+        <tr><td><code>collections/nations-before-the-map/index.html</code></td><td>Create: the study page, every widget state written in, inline SVG map</td></tr>
+        <tr><td><code>collections/nations-before-the-map/app.js</code></td><td>Create: highlights, D-015 nav, share row only (model on <code>names-on-the-wall/app.js</code>)</td></tr>
+        <tr><td><code>collections/nations-before-the-map/styles.css</code></td><td>Create: study styles, including a print block that strips highlights</td></tr>
+        <tr><td><code>collections/nations-before-the-map/img/</code></td><td>Create: map web copy and fallback</td></tr>
+        <tr><td><code>collections/index.html</code></td><td>Modify: add the study card</td></tr>
+        <tr><td><code>README.md</code></td><td>Modify: tree and collections table</td></tr>
+        <tr><td><code>CHANGELOG.md</code>, <code>DECISIONS.md</code></td><td>Modify: Batch 21 entry; record the origins badge rule as D-024 if adopted</td></tr>
+        <tr><td><code>docs/specs/</code></td><td>Already placed: this spec and the three seed files</td></tr>
+      </tbody>
+    </table></div>
+    <div class="warn">Before starting: the repo has an uncommitted change to <code>CHANGELOG.md</code> and <code>main</code> is one commit ahead of GitHub. Commit or push those first, then work on a branch named <code>batch-21-nations-before-the-map</code>.</div>
+  </section>
+
+  <section id="steps">
+    <h2><span class="n">10</span>Who does what: code or judgment</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>Step</th><th>Type</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>Download, resize and compress the scan</td><td><span class="tag t-d">deterministic</span></td><td>Image tools, same result every time</td></tr>
+        <tr><td>Trace region shapes</td><td><span class="tag t-l">judgment</span></td><td>Simplifying borders takes judgment; checked by Hashem on screen</td></tr>
+        <tr><td>Check each map label against the scan</td><td><span class="tag t-l">judgment</span></td><td>Reading the printed map</td></tr>
+        <tr><td>Write widget markup from the seed files; highlight handlers</td><td><span class="tag t-d">deterministic</span></td><td>Copying fields into HTML and toggling classes</td></tr>
+        <tr><td>Fit at 1440×900 and no sideways scroll at 375px</td><td><span class="tag t-d">deterministic</span></td><td>Measured, not judged</td></tr>
+        <tr><td>Study prose and study questions</td><td><span class="tag t-l">judgment</span></td><td>Writing, in the voice of the other studies</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section id="rules">
+    <h2><span class="n">11</span>Content rules</h2>
+    <ol>
+      <li>Lane A text is a short paraphrase, in our own words, of what the nation itself has published, and always links to that page. No outside retellings in Lane A.</li>
+      <li>Never retell a story a nation marks restricted (Catawba). Show only that the Nation holds it.</li>
+      <li>Winter stories (Diné, Anishinaabe) carry the "Winter story" badge and stay at outline length.</li>
+      <li>Never cite the Walam Olum except to name it as a fabrication in Section VII.</li>
+      <li>Never present a map label as rejected when the nation still uses it officially. The "Still used" badge comes from <code>still_uses_label</code>.</li>
+      <li>Keep the lanes visually separate and never merge a tradition and a reconstruction into one sentence.</li>
+      <li>Use present tense for nations: they are governments and communities today.</li>
+      <li>No meanings for labels that a source marks as disputed (for example, do not state "Apache means enemy").</li>
+      <li>Entries with <code>publish: false</code> are never written into the page.</li>
+      <li>Researched citations reach the page only after Hashem rules on them (D-023). Where a source is known only second-hand, the CHANGELOG says so.</li>
+      <li>Quotes from any source stay under 15 words; everything else is paraphrased.</li>
+      <li>NC recognition facts are re-checked against the NC Commission of Indian Affairs page on build day.</li>
+    </ol>
+  </section>
+
+  <section id="errors">
+    <h2><span class="n">12</span>When something fails</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>Scenario</th><th>Required behavior</th></tr></thead>
+      <tbody>
+        <tr><td>JavaScript off</td><td>Every widget reads as labeled, stacked content; chips are hidden because they would do nothing (D-012)</td></tr>
+        <tr><td>Map image fails to load</td><td>The inline SVG tracing and the cards still carry the widget; the alt text names the map</td></tr>
+        <tr><td>A nation's link is dead at build time</td><td>Keep the entry, mark it in the build report; do not swap in a mirror or a non-nation source</td></tr>
+        <tr><td>LOC download refused or blocked</td><td>Stop and ask Hashem. Do not fetch the map from another copy</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section id="tests">
+    <h2><span class="n">13</span>Checks to run</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>Check</th><th>Passes when</th></tr></thead>
+      <tbody>
+        <tr><td>Widget fit</td><td>Widgets 1 and 3 each ≤ 836px tall at 1440×900, measured with <code>getBoundingClientRect</code> in a real browser</td></tr>
+        <tr><td>Phone width</td><td>No horizontal scroll at 375px; <code>document.documentElement.scrollWidth ≤ 375</code></td></tr>
+        <tr><td>Data integrity</td><td>Every published name and every Lane A account on the page has a source link; the row count matches the seed files (31 names, 13 accounts)</td></tr>
+        <tr><td>Map labels</td><td>Every published entry has <code>map_label_checked: true</code></td></tr>
+        <tr><td>Links</td><td>Every source link returns a page (log any failures, don't remove)</td></tr>
+        <tr><td>Keyboard</td><td>Every region, chip and row reachable by Tab and opened by Enter</td></tr>
+        <tr><td>Contrast</td><td>Neighboring map regions ≥ 3:1 and text ≥ 4.5:1 in light and dark</td></tr>
+        <tr><td>Page weight</td><td>Page plus images under 2 MB on first load</td></tr>
+        <tr><td>No network calls (D-013)</td><td>Zero matches for <code>fetch(</code>, <code>XMLHttpRequest</code> and <code>src="http</code> in the study folder, and a clean network tab on the live deploy</td></tr>
+        <tr><td>Nothing hidden</td><td>No <code>hidden</code> attributes inside the four widgets; select-all copy and print capture every row</td></tr>
+        <tr><td>Restricted content</td><td>A search of the built page finds no Catawba creation-story text and no Walam Olum citation</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section id="failure">
+    <h2><span class="n">14</span>Failure modes</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>Concern</th><th>Policy</th></tr></thead>
+      <tbody>
+        <tr><td>Rate limit</td><td>Link checks while building: one at a time, at most 60 per run. The page itself makes none</td></tr>
+        <tr><td>Cost ceiling</td><td>No paid services; any cost means stop and ask</td></tr>
+        <tr><td>Runaway loops</td><td>If the batch passes about 60 tool calls without progress on a step, stop and report</td></tr>
+        <tr><td>Service down</td><td>LOC or a nation's site unreachable: fail loud in the build report, keep going on other steps</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section id="scope">
+    <h2><span class="n">15</span>Explicitly out of scope</h2>
+    <ul>
+      <li>The Moving Map timeline (removal over time). It's a future batch.</li>
+      <li>Alaska and Hawaii, which are not on the main sheet.</li>
+      <li>New origin stories beyond the 13 seeded entries.</li>
+      <li>Any claim connecting these nations to peoples elsewhere in the world beyond what linguists document. This study stays with what the nations and the linguistic record say.</li>
+      <li>Audio, video and pronunciation recordings.</li>
+    </ul>
+  </section>
+
+  <section id="done">
+    <h2><span class="n">16</span>Done when</h2>
+    <ul class="check">
+      <li><label><input type="checkbox" id="d1"> The page is live at <code>/collections/nations-before-the-map/</code> with sections I–VII and all four widgets, merged from <code>batch-21-nations-before-the-map</code></label></li>
+      <li><label><input type="checkbox" id="d2"> Every check in section 13 passes, with the numbers written in the build report</label></li>
+      <li><label><input type="checkbox" id="d3"> The study appears in the collections index and the README table</label></li>
+      <li><label><input type="checkbox" id="d4"> Every published map label has been checked against the LOC scan</label></li>
+      <li><label><input type="checkbox" id="d5"> The credit line appears under every use of the map</label></li>
+      <li><label><input type="checkbox" id="d6"> CHANGELOG.md has the batch entry; DECISIONS.md records any new rule</label></li>
+      <li><label><input type="checkbox" id="d7"> Hashem has reviewed the items in the review list below</label></li>
+    </ul>
+    <div class="warn"><strong>Your review list before publish.</strong> 1) Self-names whose spelling came only from Wikipedia (flagged in each entry). 2) Hopi: ruled 2026-10-20, one-line outline plus a link to the Hopi Cultural Preservation Office. 3) The region tracings on screen. 4) The Kickapoo entry stays hidden until its self-name is confirmed.</div>
+  </section>
+
+  <section id="handoff">
+    <h2><span class="n">17</span>Handoff to Claude Code</h2>
+    <p>The spec and seed files are already in <code>Documents\LLL-Web\docs\specs\</code>. Open Claude Code in <code>Documents\LLL-Web</code> and paste this.</p>
+    <pre id="prompt">Read docs/specs/SPEC_2026-10-20_nations-before-the-map.html and the three seed files beside it. Implement it as one batch. Do not change any decision the spec makes.
+First, read DECISIONS.md and the two newest studies (whose-name-is-on-the-gate and names-on-the-wall), and copy their structure, share row, nav and widget patterns. Work on a branch named batch-21-nations-before-the-map. Note any difference from the spec in CHANGELOG.md.
+If something is unclear, check the code, the docs and DECISIONS.md first. Ask me only if the answer would change what the page says or shows; otherwise write down your assumption and keep going.
+Don't finish until every check in section 13 passes and you have written the measured numbers in your report. List anything you could not verify.</pre>
+    <div class="copybar"><button type="button" id="copyBtn">Copy prompt</button><span id="copyMsg" class="foot" aria-live="polite"></span></div>
+  </section>
+
+  <section id="why">
+    <h2><span class="n">18</span>Why it's built this way</h2>
+    <ul>
+      <li><strong>Two lanes, not one story.</strong> A nation's own account and a linguist's reconstruction are different kinds of claims. Side by side, each keeps its standing and the reader can compare them.</li>
+      <li><strong>Only the nations' own published words in Lane A.</strong> Several nations ask that their stories not circulate out of context. Using only what they chose to publish respects that and keeps the page defensible.</li>
+      <li><strong>A redrawn map instead of the shared copy.</strong> The shared copy's colors contradict its legend. The LOC scan is the honest original, and a traced overlay lets the widgets work without copying the error.</li>
+      <li><strong>Every word in the page, not loaded later.</strong> Your D-012 and D-013: a reader on bad signal never sees an empty box, and the page prints whole. The seed files stay as the reviewed record behind it.</li>
+      <li><strong>Highlights instead of filters and pickers.</strong> D-014 and D-016: hiding rows would break print, copy and find, and the reader would lose the comparison.</li>
+      <li><strong>Rejected:</strong> a tabbed Names widget or a people picker (breaks D-014); runtime JSON (breaks D-012 and D-013); a web-map library (breaks D-001 and D-013); including the Walam Olum as "disputed" (it is a documented fabrication).</li>
+    </ul>
+    <p class="foot">Compiled for the Growing Stone Fellowship · Jumpshots from The Bleachers Inc.</p>
+  </section>
+</main>
+
+<script>
+(function(){
+  var btn=document.getElementById('copyBtn'),msg=document.getElementById('copyMsg'),pre=document.getElementById('prompt');
+  btn.addEventListener('click',function(){
+    var t=pre.textContent;
+    function sel(){var r=document.createRange();r.selectNodeContents(pre);var s=getSelection();s.removeAllRanges();s.addRange(r);msg.textContent='Selected. Press Ctrl+C to copy.';}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){msg.textContent='Copied.';},sel);}else{sel();}
+  });
+  var boxes=document.querySelectorAll('.check input');
+  boxes.forEach(function(b){
+    try{if(localStorage.getItem('nbm-'+b.id)==='1')b.checked=true;}catch(e){}
+    b.addEventListener('change',function(){try{localStorage.setItem('nbm-'+b.id,b.checked?'1':'0');}catch(e){}});
+  });
+})();
+</script>

@@ -1,0 +1,185 @@
+{
+ "_note": "SEED DATA 2026-10-20. Lane A paraphrases are drafts in our own words; each links to the nation's own page. Hashem reviews before publish.",
+ "lane_a": [
+  {
+   "id": "choctaw",
+   "nation": "Choctaw Nation of Oklahoma",
+   "paraphrase": "The Nation tells two accounts. In one, the people emerged from the mound Nvnih Waiya and spread out from it. In the other, ancestors led by the brothers Chahta and Chikasa traveled east behind a sacred pole until it stood upright at Nvnih Waiya.",
+   "source": "https://www.choctawnation.com/news/iti-fabvssa/nvnih-waiya-mother-of-the-choctaw-people/",
+   "tags": [
+    "sacred-place"
+   ],
+   "note": "Nvnih Waiya is a sacred site; visits need permission from the Mississippi Band of Choctaw Indians."
+  },
+  {
+   "id": "chickasaw",
+   "nation": "Chickasaw Nation",
+   "paraphrase": "Guided east by a sacred pole that leaned each morning, the people traveled under the brothers Chiksa' and Chahta. Where the pole stood straight, Chahta's people stayed; Chiksa's people went on and became the Chickasaw.",
+   "source": "https://www.chickasaw.tv/events/the-migration-story",
+   "tags": [],
+   "note": ""
+  },
+  {
+   "id": "poarch-creek",
+   "nation": "Poarch Band of Creek Indians",
+   "paraphrase": "Creek ancestors came down from western mountains. They followed a cedar pole sent by the Creator, traveled east to a coast, turned back, and settled where the pole stood upright.",
+   "source": "https://pci-nsn.gov/our-story/history/",
+   "tags": [],
+   "note": "Page is all-rights-reserved; paraphrase only and link out."
+  },
+  {
+   "id": "muscogee-fire",
+   "nation": "Muscogee (Creek) Nation",
+   "paraphrase": "After removal from Alabama in 1836, the Lochapoka town carried coals from their homeland fires and relit them at the Council Oak in present-day Tulsa.",
+   "source": "https://www.mcn-nsn.gov/reflects-arrival-to-indian-territory-history-of-council-oak-tree/",
+   "tags": [
+    "removal"
+   ],
+   "note": "A continuity story, not a migration-from-the-west account."
+  },
+  {
+   "id": "haudenosaunee",
+   "nation": "Haudenosaunee Confederacy",
+   "paraphrase": "The Peacemaker and Aionwatha (Hiawatha) united five nations in the Great League of Peace, planting the Tree of Peace at Onondaga and recording the laws in wampum.",
+   "source": "https://www.haudenosauneeconfederacy.com/confederacys-creation/",
+   "tags": [],
+   "note": ""
+  },
+  {
+   "id": "oneida",
+   "nation": "Oneida Nation (Wisconsin)",
+   "paraphrase": "Sky Woman fell from the Sky World and was set on a turtle's back, where mud from below became the land. Her daughter's twin sons shaped the world.",
+   "source": "https://oneida-nsn.gov/wp-content/uploads/2016/04/1-09.05.18-Oneida-Creation-Story.pdf",
+   "tags": [],
+   "note": "The Nation notes this is a shortened telling; the full story takes days."
+  },
+  {
+   "id": "lenape",
+   "nation": "Delaware Nation (Lenape)",
+   "paraphrase": "The Lenape have lived in their homeland, from eastern Pennsylvania to New Jersey and Delaware, since time immemorial. In one account the great turtle carries the people through a flood.",
+   "source": "https://delawarenation-nsn.gov/history/",
+   "tags": [
+    "caution"
+   ],
+   "note": "The Nation urges caution about publishing Lenape culture; it asks people to contact its Historic Preservation Office."
+  },
+  {
+   "id": "anishinaabe",
+   "nation": "Saginaw Chippewa Indian Tribe (Ziibiwing Center)",
+   "paraphrase": "Prophets told the Anishinaabe on the East Coast to follow the setting sun. The sacred megis shell appeared at seven stopping places, leading them west to where food grows on the water.",
+   "source": "https://scit-nsn.gov/ziibiwing/",
+   "tags": [
+    "winter"
+   ],
+   "note": "Many Ojibwe stories are told only in winter; keep to the outline."
+  },
+  {
+   "id": "cherokee",
+   "nation": "Eastern Band of Cherokee Indians",
+   "paraphrase": "Kituwah, near Bryson City, North Carolina, is the Cherokee Mother Town, where the people received the laws of the seven clans and the sacred fire.",
+   "source": "https://visitcherokeenc.com/blog/discover-kituwah-mound-cherokee-mother-town/",
+   "tags": [
+    "sacred-place",
+    "nc"
+   ],
+   "note": "Tribal Council protected Kituwah in 2013."
+  },
+  {
+   "id": "dine",
+   "nation": "Navajo Nation (Diné)",
+   "paraphrase": "The people passed through earlier worlds before being set in the present Glittering World, where the twin sons of White Shell Woman restored harmony.",
+   "source": "https://ongd.navajo-nsn.gov/Portals/0/Final-Revised_Navajo%20Common%20Law%20Project.pdf",
+   "tags": [
+    "winter"
+   ],
+   "note": "Emergence stories are told in winter. Outline only."
+  },
+  {
+   "id": "hopi",
+   "nation": "Hopi Tribe",
+   "paraphrase": "The Hopi came through earlier worlds into the Fourth World and made a covenant with Maasaw to live as humble farmers.",
+   "source": "https://www.hopi-nsn.gov/",
+   "tags": [
+    "permission"
+   ],
+   "note": "The Hopi Cultural Preservation Office says stories must not be published without Hopi permission. Show the one-line outline and link to the office, or leave Hopi out (Hashem rules)."
+  },
+  {
+   "id": "ho-chunk",
+   "nation": "Ho-Chunk Nation",
+   "paraphrase": "The Nation's tradition holds that the Ho-Chunk have always been here, across lands in Wisconsin and the upper Midwest.",
+   "source": "https://ho-chunknation.com/about/",
+   "tags": [],
+   "note": "The official site does not publish the Red Banks account; do not add it."
+  },
+  {
+   "id": "catawba",
+   "nation": "Catawba Indian Nation",
+   "paraphrase": "The Catawba creation story is held in the Nation's archive for its members.",
+   "source": "https://catawba-archive.maxarchiveservices.co.uk/index.php/first-woman-the-catawba-creation-story",
+   "tags": [
+    "restricted",
+    "nc"
+   ],
+   "note": "Restricted to members. Never retell it; say only that the Nation holds it."
+  }
+ ],
+ "lane_b": [
+  {
+   "family": "algonquian",
+   "name": "Algonquian (Algic)",
+   "homeland": "Probably began in the Northwest, perhaps the Columbia Plateau, and spread east; Proto-Algonquian is placed somewhere around the Great Lakes.",
+   "status": "Family accepted; exact homeland disputed",
+   "cite": "Goddard 1978, Handbook of North American Indians vol. 15; Goddard 1994"
+  },
+  {
+   "family": "iroquoian",
+   "name": "Iroquoian",
+   "homeland": "Split early into Cherokee in the south and the northern languages; most proposals put the homeland in the Appalachian or upper Ohio–Susquehanna region.",
+   "status": "Split accepted; homeland uncertain",
+   "cite": "Lounsbury 1978, Handbook vol. 15; Julian 2010"
+  },
+  {
+   "family": "siouan-catawban",
+   "name": "Siouan-Catawban",
+   "homeland": "Most current work places it in the Ohio River Valley; western branches moved onto the Plains while Catawba stayed in the Southeast.",
+   "status": "Family accepted; Ohio Valley is the majority view",
+   "cite": "Parks & Rankin 2001, Handbook vol. 13; Kasak 2016"
+  },
+  {
+   "family": "muskogean",
+   "name": "Muskogean",
+   "homeland": "Native to the interior Southeast; linguists place its origin in that region.",
+   "status": "Family accepted; subgroups debated",
+   "cite": "Campbell 1997, American Indian Languages"
+  },
+  {
+   "family": "uto-aztecan",
+   "name": "Uto-Aztecan",
+   "homeland": "Majority view: the US–Mexico borderlands, spreading both north and south.",
+   "status": "Family accepted; homeland debated",
+   "cite": "Merrill 2012, Anthropological Linguistics 54(3)"
+  },
+  {
+   "family": "athabaskan",
+   "name": "Athabaskan (Na-Dene)",
+   "homeland": "Began in eastern Alaska or the western Yukon. Navajo and Apache are a southern branch that reached the Southwest after about 1000 CE.",
+   "status": "Link to the north certain; route and date debated",
+   "cite": "Britannica, Athabaskan language family; Carleton University"
+  },
+  {
+   "family": "caddoan",
+   "name": "Caddoan",
+   "homeland": "Rooted in the southern Plains and Red River country; Pawnee and Arikara later moved north.",
+   "status": "Family accepted; dates rough",
+   "cite": "Chafe 1979; Texas Beyond History"
+  },
+  {
+   "family": "salishan",
+   "name": "Salishan",
+   "homeland": "Began on the coast around the lower Fraser River and Puget Sound, then spread inland to the Plateau.",
+   "status": "Family accepted; coastal homeland is the majority view",
+   "cite": "Kinkade 1991; Thompson & Kinkade 1990, Handbook vol. 7"
+  }
+ ]
+}

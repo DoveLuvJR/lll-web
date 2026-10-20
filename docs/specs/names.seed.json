@@ -1,0 +1,630 @@
+{
+ "_note": "SEED DATA from research 2026-10-20. Every map_label must be checked against the LOC scan (set map_label_checked=true). Hashem reviews before publish. Entries with publish=false stay hidden.",
+ "entries": [
+  {
+   "id": "papago",
+   "map_label": "Papago",
+   "self_name": "Tohono O'odham",
+   "meaning": "Desert People",
+   "label_origin": "From an Akimel O'odham phrase, taken into Spanish as Pápago",
+   "nations_today": "Tohono O'odham Nation (renamed from Papago Tribe in 1986)",
+   "family": "uto-aztecan",
+   "still_uses_label": false,
+   "sources": [
+    "https://www.tonation-nsn.gov/the-great-seal",
+    "https://en.wikipedia.org/wiki/Tohono_O%CA%BCodham"
+   ],
+   "confidence": "high",
+   "caution": "Meaning and label origin are from Wikipedia, not the nation.",
+   "map_label_checked": false,
+   "publish": true,
+   "label_kind": "outsider-name",
+   "nc": false
+  },
+  {
+   "id": "winnebago",
+   "map_label": "Winnebago",
+   "self_name": "Ho-Chunk (Hoocąk)",
+   "meaning": "People of the Big Voice",
+   "label_origin": "Algonquian term adopted by the French",
+   "nations_today": "Ho-Chunk Nation (WI); Winnebago Tribe of Nebraska (separate government)",
+   "family": "siouan",
+   "still_uses_label": true,
+   "sources": [
+    "https://dpi.wi.gov/amind/tribalnationswi/ho-chunk",
+    "https://en.wikipedia.org/wiki/Ho-Chunk"
+   ],
+   "confidence": "high",
+   "caution": "Winnebago Tribe of Nebraska still uses 'Winnebago' officially.",
+   "map_label_checked": false,
+   "publish": true,
+   "label_kind": "outsider-name",
+   "nc": false
+  },
+  {
+   "id": "sioux",
+   "map_label": "Sioux",
+   "self_name": "Lakota · Dakota · Nakota; Oceti Sakowin",
+   "meaning": "Oceti Sakowin: Seven Council Fires",
+   "label_origin": "French, from an Ojibwe word; meaning disputed",
+   "nations_today": "Many governments, e.g. Oglala Sioux Tribe, Standing Rock Sioux Tribe",
+   "family": "siouan",
+   "still_uses_label": true,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Sioux",
+    "https://www.britannica.com/print/article/1369572"
+   ],
+   "confidence": "medium",
+   "caution": "Many governments keep 'Sioux'. No tribal page confirmed. Do not repeat the 'little snakes' gloss as fact.",
+   "map_label_checked": false,
+   "publish": true,
+   "label_kind": "outsider-name",
+   "nc": false
+  },
+  {
+   "id": "navajo",
+   "map_label": "Navajo",
+   "self_name": "Diné",
+   "meaning": "The People",
+   "label_origin": "Spanish, from a Tewa place word",
+   "nations_today": "Navajo Nation",
+   "family": "athabaskan",
+   "still_uses_label": true,
+   "sources": [
+    "https://www.navajo-nsn.gov/",
+    "https://en.wikipedia.org/wiki/Navajo"
+   ],
+   "confidence": "high",
+   "caution": "The nation officially uses 'Navajo Nation'.",
+   "map_label_checked": false,
+   "publish": true,
+   "label_kind": "outsider-name",
+   "nc": false
+  },
+  {
+   "id": "iroquois",
+   "map_label": "Iroquois",
+   "self_name": "Haudenosaunee",
+   "meaning": "People of the Longhouse",
+   "label_origin": "French usage; ultimate origin unknown",
+   "nations_today": "Haudenosaunee Confederacy (Six Nations); many US and Canadian governments",
+   "family": "iroquoian",
+   "still_uses_label": false,
+   "sources": [
+    "https://www.haudenosauneeconfederacy.com/who-we-are/"
+   ],
+   "confidence": "high",
+   "caution": "",
+   "map_label_checked": false,
+   "publish": true,
+   "label_kind": "outsider-name",
+   "nc": false
+  },
+  {
+   "id": "tuscarora",
+   "map_label": "Tuscarora",
+   "self_name": "Skarù·ręʔ",
+   "meaning": "not stated",
+   "label_origin": "Anglicized from the self-name",
+   "nations_today": "Tuscarora Nation (NY); Tuscarora at Six Nations of the Grand River (ON)",
+   "family": "iroquoian",
+   "still_uses_label": true,
+   "sources": [
+    "https://www.tuscaroranation.org/",
+    "https://en.wikipedia.org/wiki/Tuscarora_people"
+   ],
+   "confidence": "medium",
+   "caution": "Self-name spelling from Wikipedia. NC thread.",
+   "map_label_checked": false,
+   "publish": true,
+   "label_kind": "own-name-respelled",
+   "nc": true
+  },
+  {
+   "id": "creek",
+   "map_label": "Creek",
+   "self_name": "Mvskoke",
+   "meaning": "not stated",
+   "label_origin": "British coinage, likely from 'Ochese Creek'",
+   "nations_today": "Muscogee (Creek) Nation; Poarch Band of Creek Indians; others",
+   "family": "muskogean",
+   "still_uses_label": true,
+   "sources": [
+    "https://www.muscogeenation.com/",
+    "https://cronkitenews.azpbs.org/2021/05/06/muscogee-nation-drops-colonial-era-name-in-branding/"
+   ],
+   "confidence": "high",
+   "caution": "Legal name still includes '(Creek)'; the 2021 change was branding.",
+   "map_label_checked": false,
+   "publish": true,
+   "label_kind": "outsider-name",
+   "nc": false
+  },
+  {
+   "id": "huron",
+   "map_label": "Huron",
+   "self_name": "Wendat / Wyandot",
+   "meaning": "not stated by the nation",
+   "label_origin": "French, probably from 'hure'",
+   "nations_today": "Wyandotte Nation (OK); Huron-Wendat Nation (QC); others",
+   "family": "iroquoian",
+   "still_uses_label": true,
+   "sources": [
+    "https://wyandotte-nation.org/aboutus/our-culture/",
+    "https://en.wikipedia.org/wiki/Wyandot_people"
+   ],
+   "confidence": "high",
+   "caution": "Quebec nation officially uses 'Huron-Wendat'.",
+   "map_label_checked": false,
+   "publish": true,
+   "label_kind": "outsider-name",
+   "nc": false
+  },
+  {
+   "id": "fox",
+   "map_label": "Fox",
+   "self_name": "Meskwaki",
+   "meaning": "People of the Red Earth",
+   "label_origin": "French 'Renards', one clan's name applied to all",
+   "nations_today": "Sac & Fox Tribe of the Mississippi in Iowa (Meskwaki Nation)",
+   "family": "algonquian",
+   "still_uses_label": true,
+   "sources": [
+    "https://www.meskwaki.org/history/"
+   ],
+   "confidence": "high",
+   "caution": "Legal name still 'Sac & Fox'.",
+   "map_label_checked": false,
+   "publish": true,
+   "label_kind": "outsider-name",
+   "nc": false
+  },
+  {
+   "id": "delaware",
+   "map_label": "Delaware",
+   "self_name": "Lenape",
+   "meaning": "The People",
+   "label_origin": "English, from the Delaware River (Lord De La Warr)",
+   "nations_today": "Delaware Tribe of Indians; Delaware Nation; Stockbridge-Munsee; Ontario First Nations",
+   "family": "algonquian",
+   "still_uses_label": true,
+   "sources": [
+    "https://www.delawaretribe.org/"
+   ],
+   "confidence": "high",
+   "caution": "Both Oklahoma governments keep 'Delaware'.",
+   "map_label_checked": false,
+   "publish": true,
+   "label_kind": "outsider-name",
+   "nc": false
+  },
+  {
+   "id": "nez-perce",
+   "map_label": "Nez Perce",
+   "self_name": "Nimiipuu",
+   "meaning": "We, the People",
+   "label_origin": "French-Canadian 'pierced nose', a misnomer",
+   "nations_today": "Nez Perce Tribe (ID); Colville Confederated Tribes",
+   "family": "sahaptian",
+   "still_uses_label": true,
+   "sources": [
+    "https://nezperce.org/about/",
+    "https://en.wikipedia.org/wiki/Nez_Perce"
+   ],
+   "confidence": "high",
+   "caution": "Spelling varies on the tribe's own site.",
+   "map_label_checked": false,
+   "publish": true,
+   "label_kind": "outsider-name",
+   "nc": false
+  },
+  {
+   "id": "blackfoot",
+   "map_label": "Blackfeet",
+   "self_name": "Niitsítapi",
+   "meaning": "The Real People",
+   "label_origin": "Black-dyed moccasins; first the Siksika's name only",
+   "nations_today": "Blackfeet Nation (MT); Siksika, Kainai, Piikani (AB)",
+   "family": "algonquian",
+   "still_uses_label": true,
+   "sources": [
+    "https://www.blackfeetnation.com/",
+    "https://thecanadianencyclopedia.ca/en/article/blackfoot-nation"
+   ],
+   "confidence": "medium",
+   "caution": "Check map spelling: Blackfeet vs Blackfoot.",
+   "map_label_checked": false,
+   "publish": true,
+   "label_kind": "outsider-name",
+   "nc": false
+  },
+  {
+   "id": "crow",
+   "map_label": "Crow",
+   "self_name": "Apsáalooke",
+   "meaning": "Children of the large-beaked bird",
+   "label_origin": "French translation of a Hidatsa-derived name",
+   "nations_today": "Crow Tribe / Apsáalooke Nation (MT)",
+   "family": "siouan",
+   "still_uses_label": true,
+   "sources": [
+    "https://www.crow-nsn.gov/",
+    "https://en.wikipedia.org/wiki/Crow_people"
+   ],
+   "confidence": "high",
+   "caution": "The self-name itself came from neighbors, the Hidatsa.",
+   "map_label_checked": false,
+   "publish": true,
+   "label_kind": "outsider-name",
+   "nc": false
+  },
+  {
+   "id": "cheyenne",
+   "map_label": "Cheyenne",
+   "self_name": "Tsitsistas",
+   "meaning": "no consensus",
+   "label_origin": "From a Lakota word",
+   "nations_today": "Northern Cheyenne Tribe; Cheyenne and Arapaho Tribes",
+   "family": "algonquian",
+   "still_uses_label": true,
+   "sources": [
+    "https://www.cheyennenation.com/",
+    "https://en.wikipedia.org/wiki/Cheyenne"
+   ],
+   "confidence": "medium",
+   "caution": "Self-name spelling from Wikipedia.",
+   "map_label_checked": false,
+   "publish": true,
+   "label_kind": "outsider-name",
+   "nc": false
+  },
+  {
+   "id": "comanche",
+   "map_label": "Comanche",
+   "self_name": "Nʉmʉnʉʉ",
+   "meaning": "The People",
+   "label_origin": "From a Ute word, through Spanish",
+   "nations_today": "Comanche Nation (OK)",
+   "family": "uto-aztecan",
+   "still_uses_label": true,
+   "sources": [
+    "https://www.comanchenation.com/about/page/history",
+    "https://en.wikipedia.org/wiki/Comanche"
+   ],
+   "confidence": "high",
+   "caution": "",
+   "map_label_checked": false,
+   "publish": true,
+   "label_kind": "outsider-name",
+   "nc": false
+  },
+  {
+   "id": "apache",
+   "map_label": "Apache",
+   "self_name": "Indé / Ndee",
+   "meaning": "Person, people",
+   "label_origin": "Uncertain; likely a Zuni word",
+   "nations_today": "Nine federally recognized Apache tribes",
+   "family": "athabaskan",
+   "still_uses_label": true,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Apache"
+   ],
+   "confidence": "medium",
+   "caution": "Do not repeat 'Apache = enemy' as fact. No tribal site confirmed.",
+   "map_label_checked": false,
+   "publish": true,
+   "label_kind": "outsider-name",
+   "nc": false
+  },
+  {
+   "id": "assiniboin",
+   "map_label": "Assiniboin",
+   "self_name": "Nakoda",
+   "meaning": "not stated",
+   "label_origin": "Ojibwe 'Stone Sioux', via French",
+   "nations_today": "Fort Peck and Fort Belknap (MT); Nakoda First Nations",
+   "family": "siouan",
+   "still_uses_label": true,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Assiniboine"
+   ],
+   "confidence": "medium",
+   "caution": "No tribal site confirmed.",
+   "map_label_checked": false,
+   "publish": true,
+   "label_kind": "outsider-name",
+   "nc": false
+  },
+  {
+   "id": "chippewa",
+   "map_label": "Chippewa",
+   "self_name": "Anishinaabe",
+   "meaning": "not stated",
+   "label_origin": "English (Chippewa) and French (Ojibwa) forms of Ojibwe",
+   "nations_today": "Many, e.g. Mille Lacs Band of Ojibwe, Turtle Mountain Band of Chippewa",
+   "family": "algonquian",
+   "still_uses_label": true,
+   "sources": [
+    "https://mn.gov/indian-affairs/tribal-nations-in-minnesota/misi-zaagaiganiing-mille-lacs-band-of-ojibwe.jsp"
+   ],
+   "confidence": "medium",
+   "caution": "'Ojibwe' is itself an older self-name, not purely an outsider label.",
+   "map_label_checked": false,
+   "publish": true,
+   "label_kind": "outsider-name",
+   "nc": false
+  },
+  {
+   "id": "menominee",
+   "map_label": "Menominee",
+   "self_name": "Mamaceqtaw",
+   "meaning": "The People",
+   "label_origin": "Ojibwe 'wild rice people'",
+   "nations_today": "Menominee Indian Tribe of Wisconsin",
+   "family": "algonquian",
+   "still_uses_label": true,
+   "sources": [
+    "https://www.menominee-nsn.gov/",
+    "https://en.wikipedia.org/wiki/Menominee"
+   ],
+   "confidence": "medium",
+   "caution": "Self-name spelling from Wikipedia.",
+   "map_label_checked": false,
+   "publish": true,
+   "label_kind": "outsider-name",
+   "nc": false
+  },
+  {
+   "id": "sauk",
+   "map_label": "Sauk",
+   "self_name": "Thâkîwaki",
+   "meaning": "not confirmed",
+   "label_origin": "Ojibwe/Odawa word via French 'Sac'",
+   "nations_today": "Three Sac and Fox governments (OK, IA, KS/NE)",
+   "family": "algonquian",
+   "still_uses_label": true,
+   "sources": [
+    "https://www.sacandfoxnation-nsn.gov/",
+    "https://en.wikipedia.org/wiki/Sauk_people"
+   ],
+   "confidence": "medium",
+   "caution": "Self-name not confirmed on nation site.",
+   "map_label_checked": false,
+   "publish": true,
+   "label_kind": "outsider-name",
+   "nc": false
+  },
+  {
+   "id": "catawba",
+   "map_label": "Catawba",
+   "self_name": "yeh is-WAH h'reh",
+   "meaning": "People of the River",
+   "label_origin": "Not firmly stated",
+   "nations_today": "Catawba Indian Nation (SC; federal 1993; NC state recognition June 2026)",
+   "family": "siouan-catawban",
+   "still_uses_label": true,
+   "sources": [
+    "https://www.catawba.com/",
+    "https://en.wikipedia.org/wiki/Catawba_people"
+   ],
+   "confidence": "medium",
+   "caution": "Self-name not on nation homepage. NC thread; recognition is contested by the Lumbee.",
+   "map_label_checked": false,
+   "publish": true,
+   "label_kind": "outsider-name",
+   "nc": true
+  },
+  {
+   "id": "cherokee",
+   "map_label": "Cherokee",
+   "self_name": "Cherokee (official); Aniyvwiya; Tsalagi",
+   "meaning": "Aniyvwiya: Principal People",
+   "label_origin": "Uncertain; several theories",
+   "nations_today": "Cherokee Nation; United Keetoowah Band; Eastern Band of Cherokee Indians (NC)",
+   "family": "iroquoian",
+   "still_uses_label": true,
+   "sources": [
+    "https://www.cherokee.gov/",
+    "https://www.ebci.gov/?p=541"
+   ],
+   "confidence": "medium",
+   "caution": "Officially used. Native-language spellings from Wikipedia. NC thread.",
+   "map_label_checked": false,
+   "publish": true,
+   "label_kind": "outsider-name",
+   "nc": true
+  },
+  {
+   "id": "seminole",
+   "map_label": "Seminole",
+   "self_name": "Seminole",
+   "meaning": "not stated",
+   "label_origin": "Muscogee word; also linked to Spanish 'cimarrón'",
+   "nations_today": "Seminole Tribe of Florida; Seminole Nation of Oklahoma",
+   "family": "muskogean",
+   "still_uses_label": true,
+   "sources": [
+    "https://www.semtribe.com/history/introduction"
+   ],
+   "confidence": "high",
+   "caution": "Embraced: the tribe calls it a badge of honor for some.",
+   "map_label_checked": false,
+   "publish": true,
+   "label_kind": "outsider-name",
+   "nc": false
+  },
+  {
+   "id": "chickasaw",
+   "map_label": "Chickasaw",
+   "self_name": "Chikasha",
+   "meaning": "not stated",
+   "label_origin": "English spelling of Chikasha",
+   "nations_today": "Chickasaw Nation (OK)",
+   "family": "muskogean",
+   "still_uses_label": true,
+   "sources": [
+    "https://www.chickasaw.net/"
+   ],
+   "confidence": "high",
+   "caution": "The people's own name, anglicized.",
+   "map_label_checked": false,
+   "publish": true,
+   "label_kind": "own-name-respelled",
+   "nc": false
+  },
+  {
+   "id": "choctaw",
+   "map_label": "Choctaw",
+   "self_name": "Chahta",
+   "meaning": "not stated",
+   "label_origin": "Anglicized spelling of Chahta",
+   "nations_today": "Choctaw Nation of Oklahoma; Mississippi Band; Jena Band",
+   "family": "muskogean",
+   "still_uses_label": true,
+   "sources": [
+    "https://www.choctawnation.com/"
+   ],
+   "confidence": "high",
+   "caution": "The people's own name, anglicized.",
+   "map_label_checked": false,
+   "publish": true,
+   "label_kind": "own-name-respelled",
+   "nc": false
+  },
+  {
+   "id": "pima",
+   "map_label": "Pima",
+   "self_name": "Akimel O'odham",
+   "meaning": "River People",
+   "label_origin": "Reportedly from a phrase said to Spanish colonists",
+   "nations_today": "Gila River Indian Community; Salt River Pima-Maricopa",
+   "family": "uto-aztecan",
+   "still_uses_label": true,
+   "sources": [
+    "https://wildhorsepass.com/experience-our-culture/",
+    "https://en.wikipedia.org/wiki/Akimel_O%27odham"
+   ],
+   "confidence": "medium",
+   "caution": "GRIC may spell O'otham; confirm.",
+   "map_label_checked": false,
+   "publish": true,
+   "label_kind": "outsider-name",
+   "nc": false
+  },
+  {
+   "id": "osage",
+   "map_label": "Osage",
+   "self_name": "Wahzhazhe",
+   "meaning": "Children of the Middle Waters",
+   "label_origin": "French rendering of the self-name",
+   "nations_today": "Osage Nation",
+   "family": "siouan",
+   "still_uses_label": true,
+   "sources": [
+    "https://www.osagenation-nsn.gov/"
+   ],
+   "confidence": "medium",
+   "caution": "Spelling varies on the nation's own site.",
+   "map_label_checked": false,
+   "publish": true,
+   "label_kind": "own-name-respelled",
+   "nc": false
+  },
+  {
+   "id": "omaha",
+   "map_label": "Omaha",
+   "self_name": "Umoⁿhoⁿ",
+   "meaning": "Upstream",
+   "label_origin": "Anglicized from the self-name",
+   "nations_today": "Omaha Tribe of Nebraska",
+   "family": "siouan",
+   "still_uses_label": true,
+   "sources": [
+    "https://www.omahatribe.com/"
+   ],
+   "confidence": "medium",
+   "caution": "",
+   "map_label_checked": false,
+   "publish": true,
+   "label_kind": "own-name-respelled",
+   "nc": false
+  },
+  {
+   "id": "ponca",
+   "map_label": "Ponca",
+   "self_name": "Páⁿka",
+   "meaning": "not stated",
+   "label_origin": "Anglicized from the self-name",
+   "nations_today": "Ponca Tribe of Nebraska; Ponca Tribe of Oklahoma",
+   "family": "siouan",
+   "still_uses_label": true,
+   "sources": [
+    "https://en.wikipedia.org/wiki/Ponca"
+   ],
+   "confidence": "medium",
+   "caution": "No tribal site confirmed.",
+   "map_label_checked": false,
+   "publish": true,
+   "label_kind": "own-name-respelled",
+   "nc": false
+  },
+  {
+   "id": "shoshone",
+   "map_label": "Shoshone",
+   "self_name": "Newe",
+   "meaning": "People",
+   "label_origin": "Uncertain",
+   "nations_today": "Shoshone-Bannock; Eastern Shoshone; Northwestern Band",
+   "family": "uto-aztecan",
+   "still_uses_label": true,
+   "sources": [
+    "https://www.shoshonebannocktribes.com/"
+   ],
+   "confidence": "medium",
+   "caution": "Self-name not on tribal homepage.",
+   "map_label_checked": false,
+   "publish": true,
+   "label_kind": "outsider-name",
+   "nc": false
+  },
+  {
+   "id": "ute",
+   "map_label": "Ute",
+   "self_name": "Núuchi-u",
+   "meaning": "The People",
+   "label_origin": "Unknown; Spanish 'Yuta'",
+   "nations_today": "Ute Indian Tribe; Southern Ute; Ute Mountain Ute",
+   "family": "uto-aztecan",
+   "still_uses_label": true,
+   "sources": [
+    "https://www.utetribe.com/"
+   ],
+   "confidence": "medium",
+   "caution": "Use the tribe's own gloss of 'Ute'.",
+   "map_label_checked": false,
+   "publish": true,
+   "label_kind": "outsider-name",
+   "nc": false
+  },
+  {
+   "id": "kickapoo",
+   "map_label": "Kickapoo",
+   "self_name": "Kiikaapoa",
+   "meaning": "not stated",
+   "label_origin": "unclear",
+   "nations_today": "Kickapoo tribes of OK, KS, TX; Kikapú (Mexico)",
+   "family": "algonquian",
+   "still_uses_label": true,
+   "sources": [
+    "https://www.kickapootribeofoklahoma.com/"
+   ],
+   "confidence": "low",
+   "caution": "Self-name not confirmed. Hold back until confirmed.",
+   "map_label_checked": false,
+   "publish": false,
+   "label_kind": "outsider-name",
+   "nc": false
+  }
+ ]
+}

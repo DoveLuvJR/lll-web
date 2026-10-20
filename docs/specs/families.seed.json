@@ -1,0 +1,61 @@
+{
+ "_note": "How each 1967 'linguistic stock' stands today. Sources: Campbell 1997; Mithun 1999; Goddard ed. 1996 Handbook vol. 17.",
+ "stocks": [
+  {
+   "stock_1967": "Algonquian",
+   "today": "accepted"
+  },
+  {
+   "stock_1967": "Iroquoian",
+   "today": "accepted"
+  },
+  {
+   "stock_1967": "Siouan",
+   "today": "accepted (as Siouan-Catawban)"
+  },
+  {
+   "stock_1967": "Muskogean",
+   "today": "accepted"
+  },
+  {
+   "stock_1967": "Uto-Aztecan",
+   "today": "accepted"
+  },
+  {
+   "stock_1967": "Athapascan",
+   "today": "accepted (core of Na-Dene)"
+  },
+  {
+   "stock_1967": "Caddoan",
+   "today": "accepted"
+  },
+  {
+   "stock_1967": "Salishan",
+   "today": "accepted"
+  },
+  {
+   "stock_1967": "Chimakuan",
+   "today": "accepted (small family)"
+  },
+  {
+   "stock_1967": "Hokan",
+   "today": "unproven"
+  },
+  {
+   "stock_1967": "Penutian",
+   "today": "unproven as a whole"
+  },
+  {
+   "stock_1967": "Macro-Siouan",
+   "today": "unproven"
+  },
+  {
+   "stock_1967": "Kutenai",
+   "today": "isolate"
+  },
+  {
+   "stock_1967": "Eskimo-Aleut",
+   "today": "accepted"
+  }
+ ]
+}
