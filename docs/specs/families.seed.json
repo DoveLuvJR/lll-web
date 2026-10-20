@@ -1,95 +1,95 @@
 {
- "_note": "The 18 linguistic stocks exactly as printed in the legend of LOC ct003648r (Sturtevant 1967), and how each stands today. Rebuilt in Batch 21 by Hashem's ruling (the earlier 14-row list did not match the legend). 'today' is DRAFTED from Campbell 1997, Mithun 1999 and Goddard ed. 1996 (Handbook vol. 17) by the builder from general knowledge of those works, not re-opened; every row needs Hashem's ruling before publish (D-023).",
+ "_note": "The 18 linguistic stocks exactly as printed in the legend of LOC ct003648r (Sturtevant 1967), and how each stands today. Rebuilt in Batch 21 by Hashem's ruling (the earlier 14-row list did not match the legend). 'today' is DRAFTED from Campbell 1997, Mithun 1999 and Goddard ed. 1996 (Handbook vol. 17) by the builder from general knowledge of those works, not re-opened; every row needs Hashem's ruling before publish (D-023). Ruled 2026-10-20 by Hashem: all 18 'today' rows accepted as drafted (Batch 21 review item 1).",
  "stocks": [
   {
    "stock_1967": "Na-Dene",
    "today": "Accepted as Athabaskan, Eyak and Tlingit; Haida is now treated as separate",
-   "ruled": false
+   "ruled": true
   },
   {
    "stock_1967": "Algonkian",
    "today": "Accepted, as Algic (Algonquian with Wiyot and Yurok)",
-   "ruled": false
+   "ruled": true
   },
   {
    "stock_1967": "Gulf",
    "today": "Unproven as a whole; Muskogean is accepted, and Natchez, Tunica, Chitimacha and Atakapa are treated separately",
-   "ruled": false
+   "ruled": true
   },
   {
    "stock_1967": "Tonkawa",
    "today": "Isolate",
-   "ruled": false
+   "ruled": true
   },
   {
    "stock_1967": "Siouan-Yuchi",
    "today": "Siouan-Catawban is accepted; Yuchi is an isolate and the link is unproven",
-   "ruled": false
+   "ruled": true
   },
   {
    "stock_1967": "Iroquoian",
    "today": "Accepted",
-   "ruled": false
+   "ruled": true
   },
   {
    "stock_1967": "Caddoan",
    "today": "Accepted",
-   "ruled": false
+   "ruled": true
   },
   {
    "stock_1967": "Hokan-Coahuiltecan",
    "today": "Unproven; most specialists treat its members as separate families",
-   "ruled": false
+   "ruled": true
   },
   {
    "stock_1967": "Penutian",
    "today": "Unproven as a whole; some smaller groupings within it are accepted",
-   "ruled": false
+   "ruled": true
   },
   {
    "stock_1967": "Aztec-Tanoan",
    "today": "Unproven; Uto-Aztecan and Kiowa-Tanoan are each accepted",
-   "ruled": false
+   "ruled": true
   },
   {
    "stock_1967": "Keres",
    "today": "Keresan, a family of its own",
-   "ruled": false
+   "ruled": true
   },
   {
    "stock_1967": "Yukian",
    "today": "Yuki and Wappo; how they relate is debated",
-   "ruled": false
+   "ruled": true
   },
   {
    "stock_1967": "Kutenai",
    "today": "Isolate",
-   "ruled": false
+   "ruled": true
   },
   {
    "stock_1967": "Karankawa",
    "today": "Isolate, known from few records",
-   "ruled": false
+   "ruled": true
   },
   {
    "stock_1967": "Chimakuan",
    "today": "Accepted (small family)",
-   "ruled": false
+   "ruled": true
   },
   {
    "stock_1967": "Salish",
    "today": "Accepted (Salishan)",
-   "ruled": false
+   "ruled": true
   },
   {
    "stock_1967": "Wakashan",
    "today": "Accepted",
-   "ruled": false
+   "ruled": true
   },
   {
    "stock_1967": "Timucua",
    "today": "Isolate",
-   "ruled": false
+   "ruled": true
   }
  ]
 }

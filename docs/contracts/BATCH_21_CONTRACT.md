@@ -96,5 +96,5 @@ Evidence is in CHANGELOG.md, Batch 21. The scripts are `docs/build/shot.js` and 
 | No-JS read | 9 cards, 31 names, 13 accounts; chips hidden | ✅ |
 | Adversarial review | Codex gpt-5.6-sol: 7 HIGH fixed and re-tested; 3 MED logged; 2 LOW fixed | ✅ |
 | Docs | CHANGELOG entry; D-024 proposed; README, collections card | ✅ |
-| **Hashem's review list** | 9 items in CHANGELOG, Batch 21 | ⬜ **open: blocks the merge** |
-| Stocks table ruled | `build_page.py` refuses to publish until all 18 rows are `ruled: true` | ⬜ **open** |
+| **Hashem's review list** | 8 ruled 2026-10-20 (CHANGELOG, Batch 21); item 6 is under research | 🟡 |
+| Stocks table ruled | all 18 `ruled: true` (Hashem, 2026-10-20); built without `--draft` | ✅ |

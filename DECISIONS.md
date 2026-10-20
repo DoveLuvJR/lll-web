@@ -423,9 +423,7 @@ The same rule applied to both would have degraded the Wall to fix the Stone.
 
 ---
 
-## D-024 (2026-10-20) Origin accounts: the nation's own words, in their own lane, with marks for what is not ours to tell — PROPOSED
-
-**Status:** Proposed in Batch 21. **Awaiting Hashem's ruling** (spec: "record the origins badge rule as D-024 if adopted"). The Nations study already uses it.
+## D-024 (2026-10-20) Origin accounts: the nation's own words, in their own lane, with marks for what is not ours to tell
 
 **Decision:** When a study presents where a people came from, it follows these rules:
 1. **Two lanes, never merged.** A nation's own account sits beside a scholarly reconstruction, such as a linguist's homeland. The two are never combined into one sentence.
@@ -437,7 +435,7 @@ The same rule applied to both would have degraded the Wall to fix the Stone.
    - **Ask permission:** the nation asks to be contacted before its stories are used.
 4. **When a nation asks for caution, the page says less than the draft did,** and the batch records what was cut.
 
-**Ruled by:** pending.
+**Ruled by:** Hashem, 2026-10-20: adopted as written, as a standing rule. Batch 21.
 
 **Why:**
 - **They are different kinds of claim.** Side by side, each keeps its standing, and the reader can compare them.

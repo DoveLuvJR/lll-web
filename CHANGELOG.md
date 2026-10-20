@@ -4,7 +4,7 @@
 
 A seventh study, at `/collections/nations-before-the-map/`, built from `docs/specs/SPEC_2026-10-20_nations-before-the-map.html` and its three seed files. It is built around the 1967 USGS National Atlas map of early tribes, culture areas and language stocks (W. C. Sturtevant). It asks whose names are on the map, what the nations call themselves, how their languages connect, and where the nations say they came from. **Tier 2 + content gates** (ship-over-harden, ruled by Hashem): a misnamed nation or a published restricted story fails silently. Proposed by Hashem, not an agent. This is the first new study after five correctness batches. Contract: `docs/contracts/BATCH_21_CONTRACT.md`.
 
-**Status: built on `batch-21-nations-before-the-map`, NOT merged.** Merging waits on Hashem's review list below. The stocks table is a ruled-before-publish draft (D-023): `build_page.py` refuses to build it for publication until every row is ruled.
+**Status: built on `batch-21-nations-before-the-map`, NOT merged.** Hashem ruled 8 of 9 review items on 2026-10-20 (see Review rulings). Item 6 (the Lumbee caution) is under research. The stocks table is ruled, so `build_page.py` builds for publication; it refuses any unruled row (D-023).
 
 ### Rulings made during the batch
 
@@ -74,7 +74,21 @@ Per spec §12, every entry was kept and nothing was swapped.
 
 **LOW:** NBM-11 (no URL scheme allow-list) is fixed: the build rejects non-http(s) seed links. NBM-12 (D-024 and this entry) is done.
 
-### Review list for Hashem (blocks the merge)
+### Review rulings (Hashem, 2026-10-20)
+
+| # | Item | Ruling |
+|---|---|---|
+| 1 | 18 "today" rows | **Accepted as drafted.** `ruled: true`; page rebuilt without `--draft` |
+| 2 | Wikipedia-only self-name details | **Publish**, with the "from Wikipedia" notes |
+| 3 | Region tracings | **Approved as traced** |
+| 4 | `map_note` wording | **Approved as written** |
+| 5 | Lane A cuts (Catawba, Lenape, Hopi) | **Approved** |
+| 6 | Catawba "contested by the Lumbee" caution | **Research it.** It stays off the page unless a source is found and ruled (see below) |
+| 7 | Catawba recognition year | **Keep "2026"**, logged as inferred |
+| 8 | D-024 | **Adopted as written** |
+| 9 | Kickapoo | Hidden, per spec; no ruling needed |
+
+### Review list for Hashem (as presented)
 
 1. The **18 "today" rows** in the stocks table: drafted from the seed's named works (Campbell 1997, Mithun 1999, Goddard 1996), not re-opened.
 2. **Self-names spelled from Wikipedia:** Tohono O'odham meaning/origin, Skarù·ręʔ, Tsitsistas, Mamaceqtaw, and the Cherokee-language spellings. Each says so on the page.
@@ -92,7 +106,8 @@ New: `collections/nations-before-the-map/` (index.html, app.js, styles.css, img/
 
 ### Not verified / open
 
-- [ ] Hashem's review list above. Then set `ruled: true` in `families.seed.json`, rebuild without `--draft`, merge `--no-ff`, and push.
+- [x] *(ruled 2026-10-20)* Hashem's review list; stocks marked `ruled: true`; rebuilt without `--draft`.
+- [ ] Item 6 research result, then merge `--no-ff` and push.
 - [ ] **The live deploy:** network tab and widget heights on production after merge.
 - [ ] **Britannica (403) and Shoshone-Bannock (refused):** open both by hand in a browser.
 - [ ] **The Muscogee Council Oak link** could move to its `muscogeenation.com` address. It redirects fine today.
