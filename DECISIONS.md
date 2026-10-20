@@ -396,3 +396,26 @@ The same rule applied to both would have degraded the Wall to fix the Stone.
 **How to apply:**
 - **Never replace a font file under the same name.** `immutable` means returning readers keep the old file for up to a year. A changed font gets a new filename (for example `inter-latin-v21.woff2`) and an updated `@font-face` `src`.
 - **Anything else added to `vercel.json`** (redirects, `cleanUrls`, other headers) needs its own ruling and DECISIONS entry. D-005 still holds for everything this decision doesn't name.
+
+---
+
+## D-023 (2026-10-19) Sourcing standard for studies
+
+**Decision:**
+1. **Every study carries a sources line** in its footer that a reader can follow up: an author and title, an ancient work with its section, a museum number, or a named translation.
+2. **A claim needs a citation** when a reader would repeat it as fact **and** it is not in Scripture or common reference.
+3. **Mainstream facts may stand uncited once ruled,** and the ruling is recorded in the CHANGELOG. An unruled gap stays flagged.
+4. **Pull-quote styling** (`class="pq"` with an attribution line) is reserved for **real quotations**. The page's own prose may use the box only if the attribution says it is a paraphrase.
+5. **Scripture quotations match a published translation word for word,** and the sources line names every translation used.
+
+**Ruled by:** Hashem, 2026-10-19. Batch 20, which accepted all 32 rulings.
+
+**Why:**
+- **The gaps were real, not cosmetic.** A search of only 16 flagged items turned up a false geography claim (Arwad), an unsupported island group (Dodecanese), a church dated 8 years early, a "quotation" that was never quoted, and four verse texts that matched no Bible. All of them failed silently. Nothing on the page told a reader which lines were firm.
+- **The Gate study already promised this:** *"It is worth knowing which is which before anyone repeats it."* A sources line is how a page keeps that promise.
+- **Ruling mainstream facts closed, instead of citing everything, keeps this from becoming a cathedral.** Citing every distance and date would make the pages more correct without making them more useful.
+
+**How to apply:**
+- **New studies** ship with a sources line, and with every quote checked against its named translation (biblegateway.com is enough).
+- **Researched citations go through a ruling before they reach a page.** An agent may propose a source but never apply it unruled (Batch 17's honesty rule, carried forward).
+- **Where a source is known only second-hand** (a search summary, a 403), the CHANGELOG says so until someone opens it.

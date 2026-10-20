@@ -1,5 +1,85 @@
 # Changelog — LLL Library
 
+## Batch 20 — Sources: Fix, Cite, Close (2026-10-19)
+
+This batch works through the `[NEEDS SOURCE]` list from Batch 17. Tier 2 (ship-over-harden): a wrong or unsourced claim fails silently, because a reader just repeats it. It protects the Gate study's own sentence: *"It is worth knowing which is which before anyone repeats it."* **Proposed by an agent, and the inward-turn detector was firing**: this is the 5th batch in a row with no new study. Hashem chose to run it anyway. The library's riskiest assumption, that Fellowship members actually read and use the studies, is still untested.
+
+**How it ran.** Phase A: four researcher agents checked 16 items (Table of Nations, Gate, Names, Spiral/Stars/Tree) and named only sources a reader can find. The findings went into a ruling table outside the repo, `claude-code-prompts/LLL-Web-Batch-20-RULINGS.md`, with 32 rulings. **Hashem accepted every recommendation.** Phase B applied them as 31 exact-text replacements, each guarded to match exactly once.
+
+### Verse wording fixes (D-020: ruled by name)
+
+The research found four Spiral quotes that matched **no** published translation:
+
+| # | Before → after | Why |
+|---|---|---|
+| V1 | Gen 41:32, header verse **and** pull-quote: "God has repeated the dream…" → "And the dream was repeated to Pharaoh twice…" | It was NKJV with the opening altered. Now exact NKJV. |
+| V2 | Ps 42:1: "…for you, O God." → "…for you, my God." | Now NIV 2011 (the old wording was probably NIV 1984). |
+| V3 | Ps 19:7: "reviving the soul" → "refreshing the soul" | It was ESV among NIV Psalms. Now NIV 2011. |
+| V4 | Rev 6:17 (Timeline row 6): "the great day of wrath" → "the great day of their wrath" | No translation drops the possessive (ESV/NIV). |
+
+### Corrections and rewordings
+
+| Page | Change | Basis |
+|---|---|---|
+| TON | Arwad: "the only inhabited island on the eastern Mediterranean" → "off the Syrian coast" | Cyprus. |
+| TON | Meshech: "Some connect to Moscow" → "A popular but unscholarly tradition connects it to Moscow" | A 16th–17th c. folk etymology; the Reformation Study Bible calls it "misguided speculation". |
+| TON | Tubal: → "Scholars identify it with Tabal in Anatolia; Georgian tradition connects it to Tbilisi" | ISBE; Block, *Ezekiel 25–48* (1998). |
+| TON | Tarshish: "Most scholars" → "Many scholars …; others suggest Sardinia or Tarsus" | Sources disagree. |
+| TON | Dodanim: "and the Dodecanese islands" removed | No support found. |
+| TON | Nimrod: "Uniquely, a Hamite who dominated Semitic territory" → "A descendant of Ham whose kingdom lay in Shinar, a region later tied to Shem's line" | Not unique even within Gen 10 (Canaan). |
+| Gate | The Nicanor pull-quote's attribution → "The page's paraphrase of Encyclopaedia Judaica, 'Nicanor's Gate'" | It was never a quotation (D-023). |
+| Gate | Thousand priests: "employing … so the holy precincts could be worked without defilement" → "training … so that only priests would build the holy places (Josephus, Antiquities 15.390)"; "another eighty years" → "some eighty years from the start" | Josephus *Ant.* 15.390, 15.421, 20.219. |
+| Gate | "the largest benefaction project in the Jewish world" → "Herod's own-expense rebuilding, the centerpiece of his building program (Josephus, Antiquities 15.380)" | No source for "largest". |
+| Gate | "everywhere, for three thousand years" → "across the ancient Near East and Mediterranean, for more than two thousand years" | Gudea to Rome is about 2,300 years (Ellis 1968). |
+| Spiral | "both defended by the earliest church" → "The spiral goes back to the early church; the line became influential later; both have serious defenders." | Koester, *Word & World* 15/2 (1995). |
+| Spiral `app.js` | Timeline notes 1–2 framed "On the spiral reading…" / "On this reading…" | No commentator matches the seals target by target. |
+| Tree | "Every generation has read Scripture through its most impressive technology" → "Every era has pictured the mind, and often the world, through its most impressive machine" | The pattern is documented for the mind (Cobb 2020; Searle 1984), not for Scripture. |
+| Tree | "common in Jewish reading" → "found in Jewish reading (compare the rabbinic chukkim, commands given without reasons)" | b. Yoma 67b. |
+| Names | **`#doorsWidget`**, church "Final form": "About 232–233 CE; oldest known house church" → "House c. 232; a church by about 240 CE" (shorter) | 232 dates the house; the church conversion was about 240 (Yale). Widget height unchanged at 406. |
+| Names | "Around 256–257 CE" → "Around 256 CE" | Yale. No source found for 257. |
+| Names | "the Mithraeum's niche went to Yale" → "the Mithraeum's reliefs and paintings went to Yale" | Yale. |
+| Names | "with painted walls rising about seven meters" → "with tall painted walls" | Height found only in a secondary search excerpt. |
+
+### Sources lines added or made real
+
+- **Gate** (none before): Josephus by section, the Nicanor ossuary (BM 1903,0715.1), Theodotus (CIJ II 1404), Isaac (IEJ 1983), the Nabonidus cylinder (BM 91109), Ellis, Yadin, Deissmann, Gill, Klein and Schwartz.
+- **Names** (none before): Kraeling (1956), Baird (2018), Brody & Hoffman (2011), and the Yale Dura-Europos site.
+- **Spiral** (no translation named before): "Scripture quotations from the NIV (2011), ESV and NKJV", plus Koester (1995).
+- **Stars:** "the standard history of astronomy" → the Royal Society of Chemistry's Periodic Table: "Helium". The host-of-heaven sentence now cites 1 Kings 22:19 and Deuteronomy 4:19.
+- **Tree:** "the standard history of Christian interpretation" → *City of God* XIV.11–15; *Against Heresies* IV.37–39 and *Demonstration* 12.
+
+### Accepted by decision (D-023), no change
+
+- Arkites at "about 12 miles" (Zondervan *Encyclopedia of the Bible*).
+- Pleiades at about 440 ly and Arcturus at about 37 (NASA/Gaia about 445; Hipparcos 36.7).
+- The Augustine/Irenaeus West/East labels, a standard simplification.
+- The golden eagle "the youths were executed" (accurate; `#wallWidget` left untouched).
+- The Paris slab "17 BC" and the helium wording.
+- The Hecht Museum location on the Paris slab: **not independently verified**, seen only on a blog. Left as is.
+
+### Spiral phone overflow (Tier 3)
+
+Cause: `table.cmp` had a min-content width of 355px in a 331px column. Fix, phones only: cell side-padding 12→8 and `letter-spacing:0` on the header cells. Min-content is now 319px, which leaves 12px of slack. A hyphenation option was tested and rejected because it broke words like "judg-ment".
+
+### Verified (Playwright, Chromium 156, local server)
+
+- **Word-level diff:** 99 changed runs. Verse-pattern hits are **additions only**, and all were ruled: `22:19`, `4:19` (Stars) and `21:14` (Gill, Gate). No reference was removed or altered. `id=` / `href=` in changed runs: **0**.
+- **Phone width 375×812:** `scrollWidth` = `clientWidth` = 375 on **all 8 pages**, including the Spiral page (377 before).
+- **Widgets at 1440×900:** Stone **810**, Wall **828** (≤ 836). Doors 406 and Names 379, both unchanged.
+- **D-013:** `fetch(` / `XMLHttpRequest` / `src="http` = 0. **0 external requests** and no page errors on all 8 pages.
+- **Words, before → after:** TON 2631 → 2654, Stars 1914 → 1921, Tree 4010 → 4023, Spiral 2500 → 2534, Gate 2809 → 2913 (mostly the sources line), Names 1585 → 1625.
+
+### Not verified / open
+
+- [ ] British Museum numbers (1903,0715.1; 91109) were read from search summaries. The museum pages returned 403 to the researcher. Open the two URLs once in a browser: `britishmuseum.org/collection/object/W_1903-0715-1` and `W_1882-0714-1025`.
+- [ ] Deissmann is cited by book only. The page with the "over a hundred instances" remark wasn't found.
+- [ ] The Paris slab's Hecht Museum location was not verified.
+- [ ] **At 320px the Spiral page is still 342 wide.** A different element causes it, outside this batch's scope (375 is the target).
+- [ ] The live deploy.
+- [ ] **The inward turn:** five straight batches without a new study. Next, test whether Fellowship members use the studies, or ship a study.
+
+---
+
 ## Batch 19 — Font Caching + Production Check (2026-10-19)
 
 The production check after the Batch 18 merge passed: 0 third-party requests on all 8 pages. It also found that Vercel serves the self-hosted fonts with `cache-control: public, max-age=0, must-revalidate`, so a returning reader's browser re-checks every font on every page load. Google's CDN used to let browsers keep them for a year. Hashem ruled to fix it with a minimal `vercel.json`. That is an explicit exception to D-005, recorded as **D-022**.
@@ -101,7 +181,7 @@ The Batch 17 audit found four factual errors that were already live. Batch 17's 
 ### Not verified / open
 
 - [x] *(verified on production 2026-10-19: Nabonidus, Psalm 1:6, both Rev 8:5 cites and the Nineveh notes all live; Movement VI 6:12 intact)* The live deploy (local server only).
-- [ ] Nimrod's "Uniquely, a Hamite who dominated Semitic territory" is still `[NEEDS SOURCE]`. It was not in 17b's scope.
+- [x] *(reworded in 20)* Nimrod's "Uniquely, a Hamite who dominated Semitic territory" is still `[NEEDS SOURCE]`. It was not in 17b's scope.
 
 ---
 
@@ -151,25 +231,25 @@ Words are counted on the rendered page (body text with JS run, scripts and style
 - [x] *(fixed in 17b; both readings now stated)* **Table of Nations:** Nimrod and Asshur are each said to have built Nineveh (Gen 10:11 reads either way depending on translation). Pick one reading.
 
 **Open `[NEEDS SOURCE]` flags:**
-- [ ] TON: Nimrod "Uniquely, a Hamite who dominated Semitic territory".
-- [ ] TON: Arvadites "the only inhabited island on the eastern Mediterranean". Cyprus contradicts it; probably means "off the Syrian coast".
-- [ ] TON: Meshech → Moscow, Tubal → Tbilisi.
-- [ ] TON: "Most scholars" for Tarshish = Tartessus and Dodanim = Rhodes.
-- [ ] TON: Arkites "about 12 miles NE of Tripoli" (usually given as about 13–14 mi).
-- [ ] Stars: footer "drawn from the standard history of astronomy" is too vague to count as a source.
-- [ ] Stars: Pleiades "roughly 440 light-years", Arcturus "about 37 light-years".
-- [ ] Stars: "the host of heaven" used for both stars and angels. No verse is given for the angelic sense (1 Kings 22:19 is the usual one).
-- [ ] Tree: "Every generation has read Scripture through its most impressive technology — clockwork, then steam, then the telephone exchange, then the computer."
-- [ ] Tree: "Trust without leverage — an emphasis common in Jewish reading."
-- [ ] Tree: "Augustine, and most of the West after him" / "Irenaeus, and much of the East". The footer source is only "the standard history of Christian interpretation".
-- [ ] Spiral: "The spiral and the line are both ancient, both defended by the earliest church."
-- [ ] Spiral: no sources line, and no translation named. Quotes mix ESV and NIV-style wording.
-- [ ] Gate: "how the ancient world built sacred architecture, everywhere, for three thousand years".
-- [ ] Gate: "a thousand priests as masons and carpenters" and "another eighty years". These come from Josephus, who is not cited.
-- [ ] Gate: "the largest benefaction project in the Jewish world".
-- [ ] Gate: golden eagle "the youths were executed" (inside `#wallWidget`; Josephus, uncited).
-- [ ] Gate: no sources line on the page with the most archaeology in the library.
-- [ ] Names: no sources line at all. The dates (244–245, 232–233, 168–171 / 240 CE), "about seven meters", the museum locations and "oldest known house church" are all unsourced.
+- [x] *(reworded in 20)* TON: Nimrod "Uniquely, a Hamite who dominated Semitic territory".
+- [x] *(reworded in 20)* TON: Arvadites "the only inhabited island on the eastern Mediterranean". Cyprus contradicts it; probably means "off the Syrian coast".
+- [x] *(reworded in 20)* TON: Meshech → Moscow, Tubal → Tbilisi.
+- [x] *(reworded in 20 (Tarshish "many"; Dodanim "Dodecanese" dropped))* TON: "Most scholars" for Tarshish = Tartessus and Dodanim = Rhodes.
+- [x] *(accepted in 20, D-023 (Zondervan EB gives about 12 mi))* TON: Arkites "about 12 miles NE of Tripoli" (usually given as about 13–14 mi).
+- [x] *(cited in 20 (RSC Periodic Table))* Stars: footer "drawn from the standard history of astronomy" is too vague to count as a source.
+- [x] *(accepted in 20, D-023 (NASA/Gaia about 445; Hipparcos 36.7))* Stars: Pleiades "roughly 440 light-years", Arcturus "about 37 light-years".
+- [x] *(cited in 20 (1 Kings 22:19; Deuteronomy 4:19))* Stars: "the host of heaven" used for both stars and angels. No verse is given for the angelic sense (1 Kings 22:19 is the usual one).
+- [x] *(reworded in 20 (pattern documented for the mind, not Scripture))* Tree: "Every generation has read Scripture through its most impressive technology — clockwork, then steam, then the telephone exchange, then the computer."
+- [x] *(reworded in 20 (chukkim))* Tree: "Trust without leverage — an emphasis common in Jewish reading."
+- [x] *(cited in 20 (City of God XIV.11–15; Against Heresies IV.37–39); labels accepted, D-023)* Tree: "Augustine, and most of the West after him" / "Irenaeus, and much of the East". The footer source is only "the standard history of Christian interpretation".
+- [x] *(reworded in 20 (spiral early, line later))* Spiral: "The spiral and the line are both ancient, both defended by the earliest church."
+- [x] *(cited in 20 (NIV 2011, ESV, NKJV; four verse wordings fixed))* Spiral: no sources line, and no translation named. Quotes mix ESV and NIV-style wording.
+- [x] *(reworded in 20)* Gate: "how the ancient world built sacred architecture, everywhere, for three thousand years".
+- [x] *(cited and reworded in 20 (Josephus Ant. 15.390))* Gate: "a thousand priests as masons and carpenters" and "another eighty years". These come from Josephus, who is not cited.
+- [x] *(reworded in 20 (Ant. 15.380))* Gate: "the largest benefaction project in the Jewish world".
+- [x] *(accepted in 20, D-023 (accurate per War 1.650–655; widget left untouched))* Gate: golden eagle "the youths were executed" (inside `#wallWidget`; Josephus, uncited).
+- [x] *(cited in 20 (sources line))* Gate: no sources line on the page with the most archaeology in the library.
+- [x] *(cited and corrected in 20 (church date fixed; 7 m removed; sources line))* Names: no sources line at all. The dates (244–245, 232–233, 168–171 / 240 CE), "about seven meters", the museum locations and "oldest known house church" are all unsourced.
 
 **Report-only items (not source gaps):**
 - Gate: the Nicanor pull-quote (`class="pq"`, attributed "On the Nicanor ossuary, now in the British Museum") reads as a quotation but appears to be our own prose. Either cite it or restyle it as commentary.
@@ -177,9 +257,9 @@ Words are counted on the rendered page (body text with JS run, scripts and style
 - Stars: Fellowship card 2's second paragraph reads as the compiler's assessment inside a brother's card (D-010). Ask him.
 
 **Pre-existing, not caused by this batch (out of scope):**
-- [ ] Spiral page overflows at 375px: `scrollWidth` 377 vs `clientWidth` 375, the same before and after.
+- [x] *(fixed in 20 (.cmp phone padding))* Spiral page overflows at 375px: `scrollWidth` 377 vs `clientWidth` 375, the same before and after.
 - [x] *(fixed in 18: fonts self-hosted, D-021)* Every page loads Google Fonts (from Google's font CDN) through `shared/styles.css`. D-003 calls for that import, but D-013 says "no CDN scripts or stylesheets". The two decisions conflict and need a ruling.
-- [ ] The `main` branch does not have Batches 15–16. Merging this branch brings them in.
+- [x] *(moot: merged 2026-10-19)* The `main` branch does not have Batches 15–16. Merging this branch brings them in.
 
 ---
 

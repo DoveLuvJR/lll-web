@@ -182,6 +182,7 @@ table.tlp td.tgt{font-family:'Inter',sans-serif;font-size:12px;font-weight:600;c
 .cmp td.f{font-family:'Inter',sans-serif;font-size:12px;font-weight:600;color:var(--text2);background:#fafafa}
 .cmp td.p{background:#f5fafd}
 .cmp td.c{background:#fdf6f4}
+@media(max-width:640px){.cmp th,.cmp td{padding-left:8px;padding-right:8px}.cmp th{letter-spacing:0}}
 
 /* Formatting-nudge cards (Movement VI) */
 .nudge{border:1px solid #eee;border-radius:10px;padding:16px 18px;margin:12px 0;background:#fff}
