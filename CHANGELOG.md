@@ -4,7 +4,7 @@
 
 A seventh study, at `/collections/nations-before-the-map/`, built from `docs/specs/SPEC_2026-10-20_nations-before-the-map.html` and its three seed files. It is built around the 1967 USGS National Atlas map of early tribes, culture areas and language stocks (W. C. Sturtevant). It asks whose names are on the map, what the nations call themselves, how their languages connect, and where the nations say they came from. **Tier 2 + content gates** (ship-over-harden, ruled by Hashem): a misnamed nation or a published restricted story fails silently. Proposed by Hashem, not an agent. This is the first new study after five correctness batches. Contract: `docs/contracts/BATCH_21_CONTRACT.md`.
 
-**Status: built on `batch-21-nations-before-the-map`, NOT merged.** Hashem ruled 8 of 9 review items on 2026-10-20 (see Review rulings). Item 6 (the Lumbee caution) is under research. The stocks table is ruled, so `build_page.py` builds for publication; it refuses any unruled row (D-023).
+**Status: all review items ruled 2026-10-20; merged into `main` locally (`--no-ff`), awaiting push.** The stocks table is ruled, so `build_page.py` builds for publication; it refuses any unruled row (D-023).
 
 ### Rulings made during the batch
 
@@ -83,8 +83,8 @@ Per spec §12, every entry was kept and nothing was swapped.
 | 3 | Region tracings | **Approved as traced** |
 | 4 | `map_note` wording | **Approved as written** |
 | 5 | Lane A cuts (Catawba, Lenape, Hopi) | **Approved** |
-| 6 | Catawba "contested by the Lumbee" caution | **Research it.** It stays off the page unless a source is found and ruled (see below) |
-| 7 | Catawba recognition year | **Keep "2026"**, logged as inferred |
+| 6 | Catawba "contested by the Lumbee" caution | **Researched, then kept off.** No source found for it. The Cherokee One Feather (2026-06-11) reports the recognition with no objection; the one Lumbee statement found (2014) supports a Catawba land application |
+| 7 | Catawba recognition year | **Keep "2026".** Now sourced: the Cherokee One Feather, "Catawba Nation becomes North Carolina's ninth state-recognized tribe" (2026-06-11), dates it to **Friday, June 5, 2026**. The Commission's page says "June 6". The page states the year only |
 | 8 | D-024 | **Adopted as written** |
 | 9 | Kickapoo | Hidden, per spec; no ruling needed |
 
@@ -107,7 +107,9 @@ New: `collections/nations-before-the-map/` (index.html, app.js, styles.css, img/
 ### Not verified / open
 
 - [x] *(ruled 2026-10-20)* Hashem's review list; stocks marked `ruled: true`; rebuilt without `--draft`.
-- [ ] Item 6 research result, then merge `--no-ff` and push.
+- [x] *(2026-10-20)* Item 6 researched and ruled; merged `--no-ff` locally.
+- [ ] **Push** (Hashem), then check production: network tab, widget heights, 375 width.
+- [ ] The Commission's "June 6" vs the One Feather's "June 5": one day apart. The page states only the year.
 - [ ] **The live deploy:** network tab and widget heights on production after merge.
 - [ ] **Britannica (403) and Shoshone-Bannock (refused):** open both by hand in a browser.
 - [ ] **The Muscogee Council Oak link** could move to its `muscogeenation.com` address. It redirects fine today.

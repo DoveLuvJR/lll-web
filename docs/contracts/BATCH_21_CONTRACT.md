@@ -1,5 +1,5 @@
 # BATCH 21 CONTRACT
-**Project:** Growing Stone Library (LLL-Web) | **Title:** The Nations Before the Map | **Created:** 2026-10-20 | **Status:** 🟡 BUILT, IN REVIEW (Hashem's review list blocks the merge)
+**Project:** Growing Stone Library (LLL-Web) | **Title:** The Nations Before the Map | **Created:** 2026-10-20 | **Status:** ✅ COMPLETE: ruled and merged locally 2026-10-20; push pending (Hashem)
 **Spec:** `docs/specs/SPEC_2026-10-20_nations-before-the-map.html` · **Branch:** `batch-21-nations-before-the-map`
 
 ## Ceremony tier (ship-over-harden)
@@ -96,5 +96,5 @@ Evidence is in CHANGELOG.md, Batch 21. The scripts are `docs/build/shot.js` and 
 | No-JS read | 9 cards, 31 names, 13 accounts; chips hidden | ✅ |
 | Adversarial review | Codex gpt-5.6-sol: 7 HIGH fixed and re-tested; 3 MED logged; 2 LOW fixed | ✅ |
 | Docs | CHANGELOG entry; D-024 proposed; README, collections card | ✅ |
-| **Hashem's review list** | 8 ruled 2026-10-20 (CHANGELOG, Batch 21); item 6 is under research | 🟡 |
+| **Hashem's review list** | all 9 ruled 2026-10-20 (CHANGELOG, Batch 21) | ✅ |
 | Stocks table ruled | all 18 `ruled: true` (Hashem, 2026-10-20); built without `--draft` | ✅ |
