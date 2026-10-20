@@ -75,7 +75,7 @@ Cause: `table.cmp` had a min-content width of 355px in a 331px column. Fix, phon
 - [ ] Deissmann is cited by book only. The page with the "over a hundred instances" remark wasn't found.
 - [ ] The Paris slab's Hecht Museum location was not verified.
 - [ ] **At 320px the Spiral page is still 342 wide.** A different element causes it, outside this batch's scope (375 is the target).
-- [ ] The live deploy.
+- [x] *(verified on production 2026-10-19, merge `b1ea2df`)* **The live deploy.** 23/23 text probes live across the six studies. All 8 pages return 200, measure 375 wide at 375px, make 0 external requests and throw 0 page errors. Gate widgets are 810/828, Doors 406.
 - [ ] **The inward turn:** five straight batches without a new study. Next, test whether Fellowship members use the studies, or ship a study.
 
 ---
