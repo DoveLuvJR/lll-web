@@ -23,3 +23,4 @@ drop one short note for Hashem's second brain:
 - Commit it by named path with your other changes. Never edit the
   vault yourself: Hashem files notes at the Monday review.
 - Never put secrets or real people's personal data in a note.
+- This repo is public: brain-inbox/ is git-excluded, so save the note and don't commit it.
